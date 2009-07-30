@@ -15,3 +15,5 @@ Khi mở một trang lên, sẽ có những đoạn văn được gạch dưới
   * Nhập nội dung mới vào, và Enter. Chọn Cancel nếu không muốn dịch nữa.
   * Một thông báo yêu cầu xác nhận lại, nếu không chấp nhận thì có thể nhấp No hoặc Cancel.
   * Hoàn tất, và đoạn văn dược dịch đã được hiển thị ra màn hình.
+
+*Lưu ý quan trọng:* Phải set CHMOD file languages/vi.php thành 0777 mới có thể lưu lại văn bản đã dịch được.
