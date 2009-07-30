@@ -1,5 +1,5 @@
 #summary Công cụ hỗ trợ dịch từ tiếng Anh sang tiếng Việt.
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 = Giới thiệu =
 
