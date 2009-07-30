@@ -1,11 +1,12 @@
-Entity & Database:
-• Toàn bộ thực thể (đối tượng) của hệ thống được lưu trữ trong table Entity 
+#labels Phase-Implementation
+*Entity & Database:*
+  * Toàn bộ thực thể (đối tượng) của hệ thống được lưu trữ trong table Entity 
 	○ Type (Object, User, Group, Site).
 	○ Subtype (user define).
-• Different bt. Metadata, annotation ?
-• http://docs.elgg.org/wiki/DatabaseSchema
+  * Different bt. Metadata, annotation ?
+  * http://docs.elgg.org/wiki/DatabaseSchema
 
-Event System:
+*Event System:*
 	○ Elgg Event: Each event is determined by an event name and an object type (system, user, object, relationship name, annotation, group). By registering handlers for Elgg events, your plugin can have code executed when that event occurs.
 		Ex: register_elgg_event_handler('login','user','plugin_handler');
 		When user login, the event occurs and plugin_handler written by developer handle it!
@@ -53,4 +54,3 @@ Widget:
 					® /view.php 
 
 Pasted from <http://docs.elgg.org/wiki/Widgets> 
-
