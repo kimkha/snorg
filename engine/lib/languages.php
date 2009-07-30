@@ -111,20 +111,11 @@
 			else 
 				$language = $CURRENT_LANGUAGE;
 
-/*			if (function_exists("isadminloggedin") && isadminloggedin()) {
-				if (isset($CONFIG->translations[$language][$message_key])) {
-					return "<span class='f_t'>".$CONFIG->translations[$language][$message_key]."</span>";
-				} else if (isset($CONFIG->translations["en"][$message_key])) {
-					return "<span class='p_t' onmousedown='view_popup_translator(this, \"$message_key\", evt);'>".$CONFIG->translations["en"][$message_key]."</span>";
-				}
-//			}
-/*			else {*/
-				if (isset($CONFIG->translations[$language][$message_key])) {
-					return "<span class='f_t'>".$CONFIG->translations[$language][$message_key]."</span>";
-				} else if (isset($CONFIG->translations["en"][$message_key])) {
-					return "<span class='p_t' title='{$message_key}'>".$CONFIG->translations["en"][$message_key]."</span>";
-				}
-//			}*/
+			if (isset($CONFIG->translations[$language][$message_key])) {
+				return "<span class='f_t'>".$CONFIG->translations[$language][$message_key]."</span>";
+			} else if (isset($CONFIG->translations["en"][$message_key])) {
+				return "<span class='p_t' title='{$message_key}'>".$CONFIG->translations["en"][$message_key]."</span>";
+			}
 				
 			return $message_key;
 			
