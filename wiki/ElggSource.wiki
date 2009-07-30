@@ -1,0 +1,56 @@
+Entity & Database:
+• Toàn bộ thực thể (đối tượng) của hệ thống được lưu trữ trong table Entity 
+	○ Type (Object, User, Group, Site).
+	○ Subtype (user define).
+• Different bt. Metadata, annotation ?
+• http://docs.elgg.org/wiki/DatabaseSchema
+
+Event System:
+	○ Elgg Event: Each event is determined by an event name and an object type (system, user, object, relationship name, annotation, group). By registering handlers for Elgg events, your plugin can have code executed when that event occurs.
+		Ex: register_elgg_event_handler('login','user','plugin_handler');
+		When user login, the event occurs and plugin_handler written by developer handle it!
+	Pasted from <http://docs.elgg.org/wiki/Elgg_Events> 
+	Elgg has four events that occur on almost every pageload. 
+		§ System, boot.
+		§ System, init
+		§ System, pagesetup
+		§ System, shutdow
+	Pasted from <http://docs.elgg.org/wiki/Elgg_Events> 
+	
+	
+	
+	○ Plugin hook
+	
+
+Plugin:
+Can change everything using plugin?
+	http://docs.elgg.org/wiki/Tutorials/Indexpage
+Plugins extend or replace core Elgg functionality (or that of other plugins)
+Pasted from <http://docs.elgg.org/wiki/Getting_Started_With_Development> 
+
+When Elgg starts up, it initially loads its own libraries, and then attempts to load start.php from each activated plugin. (When the Tools Administration page is loaded, new plugins are searched for; any new ones found are inserted at the bottom of the list.) 
+Following this, assuming there have been no errors, the init, system event is triggered. By registering a handler for this event, plugins can add menu items and perform other activities that need to be done on every page load. Your plugin could also register for other events and plugin hooks like cron in your initialization handler function. 
+
+Views:
+Elgg attempts to separate logic from interface using its own templating system.
+For example, the HTML for the toolbar at the top of an Elgg page is located at /views/default/page_elements/elgg_topbar.php
+Additionally, each view has a viewtype: the overall collection of views. default is a viewtype 
+
+Views are stored as PHP files, with any variables passed as part of a $vars array. For example, the object/blog view is actually stored in views/default/object/blog.php, and the contents of the blog post to display is stored in $vars['entity']. This helps to separate the controller code from the view code. 
+
+Action:
+Action Handler: Actions in Elgg are all accessed via a URL like your-elgg-site/action/name/here. Real-world examples include action/login and action/plugins/enable; 
+
+
+
+Widget:
+'Plugin' 
+	• /views 
+		○ /default 
+			§ /widgets 
+				□ /widgettitle 
+					® /edit.php 
+					® /view.php 
+
+Pasted from <http://docs.elgg.org/wiki/Widgets> 
+
