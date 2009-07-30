@@ -10,6 +10,8 @@ $vietnamese = array(
 	'tools' => 'Công cụ',
 	'logout' => 'Đăng xuất',
 	'admin:user:label:search' => 'Tìm thành viên:',
+	'register' => 'Đăng ký',
+	'systemmessages:dismiss' => 'nhấn vào để đóng lại',
 	// END NEW STRING
 );
 
