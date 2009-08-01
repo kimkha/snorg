@@ -1,22 +1,23 @@
+#summary Cấu trúc cơ bản của ELGG
 #labels Phase-Implementation
-*Entity & Database:*
+
+=Entity & Database=
   * Toàn bộ thực thể (đối tượng) của hệ thống được lưu trữ trong table Entity 
-	○ Type (Object, User, Group, Site).
-	○ Subtype (user define).
+    * Type (Object, User, Group, Site).
+    * Subtype (user define).
   * Different bt. Metadata, annotation ?
   * http://docs.elgg.org/wiki/DatabaseSchema
 
-*Event System:*
-	○ Elgg Event: Each event is determined by an event name and an object type (system, user, object, relationship name, annotation, group). By registering handlers for Elgg events, your plugin can have code executed when that event occurs.
-		Ex: register_elgg_event_handler('login','user','plugin_handler');
-		When user login, the event occurs and plugin_handler written by developer handle it!
-	Pasted from <http://docs.elgg.org/wiki/Elgg_Events> 
-	Elgg has four events that occur on almost every pageload. 
-		§ System, boot.
-		§ System, init
-		§ System, pagesetup
-		§ System, shutdow
-	Pasted from <http://docs.elgg.org/wiki/Elgg_Events> 
+=Event System:=
+  * Elgg Event: Each event is determined by an event name and an object type (system, user, object, relationship name, annotation, group). By registering handlers for Elgg events, your plugin can have code executed when that event occurs.
+        Ex: register_elgg_event_handler('login','user','plugin_handler');
+  * When user login, the event occurs and plugin_handler written by developer handle it!
+    * Pasted from <http://docs.elgg.org/wiki/Elgg_Events> 
+    * Elgg has four events that occur on almost every pageload. 
+      * System, boot.
+      * System, init
+      * System, pagesetup
+      * System, shutdow
 	
 	
 	
