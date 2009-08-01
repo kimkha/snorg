@@ -1,0 +1,22 @@
+#summary Thống nhất các từ ngữ đặc biệt.
+#labels Phase-Implementation
+
+= Lý do phải thống nhất =
+
+Do nhiều người cùng dịch, nên nhất thiết phải thống nhất với nhau về một số từ ngữ đặc biệt, được sử dụng nhiều lần qua các plug-in khác nhau.
+
+*Lưu ý:* mọi người xem kỹ Wiki markup của Google code trước khi gõ để đảm bảo đúng cú pháp.
+
+
+= Các cụm từ đặc biệt =
+
+== Chung ==
+Xuất hiện ở rất nhiều vị trí
+
+  # *Setting* Thiết lập
+  # *Tools* Công cụ
+
+== Friend ==
+Liên quan đến bạn bè và kết nối bạn bè
+
+  # *Friend* Bạn bè (thậm chí từ _Friends_)
