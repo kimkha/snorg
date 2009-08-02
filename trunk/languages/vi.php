@@ -7,7 +7,7 @@ $vietnamese = array(
 	// NEW STRING HERE
 	
 	'admin:statistics' => 'Thống kê',
-	'tools' => 'Tiện Ích',
+	'tools' => 'Tiện ích',
 	'logout' => 'Đăng xuất',
 	'admin:user:label:search' => 'Tìm thành viên:',
 	'register' => 'Đăng ký',
