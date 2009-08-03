@@ -22,50 +22,6 @@ if(jQuery) (function(){
 			});
 			return $(this);
 		},		
-		
-		rightMouseDown: function(handler) {
-			$(this).each( function() {
-				$(this).mousedown( function(e) {
-					if( e.button == 2 ) {
-						handler.call( $(this), e );
-						return false;
-					} else {
-						return true;
-					}
-				});
-				$(this)[0].oncontextmenu = function() {
-					return false;
-				}
-			});
-			return $(this);
-		},
-		
-		rightMouseUp: function(handler) {
-			$(this).each( function() {
-				$(this).mouseup( function(e) {
-					if( e.button == 2 ) {
-						handler.call( $(this), e );
-						return false;
-					} else {
-						return true;
-					}
-				});
-				$(this)[0].oncontextmenu = function() {
-					return false;
-				}
-			});
-			return $(this);
-		},
-		
-		noContext: function() {
-			$(this).each( function() {
-				$(this)[0].oncontextmenu = function() {
-					return false;
-				}
-			});
-			return $(this);
-		}
-		
 	});
 	
 })(jQuery);	
@@ -170,19 +126,15 @@ $(document).ready(function () {
 				return true;
 			},
 			error: function (xmlhttp) {
-				alert("Chuỗi chưa được dịch, vui lòng refresh để thử lại\n\n"+a);
 				return false;
 			}
 		});
-		$(this).html(r);
-		$(this).addClass('f_t');
-		$(this).removeClass('p_t');
+		$("span.p_t[title='"+$(this).attr('title')+"']").html(r);
+		$("span.p_t[title='"+$(this).attr('title')+"']").addClass('f_t');
+		$("span.p_t[title='"+$(this).attr('title')+"']").removeClass('p_t');
 		return false;
 	});
 	
-	$("span.p_t").noContext();
-	
-
 }); /* end document ready function */
 
 
