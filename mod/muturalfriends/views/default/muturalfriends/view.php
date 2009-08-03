@@ -26,7 +26,8 @@
 		{
 			if (check_entity_relationship($me, 'friend', $rel->guid_two))
 			{
-				echo $rel->guid_two;
+				$mutural = get_user($rel->guid_two);
+				echo $mutural->name.'<br />';
 			}
 		}
 		

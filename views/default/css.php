@@ -2526,4 +2526,3 @@ a.delete_report_button:hover {
 	border-bottom: 2px solid #50D050;
 	cursor: help;
 }
-
