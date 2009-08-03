@@ -23,3 +23,11 @@ Nếu có conflict xảy ra
   # Tắt các trình chỉnh sửa file này (nếu đang mở)
   # Nhấp chuột phải vào file, chọn *TortoiseSVN*, chọn *Resolve...* và chờ đợi.
   # Trở về thư mục gốc của snorg trên máy tính, chuột phải và chọn *SVN Commit...*
+
+= Các thao tác khác =
+
+== Export ==
+
+Khi cần lấy toàn bộ cấu trúc mà không chứa thư mục .svn (ẩn). Đừng nên copy, mà nên export ra một thư mục khác (như vậy sẽ đảm bảo cho TortoiseSVN không bị rối)
+  # Nhấp chuột phải vào thư mục, chọn TortoiseSVN -> Export.
+  # Cửa sổ hiện ra yêu cầu thư mục chứa thư mục được export. Chọn một cái và nhấp OK.
