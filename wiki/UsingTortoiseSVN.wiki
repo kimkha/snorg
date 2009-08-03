@@ -1,0 +1,25 @@
+#summary Hướng dẫn sử dụng TortoiseSVN
+#labels Phase-Implementation
+
+= Cài đặt =
+
+  # Lên google search từ TortoiseSVN và download bản mới nhất về. Cài đặt xong, nên khởi động lại máy.
+  # Tạo một thư mục trong thư mục thực thi của server apache (*Chú ý:* Thư mục phải rỗng)
+  # Nhấp chuột phải vào thư mục chọn *SVN Checkout*, nhập đường dẫn đến thư mục trunk của snorg, nhập cả email và password (được generate bởi googlecode của snorg)
+  # Cài đặt dữ liệu cho trang site.
+
+
+= Sử dụng =
+
+Mỗi ngày cần phải Update trước khi làm việc:
+  # Nhấp chuột phải vào thư mục trên máy tính
+  # Chọn *SVN Update*.
+
+Nếu có conflict xảy ra
+  # Mở file bị conflict (Bằng cách dò theo những thư mục có hình tam giác màu vàng
+  # Tìm và chỉnh lại code tại những vị trí được đánh dấu (chính là vị trí có mấy cái dấu bằng). Nếu dùng phpDesigner, các vị trí này sẽ được đánh dấu là bị lỗi.
+  # Xem kỹ nội dung và sửa lại cho đúng
+  # Chạy thử xem có hoạt động ổn định không
+  # Tắt các trình chỉnh sửa file này (nếu đang mở)
+  # Nhấp chuột phải vào file, chọn *TortoiseSVN*, chọn *Resolve...* và chờ đợi.
+  # Trở về thư mục gốc của snorg trên máy tính, chuột phải và chọn *SVN Commit...*
