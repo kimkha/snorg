@@ -87,6 +87,7 @@ $vietnamese = array(
 	'profile:label' => 'Tên thông tin',
 	'profile:edit:default' => 'Thay Đổi Các Trường Dữ Liệu Trong Hồ Sơ',
 	'profile:edit:default' => 'Thay Đổi Trường Dữ Liệu Hồ Sơ',
+	'friend:add' => 'Kết bạn',
 	// END NEW STRING
 );
 
