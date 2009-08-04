@@ -1,5 +1,6 @@
 #summary Hướng dẫn sử dụng TortoiseSVN
 #labels Phase-Implementation
+<wiki:toc max_depth="3" />
 
 = Cài đặt =
 
