@@ -15,7 +15,7 @@ Trước khi có thể sử dụng, dĩ nhiên là phải copy thư mục mutura
   # Vào trang cá nhân của mình (_pg/profile/<username_của_tôi>_), và nhấp vào nút Chỉnh sửa trang xuất hiện ở góc phải.
   # Kéo widget của tiện ích Mutural friends vào vị trí mình muốn.
   # Save lại.
-  # Bây giờ thì một người khác có thể vào trang của mình và họ có thể thấy những người bạn chung của bạn với họ.
+  # Bây giờ thì một người khác có thể vào trang của bạn và họ có thể thấy những người bạn chung của bạn với họ.
 
 Nếu bạn muốn xem những người bạn chung của bạn với một người nào đó
   # Vào địa chỉ _pg/muturalfriends/<username_của_người_muốn_xem>_
