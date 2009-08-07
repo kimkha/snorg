@@ -1,0 +1,22 @@
+#summary Hướng dẫn sử dụng chức năng Bạn chung (mutural friends)
+#labels Phase-Implementation,Phase-Deploy
+
+= Giới thiệu =
+
+Đây là một tiện ích nhỏ, hiển thị ngẫu nhiên một số người bạn chung giữa người đang xem trang (visitor) và người chủ của trang (page owner).
+
+
+= Hướng dẫn =
+
+Trước khi có thể sử dụng, dĩ nhiên là phải copy thư mục muturalfriends vào thư mục mod/, sau đó vào trang quản lý tiện ích để kích hoạt nó lên.
+
+== Các sử dụng ==
+Để hiển thị widget này trên trang profile của mình.
+  # Vào trang cá nhân của mình (pg/profile/<username_của_tôi>), và nhấp vào nút Chỉnh sửa trang xuất hiện ở góc phải.
+  # Kéo widget của tiện ích Mutural friends vào vị trí mình muốn.
+  # Save lại.
+  # Bây giờ thì một người khác có thể vào trang của mình và họ có thể thấy những người bạn chung của bạn với họ.
+
+Nếu bạn muốn xem những người bạn chung của bạn với một người nào đó
+  # Vào địa chỉ pg/muturalfriends/<username_của_người_muốn_xem>
+  # Danh sách này hiển thị ngẫu nhiên một số người bạn chung.
