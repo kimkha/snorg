@@ -1364,6 +1364,25 @@ table.search_gallery {
 
 
 /* ***************************************
+	MUTURAL FRIENDS
+*************************************** */
+/* friends widget */
+#widget_mutural_friends_list {
+	display:table;
+	width:275px;
+	margin:0 10px 0 10px;
+	padding:8px 0 4px 8px;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+	background:white;
+}
+.widget_mutural_friends_singlefriend {
+	float:left;
+	margin:0 5px 5px 0;
+}
+
+
+/* ***************************************
 	ADMIN AREA - PLUGIN SETTINGS
 *************************************** */
 .plugin_details {
