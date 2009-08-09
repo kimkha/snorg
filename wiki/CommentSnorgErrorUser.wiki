@@ -1,0 +1,8 @@
+#labels CáclỗithườnggặptrongquátrìnhsửdụngSnorg
+<b>- Lỗi Không thể click vào nút sửa đổi trang trong dashboard</b>
+  <b>Lí do:</b> bạn chưa active bất kì 1 widget nào.
+  <b>Khắc phục:</b> active widget để có thể sử dụng chức năng sửa đổi của trang.
+
+
+
+
