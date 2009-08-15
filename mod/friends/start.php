@@ -1,5 +1,3 @@
-
-
 <?php
 
 	/**
@@ -20,12 +18,12 @@
     		
     		//add a widget
 			    add_widget_type('friends',elgg_echo("friends"),elgg_echo('friends:widget:description'));
+			    extend_view('widgets/friends/view', 'friends/dialog');
 			    
 			
 		}
 		
-		
-		
 		register_elgg_event_handler('init','system','friends_init');
-   
+		
+        
 ?>
