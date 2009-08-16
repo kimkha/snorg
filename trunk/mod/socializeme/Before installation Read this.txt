@@ -1,0 +1,43 @@
+This template is designed by www.edesignerz.net.
+
+This theme requires Elgg 1.5
+
+Released under a GNU General Public License (GPL) version 2.
+
+> If you like it then dont forget to donate us.
+
+************************************************
+This template is fully compatible with Elgg 1.5
+************************************************
+
+Step 1:
+______
+
+Installation: 
+
+- Copy the folder [socializeme] to the elgg/mod/ directory
+- Go to Administration > Tool Administration
+- Move to the bottom of the plugin list.
+- Select the template and click activate.
+- Your installation of the Elgg template is done successfully.
+
+Note:
+____
+
+
+- Also if you are adding text to the front page in Administration > External Pages > Frontpage, the pages are reversed e.g. Left is Right and Right is Left.
+
+- In CSS too, the left hand is right hand and right hand is left hand. If you have any questions and queries you can Discuss it in www.edesignerz.net forums (Website containing this theme)
+
+
+
+Terms and Conditions: 
+_____________________
+
+1. You will not resell it.
+2. You will not remove the backlink to EDESIGNERZ.NET from the footer of the template.
+3. You will not rename the template folder i.e. (socializeme)
+4. You can use freely in your website and can make modifications in the template
+5. If you want to removed by Designed By from the template you must Email us at admin@edesignerz.net and donate a little amount of USD $30 to our Paypal email address:  admin@edesignerz.net
+
+
