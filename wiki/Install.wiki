@@ -1,3 +1,4 @@
+#summary Cài Đặt SNORG
 #labels Phase-Deploy
 =Cài Đặt SNORG=
 ==1.	 Upload Snorg:==
