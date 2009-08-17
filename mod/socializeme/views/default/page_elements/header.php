@@ -60,8 +60,15 @@ END;
 	<meta name="ElggVersion" content="<?php echo $version; ?>" />
 	<title><?php echo $title; ?></title>
 
+	
+
+	<link type="text/css" href="<?php echo $vars['url']; ?>vendors/jquery/css/smoothness/ui.all.css" rel="stylesheet" > </link>
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/JSSerializer.js">
+	</script>	
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/browserDetect.js">
+	</script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-1.2.6.pack.js"></script>
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-ui-personalized-1.5.3.packed.js"></script>
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-ui-1.6.custom.min.js">	</script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>_css/js.php/<?php echo $vars['config']->lastcache; ?>?js=initialise_elgg&viewtype=<?php echo $vars['view']; ?>"></script>
 <?php
 	global $pickerinuse;

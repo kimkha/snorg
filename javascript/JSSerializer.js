@@ -320,9 +320,16 @@ function JSSerializer() {
         retObj[retObj.length] = child.textContent;
       } else {
         //alert('complex var of type: '+nodeType +", name: "+child.nodeName +", content: "+child.textContent+", value: "+child.nodeValue)
-        var tmp = child.textContent;
-        if(child.textContent.trim() != '') {
-          retObj[retObj.length] = deserial(child) 
+        var tmp = null;
+        if (ie){
+        	tmp = child.text;
+        	}
+          else {
+        	tmp = child.textContent;                  	
+          }
+                	
+        if(tmp.trim() != '') {
+          retObj[retObj.length] = deserial(child); 
         }           
       }                   
     }     

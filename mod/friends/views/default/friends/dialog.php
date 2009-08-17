@@ -1,15 +1,6 @@
 <?php
 ?>
-
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-ui-1.6.custom.min.js">
-	</script>
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/JSSerializer.js">
-	</script>
-	
-	<link type="text/css" href="<?php echo $vars['url']; ?>vendors/jquery/css/smoothness/ui.all.css" rel="stylesheet" >
-	</link>
-	 
-	<div id="dialog" title="<?php echo elgg_echo('friends:widget:title') . " " . get_user($vars['entity']->owner_guid)->username ?>" class="collapsable_box_content" style="display:none;">
+<div id="dialog" title="<?php echo elgg_echo('friends:widget:title') . " " . get_user($vars['entity']->owner_guid)->username ?>" class="collapsable_box_content" style="display:none;">
 	        <input id="inputFilter" type="text"/>
 	</div>
 	
@@ -58,7 +49,8 @@
                                 
                         $("#dialog > div").remove();                            
                         for(index in friends){
-                                $('#dialog').append("<div class='contentWrapper'> <a href=\"" + friends[index].userurl + "\"><img src=\"" + friends[index].usericon +" /> <b>" + friends[index].username + " </b> </a> </div>");                                
+                        		                        	
+                                $('#dialog').append("<div class='contentWrapper'> <a href=\"" + friends[index].userurl + "\"><img src=\"" + friends[index].usericon + "\" /> <b>" + friends[index].username + " </b> </a> </div>");                                
                         }
                         
                 }
