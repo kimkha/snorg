@@ -24,7 +24,7 @@
 				extend_view('css','elggchat/css');
 				
 				extend_view('profile/menu/actions', 'elggchat/profile_menu_actions');
-				extend_view('page_elements/header', 'elggchat/session_monitor');
+		//		extend_view('page_elements/header', 'elggchat/session_monitor');
 				
 				// JS in cache
 				extend_view("js/initialise_elgg", "elggchat/js");

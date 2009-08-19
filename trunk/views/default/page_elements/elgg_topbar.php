@@ -24,7 +24,7 @@
 	<div class="toolbarimages">
 		<a href="http://www.elgg.org" target="_blank"><img src="<?php echo $vars['url']; ?>_graphics/elgg_toolbar_logo.gif" /></a>
 		
-		<a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>"></a>
+		<a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>" /></a>
 		
 	</div>
 	<div class="toolbarlinks">
@@ -71,7 +71,7 @@
 
 <div id="elgg_topbar_container_search">
 <form id="searchform" action="<?php echo $vars['url']; ?>search/" method="get">
-	<input type="text" size="21" name="tag" value="Search" onclick="if (this.value=='Search') { this.value='' }" class="search_input" />
+	<input type="text" size="21" name="tag" value="Search" onclick="if (this.value=='Search') { this.value='' }" onblur="if (this.value=='') { this.value='Search' }" class="search_input" />
 	<input type="submit" value="Go" class="search_submit_button" />
 </form>
 </div>

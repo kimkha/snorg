@@ -13,32 +13,9 @@
 	
 ?>
 
-#elggchat_toolbar {
-	position: fixed;
-	bottom: 0px;
-	height: 25px;
-	left: 0px;
-	z-index: 9999;
-	background: black;
-} 
-
-*html #elggchat_toolbar {
-	position: fixed;
-	bottom: 0px;
-	height: 25px;
-	left: 0px;
-	z-index: 9999;
-	background: black;
-}
-
 #elggchat_toolbar_left {
-	border-top:1px solid #CCCCCC;
-	
 	float:right;
-	
-	padding-top: 2px;
-	padding-bottom: 4px;
-	
+	padding: 2px 0px 4px 0px;
 }
 
 #elggchat_copyright{
@@ -68,8 +45,7 @@
 
 #elggchat_friends{
 	float:right;
-	border-left:1px solid #CCCCCC;
-	border-right:1px solid #CCCCCC;
+	border-left:1px solid #000000;
 	padding: 0 5px 0 5px;	
 }
 
@@ -92,7 +68,6 @@
 }
 
 .toggle_elggchat_toolbar {
-	border-top:1px solid #CCCCCC;	
 	width: 15px;
 	height: 100%;
 	float:left;
@@ -172,6 +147,11 @@
 
 .chatmembers .chatmemberinfo{
 	width: 100%;
+}
+.chatmembersicon {
+	width: 30px;
+	height: 30px;
+	float: left;
 }
 .chatmembersfunctions {
 	text-align:right;

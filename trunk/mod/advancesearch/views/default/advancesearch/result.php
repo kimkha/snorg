@@ -11,70 +11,50 @@
 	 */
 
 $offset = get_input('offset', 0);
-$searchbytype = get_input('searchbytype', 'multiresult');
-
-$baseurl = preg_replace('/[\&\?]searchbytype\=[A-Za-z0-9]*/',"",$vars['baseurl']);
-if (substr_count($baseurl,'?')) {
-	$baseurl .= "&searchbytype=";
-} else {
-	$baseurl .= "?searchbytype=";
-}
 
 if (is_array($vars['config']->profile) && sizeof($vars['config']->profile) > 0) {
 	$alltag = $vars['config']->profile;
 	unset($alltag['description']);
 	
-	# set menu
-	add_submenu_item(elgg_echo("advancesearch:menu:multiresult"), $baseurl.'multiresult', 'result');
-	foreach ($alltag as $shortname => $valtype) {
-		$form_value = get_input($shortname);
-		if ($form_value != '') {
-			add_submenu_item(elgg_echo("advancesearch:menu:{$shortname}"), $baseurl.$shortname, 'result');
-		}
-	}
-
-	$value = "djdjdj".$vars['baseurl']."<div class=\"contentWrapper\">".elgg_echo('advancesearch:multiresult');
-	$meta_array = array();
-	foreach ($alltag as $shortname => $valtype) {
-		$form_value = get_input($shortname);
-		if ($form_value != '') {
-			$value .= elgg_echo("profile:{$shortname}").": <b>".$form_value."</b>, ";
-		}
-		$meta_array[$shortname] = $form_value;
-	}
-	$value .= "</div>";
-	echo $value;
-	
-	if ($entity = get_entities_from_metadata_multi($meta_array)) {
-		if (is_array($entity)) {
-			$count = count($entity);
-			# "Change listing type" => /view/default/search/entity_list.php
-			echo elgg_view_entity_list($entity, $count, $offset, $count);
-		}
-	}
+	$result_array = array();
+	$max_score = 0;
+	$output = '';
 	
 	foreach($alltag as $shortname => $valtype) {
-		if (get_input($shortname, '') != '') {
+		$form_value = get_input($shortname, '');
+		if ($form_value != '') {
+			$output .= elgg_echo("profile:{$shortname}").": <b>".$form_value."</b>, ";
 			$value = '';
 			$form_value = get_input($shortname);
 			
 			if ($entity = get_entities_from_metadata($shortname, $form_value)) {
 				if (is_array($entity)) {
-					$count = count($entity);
-					# "Change listing type" => /view/default/search/entity_list.php
-					$value .= elgg_view_entity_list($entity, $count, $offset, $count);
+					$max_score = merge_array_with_priority($result_array, $entity);
 				}
 				else {
 					continue;
 				}
 			}
-			
-			echo "<div class=\"contentWrapper\">";
-			echo elgg_echo("advancesearch:{$shortname}").": <b>".$form_value;
-			echo "</b></div>";
-			echo $value;
 		}
 	}
+	
+	krsort($result_array);
+	$arr_merge = $result_array[$max_score];
+	unset($result_array[$max_score]);
+	
+	foreach ($result_array as $keys => $items) {
+		foreach ($items as $k => $i) {
+			array_push($arr_merge, $i);
+			unset($result_array[$keys][$k]);
+		}
+		unset($result_array[$keys]);
+	}
+	
+	$count = count($arr_merge);
+	echo "<div class=\"contentWrapper\">".elgg_echo('advancesearch:multiresult');
+	echo $output;
+	echo "</div>";
+	echo elgg_view_entity_list($arr_merge, $count, $offset, $count);
 }
 
 
