@@ -42,6 +42,7 @@ if($user = get_loggedin_user()){
 								} else {
 									$result["sessions"][$session->guid]["name"] = $member->name;
 								}
+								$result["sessions"][$session->guid]["icon"] = $member->getIcon('tiny');
 								$firstMember = false;
 							}
 							$result["sessions"][$session->guid]["members"][] = elgg_view("elggchat/user", array("chatuser" => $member));

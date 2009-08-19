@@ -13,9 +13,6 @@
 	function advancesearch_init() {
 		register_page_handler('advancesearch','advancesearch_page_handler');
 
-		if (get_context() == 'advancesearch') {
-			add_submenu_item(elgg_echo('advancesearch'), $CONFIG->wwwroot."mod/advancesearch");
-		}
 	}
 	
 	function advancesearch_page_handler($page) {
@@ -33,6 +30,7 @@
 		if (isset($page[0]) && $page[0] != '') {
 			set_input('tag',$page[0]);
 		}
+		@include(dirname(__FILE__) . '/functions/search.php');
 		@include(dirname(__FILE__) . "/result.php");
 		return true;
 	}

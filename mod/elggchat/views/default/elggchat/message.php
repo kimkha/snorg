@@ -48,9 +48,7 @@
 		if($message->name == ELGGCHAT_MESSAGE){
 			$result .= "<div name='message' id='" .  $offset . "' class='messageWrapper'>";
 			
-			$result .= "<table ><tr><td rowspan='2'>";
-			$result .= "<a href='" . $user->getURL() . "'><img class='messageIcon' alt='" . $user->name . "' src='". $user->getIcon('tiny') . "'></a>";
-			$result .= "</td><td class='messageName'>" . $user->name . "</td></tr>";
+			$result .= "<table ><tr><td class='messageName'>" . $user->name . "</td></tr>";
 			
 			$result .= "<tr><td>";
 

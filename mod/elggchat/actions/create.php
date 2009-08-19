@@ -18,6 +18,16 @@
 	if(($invite_user = get_user($inviteId)) && $inviteId != get_loggedin_userid()){
 		$user = get_loggedin_user();
 		
+		$sessions = $user->getEntitiesFromRelationship(ELGGCHAT_MEMBER, true);
+		foreach ($sessions as $session) {
+			$chats = $session->getEntitiesFromRelationship(ELGGCHAT_MEMBER);
+			foreach ($chats as $chat) {
+				if ($chat->guid == $inviteId) {
+					exit();
+				}
+			}
+		}
+		
 		$session = new ElggObject();
 		$session->subtype = ELGGCHAT_SESSION_SUBTYPE;
 		$session->access_id = ACCESS_LOGGED_IN;
