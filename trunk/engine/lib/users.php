@@ -1024,7 +1024,7 @@
 		if (($user) && ($user instanceof ElggUser))
 		{
 			// invalidate any existing validations
-			set_user_validation_status($user_guid, false);
+			set_user_validation_status($user_guid, true);
 			
 			// request validation
 			trigger_elgg_event('validate', 'user', $user);
