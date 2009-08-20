@@ -11,6 +11,11 @@
 	* @version 0.4
 	*/
 
+function splitname($name, $num) {
+	if (strlen($name) > $num) return substr($name, 0, $num-1)."..";
+	return $name;
+}
+
 if($user = get_loggedin_user()){
 	$chat_sessions_count = get_entities_from_relationship(ELGGCHAT_MEMBER, $user->getGUID(), true, "", "", "", "time_created asc", null, null, true);
 	$result = array();
@@ -41,7 +46,7 @@ if($user = get_loggedin_user()){
 								if($member_count > 2){
 									$result["sessions"][$session->guid]["name"] = elgg_echo('elggchat:conference');
 								} else {
-									$result["sessions"][$session->guid]["name"] = $member->name;
+									$result["sessions"][$session->guid]["name"] = splitname($member->name, 20);
 								}
 								$firstMember = false;
 							}

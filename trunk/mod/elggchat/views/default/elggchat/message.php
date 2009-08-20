@@ -48,7 +48,7 @@
 		if($message->name == ELGGCHAT_MESSAGE){
 			$result .= "<div name='message' id='" .  $offset . "' class='messageWrapper'>";
 			
-			$result .= "<table ><tr><td class='messageName'>" . $user->name . "</td></tr>";
+			$result .= "<table ><tr><td class='messageName'>" . splitname($user->name, 20) . "</td></tr>";
 			
 			$result .= "<tr><td>";
 
