@@ -44,9 +44,9 @@ if(!empty($user) && $user instanceof ElggUser){
 	 }
 	
 	if($link){
-			$result .= "<td class='chatmemberinfo'><a href='" . $user->getUrl() . "' title='" . $user->name . "' rel='" . $user->guid . "'>" . $user->name . "</a></td>";
+			$result .= "<td class='chatmemberinfo'><a href='" . $user->getUrl() . "' title='" . $user->name . "' rel='" . $user->guid . "'>" . splitname($user->name, 25) . "</a></td>";
 	} else { 
-			$result .= "<td class='chatmemberinfo'>". $user->name . "</td>";
+			$result .= "<td class='chatmemberinfo'>". splitname($user->name, 25) . "</td>";
 	}
 	
 	if($onlineStatus){
