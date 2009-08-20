@@ -49,7 +49,7 @@
 	}
 
 	// If there are any $friend to view, view them
-	if (sizeof($mutural) > 0) {
+	if (sizeof($mutural) > 0 && $owner->guid != $visitor) {
 
 		echo "<div id=\"widget_mutural_friends_list\">";
 
