@@ -11,6 +11,7 @@
 if (isloggedin()) {
 ?>
 <div id="elgg_taskbar">
+	<div id="notification_taskbar">*</div>
 	<div id="elggchat_toolbar_left" >
 		<div id='elggchat_sessions'> 
 		</div>

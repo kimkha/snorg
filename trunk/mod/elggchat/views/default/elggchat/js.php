@@ -64,12 +64,12 @@
 	}
 		
 	function inviteFriends(sessionid){
-		var currentChatWindow = $("#" + sessionid + " .chatmembersfunctions_invite"); 
+		var currentChatWindow = $("#chatwindow" + sessionid + " .chatmembersfunctions_invite"); 
 		if(currentChatWindow.css("display") != "block"){
 			currentChatWindow.html("");
 			$("#elggchat_friends_picker .chatmemberinfo").each(function(){
 				var friend = $(this).find("a");
-				if(!($("#" + sessionid + " .chatmember a[rel='" + friend.attr('rel') + "']").length > 0)){
+				if(!($("#chatwindow" + sessionid + " .chatmember a[rel='" + friend.attr('rel') + "']").length > 0)){
 					newFriend = "<a href='javascript:addFriend(" + sessionid + ", " + friend.attr('rel') + ")'>";
 					newFriend += friend.html();
 					newFriend += "</a><br />";
@@ -82,9 +82,9 @@
 	
 	function addFriend(sessionid, friend){
 		$.post("<?php echo $CONFIG->wwwroot; ?>action/elggchat/invite?chatsession=" + sessionid + "&friend=" + friend, function(){
-			$("#" + sessionid + " .chatmembersfunctions_invite").toggle();
+			$("#chatwindow" + sessionid + " .chatmembersfunctions_invite").toggle();
 			checkForSessions();
-			$("#" + sessionid + " input[name='chatmessage']").focus();
+			$("#chatwindow" + sessionid + " input[name='chatmessage']").focus();
 		});
 	}	
 	
@@ -96,14 +96,14 @@
 				eraseCookie("elggchat");
 			}
 			$.post("<?php echo $CONFIG->wwwroot; ?>action/elggchat/leave?chatsession=" + sessionid, function(){
-				$("#" + sessionid).remove();
+				$("#chatwindow" + sessionid).remove();
 				checkForSessions();
 			});
 		} 
 	}
 	
 	function elggchat_toolbar_resize(){
-		$("#elggchat_toolbar_left").css("width", $(window).width() - $("#toggle_elggchat_toolbar").width() - 40);
+		$("#elggchat_toolbar_left").css("width", $(window).width() - $("#toggle_elggchat_toolbar").width()- $("#notification_taskbar").width() - 70);
 
 	}
 	
@@ -128,8 +128,8 @@
 		$.post('<?php echo $CONFIG->wwwroot;?>action/elggchat/create?invite=' + friendGUID, function(data){
 			if(data){
 				checkForSessions();
-				if ($("#"+data+" .chatsessiondatacontainer").css("display") != "none") {
-					$("#"+data+" .chatsessiondatacontainer").css("display", "none");
+				if ($("#chatwindow" + data + " .chatsessiondatacontainer").css("display") != "none") {
+					$("#chatwindow" + data + " .chatsessiondatacontainer").css("display", "none");
 				}
 				openSession(data);
 			}
@@ -141,7 +141,7 @@
 	}
 	
 	function scroll_to_bottom(sessionid){
-		var chat_window = $("#" + sessionid +" .chatsessiondata");
+		var chat_window = $("#chatwindow" + sessionid +" .chatsessiondata");
 		var scrHeight = chat_window.find(".chatmessages").attr("scrollHeight");
 		chat_window.find(".chatmessages").attr("scrollTop", scrHeight);
 	}
@@ -156,7 +156,7 @@
 				
 				$.each(data.sessions, function(i, session){
 					var sessionExists = false;
-					$("#" + i).each(function(){
+					$("#chatwindow" + i).each(function(){
 						sessionExists = true;
 					});
 					if(i != current || sessionExists == false){
@@ -195,20 +195,20 @@
 						newSession += "</div>";	
 						newSession += "</div>";
 						if(sessionExists){
-							 $("#" + i).html(newSession);
+							 $("#chatwindow" + i).html(newSession);
 						} else {
-							newSession = "<div class='session' id='" + i + "'>" + newSession + "</div>";
+							newSession = "<div class='session' id='chatwindow" + i + "'>" + newSession + "</div>";
 							$("#elggchat_sessions").append(newSession);
 						}
 					} else {
-						$("#" + i + ">a").html(session.name);
+						if ($("#chatwindow" + i + ">a").html() != session.name) $("#chatwindow" + i + ">a").html(session.name);
 						var membersData = "";
 						if(typeof(session.members) != "undefined"){
 							$.each(session.members, function(memNum, member){
 								membersData += member;
 							});
 						}
-						$("#" + i + " .chatmembers").html("<table>" + membersData + "</table>");
+						$("#chatwindow" + i + " .chatmembers").html("<table>" + membersData + "</table>");
 						
 						var messageData = "";
 						var cookie = readCookie("elggchat_session_" + i);
@@ -226,7 +226,7 @@
 								}
 							});
 						}
-						$("#" + i + " .chatmessages").append(messageData);						
+						$("#chatwindow" + i + " .chatmessages").append(messageData);						
 					}
 				});
 				
@@ -235,11 +235,11 @@
 				
 					var sessionid = $(this).attr("id");
 					var lastKnownMsgId = parseInt(readCookie("elggchat_session_" + sessionid));
-					var newestMsgId = parseInt($("#" + sessionid + " .chatmessages div:last").attr("id"));
+					var newestMsgId = parseInt($("#chatwindow" + sessionid + " .chatmessages div:last").attr("id"));
 					
 					if(newestMsgId > lastKnownMsgId || !lastKnownMsgId){
 						if($(this).find(".chatsessiondatacontainer").css("display") != "block" && newestMsgId){
-							$("#" + sessionid).addClass("elggchat_session_new_messages");
+							$("#chatwindow" + sessionid).addClass("elggchat_session_new_messages");
 							lastTimeDataReceived = new Date().getTime();
 						}
 					}
@@ -263,7 +263,7 @@
 				});
 				
 				if(current){
-					if($("#" + current + " .chatsessiondatacontainer").css("display") != "block"){
+					if($("#chatwindow" + current + " .chatsessiondatacontainer").css("display") != "block"){
 						openSession(current);
 					}
 					var cookie = readCookie("elggchat_session_" + current);
@@ -272,7 +272,7 @@
 					} else {
 						var lastKnownMsgId = 0;
 					}
-					var newestMsgId = parseInt($("#" + current + " .chatmessages div:last").attr("id"));
+					var newestMsgId = parseInt($("#chatwindow" + current + " .chatmessages div:last").attr("id"));
 					if(newestMsgId > lastKnownMsgId){
 						scroll_to_bottom(current);
 						createCookie("elggchat_session_" + current, newestMsgId);
@@ -305,18 +305,18 @@
 	}
 	
 	function openSession(id){
-		$("#"+ id).removeClass("elggchat_session_new_messages");
-		var current = $("#" + id + " .chatsessiondatacontainer").css("display");
+		$("#chatwindow"+ id).removeClass("elggchat_session_new_messages");
+		var current = $("#chatwindow" + id + " .chatsessiondatacontainer").css("display");
 		eraseCookie("elggchat");
 		$("#elggchat_sessions .chatsessiondatacontainer").hide();
 		if(current != "block"){
 			createCookie("elggchat", id);
-			var last = $("#" + id + " .chatmessages div:last").attr("id");
+			var last = $("#chatwindow" + id + " .chatmessages div:last").attr("id");
 			createCookie("elggchat_session_" + id, last); 
-			$("#" + id + " .chatsessiondatacontainer").toggle();
+			$("#chatwindow" + id + " .chatsessiondatacontainer").toggle();
 		}	
 		scroll_to_bottom(id);
-		$("#" + id + " input[name='chatmessage']").focus();
+		$("#chatwindow" + id + " input[name='chatmessage']").focus();
 	}
 	
 	/* Cookie Functions */
