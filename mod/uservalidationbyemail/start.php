@@ -28,6 +28,7 @@
 	{
 		if (($object) && ($object instanceof ElggUser))
 		{
+			set_user_validation_status($object->guid, false);
 			uservalidationbyemail_request_validation($object->guid);
 		}
 		

@@ -17,7 +17,10 @@
 	$userId = get_loggedin_userid();
 	$timestamp = date('H:i:s', strtotime("-1 hours"));
 	if(check_entity_relationship($sessionId, ELGGCHAT_MEMBER, $userId)){
-		$chat_message = nl2br(get_input("chatmessage"))."<P style='color:grey;font-size:10px;'><BR> posted at ".$timestamp."</P>";
+		$input = get_input("chatmessage");
+		$input = wordwrap($input, 25, "<wbr />", true);
+		
+		$chat_message = nl2br($input)."<P style='color:grey;font-size:10px;'><BR> posted at ".$timestamp."</P>";
 		
 		if(!empty($chat_message)){
 			$session = get_entity($sessionId);
