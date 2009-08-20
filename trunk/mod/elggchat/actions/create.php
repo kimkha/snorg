@@ -22,7 +22,8 @@
 		foreach ($sessions as $session) {
 			$chats = $session->getEntitiesFromRelationship(ELGGCHAT_MEMBER);
 			foreach ($chats as $chat) {
-				if ($chat->guid == $inviteId) {
+				if ($chat->guid == $inviteId && count($chats) <= 2) {
+					echo $session->guid;
 					exit();
 				}
 			}

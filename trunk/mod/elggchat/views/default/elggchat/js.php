@@ -128,6 +128,9 @@
 		$.post('<?php echo $CONFIG->wwwroot;?>action/elggchat/create?invite=' + friendGUID, function(data){
 			if(data){
 				checkForSessions();
+				if ($("#"+data+" .chatsessiondatacontainer").css("display") != "none") {
+					$("#"+data+" .chatsessiondatacontainer").css("display", "none");
+				}
 				openSession(data);
 			}
 		});
@@ -161,18 +164,17 @@
 						var newSession = "";
 						
 						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ")+ session.name;' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a href='javascript:openSession(" + i + ")'>" + session.name + "</a>";
-						newSession += "<div class='chatsessiondatacontainer'>*";
+						newSession += "<div class='chatsessiondatacontainer'>";
 						newSession += "<div class='chatsessiondata'>"; 
-/*						newSession += "<div class='chatmembers'><table>";
+						newSession += "<div class='chatmembers'><table>";
+						
 							if(typeof(session.members) != "undefined"){
 								$.each(session.members, function(memNum, member){
 									newSession += member;
-									
 								});
 							}
-							
-							newSession += "</table></div>";*/
-							newSession += "<div class='chatmembersicon'><a href='javascript:inviteFriends(" + i + ")'><img class='messageIcon' alt='" + session.name + "' src='" + session.icon + "'></a></div>"
+
+							newSession += "</table></div>";
 							newSession += "<div class='chatmembersfunctions'><a href='javascript:inviteFriends(" + i + ")'><?php echo strtolower(elgg_echo("elggchat:chat:invite")); ?></a>";
 														
 							newSession += "</div><div class='chatmembersfunctions_invite'></div>";

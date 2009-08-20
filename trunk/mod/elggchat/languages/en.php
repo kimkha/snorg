@@ -17,8 +17,9 @@
 		'elggchat:chat:profile:invite' => "Invite for chat",
 		'elggchat:chat:send' => "Send",
 		
-		'elggchat:friendspicker:info' => "Chat: Friends Online",	
-	
+		'elggchat:friendspicker:info' => "Chat: Friends Online",
+		
+		'elggchat:conference' => "[Conference]",
 		'elggchat:chat:invite' => "Invite",
 		'elggchat:chat:minimize' => "Minimize",
 		'elggchat:chat:leave' => "Leave",

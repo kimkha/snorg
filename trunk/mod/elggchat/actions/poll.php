@@ -33,16 +33,16 @@ if($user = get_loggedin_user()){
 					$result["sessions"][$session->guid]["members"] = array();
 					
 					$firstMember = true;
+					$member_count = count($members);
 					
 					foreach($members as $member){
 						if($member->guid != $user->guid){
 							if($firstMember){
 								if($member_count > 2){
-									$result["sessions"][$session->guid]["name"] = $member->name . "[" . ($member_count - 2) . "]";
+									$result["sessions"][$session->guid]["name"] = elgg_echo('elggchat:conference');
 								} else {
 									$result["sessions"][$session->guid]["name"] = $member->name;
 								}
-								$result["sessions"][$session->guid]["icon"] = $member->getIcon('tiny');
 								$firstMember = false;
 							}
 							$result["sessions"][$session->guid]["members"][] = elgg_view("elggchat/user", array("chatuser" => $member));

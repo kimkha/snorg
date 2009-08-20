@@ -26,13 +26,14 @@
 }
 
 .session {
+	font-size: 10px;
 	float: left;
 	background: #E4ECF5;
 	
 	border: 1px solid #4690D6;
 	-webkit-border-radius: 5px; 
 	-moz-border-radius: 5px;
-    padding:3px;
+    padding:2px;
     margin:0 5px 5px 5px;
     
     /* ie fix */
@@ -116,6 +117,8 @@
 .chatsessiondatacontainer {
 	width:200px;
 	display: none;
+	
+	background: #E4ECF5;
 }
 
 .chatsessiondata{
@@ -129,13 +132,14 @@
 	-webkit-border-top-right-radius:5px;
 	margin: 0 -4px;
 	position:absolute;
-	bottom:17px;
+	bottom:27px;
 	width:206px;
 	max-height:600px;
 	overflow:hidden;
 }
 
 .chatmembers{
+	margin: 1px;
 	border-bottom: 1px solid #DEDEDE;
 	max-height:154px;
 	overflow-y:auto;
@@ -143,15 +147,11 @@
 
 .chatmember td{
 	vertical-align: middle;
+	padding: 1px;
 }
 
 .chatmembers .chatmemberinfo{
 	width: 100%;
-}
-.chatmembersicon {
-	width: 30px;
-	height: 30px;
-	float: left;
 }
 .chatmembersfunctions {
 	text-align:right;
