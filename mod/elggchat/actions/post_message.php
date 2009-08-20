@@ -20,7 +20,7 @@
 		$input = get_input("chatmessage");
 		$input = wordwrap($input, 25, "<wbr />", true);
 		
-		$chat_message = nl2br($input)."<P style='color:grey;font-size:10px;'><BR> posted at ".$timestamp."</P>";
+		$chat_message = nl2br($input)."<P style='color:grey;font-size:10px;'> posted at ".$timestamp."</P>";
 		
 		if(!empty($chat_message)){
 			$session = get_entity($sessionId);

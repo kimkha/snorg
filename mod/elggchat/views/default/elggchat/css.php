@@ -37,7 +37,8 @@
     margin:0 5px 5px 5px;
     
     /* ie fix */
-	max-width:200px;
+	width:150px;
+	white-space: nowrap;
 }
 
 .elggchat_session_new_messages {
@@ -231,6 +232,7 @@
 	border: none;
 	font-size:100%;
 	padding: 2px;
+	width: 180px;
 }
 
 .elggchatinput input:focus{

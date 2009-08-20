@@ -163,7 +163,7 @@
 						
 						var newSession = "";
 						
-						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ")+ session.name;' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a href='javascript:openSession(" + i + ")'>" + session.name + "</a>";
+						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ");' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a href='javascript:openSession(" + i + ");'>" + session.name + "</a>";
 						newSession += "<div class='chatsessiondatacontainer'>";
 						newSession += "<div class='chatsessiondata'>"; 
 						newSession += "<div class='chatmembers'><table>";
