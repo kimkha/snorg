@@ -2552,7 +2552,13 @@ a.delete_report_button:hover {
 	-webkit-border-top-right-radius: 8px; 
 	-moz-border-radius-topleft: 8px;
 	-moz-border-radius-topright: 8px;
-} 
+}
+
+#notification_taskbar {
+	float: left;
+	border-right: 1px solid #000000;
+	padding: 0px 5px;
+}
 
 .p_t {
 	border-bottom: 2px solid #FFD400;
