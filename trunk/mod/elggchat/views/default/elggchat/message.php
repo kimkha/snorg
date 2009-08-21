@@ -46,14 +46,15 @@
 	if($message->access_id != ACCESS_PRIVATE || $user->guid == get_loggedin_userid()){
 		$result = "";
 		if($message->name == ELGGCHAT_MESSAGE){
+			$cont_mes = json_decode($message->value);
 			$result .= "<div name='message' id='" .  $offset . "' class='messageWrapper'>";
 			
 			$result .= "<table ><tr><td class='messageName'>" . splitname($user->name, 20) . "</td></tr>";
 			
 			$result .= "<tr><td>";
 
-			$result .= str_ireplace(array_keys($smileys), array_values($smileys), $message->value);
-			//$result .= "<BR> posted at ".$timestamp;
+			$result .= str_ireplace(array_keys($smileys), array_values($smileys), $cont_mes->{'message'});
+			$result .= "<P style='color:grey;font-size:10px;'> posted at ".$cont_mes->{'time'}."</P>";
 			$result .= "</td></tr></table>";
 			$result .= "</div>";
 		} elseif($message->name == ELGGCHAT_SYSTEM_MESSAGE) {
