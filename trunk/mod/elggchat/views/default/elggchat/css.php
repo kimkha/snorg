@@ -87,14 +87,21 @@
 	background:white;
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
-    padding:10px;
+    padding:5px 8px;
     margin:0 5px 5px 5px;
+}
+
+.messageWrapper p {
+	margin: 0;
+	width: 176px;
 }
 
 .messageWrapper table{
 	background: white;
 	height: 0px;
+	width: 100%;
 }
+
 .systemMessageWrapper {
 	
 	-webkit-border-radius: 8px; 
@@ -113,6 +120,18 @@
 	width: 100%;
 	font-weight: bold;
 	color: #4690D6;
+	font-size: 10px;
+}
+
+.messageTime {
+	color:#A5A5A5;
+	font-size:9px;
+	text-align: right;
+	border-bottom:1px solid #DDDDDD;
+}
+
+.messageContent {
+	font-size: 11px;
 }
 
 .chatsessiondatacontainer {
@@ -171,6 +190,7 @@
 	max-height:250px;
 	overflow-x: hidden;
 	overflow-y: auto;	
+	padding: 3px 10px;
 }
 
 .chatmembersfunctions_invite a {
@@ -215,9 +235,13 @@
 	background-position: 0 -16px;
 }
 
+.elggchat_session_name {
+	padding: 0 10px;
+}
+
 .chatmessages{
 	min-height: 250px;
-	max-height: 400px;
+	max-height: 350px;
 	overflow-y:auto;
 }
 
@@ -231,7 +255,7 @@
 
 .elggchatinput input{
 	border: none;
-	font-size:100%;
+	font-size:11px;
 	padding: 2px;
 	width: 180px;
 }

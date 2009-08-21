@@ -157,19 +157,14 @@
 			leftHide = kids.length - maxVisibleWindow;
 			rightHide = kids.length-1;
 			$("#elggchat_sessions").children("div:lt("+leftHide+")").css("display", "none");
-			displayButton();
+			displayButton("inline");
 		}
-		else undisplayButton();
+		else displayButton("none");
 	}
 	
-	function displayButton() {
-		$("#elggchat_sessions_wrapper a:first-child").css("display", "inline");
-		$("#elggchat_sessions_wrapper a:last-child").css("display", "inline");
-	}
-	
-	function undisplayButton() {
-		$("#elggchat_sessions_wrapper a:first-child").css("display", "none");
-		$("#elggchat_sessions_wrapper a:last-child").css("display", "none");
+	function displayButton(value) {
+		$("#elggchat_sessions_wrapper_previous").css("display", value);
+		$("#elggchat_sessions_wrapper_next").css("display", value);
 	}
 	
 	function floatChatWindow(step) {
@@ -187,8 +182,8 @@
 		$("#elggchat_sessions").children("div:lt("+leftHide+")").css("display", "none");
 		$("#elggchat_sessions").children("div:gt("+rightHide+")").css("display", "none");
 		
-		displayButton();
-		if (kids.length < maxVisibleWindow) undisplayButton();
+		displayButton("inline");
+		if (kids.length < maxVisibleWindow) displayButton("none");
 	}
 	
 	function splitname(name, num) {
@@ -196,11 +191,15 @@
 		return name;
 	}
 	
+	var currentTimestamp = 0;
+	
 	function checkForSessions(){
 		// Starting the work, so stop the timer
 		processing = true;
 		
-		$.getJSON("<?php echo $CONFIG->wwwroot; ?>action/elggchat/poll", function(data){
+		$.getJSON("<?php echo $CONFIG->wwwroot; ?>action/elggchat/poll?currentTimestamp="+currentTimestamp, function(data){
+			if (typeof(data.timestamp) != "undefined") currentTimestamp = data.timestamp;
+			
 			if(typeof(data.sessions) != "undefined"){
 				var current = readCookie("elggchat");
 				
@@ -215,7 +214,7 @@
 						
 						var newSession = "";
 						
-						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ");' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a href='javascript:openSession(" + i + ");'>" + session.name + "</a>";
+						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ");' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a class='elggchat_session_name' href='javascript:openSession(" + i + ");'>" + session.name + "</a>";
 						newSession += "<div class='chatsessiondatacontainer'>";
 						newSession += "<div class='chatsessiondata'>"; 
 						newSession += "<div class='chatmembers'><table>";
@@ -227,7 +226,7 @@
 							}
 
 							newSession += "</table></div>";
-							newSession += "<div class='chatmembersfunctions'><a href='javascript:inviteFriends(" + i + ")'><?php echo strtolower(elgg_echo("elggchat:chat:invite")); ?></a>";
+							newSession += "<div class='chatmembersfunctions'><a href='javascript:inviteFriends(" + i + ");'><?php echo strtolower(elgg_echo("elggchat:chat:invite")); ?></a>";
 														
 							newSession += "</div><div class='chatmembersfunctions_invite'></div>";
 							
@@ -279,7 +278,7 @@
 								}
 							});
 						}
-						$("#chatwindow" + i + " .chatmessages").append(messageData);						
+						$("#chatwindow" + i + " .chatmessages").append(messageData);
 					}
 				});
 				
