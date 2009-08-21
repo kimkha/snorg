@@ -34,7 +34,7 @@
 	-webkit-border-radius: 5px; 
 	-moz-border-radius: 5px;
     padding:2px;
-    margin:0 5px 5px 5px;
+    margin:0 2px 5px 2px;
     
     /* ie fix */
 	width:150px;
@@ -202,6 +202,7 @@
 	
 }
 .elggchat_session_mini{
+	display: none;
 	margin: 2px 0 0 4px;	
 	float:right; 
 	cursor: pointer;
