@@ -20,11 +20,11 @@
 		$input = get_input("chatmessage");
 		$input = wordwrap($input, 25, "<wbr />", true);
 		
-		$chat_message = nl2br($input)."<P style='color:grey;font-size:10px;'> posted at ".$timestamp."</P>";
+		$chat_message = nl2br($input);
 		
 		if(!empty($chat_message)){
 			$session = get_entity($sessionId);
-			
+			$chat_message = json_encode(array('message' => $chat_message, 'time' => $timestamp));
 			$session->annotate(ELGGCHAT_MESSAGE, $chat_message, ACCESS_LOGGED_IN, $userId);
 			$session->save();
 		}
