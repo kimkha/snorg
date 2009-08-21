@@ -14,10 +14,10 @@ if (isloggedin()) {
 	<div id="notification_taskbar">*</div>
 	<div id="elggchat_toolbar_left" >
 		<div id="elggchat_sessions_wrapper">
-			<a href='javascript:floatChatWindow(-1);' title="Previous" style='float:left; display:none;'>&lt;&lt;</a>
+			<a href='javascript:floatChatWindow(-1);' title="Previous" style='float:left; display:none;' id="elggchat_sessions_wrapper_previous">&lt;&lt;</a>
 			<div id='elggchat_sessions'> 
 			</div>
-			<a href='javascript:floatChatWindow(1);' title="Next" style='float:left; display:none;'>&gt;&gt;</a>
+			<a href='javascript:floatChatWindow(1);' title="Next" style='float:left; display:none;' id="elggchat_sessions_wrapper_next">&gt;&gt;</a>
 		</div>
 		<div id="elggchat_friends">
 			<a href="javascript:toggleFriendsPicker();"></a>

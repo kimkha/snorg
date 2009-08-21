@@ -14,10 +14,6 @@
 	$message = $vars['message'];
 	$offset = $vars['offset'];
 	$user = $vars['message_owner'];
-	$timestamp = date("H:i:s a");
-	$timestamp = date('H:i:s', strtotime("-1 hours"));
-	//$timestamp = date_sub($timestamp, new DateInterval("T5H"));
-	//$SA_TimeStamp = date
 	$smiley_url = $vars['url'] . "action/elggchat/get_smiley?_" . time() . "&smiley=";
 	
 	$randomint = time();
@@ -49,12 +45,13 @@
 			$cont_mes = json_decode($message->value);
 			$result .= "<div name='message' id='" .  $offset . "' class='messageWrapper'>";
 			
-			$result .= "<table ><tr><td class='messageName'>" . splitname($user->name, 20) . "</td></tr>";
+			$result .= "<table ><tr><td class='messageName'>" . splitname($user->name, 18) . "</td><td class='messageTime'>";
+			$result .= date("h:i A", $cont_mes->time-(60*60));
+			$result .= "</td></tr>";
 			
-			$result .= "<tr><td>";
+			$result .= "<tr><td colspan='2' class='messageContent'>";
 
-			$result .= str_ireplace(array_keys($smileys), array_values($smileys), $cont_mes->{'message'});
-			$result .= "<P style='color:grey;font-size:10px;'> posted at ".$cont_mes->{'time'}."</P>";
+			$result .= str_ireplace(array_keys($smileys), array_values($smileys), $cont_mes->message);
 			$result .= "</td></tr></table>";
 			$result .= "</div>";
 		} elseif($message->name == ELGGCHAT_SYSTEM_MESSAGE) {

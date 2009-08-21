@@ -19,6 +19,8 @@ function splitname($name, $num) {
 if($user = get_loggedin_user()){
 	$chat_sessions_count = get_entities_from_relationship(ELGGCHAT_MEMBER, $user->getGUID(), true, "", "", "", "time_created asc", null, null, true);
 	$result = array();
+	$currentTimestamp = get_input('currentTimestamp', 0);
+	$newTimestamp = time();
 	
 	if($chat_sessions_count > 0){
 		// Generate sessions
@@ -26,6 +28,7 @@ if($user = get_loggedin_user()){
 		krsort($chat_sessions);
 		
 		$result["sessions"] = array();
+		$result["timestamp"] = $newTimestamp;
 		foreach($chat_sessions as $session){
 			// Dont show session if not mine and no (non system) messages
 			if(!(($session->owner_guid != $user->guid) && ($session->countAnnotations(ELGGCHAT_MESSAGE) == 0))){
@@ -46,7 +49,7 @@ if($user = get_loggedin_user()){
 								if($member_count > 2){
 									$result["sessions"][$session->guid]["name"] = elgg_echo('elggchat:conference');
 								} else {
-									$result["sessions"][$session->guid]["name"] = splitname($member->name, 20);
+									$result["sessions"][$session->guid]["name"] = splitname($member->name, 15);
 								}
 								$firstMember = false;
 							}
@@ -66,7 +69,9 @@ if($user = get_loggedin_user()){
 					$result["sessions"][$session->guid]["messages"] = array();
 					
 					foreach($annotations as $msg){
-						$result["sessions"][$session->guid]["messages"][$msg->id] = elgg_view("elggchat/message", array("message" => $msg, "message_owner" => get_user($msg->owner_guid), "offset" => $msg->id)); 
+						$a_msg = json_decode($msg->value);
+						if ($a_msg->time >= $currentTimestamp)
+							$result["sessions"][$session->guid]["messages"][$msg->id] = elgg_view("elggchat/message", array("message" => $msg, "message_owner" => get_user($msg->owner_guid), "offset" => $msg->id)); 
 					}
 				}
 			}

@@ -400,7 +400,7 @@ span.contentIntro p {
 	height:80px;
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
-	margin:0 0 20px 0;
+	margin:0 0 40px 0;
 }
 #layout_footer table {
    margin:0 0 0 20px;
@@ -450,12 +450,15 @@ span.contentIntro p {
 	/* width:120px;*/
 	text-align:right;
 }
+#elgg_topbar_container_right {
+	float: right;
+}
 #elgg_topbar_container_search {
 	float:right;
 	height:21px;
-	/*width:280px;*/
+	/*width:280px;right:120px;*/
 	position:relative;
-	right:120px;
+	
 	text-align:right;
 	margin:3px 0 0 0;
 }
