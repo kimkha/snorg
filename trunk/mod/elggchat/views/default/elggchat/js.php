@@ -98,6 +98,7 @@
 			$.post("<?php echo $CONFIG->wwwroot; ?>action/elggchat/leave?chatsession=" + sessionid, function(){
 				$("#chatwindow" + sessionid).remove();
 				checkForSessions();
+				floatChatWindow(0);
 			});
 		} 
 	}
@@ -146,16 +147,48 @@
 		chat_window.find(".chatmessages").attr("scrollTop", scrHeight);
 	}
 	
+	var leftHide = 0;
+	var rightHide = 0;
+	var maxVisibleWindow = 6;
+	
 	function autoHideChatWindow() {
 		var kids = $("#elggchat_sessions").children();
-		if (kids.length > 6) {
-			n = kids.length - 6;
-			$("#elggchat_sessions").children("div:lt("+n+")").css("display", "none");
+		if (kids.length > maxVisibleWindow) {
+			leftHide = kids.length - maxVisibleWindow;
+			rightHide = kids.length-1;
+			$("#elggchat_sessions").children("div:lt("+leftHide+")").css("display", "none");
+			displayButton();
 		}
+		else undisplayButton();
 	}
 	
-	function autoHideChatWindow1() {
-		return;
+	function displayButton() {
+		$("#elggchat_sessions_wrapper a:first-child").css("display", "inline");
+		$("#elggchat_sessions_wrapper a:last-child").css("display", "inline");
+	}
+	
+	function undisplayButton() {
+		$("#elggchat_sessions_wrapper a:first-child").css("display", "none");
+		$("#elggchat_sessions_wrapper a:last-child").css("display", "none");
+	}
+	
+	function floatChatWindow(step) {
+		var kids = $("#elggchat_sessions").children();
+		rightHide += step;
+		leftHide += step;
+		
+		if (rightHide > kids.length-1 || leftHide < 0) {
+			rightHide -= step;
+			leftHide -= step;
+			return;
+		}
+		
+		$("#elggchat_sessions").children("div").css("display", "block");
+		$("#elggchat_sessions").children("div:lt("+leftHide+")").css("display", "none");
+		$("#elggchat_sessions").children("div:gt("+rightHide+")").css("display", "none");
+		
+		displayButton();
+		if (kids.length < maxVisibleWindow) undisplayButton();
 	}
 	
 	function splitname(name, num) {
@@ -235,7 +268,7 @@
 						
 						var lastKnownMsgId = 0;
 						if(cookie > 0){
-							var lastKnownMsgId = parseInt(readCookie("elggchat_session_" + i));
+							lastKnownMsgId = parseInt(readCookie("elggchat_session_" + i));
 						} 
 						
 						if(typeof(session.messages) != "undefined"){
@@ -254,6 +287,7 @@
 				$(".session").each(function(){
 				
 					var sessionid = $(this).attr("id");
+					sessionid = parseInt(sessionid.replace(/chatwindow/, ''));
 					var lastKnownMsgId = parseInt(readCookie("elggchat_session_" + sessionid));
 					var newestMsgId = parseInt($("#chatwindow" + sessionid + " .chatmessages div:last").attr("id"));
 					
