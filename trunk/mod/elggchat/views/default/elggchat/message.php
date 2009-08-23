@@ -42,29 +42,12 @@
 	if($message->access_id != ACCESS_PRIVATE || $user->guid == get_loggedin_userid()){
 		$result = array();
 		if($message->name == ELGGCHAT_MESSAGE){
-			
 			$result['offset']	= $offset;
 			$result['guid'] 	= $user->guid;
 			$result['time'] 	= date("h:i A", $message->time_created-(60*60));
 			$result['name'] 	= splitname($user->name, 18);
 			$result['content']	= str_ireplace(array_keys($smileys), array_values($smileys), $message->value);
-			
-/*			$result .= "<div name='message' id='" .  $offset . "' class='messageWrapper'>";
-			$result .= "<div class='messageWrap'><div class='messageGUID'>" . $user->guid . "</div>";
-			$result .= "<div class='messageTime'>" . date("h:i A", $cont_mes->time-(60*60)) . "</div>";
-			$result .= "<div class='messageName'>" . splitname($user->name, 18) . "</div>";
-			$result .= "</div>";
-			
-			$result .= "<div class='messageContent'>";
-
-			$result .= str_ireplace(array_keys($smileys), array_values($smileys), $cont_mes->message);
-			$result .= "</div>";
-			$result .= "</div>";*/
 		} elseif($message->name == ELGGCHAT_SYSTEM_MESSAGE) {
-/*			$result .= "<div name='message' id='" .  $offset . "' class='systemMessageWrapper'>";
-			$result .= $message->value;
-			$result .= "</div>";*/
-			
 			$result['offset'] = $offset;
 			$result['content'] = $message->value;
 			$result['guid'] = 0;

@@ -15,6 +15,7 @@
 		'notebook' => "Notebook",
 		'notebook:note' => "Note",
 		'notebook:title' => "My Notebook",
+		'notebook:recently' => "Recently Notebook",
 	);
 					
 	add_translation("en", $english);
