@@ -38,9 +38,15 @@
 					); 
 					
 					$comments = $entity->getAnnotations('generic_comment');
+					$otherUser = array();
 					foreach ($comments as $comment) {
-						$otherUser = $comment->owner_guid;						
-						
+						$otherUser[] = $comment->owner_guid;
+					}
+					
+					$otherUser = array_unique($otherUser);
+					
+					foreach ($otherUser as $uid) {
+						// notify here
 					}
 					
 					system_message(elgg_echo("generic_comment:posted"));
