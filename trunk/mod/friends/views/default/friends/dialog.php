@@ -1,11 +1,12 @@
 <?php
 ?>
-<div id="dialog" title="<?php echo elgg_echo('friends:widget:title') . " " . get_user($vars['entity']->owner_guid)->username ?>" class="collapsable_box_content" style="display:none;">
+<div id="dialog"  class="collapsable_box_content" style="display:none;">
 	        <input id="inputFilter" type="text"/>
 	        <div id = "friends_wrapper" style="max-height: 300px; overflow-y:auto;"> </div>
 	</div>
 	
 <script type="text/javascript">
+
 
         $(function(){
                 
@@ -26,10 +27,31 @@
                                 displayFriendsOnDialog(filteredFriends);
                         }
                 });
+                
                 $("#btn_show_all").click(displayFriendDialog);
+                $("#btn_mf_show_all").click(displayFriendDialog);
+                $("#btn_pymk_show_all").click(displayFriendDialog);
                 
                 function displayFriendDialog(){
-                 $.getJSON("<?php echo $vars['url']; ?>query.php?action=GetFriends&owner=<?php echo $vars['entity']->owner_guid ?>",function(result){
+                	
+                	action='';
+                	
+                	if (this.id=='btn_show_all')
+					{
+						
+						action = "GetFriends&owner=<?php echo $vars['entity']->owner_guid ?>";
+                 	} else if (this.id == 'btn_mf_show_all'){
+                 		
+                 		action = "GetMutualFriends";
+                 	} else if (this.id == 'btn_pymk_show_all'){
+                 		
+                 		action = "GetPeopleYouMayKnow";
+                 	}
+                 
+                 	 $.getJSON("<?php echo $vars['url']; ?>query.php?action=" + action,fnSuccess);
+                 }
+                
+                fnSuccess = function(result){
                      
                      friends = result;
                      //alert(friends[2].usericon + friends[0].userlink);
@@ -37,9 +59,7 @@
                      $('#dialog').dialog("open");
                      displayFriendsOnDialog(friends);
                      $('#dialog').css('display', 'block');
-                   });
-                 }
-                
+                }
         
                 function displayFriendsOnDialog(friends){
                                 
