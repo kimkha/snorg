@@ -27,14 +27,15 @@
 <?php
 	if($num == 0){
 ?>
-	<a href="javascript:void(0)" class="sitenotification" id="sitenotification_bottombar" >Not</a>
+	<a href="javascript:openSitenotifcationDialog();" class="notification_name">Not</a>
 	
 <?php
     }else{
 ?>
-    <a href="javascript:void(0)" class="sitenotification_new" id="sitenotification_bottombar">[<?php echo $num; ?>]</a>
+    <a href="javascript:openSitenotifcationDialog();" class="notification_name">[<?php echo $num; ?>]</a>
 	
 <?php
     }
 ?>
+	<div id="notification_wrapper"></div>
 </div>
