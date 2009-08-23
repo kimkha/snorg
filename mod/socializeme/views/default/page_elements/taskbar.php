@@ -11,11 +11,7 @@
 if (isloggedin()) {
 ?>
 <div id="elgg_taskbar"><div id="leftside_taskbar">
-	<div id="notification_taskbar">*</div>
-	<div id="notebook_taskbar">
-		<a href="javascript:openNotebook();"><?php echo elgg_echo("notebook:note"); ?></a>
-		<div id="notebook_wrapper"></div>
-	</div>
+	<?php echo elgg_view('taskbar/extend', $vars); ?>
 </div>
 	<div id="elggchat_toolbar_left" >
 		<div id="elggchat_friends">

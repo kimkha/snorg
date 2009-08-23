@@ -2679,18 +2679,6 @@ border-top:none;
 	float: left;
 }
 
-#notification_taskbar {
-	float: left;
-	border-right: 1px solid #000000;
-	padding: 0px 5px;
-}
-
-#notebook_taskbar {
-	float: left;
-	border-right: 1px solid #000000;
-	padding: 0px 5px;
-}
-
 .p_t {
 	border-bottom: 2px solid #FFD400;
 	cursor: help;

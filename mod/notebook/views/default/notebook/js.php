@@ -90,7 +90,7 @@ function buildNotebook() {
 	$("#create_note form").unbind("submit");
 	$("#create_note form").bind("submit", function(){
 		var val = $(this).serializeArray();
-		$.post("<?php echo $CONFIG->wwwroot;?>action/notebook/create", val, function(data){
+		$.post("<?php echo $CONFIG->wwwroot; ?>action/notebook/create", val, function(data){
 			insertNotebook(data);
 			clearNotebookForm();
 		}, "json");

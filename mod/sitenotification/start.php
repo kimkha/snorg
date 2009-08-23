@@ -26,9 +26,10 @@
     	    // Load system configuration
 				global $CONFIG;
 				
-			// Extend the elgg topbar
-				extend_view('elgg_topbar/extend','sitenotification/bottombar');
+			// Extend the elgg taskbar
+				extend_view('taskbar/extend','sitenotification/bottombar', 450);
 				extend_view('elgg_topbar/extend','sitenotification/dialog');
+				extend_view("css", "sitenotification/css");
 			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('sitenotification','sitenotification_page_handler');

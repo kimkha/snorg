@@ -22,7 +22,9 @@
 	} else {
 		$num = 0;
 	}
-
+?>
+	<div id="notification_taskbar">
+<?php
 	if($num == 0){
 ?>
 	<a href="javascript:void(0)" class="sitenotification" id="sitenotification_bottombar" >Not</a>
@@ -35,3 +37,4 @@
 <?php
     }
 ?>
+</div>
