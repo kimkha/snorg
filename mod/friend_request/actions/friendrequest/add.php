@@ -40,7 +40,9 @@ if(get_class($user) != "ElggUser" || get_class($friend) != "ElggUser") {
 			register_error(sprintf(elgg_echo("friends:add:failure"),$friend->name));
 			$errors = true;
 		}
-	} else {
+	}
+	
+	else {
 		try {
 			$result = add_entity_relationship($user_guid, "friendrequest", $friend_guid);
 			if($result == false) {

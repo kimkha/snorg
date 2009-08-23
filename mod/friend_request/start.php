@@ -43,6 +43,8 @@ function iagree_init() {
 	
 	//This will let uesrs view their friend requests
 	register_page_handler('friendrequests','friendrequests_page_handler');
+	
+				
 }
 
 function iagree_event_create_friend($event, $object_type, $object) {
