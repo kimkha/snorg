@@ -38,7 +38,7 @@
 			mark_all_as_read();   	
 			/////////////
 				
-	   		$user_notifications = get_entities_from_metadata('to',$user_guid, 'object', 'notification',0, 9999, 0,"",0,false);
+	   		$user_notifications = get_entities_from_metadata('to',$user_guid, 'object', 'notification',0, 15, 0,"",0,false);
 	   		$user_notifications_json = array();
 			//echo "<pre>"; print_r($user_notifications); die;
 			
@@ -60,6 +60,38 @@
 				$user_notifications_json[$count++] = $notification_json;
 				                   
 	        }
+	        echo json_encode($user_notifications_json);
+	   		
+	   } else if ($action == 'GetUnreadSitenotification'){
+	   		$user_guid =  get_input('user_guid');
+	   		
+	   		
+	   		$user_notifications = get_entities_from_metadata_multi( array('to' => $user_guid, 'read_yet' => 0), 'object', 'notification',0, 9999, 0,"",0,false);
+	   		$user_notifications_json = array();
+			//echo "<pre>"; print_r($user_notifications); die;
+			
+			$count = 0;
+			foreach ($user_notifications as $notification){
+				$notification_json = array();
+				$from_user = get_user($notification->container_guid);
+				$action = $notification->title;
+		
+				$target_object = split('-', $notification->description);
+				
+				    	            
+				$notification_json[0] = $from_user->username;
+				$notification_json[1] = $from_user->getURL();
+				$notification_json[2] = $action;
+				$notification_json[3] = $target_object[0]; //object name
+				$notification_json[4] = $target_object[1]; //object url
+				//echo "<pre>"; print_r($target_object); die;
+				$user_notifications_json[$count++] = $notification_json;
+				                   
+	        }
+	        //Mark all as read
+			mark_all_as_read();   	
+			/////////////
+				
 	        echo json_encode($user_notifications_json);
 	   		
 	   } else if ($action == 'GetNewSitenotificationCount'){
