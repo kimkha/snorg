@@ -28,8 +28,8 @@
 				
 			// Extend the elgg taskbar
 				extend_view('taskbar/extend','sitenotification/bottombar', 450);
-				extend_view('elgg_topbar/extend','sitenotification/dialog');
 				extend_view("css", "sitenotification/css");
+				extend_view("js/initialise_elgg", "sitenotification/js");
 			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('sitenotification','sitenotification_page_handler');
