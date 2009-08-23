@@ -25,7 +25,7 @@
 				if ($entity->annotate('generic_comment',$comment_text,$entity->access_id, $_SESSION['guid'])) {
 					
 					if ($entity->owner_guid != $_SESSION['user']->getGUID())
-					notify_user($entity->owner_guid, $_SESSION['user']->getGUID(),"comment","on topic"."-".$entity->getURL());
+					notify_user($entity->owner_guid, $_SESSION['user']->getGUID(),"comment on"," topic"."-".$entity->getURL());
 					
 					
 					$comments = $entity->getAnnotations('generic_comment');
@@ -42,12 +42,13 @@
 					
 					
 					unset($otherUser[array_search($_SESSION['user']->getGUID(),$otherUser)]);
+					unset($otherUser[array_search($entity->owner_guid,$otherUser)]);
 					
 					foreach ($otherUser as $uid) {
 						
 					//	echo "<pre>"; print_r($lastUser->getGUID()); die;
 					
-						notify_user($uid, $lastUser->getGUID(), "also comment","on topic"."-".$entity->getURL());
+						notify_user($uid, $lastUser->getGUID(), "also comment on","  topic"."-".$entity->getURL());
 						
 					}
 					
