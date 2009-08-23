@@ -37,6 +37,12 @@
 								)
 					); 
 					
+					$comments = $entity->getAnnotations('generic_comment');
+					foreach ($comments as $comment) {
+						$otherUser = $comment->owner_guid;						
+						
+					}
+					
 					system_message(elgg_echo("generic_comment:posted"));
 					//add to river
 					add_to_river('annotation/annotate','comment',$_SESSION['user']->guid,$entity->guid);
