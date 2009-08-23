@@ -14,7 +14,13 @@
 var notebookid = 0;
 
 function openNotebook() {
-	$("#notebook_wrapper").toggle();
+	if ($("#notebook_wrapper").css('display') == 'none') {
+		$(".wrapperWindow").hide();
+		$("#notebook_wrapper").show();
+	}
+	else {
+		$("#notebook_wrapper").hide();
+	}
 }
 
 function loadNotebook() {
@@ -28,7 +34,7 @@ function loadNotebook() {
 
 function insertNotebook(data) {
 	var newnote = "";
-	newnote += "<div class='notebookWrapper' id='notebook-"+notebookid+"'>";
+	newnote += "<div class='notebookWrapper messageWindow' id='notebook-"+notebookid+"'>";
 	newnote += "<div class='notebookTitle'>" + data.title + "</div>";
 	newnote += "<div class='notebookDescription'>" + data.description + "</div>";
 	newnote += "</div>";
@@ -43,8 +49,9 @@ function buildNotebook() {
 	notebookdata += "<div id='notebook_data'>";
 	
 	notebookdata += "<div id='recently_notebook'>";
-	notebookdata += "<div class='headerNotebook'><?php echo elgg_echo("notebook:recently"); ?></div>";
-	notebookdata += "<div class='notebook_content'></div>"
+	notebookdata += "<div class='closeWindow' onclick='openNotebook();'></div>";
+	notebookdata += "<div class='headerNotebook headerWindow'><?php echo elgg_echo("notebook:recently"); ?></div>";
+	notebookdata += "<div class='notebook_content contentWindow'></div>"
 	notebookdata += "</div>";
 	
 	notebookdata += "<div id='create_note'>";
@@ -57,7 +64,7 @@ function buildNotebook() {
 		
 		notebookdata += "<div class='inputNotebook'>";
 		notebookdata += "<label for='inputDescNotebook'>Description:</label><br />";
-		notebookdata += "<textarea name='description' id='inputDescNotebook'></textarea>";
+		notebookdata += "<textarea name='description' id='inputDescNotebook' class='notinymce'></textarea>";
 		notebookdata += "</div>";
 		
 		notebookdata += "<div class='inputNotebook btnMore'>";
@@ -72,7 +79,7 @@ function buildNotebook() {
 			
 			notebookdata += "<div class='inputNotebook'>";
 			notebookdata += "<label for='inputCommNotebook'>Comments:</label><br />";
-			notebookdata += "<textarea name='comment' id='inputCommNotebook'></textarea>";
+			notebookdata += "<textarea name='comment' id='inputCommNotebook' class='notinymce'></textarea>";
 			notebookdata += "</div>";
 		notebookdata += "</div>";
 	notebookdata += "</form>";

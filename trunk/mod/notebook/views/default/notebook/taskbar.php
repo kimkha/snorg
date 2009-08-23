@@ -14,5 +14,5 @@
 
 	<div id="notebook_taskbar">
 		<a href="javascript:openNotebook();"><?php echo elgg_echo("notebook:note"); ?></a>
-		<div id="notebook_wrapper"></div>
+		<div id="notebook_wrapper" class='wrapperWindow'></div>
 	</div>

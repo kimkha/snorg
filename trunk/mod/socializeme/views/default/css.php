@@ -2679,6 +2679,47 @@ border-top:none;
 	float: left;
 }
 
+#leftside_taskbar .wrapperWindow {
+	font-size: 11px;
+}
+
+#leftside_taskbar .closeWindow {
+	background:transparent url('<?php echo $CONFIG->wwwroot; ?>/_graphics/icon_customise_remove.png') no-repeat scroll 0 0;
+	cursor:pointer;
+	float:right;
+	height:14px;
+	margin: 2px 4px 0 4px;
+	width:14px;
+}
+#leftside_taskbar .closeWindow:hover {
+	background-position: 0 -16px;
+}
+
+#leftside_taskbar .headerWindow {
+	background-color: #2779E7;
+	color: #FFFFFF;
+	padding: 3px 5px;
+	
+	-moz-border-radius-bottomright:5px; 
+	-moz-border-radius-bottomleft:5px; 
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+}
+
+#leftside_taskbar .contentWindow {
+	padding: 5px 0px;
+	max-height: 220px;
+	overflow-y: auto;
+}
+
+#leftside_taskbar .messageWindow {
+	background:white;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+    padding:5px 8px;
+    margin:0 5px 5px 5px;
+}
+
 .p_t {
 	border-bottom: 2px solid #FFD400;
 	cursor: help;
