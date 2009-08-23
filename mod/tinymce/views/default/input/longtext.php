@@ -31,6 +31,7 @@
 <script language="javascript" type="text/javascript">
    tinyMCE.init({
 	mode : "textareas",
+	editor_deselector : "notinymce",
 	theme : "advanced",
 	relative_urls : false,
 	theme_advanced_buttons1 : "bold,italic,underline,separator,strikethrough,bullist,numlist,undo,redo,link,unlink,image,blockquote,code",

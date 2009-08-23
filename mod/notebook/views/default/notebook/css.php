@@ -41,29 +41,10 @@
 	
 }
 
-#recently_notebook .headerNotebook {
-	background-color: #2779E7;
-	color: #FFFFFF;
-	padding: 3px 5px;
-	
-	-moz-border-radius-bottomright:5px; 
-	-moz-border-radius-bottomleft:5px; 
-	-webkit-border-bottom-left-radius:5px;
-	-webkit-border-bottom-right-radius:5px;
-}
-
 #recently_notebook .notebook_content {
-	padding: 5px 0px;
-	max-height: 220px;
-	overflow-y: auto;
 }
 
 #recently_notebook .notebookWrapper {
-	background:white;
-	-webkit-border-radius: 8px; 
-	-moz-border-radius: 8px;
-    padding:5px 8px;
-    margin:0 5px 5px 5px;
 }
 
 #recently_notebook .notebookWrapper p {

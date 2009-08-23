@@ -29,6 +29,10 @@
 	overflow:hidden;
 }
 
-#notification_data .loading {
+#notification_content {
+	max-height: 350px !important;
+}
+
+#notification_content .loading {
 	display: none;
 }

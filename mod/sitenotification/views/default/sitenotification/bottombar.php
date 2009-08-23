@@ -37,5 +37,5 @@
 <?php
     }
 ?>
-	<div id="notification_wrapper"></div>
+	<div id="notification_wrapper" class='wrapperWindow'></div>
 </div>
