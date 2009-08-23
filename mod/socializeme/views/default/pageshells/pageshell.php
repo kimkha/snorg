@@ -32,6 +32,7 @@
 ?>
 
 <?php echo elgg_view('page_elements/header', $vars); ?>
+<?php echo elgg_view('page_elements/taskbar', $vars); ?>
 <?php echo elgg_view('page_elements/elgg_topbar', $vars); ?>
 <?php echo elgg_view('page_elements/header_contents', $vars); ?>
 
@@ -53,7 +54,7 @@
 	if(isloggedin()){
 ?>
 		<!-- spotlight -->
-		<?php echo elgg_view('page_elements/spotlight', $vars); ?>
+		<?php //echo elgg_view('page_elements/spotlight', $vars); ?>
 <?php
 	}
 ?>
