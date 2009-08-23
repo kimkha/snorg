@@ -25,17 +25,8 @@
 				if ($entity->annotate('generic_comment',$comment_text,$entity->access_id, $_SESSION['guid'])) {
 					
 					if ($entity->owner_guid != $_SESSION['user']->getGUID())
-					notify_user($entity->owner_guid, $_SESSION['user']->getGUID(), elgg_echo('generic_comment:email:subject'), 
-						sprintf(
-									elgg_echo('generic_comment:email:body'),
-									$entity->title,
-									$_SESSION['user']->name,
-									$comment_text,
-									$entity->getURL(),
-									$_SESSION['user']->name,
-									$_SESSION['user']->getURL()
-								)
-					); 
+					notify_user($entity->owner_guid, $_SESSION['user']->getGUID(),"comment","on topic"."-".$entity->getURL());
+					
 					
 					$comments = $entity->getAnnotations('generic_comment');
 					$otherUser = array();
@@ -43,10 +34,21 @@
 						$otherUser[] = $comment->owner_guid;
 					}
 					
+					
 					$otherUser = array_unique($otherUser);
+								
+					
+					$lastUser = $_SESSION['user'];
+					
+					
+					unset($otherUser[array_search($_SESSION['user']->getGUID(),$otherUser)]);
 					
 					foreach ($otherUser as $uid) {
-						// notify here
+						
+					//	echo "<pre>"; print_r($lastUser->getGUID()); die;
+					
+						notify_user($uid, $lastUser->getGUID(), "also comment","on topic"."-".$entity->getURL());
+						
 					}
 					
 					system_message(elgg_echo("generic_comment:posted"));
