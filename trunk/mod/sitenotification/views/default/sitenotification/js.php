@@ -6,6 +6,8 @@
 		var dialog = "<div id='notification_data'>";
 		dialog += "<div class='closeWindow' onclick='openSitenotifcationDialog();'></div>";
 		dialog += "<div class='title headerWindow'><?php echo elgg_echo('sitenotification:title')?></div>";
+		dialog += "<div><a href = \"<?php echo $CONFIG->wwwroot ?>pg/sitenotification\" > Show all </a> </div>"; 
+	
 		dialog += "<div id='notification_content' class='contentWindow'>";
 		dialog += "<div class='loading'>Loading...</div>";
 		dialog += "</div>";
