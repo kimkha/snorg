@@ -56,7 +56,7 @@
 				$notification_json[2] = $action;
 				$notification_json[3] = $target_object[0]; //object name
 				$notification_json[4] = $target_object[1]; //object url
-				
+				//echo "<pre>"; print_r($target_object); die;
 				$user_notifications_json[$count++] = $notification_json;
 				                   
 	        }
@@ -77,7 +77,7 @@
 				foreach ($list as $people)
 					{
 						$list_array = array($people->username, $people->getURL(),$people->getIcon("small"));
-						$list_array[count++];				
+						$list_array[$count++];				
 					}
 				
 			}
@@ -127,7 +127,7 @@
 			foreach ($mutural as $mfriend)
 			{
 				$mutual_array = array($mfriend->username, $mfriend->getURL(), $mfriend->getIcon("small"));
-				$mutual_array[count++];
+				$mutual_array[$count++];
 			}
 
 	   		echo json_encode($mutual_array);
