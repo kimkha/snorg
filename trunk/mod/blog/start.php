@@ -173,6 +173,11 @@
 				if ($method == 'email') {
 					$owner = $entity->getOwnerEntity();
 					return $owner->username . ' via blog: ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				} 
+				if ($method == 'sitenotification'){
+					
+					$target_objname = 'a new blog post';
+					return $target_objname . '-' . $params['entity']->getURL();
 				}
 			}
 			return null;

@@ -33,13 +33,13 @@
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('sitenotification','sitenotification_page_handler');
 				
-				register_entity_type('object', 'notification');
-				add_subtype('object', 'notification');
+		//		register_entity_type('object', 'notification');
+//				add_subtype('object', 'notification');
 				
 			// Register a notification handler for site messages
 				register_notification_handler("sitenotification", "site_notify_handler");
 				
-				register_plugin_hook('notify:entity:message','object','sitenotification_msg');
+				//register_plugin_hook('notify:entity:message','object','sitenotification_msg');
 				
 			}
 			
@@ -118,7 +118,7 @@
 		function site_notify_handler(ElggEntity $from, ElggUser $to, $subject, $message, array $params = NULL)
 		{
 			
-			//echo "<pre>"; print_r($user->guid);die;
+			
 			global $CONFIG;
 			
 			if (!$from)
