@@ -37,7 +37,7 @@
 		'elggchat:session_info:members' => "Members",
 		'elggchat:session_info:invitations' => "Outstanding Invitations",
 
-		'elggchat:session:name:default' => "Chat session (%s)",
+		'elggchat:session:name:default' => "[Session %s]",
 		'elggchat:session:onlinestatus' => "Last action: %s",
 		
 		// Plugin settings

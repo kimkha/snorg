@@ -10,19 +10,24 @@
 	*/
 if (isloggedin()) {
 ?>
-<div id="elgg_taskbar">
+<div id="elgg_taskbar"><div id="leftside_taskbar">
 	<div id="notification_taskbar">*</div>
+	<div id="notebook_taskbar">
+		<a href="javascript:openNotebook();"><?php echo elgg_echo("notebook:note"); ?></a>
+		<div id="notebook_wrapper"></div>
+	</div>
+</div>
 	<div id="elggchat_toolbar_left" >
-		<div id="elggchat_sessions_wrapper">
-			<a href='javascript:floatChatWindow(-1);' title="Previous" style='float:left; display:none;' id="elggchat_sessions_wrapper_previous">&lt;&lt;</a>
-			<div id='elggchat_sessions'> 
-			</div>
-			<a href='javascript:floatChatWindow(1);' title="Next" style='float:left; display:none;' id="elggchat_sessions_wrapper_next">&gt;&gt;</a>
-		</div>
 		<div id="elggchat_friends">
 			<a href="javascript:toggleFriendsPicker();"></a>
 		</div>
 		<div id="elggchat_friends_picker"></div>
+		<div id="elggchat_sessions_wrapper">
+			<a href='javascript:floatChatWindow(-1);' title="Previous" style='float:left; display:none;' id="elggchat_sessions_wrapper_previous"><span>&lt;&lt;</span></a>
+			<div id='elggchat_sessions'> 
+			</div>
+			<a href='javascript:floatChatWindow(1);' title="Next" style='float:left; display:none;' id="elggchat_sessions_wrapper_next"><span>&gt;&gt;</span></a>
+		</div>
 	</div>
 	
 	<!--div id="toggle_elggchat_toolbar" class="toggle_elggchat_toolbar" onclick="toggleChatToolbar('slow')" title="<?php echo elgg_echo("elggchat:toolbar:minimize");?>"></div-->

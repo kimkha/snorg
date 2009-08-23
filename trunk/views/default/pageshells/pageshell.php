@@ -54,7 +54,7 @@
 	if(isloggedin()){
 ?>
 		<!-- spotlight -->
-		<?php echo elgg_view('page_elements/spotlight', $vars); ?>
+		<?php //echo elgg_view('page_elements/spotlight', $vars); ?>
 <?php
 	}
 ?>

@@ -26,6 +26,12 @@
 	var processing = false;
 	var pollingPause = false;
 	
+	var currentTimestamp = 0;
+	
+	var leftHide = 0;
+	var rightHide = 0;
+	var maxVisibleWindow = 6;
+	
 	var lastTimeDataReceived = new Date().getTime();
 	
 	function InitializeTimer(){
@@ -104,26 +110,11 @@
 	}
 	
 	function elggchat_toolbar_resize(){
-		$("#elggchat_toolbar_left").css("width", $(window).width() - $("#toggle_elggchat_toolbar").width()- $("#notification_taskbar").width() - 270);
-
+		var w = $(window).width() - $("#toggle_elggchat_toolbar").width()- $("#leftside_taskbar").width() - 62;
+		$("#elggchat_toolbar_left").css("width", w);
+		w = w - 165;
+		maxVisibleWindow = Math.floor(w/130);
 	}
-	
-/*	function toggleChatToolbar(speed){
-		$('#elggchat_toolbar_left').toggle(speed);
-		$('#toggle_elggchat_toolbar').toggleClass('minimizedToolbar');
-		
-		if($('#toggle_elggchat_toolbar').hasClass('minimizedToolbar')){
-			createCookie("elggchat_toolbar_minimized", "true");
-			pollingPause = true;
-			$('#toggle_elggchat_toolbar').attr("title", "<?php echo elgg_echo("elggchat:toolbar:maximize");?>");
-		} else {
-			pollingPause = false;
-			checkForSessions();
-			tick();
-			eraseCookie("elggchat_toolbar_minimized");
-			$('#toggle_elggchat_toolbar').attr("title", "<?php echo elgg_echo("elggchat:toolbar:minimize");?>");
-		}
-	}*/
 	
 	function startSession(friendGUID){
 		$.post('<?php echo $CONFIG->wwwroot;?>action/elggchat/create?invite=' + friendGUID, function(data){
@@ -147,9 +138,246 @@
 		chat_window.find(".chatmessages").attr("scrollTop", scrHeight);
 	}
 	
-	var leftHide = 0;
-	var rightHide = 0;
-	var maxVisibleWindow = 6;
+	function checkForSessions(){
+		// Starting the work, so stop the timer
+		processing = true;
+		
+		$.getJSON("<?php echo $CONFIG->wwwroot; ?>action/elggchat/poll?currentTimestamp="+currentTimestamp, function(data){
+			if (typeof(data.timestamp) != "undefined" && data.timestamp != '') currentTimestamp = data.timestamp;
+			
+			if(typeof(data.sessions) != "undefined"){
+				var current = readCookie("elggchat");
+				
+				$.each(data.sessions, function(i, session){
+					session.name = splitname(session.name, 20);
+					
+					var sessionExists = false;
+					$("#chatwindow" + i).each(function(){
+						sessionExists = true;
+					});
+					if(!sessionExists){
+						
+						var newSession = "";
+						
+						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ");' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a class='elggchat_session_name' href='javascript:openSession(" + i + ");'>" + session.name + "</a>";
+						newSession += "<div class='chatsessiondatacontainer'>";
+						newSession += "<div class='chatsessiondata'>"; 
+						newSession += "<div class='chatmembers'><table>";
+						
+							if(typeof(session.members) != "undefined"){
+								$.each(session.members, function(memNum, member){
+									newSession += member;
+								});
+							}
+
+							newSession += "</table></div>";
+							newSession += "<div class='chatmembersfunctions'><a href='javascript:inviteFriends(" + i + ");'><?php echo strtolower(elgg_echo("elggchat:chat:invite")); ?></a>";
+														
+							newSession += "</div><div class='chatmembersfunctions_invite'></div>";
+							
+							newSession += "<div class='chatmessages'>";
+							newSession += "</div>";
+							newSession += "<div class='elggchatinput'>";
+							newSession += "<form>";
+							newSession += "<input name='chatsession' type='hidden' value='" + i + "'></input>";	
+							newSession += "<textarea name='chatmessage' type='text'></textarea>";						
+							newSession += "</form>";
+							newSession += "</div>";
+						newSession += "</div>";	
+						newSession += "</div>";
+					//	if(sessionExists){
+					//		 $("#chatwindow" + i).html(newSession);
+					//	} else {
+							newSession = "<div class='session' id='chatwindow" + i + "'>" + newSession + "</div>";
+							$("#elggchat_sessions").append(newSession);
+							
+							if(typeof(session.messages) != "undefined"){
+								$.each(session.messages, function(msgNum, msg){
+									insertMessage(i, msg);
+								});
+							}
+							
+							autoHideChatWindow();
+				//		}
+					} else {
+						if ($("#chatwindow" + i + ">a").html() != session.name) $("#chatwindow" + i + ">a").html(session.name);
+						var membersData = "";
+						if(typeof(session.members) != "undefined"){
+							$.each(session.members, function(memNum, member){
+								membersData += member;
+							});
+						}
+						$("#chatwindow" + i + " .chatmembers").html("<table>" + membersData + "</table>");
+						
+						var isnewMsg = false;
+						var messageData = "";
+						var cookie = readCookie("elggchat_session_" + i);
+						
+						var lastKnownMsgId = 0;
+						if(cookie > 0){
+							lastKnownMsgId = parseInt(readCookie("elggchat_session_" + i));
+						} 
+						
+						if(typeof(session.messages) != "undefined"){
+							$.each(session.messages, function(msgNum, msg){
+							//	if(msgNum > lastKnownMsgId || lastKnownMsgId == NaN){
+								insertMessage(i, msg);
+								lastTimeDataReceived = new Date().getTime();
+								isnewMsg = true;
+							//	}
+							});
+							
+							if (i != current && isnewMsg) {
+								$("#chatwindow" + i).addClass("elggchat_session_new_messages");
+							}
+						}
+					}
+				});
+				
+				// search for new data
+/*				$(".session").each(function(){
+				
+					var sessionid = $(this).attr("id");
+					sessionid = parseInt(sessionid.replace(/chatwindow/, ''));
+					var lastKnownMsgId = parseInt(readCookie("elggchat_session_" + sessionid));
+					var newestMsgId = parseInt($("#chatwindow" + sessionid + " .chatmessages div:last").attr("id"));
+					
+					if(newestMsgId > lastKnownMsgId || !lastKnownMsgId){
+						if($(this).find(".chatsessiondatacontainer").css("display") != "block" && newestMsgId){
+							$("#chatwindow" + sessionid).addClass("elggchat_session_new_messages");
+							lastTimeDataReceived = new Date().getTime();
+						}
+					}
+				
+				});*/
+				
+				// register submit events on message input
+				$(".elggchatinput textarea").unbind("keypress");
+				$(".elggchatinput textarea").bind("keypress", function(e){
+					$(this).height($(this).attr("scrollHeight"));
+					
+					if (e.which == 13) {
+						var input = $.trim($(this).val());
+						
+						if(input != ""){
+							$.post("<?php echo $CONFIG->wwwroot;?>action/elggchat/post_message", $(this).parent().serialize(), function(data){
+								checkForSessions();
+							});
+						}
+						// empty input field
+						$(this).val("");
+						$(this).height(15);
+					}
+				});
+				
+				if(current){
+					if($("#chatwindow" + current + " .chatsessiondatacontainer").css("display") != "block"){
+						openSession(current);
+					}
+					var cookie = readCookie("elggchat_session_" + current);
+					if(cookie > 0){
+						var lastKnownMsgId = parseInt(cookie);
+					} else {
+						var lastKnownMsgId = 0;
+					}
+					var newestMsgId = parseInt($("#chatwindow" + current + " .chatmessages div:last").attr("id"));
+					if(newestMsgId > lastKnownMsgId){
+						// scroll_to_bottom(current);
+						createCookie("elggchat_session_" + current, newestMsgId);
+					}
+				}
+				
+			}
+			
+			// build friendspicker
+			$("#elggchat_friends a").html("<?php echo elgg_echo("elggchat:friendspicker:info");?>(" + data.friends_online_count + ")");
+			if(typeof(data.friends) != "undefined"){
+				$("#elggchat_friends_picker").html("");
+				
+				var tableData = "";
+				$.each(data.friends, function(i, friend){
+					tableData += friend;
+					
+				});
+				$("#elggchat_friends_picker").append("<table>"  + tableData + "</table>");
+				
+				$("#elggchat_friends_picker a").each(function(){
+					$(this).attr("href","javascript:startSession(" + this.rel + "); toggleFriendsPicker();");
+				});
+			}
+			
+			// Done with all the work
+			resetTimer();
+			processing = false;
+		});
+	}
+	
+	function openSession(id){
+		$("#chatwindow"+ id).removeClass("elggchat_session_new_messages");
+		var current = $("#chatwindow" + id + " .chatsessiondatacontainer").css("display");
+		eraseCookie("elggchat");
+		$("#elggchat_sessions .chatsessiondatacontainer").hide();
+		$("#elggchat_sessions .session").removeClass("chatsession_Active");
+		if(current != "block"){
+			createCookie("elggchat", id);
+			var last = $("#chatwindow" + id + " .chatmessages div:last").attr("id");
+			createCookie("elggchat_session_" + id, last); 
+			$("#chatwindow" + id + " .chatsessiondatacontainer").toggle();
+			$("#chatwindow" + id).toggleClass("chatsession_Active");
+		}	
+		//scroll_to_bottom(id);
+		$("#chatwindow" + id + " input[name='chatmessage']").focus();
+	}
+	
+	
+	
+	
+	
+	
+	/* Some function by KimKha */
+	function insertMessage(sessionid, msg) {
+		var last = $("#chatwindow" + sessionid + " .chatmessages div:last-child");
+		var newsession = "";
+		if (typeof(last) != "undefined") {
+			var msgGUID = last.find(".messageGUID").html();
+			var msgcontent = last.find(".messageContent").html();
+			
+			var msgtime = readCookie("chat_current_time_"+sessionid);
+			
+			if (msgGUID != null && msgGUID != '') {
+				msgGUID = parseInt(msgGUID);
+				uid = parseInt(msg.guid);
+				msgtime = (msgtime == msg.time)?'':"<div class='messageTime'>" + msg.time + "</div>";
+				
+				if (msgGUID == uid) {
+					last.find(".messageContent").html(msgcontent + msgtime + "<p>" + msg.content + "</p>");
+					scroll_to_bottom(sessionid);
+					createCookie("chat_current_time_"+sessionid, msg.time, 1);
+					return true;
+				}
+				else if (uid == 0) {
+					newsession = "<div name='message' id='" + msg.offset + "' class='systemMessageWrapper'>";
+					newsession += msg.content;
+					newsession += "</div>";
+					$("#chatwindow" + sessionid + " .chatmessages").append(newsession);
+					scroll_to_bottom(sessionid);
+					eraseCookie("chat_current_time_"+sessionid);
+					return true;
+				}
+			}
+		}
+		
+		newsession = "<div name='message' id='" + msg.offset + "' class='messageWrapper'>";
+		newsession += "<div class='messageWrap'><div class='messageGUID'>" + msg.guid + "</div>";
+		newsession += "<div class='messageTime'>" + msg.time + "</div>";
+		newsession += "<div class='messageName'>" + msg.name + "</div></div>";
+		newsession += "<div class='messageContent'><p>" + msg.content + "</p></div>";
+		newsession += "</div>";
+		$("#chatwindow" + sessionid + " .chatmessages").append(newsession);
+		scroll_to_bottom(sessionid);
+		createCookie("chat_current_time_"+sessionid, msg.time, 1);
+		return true;
+	}
 	
 	function autoHideChatWindow() {
 		var kids = $("#elggchat_sessions").children();
@@ -191,186 +419,12 @@
 		return name;
 	}
 	
-	var currentTimestamp = 0;
+	/* End: KimKha */
 	
-	function checkForSessions(){
-		// Starting the work, so stop the timer
-		processing = true;
-		
-		$.getJSON("<?php echo $CONFIG->wwwroot; ?>action/elggchat/poll?currentTimestamp="+currentTimestamp, function(data){
-			if (typeof(data.timestamp) != "undefined") currentTimestamp = data.timestamp;
-			
-			if(typeof(data.sessions) != "undefined"){
-				var current = readCookie("elggchat");
-				
-				$.each(data.sessions, function(i, session){
-					session.name = splitname(session.name, 20);
-					
-					var sessionExists = false;
-					$("#chatwindow" + i).each(function(){
-						sessionExists = true;
-					});
-					if(i != current || sessionExists == false){
-						
-						var newSession = "";
-						
-						newSession += "<div class='elggchat_session_leave' onclick='leaveSession(" + i + ")' title='<?php echo elgg_echo("elggchat:chat:leave");?>'></div><div class='elggchat_session_mini' onclick='javascript:openSession(" + i + ");' title='<?php echo elgg_echo("elggchat:chat:minimize");?>'></div><a class='elggchat_session_name' href='javascript:openSession(" + i + ");'>" + session.name + "</a>";
-						newSession += "<div class='chatsessiondatacontainer'>";
-						newSession += "<div class='chatsessiondata'>"; 
-						newSession += "<div class='chatmembers'><table>";
-						
-							if(typeof(session.members) != "undefined"){
-								$.each(session.members, function(memNum, member){
-									newSession += member;
-								});
-							}
-
-							newSession += "</table></div>";
-							newSession += "<div class='chatmembersfunctions'><a href='javascript:inviteFriends(" + i + ");'><?php echo strtolower(elgg_echo("elggchat:chat:invite")); ?></a>";
-														
-							newSession += "</div><div class='chatmembersfunctions_invite'></div>";
-							
-							newSession += "<div class='chatmessages'>";
-							if(typeof(session.messages) != "undefined"){
-								$.each(session.messages, function(msgNum, msg){
-									newSession += msg;
-								});
-							}
-							newSession += "</div>";
-							newSession += "<div class='elggchatinput'>";
-							newSession += "<form>";
-							newSession += "<input name='chatsession' type='hidden' value='" + i + "'></input>";	
-							newSession += "<input name='chatmessage' type='text' autocomplete='off'></input>";						
-							newSession += "</form>";
-							newSession += "</div>";
-						newSession += "</div>";	
-						newSession += "</div>";
-						if(sessionExists){
-							 $("#chatwindow" + i).html(newSession);
-						} else {
-							newSession = "<div class='session' id='chatwindow" + i + "'>" + newSession + "</div>";
-							$("#elggchat_sessions").append(newSession);
-							autoHideChatWindow();
-						}
-					} else {
-						if ($("#chatwindow" + i + ">a").html() != session.name) $("#chatwindow" + i + ">a").html(session.name);
-						var membersData = "";
-						if(typeof(session.members) != "undefined"){
-							$.each(session.members, function(memNum, member){
-								membersData += member;
-							});
-						}
-						$("#chatwindow" + i + " .chatmembers").html("<table>" + membersData + "</table>");
-						
-						var messageData = "";
-						var cookie = readCookie("elggchat_session_" + i);
-						
-						var lastKnownMsgId = 0;
-						if(cookie > 0){
-							lastKnownMsgId = parseInt(readCookie("elggchat_session_" + i));
-						} 
-						
-						if(typeof(session.messages) != "undefined"){
-							$.each(session.messages, function(msgNum, msg){
-								if(msgNum > lastKnownMsgId || lastKnownMsgId == NaN){
-									messageData += msg;
-									lastTimeDataReceived = new Date().getTime();
-								}
-							});
-						}
-						$("#chatwindow" + i + " .chatmessages").append(messageData);
-					}
-				});
-				
-				// search for new data
-				$(".session").each(function(){
-				
-					var sessionid = $(this).attr("id");
-					sessionid = parseInt(sessionid.replace(/chatwindow/, ''));
-					var lastKnownMsgId = parseInt(readCookie("elggchat_session_" + sessionid));
-					var newestMsgId = parseInt($("#chatwindow" + sessionid + " .chatmessages div:last").attr("id"));
-					
-					if(newestMsgId > lastKnownMsgId || !lastKnownMsgId){
-						if($(this).find(".chatsessiondatacontainer").css("display") != "block" && newestMsgId){
-							$("#chatwindow" + sessionid).addClass("elggchat_session_new_messages");
-							lastTimeDataReceived = new Date().getTime();
-						}
-					}
-				
-				});
-				
-				// register submit events on message input
-				$(".elggchatinput form").unbind("submit");
-				$(".elggchatinput form").bind("submit", function(){
-					var input = $.trim($(this).find("input[name='chatmessage']").val());
-					
-					if(input != ""){
-						$.post("<?php echo $CONFIG->wwwroot;?>action/elggchat/post_message", $(this).serialize(), function(data){
-							checkForSessions();
-						});
-					}
-					// empty input field
-					$(this).find("input[name='chatmessage']").val("");
-					
-					return false;
-				});
-				
-				if(current){
-					if($("#chatwindow" + current + " .chatsessiondatacontainer").css("display") != "block"){
-						openSession(current);
-					}
-					var cookie = readCookie("elggchat_session_" + current);
-					if(cookie > 0){
-						var lastKnownMsgId = parseInt(cookie);
-					} else {
-						var lastKnownMsgId = 0;
-					}
-					var newestMsgId = parseInt($("#chatwindow" + current + " .chatmessages div:last").attr("id"));
-					if(newestMsgId > lastKnownMsgId){
-						scroll_to_bottom(current);
-						createCookie("elggchat_session_" + current, newestMsgId);
-					}
-				}
-				
-			}
-			
-			// build friendspicker
-			$("#elggchat_friends a").html("<?php echo elgg_echo("elggchat:friendspicker:info");?>(" + data.friends_online_count + ")");
-			if(typeof(data.friends) != "undefined"){
-				$("#elggchat_friends_picker").html("");
-				
-				var tableData = "";
-				$.each(data.friends, function(i, friend){
-					tableData += friend;
-					
-				});
-				$("#elggchat_friends_picker").append("<table>"  + tableData + "</table>");
-				
-				$("#elggchat_friends_picker a").each(function(){
-					$(this).attr("href","javascript:startSession(" + this.rel + "); toggleFriendsPicker();");
-				});
-			}
-			
-			// Done with all the work
-			resetTimer();
-			processing = false;
-		});
-	}
 	
-	function openSession(id){
-		$("#chatwindow"+ id).removeClass("elggchat_session_new_messages");
-		var current = $("#chatwindow" + id + " .chatsessiondatacontainer").css("display");
-		eraseCookie("elggchat");
-		$("#elggchat_sessions .chatsessiondatacontainer").hide();
-		if(current != "block"){
-			createCookie("elggchat", id);
-			var last = $("#chatwindow" + id + " .chatmessages div:last").attr("id");
-			createCookie("elggchat_session_" + id, last); 
-			$("#chatwindow" + id + " .chatsessiondatacontainer").toggle();
-		}	
-		scroll_to_bottom(id);
-		$("#chatwindow" + id + " input[name='chatmessage']").focus();
-	}
+	
+	
+	
 	
 	/* Cookie Functions */
 	function createCookie(name, value, days) {

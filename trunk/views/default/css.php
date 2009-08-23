@@ -456,9 +456,9 @@ span.contentIntro p {
 #elgg_topbar_container_search {
 	float:right;
 	height:21px;
-	/*width:280px;right:120px;*/
+	/*width:280px;*/
 	position:relative;
-	
+	right:100px;
 	text-align:right;
 	margin:3px 0 0 0;
 }
@@ -2557,7 +2557,17 @@ a.delete_report_button:hover {
 	-moz-border-radius-topright: 8px;
 }
 
+#leftside_taskbar {
+	float: left;
+}
+
 #notification_taskbar {
+	float: left;
+	border-right: 1px solid #000000;
+	padding: 0px 5px;
+}
+
+#notebook_taskbar {
 	float: left;
 	border-right: 1px solid #000000;
 	padding: 0px 5px;
