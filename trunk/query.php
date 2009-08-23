@@ -64,6 +64,73 @@
 	   		
 	   } else if ($action == 'GetNewSitenotificationCount'){
 	   		echo count_unread_sitenotification();
+	   } else if ($action == 'GetPeopleYouMayKnow'){
+	   	
+	   		$page_owner = get_loggedin_user();
+	   		$list = people_you_might_know_get_entities($page_owner->getGUID());
+	   		$list_array = array();
+	   		
+	   		$count = 0;
+	   		
+	   		if ( count($list) > 0)
+			{
+				foreach ($list as $people)
+					{
+						$list_array = array($people->username, $people->getURL(),$people->getIcon("small"));
+						$list_array[count++];				
+					}
+				
+			}
+			
+			echo json_encode($list_array);
+	   }
+	   else if ( $action == 'GetMutualFriends'){
+			   		
+ 			$owner = get_user($vars['entity']->owner_guid);
+			
+			$visitor = $_SESSION['user']->getGUID();
+		
+		    //the number of files to display
+			$num = (int) $vars['entity']->num_display;
+			if (!$num)
+				$num = 8;
+				
+			//get the correct size
+			$size = (int) $vars['entity']->icon_size;
+			if (!$size || $size == 1){
+				$size_value = "small";
+			}else{
+		    	$size_value = "tiny";
+			}
+				
+			$list = $owner->getFriends();
+			shuffle($list);
+			
+			$mutural = array();
+			$i = 0;
+			foreach ($list as $friend) 
+			{
+				$i++;
+				if ($i>$num) {
+					break;
+				}
+				if ($friend->isFriendOf($visitor)) // This is a mutural friend 
+				{
+					$mutural[] = $friend;
+				}
+			}
+			
+			$mutual_array = array();
+			
+			$count = 0;
+			
+			foreach ($mutural as $mfriend)
+			{
+				$mutual_array = array($mfriend->username, $mfriend->getURL(), $mfriend->getIcon("small"));
+				$mutual_array[count++];
+			}
+
+	   		echo json_encode($mutual_array);
 	   }
         
  ?>
