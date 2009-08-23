@@ -31,6 +31,7 @@ if (isloggedin()) {
 	</div>
 	
 	<!--div id="toggle_elggchat_toolbar" class="toggle_elggchat_toolbar" onclick="toggleChatToolbar('slow')" title="<?php echo elgg_echo("elggchat:toolbar:minimize");?>"></div-->
+	
 
 
 </div> <!-- / Elgg Taskbar -->

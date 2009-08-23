@@ -51,10 +51,10 @@
 	// If there are any $friend to view, view them
 	if (sizeof($mutural) > 0 && $owner->guid != $visitor) {
 
-		echo "<div id=\"widget_mutural_friends_list\">";
+		echo "<div id=\"widget_friends_list\">";
 
 		foreach($mutural as $friend) {
-			echo "<div class=\"widget_mutural_friends_singlefriend\" >";
+			echo "<div class=\"widget_friends_singlefriend\" >";
 			echo elgg_view("profile/icon",array('entity' => get_user($friend->guid), 'size' => $size_value));
 			echo "</div>";
 		}
