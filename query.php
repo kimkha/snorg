@@ -68,7 +68,7 @@
 	   	
 	   		$page_owner = get_loggedin_user();
 	   		$list = people_you_might_know_get_entities($page_owner->getGUID());
-	   		$list_array = array();
+	   		$list_json = array();
 	   		
 	   		$count = 0;
 	   		
@@ -76,13 +76,13 @@
 			{
 				foreach ($list as $people)
 					{
-						$list_array = array($people->username, $people->getURL(),$people->getIcon("small"));
-						$list_array[$count++];				
+						$people_json = array($people->username, $people->getURL(),$people->getIcon("small"));
+						$list_json[$count++]=$people_json;				
 					}
 				
 			}
 			
-			echo json_encode($list_array);
+			echo json_encode($list_json);
 	   }
 	   else if ( $action == 'GetMutualFriends'){
 			   		

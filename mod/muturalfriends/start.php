@@ -12,12 +12,10 @@
 
 	function muturalfriends_pagesetup() {
 		global $CONFIG;
-		if (get_context() == 'blog') {
-			add_submenu_item(elgg_echo('friends:mutural'), $CONFIG->wwwroot."mod/muturalfriends");
-		}
 		
 		// Extend hover-over menu	
 		extend_view('profile/menu/links','muturalfriends/menu', 500);
+		//extend_view('widgets/muturalfriends/view', 'muturalfriends/dialog');
 		
 	}
 	
