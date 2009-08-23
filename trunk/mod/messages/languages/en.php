@@ -33,7 +33,7 @@
 			
 			'messages:new' => 'New message',
 	
-			'notification:method:site' => 'Site',
+			'notification:method:message' => 'Message',
 	
 			'messages:error' => 'There was a problem saving your message. Please try again.',
 	

@@ -49,7 +49,7 @@
 				extend_view('profile/menu/links','messages/menu');
 				
 			// Register a notification handler for site messages
-				register_notification_handler("site", "messages_site_notify_handler");
+				register_notification_handler("message", "messages_site_notify_handler");
 				register_plugin_hook('notify:entity:message','object','messages_notification_msg');
 				if (is_callable('register_notification_object'))
 					register_notification_object('object','messages',elgg_echo('messages:new'));
