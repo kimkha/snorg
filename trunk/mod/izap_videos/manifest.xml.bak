@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest>
+        <field key="author" value="iZAP Team" />
+        <field key="version" value="0.2" ></field>
+        <field key="description" value="This plugin lets users to put videos from youtube, vimeo, veoh." ></field>
+        <field key="website" value="http://www.izap.in/" />
+        <field key="copyright" value="(C) iZAP Web Solutions 2005-2009" />
+</plugin_manifest>
