@@ -31,6 +31,59 @@
 	overflow:hidden;
 }
 
+#recently_notebook {
+	
+}
+
+#recently_notebook .headerNotebook {
+	background-color: #2779E7;
+	color: #FFFFFF;
+	padding: 3px 5px;
+	
+	-moz-border-radius-bottomright:5px; 
+	-moz-border-radius-bottomleft:5px; 
+	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+}
+
+#recently_notebook .notebook_content {
+	padding: 5px 0px;
+	max-height: 220px;
+	overflow-y: auto;
+}
+
+#recently_notebook .notebookWrapper {
+	background:white;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+    padding:5px 8px;
+    margin:0 5px 5px 5px;
+}
+
+#recently_notebook .notebookWrapper p {
+	margin: 7px 0px;
+	white-space: normal;
+}
+
+#recently_notebook .notebookTitle {
+	font-weight: bold;
+	color: #4690D6;
+	font-size: 10px;
+	padding-right: 65px;
+}
+
+#recently_notebook .notebookbtnMore {
+	color:#A5A5A5;
+	font-size:9px;
+	float: right;
+}
+
+#recently_notebook .notebookDescription {
+	font-size: 11px;
+	border-top: 1px solid #DDDDDD;
+	width: 100%;
+}
+
 #create_note {
 	font-size: 10px;
 	font-weight: normal;

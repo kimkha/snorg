@@ -100,12 +100,6 @@
 	white-space: normal;
 }
 
-.messageWrapper table{
-	background: white;
-	height: 0px;
-	width: 100%;
-}
-
 .systemMessageWrapper {
 	
 	-webkit-border-radius: 8px; 
@@ -270,6 +264,7 @@
 	padding: 2px;
 	width: 200px;
 	height: 15px;
+	overflow: hidden;
 }
 
 .elggchatinput textarea:focus{

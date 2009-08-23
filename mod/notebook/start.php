@@ -12,6 +12,13 @@
 	*/
 	global $CONFIG;
 	
+	define('NOTEBOOK_SUBTYPE', 'notebook');
+	define('NOTEBOOK_RELATIONSHIP', 'notebookOf');
+	define('NOTEBOOK_TITLE', 'title');
+	define('NOTEBOOK_DESCRIPTION', 'description');
+	define('NOTEBOOK_CATEGORY', 'category');
+	define('NOTEBOOK_COMMENT', 'comment');
+	
 	function notebook_init() {
 		if(isloggedin()){
 //			if(get_plugin_usersetting("enableChat") != "no"){
@@ -30,5 +37,6 @@
 	
 	// actions
 	register_action("notebook/create", false, $CONFIG->pluginspath . "notebook/actions/create.php");
+	register_action("notebook/load", false, $CONFIG->pluginspath . "notebook/actions/load.php");
 
 ?>

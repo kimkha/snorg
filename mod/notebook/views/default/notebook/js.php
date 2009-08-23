@@ -17,18 +17,24 @@ function openNotebook() {
 	$("#notebook_wrapper").toggle();
 }
 
-function reloadNotebook() {
+function loadNotebook() {
+	$.getJSON("<?php echo $CONFIG->wwwroot;?>action/notebook/load", function(data) {
+		$.each(data, function(name, value){
+			insertNotebook(value);
+		})
+	})
 	return true;
 }
 
 function insertNotebook(data) {
 	var newnote = "";
-	newnote += "<div class='contentWrapper' id='notebook-"+notebookid+"'>";
+	newnote += "<div class='notebookWrapper' id='notebook-"+notebookid+"'>";
 	newnote += "<div class='notebookTitle'>" + data.title + "</div>";
 	newnote += "<div class='notebookDescription'>" + data.description + "</div>";
 	newnote += "</div>";
 	
 	$("#recently_notebook .notebook_content").prepend(newnote);
+	$("#recently_notebook .notebook_content").attr("scrollTop", 0);
 	return true;
 }
 
@@ -37,7 +43,7 @@ function buildNotebook() {
 	notebookdata += "<div id='notebook_data'>";
 	
 	notebookdata += "<div id='recently_notebook'>";
-	notebookdata += "recently_notebook";
+	notebookdata += "<div class='headerNotebook'><?php echo elgg_echo("notebook:recently"); ?></div>";
 	notebookdata += "<div class='notebook_content'></div>"
 	notebookdata += "</div>";
 	
@@ -55,7 +61,7 @@ function buildNotebook() {
 		notebookdata += "</div>";
 		
 		notebookdata += "<div class='inputNotebook btnMore'>";
-		notebookdata += "<a id='btnNotebookMore' href='javascript:notebookmore();'>More</a>";
+//		notebookdata += "<a id='btnNotebookMore' href='javascript:notebookmore();'>More</a>";
 		notebookdata += "</div>";
 		
 		notebookdata += "<div id='create_note_more'>"
@@ -83,11 +89,19 @@ function buildNotebook() {
 	
 	$("#create_note form").unbind("submit");
 	$("#create_note form").bind("submit", function(){
-		$.getJSON("<?php echo $CONFIG->wwwroot;?>action/notebook/create", $(this).serializeArray(), function(data){
+		var val = $(this).serializeArray();
+		$.post("<?php echo $CONFIG->wwwroot;?>action/notebook/create", val, function(data){
 			insertNotebook(data);
-		});
+			clearNotebookForm();
+		}, "json");
 		return false;
 	});
+}
+
+function clearNotebookForm() {
+	$("#create_note form").find("input[type='text']").val("");
+	$("#create_note form").find("textarea").val("");
+	$("#create_note form").find("textarea").height(13);
 }
 
 function notebookmore() {
@@ -98,5 +112,6 @@ function notebookmore() {
 
 $(document).ready(function(){
 	buildNotebook();
+	loadNotebook();
 });
 
