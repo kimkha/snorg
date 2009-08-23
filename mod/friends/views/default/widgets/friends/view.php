@@ -36,9 +36,9 @@
 		
 	// If there are any $friend to view, view them
 	if (is_array($friends) && sizeof($friends) > 0) {
-
+		echo " <a id='btn_show_all' href='javascript:void(0);' > " . ' ' . elgg_echo('friends:widget:showall')."</a>";
 		echo "<div id=\"widget_friends_list\">";
-		echo "<a id='btn_show_all' href='javascript:void(0);' >".elgg_echo('friends:widget:showall')."</a>";
+		
 		foreach($friends as $friend) {
 			echo "<div class=\"widget_friends_singlefriend\" >";
 			

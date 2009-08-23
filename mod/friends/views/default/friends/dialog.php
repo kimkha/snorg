@@ -2,6 +2,7 @@
 ?>
 <div id="dialog" title="<?php echo elgg_echo('friends:widget:title') . " " . get_user($vars['entity']->owner_guid)->username ?>" class="collapsable_box_content" style="display:none;">
 	        <input id="inputFilter" type="text"/>
+	        <div id = "friends_wrapper" style="max-height: 300px; overflow-y:auto;"> </div>
 	</div>
 	
 <script type="text/javascript">
@@ -14,7 +15,8 @@
                         autoOpen: false,
                         width: 400,
                         height: 400,
-                        modal: true
+                        modal: true,
+                        
                 });
                 
                 var friends = null;
@@ -27,30 +29,24 @@
                 $("#btn_show_all").click(displayFriendDialog);
                 
                 function displayFriendDialog(){
-                 $.ajax({
-                   type: "POST",
-                   url: "<?php echo $vars['url']; ?>query.php",
-                        data: "owner=<?php echo $vars['entity']->owner_guid ?>",
-                   success: function(msg){
+                 $.getJSON("<?php echo $vars['url']; ?>query.php?action=GetFriends&owner=<?php echo $vars['entity']->owner_guid ?>",function(result){
                      
-                     var serializer = new JSSerializer(); 
-                     friends = serializer.deserialize(msg);
+                     friends = result;
                      //alert(friends[2].usericon + friends[0].userlink);
                      //$("#dialog").dialog();
                      $('#dialog').dialog("open");
                      displayFriendsOnDialog(friends);
                      $('#dialog').css('display', 'block');
-                   }
-                 });
+                   });
+                 }
                 
-                }
         
                 function displayFriendsOnDialog(friends){
                                 
-                        $("#dialog > div").remove();                            
+                        $("#dialog > div > div").remove();                            
                         for(index in friends){
                         		                        	
-                                $('#dialog').append("<div class='contentWrapper'> <a href=\"" + friends[index].userurl + "\"><img src=\"" + friends[index].usericon + "\" /> <b>" + friends[index].username + " </b> </a> </div>");                                
+                                $('#friends_wrapper').append("<div class='contentWrapper'> <a href=\"" + friends[index][1] + "\"><img src=\"" + friends[index][2] + "\" /> <b>" + friends[index][0] + " </b> </a> </div>");                                
                         }
                         
                 }
@@ -77,7 +73,7 @@
                         //Search by username
                         var count = 0;
                         for (index in friends){
-                                var pos = friends[index].username.toLowerCase().indexOf(strFilter.toLowerCase());
+                                var pos = friends[index][0].toLowerCase().indexOf(strFilter.toLowerCase());
                                 if ( pos >=0 ){
                                         filteredFriends[count++] = friends[index];      
                                 }
