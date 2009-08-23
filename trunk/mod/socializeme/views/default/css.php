@@ -176,7 +176,7 @@ blockquote p {
     PAGE LAYOUT - MAIN STRUCTURE
 *************************************** */
 #page_container {
-	margin:-1px;
+	margin:0;
     padding:0;
 	background:#fff url(<?php echo $vars['url']; ?>mod/socializeme/graphics/pageback.png) repeat-x top;
 }
@@ -385,7 +385,7 @@ span.contentIntro p {
 #layout_footer {
 	background: #333;
 	height:80px;
-	margin:0 0 20px 0;
+	margin:0 0 40px 0;
 }
 #layout_footer table {
    margin:0 0 0 20px;
@@ -2654,3 +2654,48 @@ border-top:none;
             background:#2779e7;
 
       }
+
+
+
+/* CUSTOM */
+#elgg_taskbar {
+	position: fixed;
+	bottom: 0px;
+	height: 25px;
+	left: 0px;
+	z-index: 9999;
+	background: #E1E1E1;
+	margin: 0px 20px;
+	border: 1px solid #969696;
+	border-bottom: 0px;
+	padding-bottom: 2px;
+	-webkit-border-top-left-radius: 8px; 
+	-webkit-border-top-right-radius: 8px; 
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+}
+
+#leftside_taskbar {
+	float: left;
+}
+
+#notification_taskbar {
+	float: left;
+	border-right: 1px solid #000000;
+	padding: 0px 5px;
+}
+
+#notebook_taskbar {
+	float: left;
+	border-right: 1px solid #000000;
+	padding: 0px 5px;
+}
+
+.p_t {
+	border-bottom: 2px solid #FFD400;
+	cursor: help;
+}
+.f_t {
+	border-bottom: 2px solid #50D050;
+	cursor: help;
+}

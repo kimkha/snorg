@@ -1,3 +1,31 @@
+if(jQuery) (function(){
+	
+	$.extend($.fn, {
+		
+		rightClick: function(handler) {
+			$(this).each( function() {
+				$(this).mousedown( function(e) {
+					var evt = e;
+					$(this).mouseup( function() {
+						$(this).unbind('mouseup');
+						if( evt.button == 2 ) {
+							handler.call( $(this), evt );
+							return false;
+						} else {
+							return true;
+						}
+					});
+				});
+				$(this)[0].oncontextmenu = function() {
+					return false;
+				}
+			});
+			return $(this);
+		},		
+	});
+	
+})(jQuery);	
+
 $(document).ready(function () {
 
 	// COLLAPSABLE WIDGETS (on Dashboard & Profile pages)
@@ -78,7 +106,34 @@ $(document).ready(function () {
 		accept: ".draggable_widget",
 		hoverClass: 'droppable-hover'
 	});
-
+	
+	/* CUSTOM */
+	$("span.p_t").rightClick(function (e) {
+		a = $(this).html();
+		r = a;
+		do {
+			r=prompt("Dịch đoạn văn bản:\n\n"+a, r);
+			if (!r || r=='' || r==a) return false;
+		} while (!confirm(a+"\n\n Tương ứng với \n\n"+r));
+		
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost/elgg/trans.php',
+			data: 'key='+ $(this).attr('title') +'&message='+r,
+			dataType: 'json',
+			success: function (progress) {
+				return true;
+			},
+			error: function (xmlhttp) {
+				return false;
+			}
+		});
+		$("span.p_t[title='"+$(this).attr('title')+"']").html(r);
+		$("span.p_t[title='"+$(this).attr('title')+"']").addClass('f_t');
+		$("span.p_t[title='"+$(this).attr('title')+"']").removeClass('p_t');
+		return false;
+	});
+	
 }); /* end document ready function */
 
 
@@ -278,16 +333,6 @@ $.fn.elgg_topbardropdownmenu = function(options) {
   });
   
 };
-
-
-
-
-
-
-
-
-
-
 
 
 
