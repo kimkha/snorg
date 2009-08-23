@@ -70,8 +70,8 @@ if($user = get_loggedin_user()){
 					
 					foreach($annotations as $msg){
 						$a_msg = json_decode($msg->value);
-						if ($a_msg->time >= $currentTimestamp)
-							$result["sessions"][$session->guid]["messages"][$msg->id] = elgg_view("elggchat/message", array("message" => $msg, "message_owner" => get_user($msg->owner_guid), "offset" => $msg->id)); 
+						if ($msg->time_created > $currentTimestamp)
+							$result["sessions"][$session->guid]["messages"][$msg->id] = json_decode(elgg_view("elggchat/message", array("message" => $msg, "message_owner" => get_user($msg->owner_guid), "offset" => $msg->id)), true); 
 					}
 				}
 			}

@@ -37,8 +37,12 @@
     margin:0 2px 5px 2px;
     
     /* ie fix */
-	width:150px;
+	width:120px;
 	white-space: nowrap;
+}
+
+.chatsession_Active {
+	background: #FFFFFF;
 }
 
 .elggchat_session_new_messages {
@@ -92,8 +96,8 @@
 }
 
 .messageWrapper p {
-	margin: 0;
-	width: 176px;
+	margin: 7px 0px;
+	white-space: normal;
 }
 
 .messageWrapper table{
@@ -115,29 +119,37 @@
 	margin-right: 7px;
 }
 
-.messageName {
-	border-bottom:1px solid #DDDDDD;
+.messageFirst {
+	overflow: hidden;
 	width: 100%;
+}
+
+.messageGUID {
+	display: none;
+}
+.messageName {
 	font-weight: bold;
 	color: #4690D6;
 	font-size: 10px;
+	padding-right: 65px;
 }
 
 .messageTime {
 	color:#A5A5A5;
 	font-size:9px;
-	text-align: right;
-	border-bottom:1px solid #DDDDDD;
+	float: right;
 }
 
 .messageContent {
 	font-size: 11px;
+	border-top: 1px solid #DDDDDD;
+	width: 100%;
 }
 
 .chatsessiondatacontainer {
-	width:200px;
+	width:230px;
 	display: none;
-	
+	margin-left: -110px;
 	background: #E4ECF5;
 }
 
@@ -153,8 +165,7 @@
 	margin: 0 -4px;
 	position:absolute;
 	bottom:27px;
-	width:206px;
-	max-height:600px;
+	width:236px;
 	overflow:hidden;
 }
 
@@ -236,12 +247,12 @@
 }
 
 .elggchat_session_name {
-	padding: 0 10px;
+	padding: 0 7px;
 }
 
 .chatmessages{
-	min-height: 250px;
-	max-height: 350px;
+	min-height: 200px;
+	max-height: 280px;
 	overflow-y:auto;
 }
 
@@ -250,17 +261,42 @@
 	padding-left:18px;
 	border-top: 1px solid #DEDEDE;
 	border-bottom: 1px solid #DEDEDE;
-	height:22px;
+	min-height:22px;
 }
 
-.elggchatinput input{
+.elggchatinput textarea{
 	border: none;
 	font-size:11px;
 	padding: 2px;
-	width: 180px;
+	width: 200px;
+	height: 15px;
 }
 
-.elggchatinput input:focus{
+.elggchatinput textarea:focus{
 	border: none;
 	background:none;
+}
+
+#elggchat_sessions_wrapper {
+	float: right;
+}
+
+#elggchat_sessions_wrapper_previous {
+	width: 15px;
+	background: url("<?php echo $vars['url']; ?>mod/elggchat/_graphics/arrow.png") top left no-repeat transparent;
+	text-decoration: none;
+	margin: 2px;
+}
+#elggchat_sessions_wrapper_previous span {
+	visibility: hidden;
+}
+
+#elggchat_sessions_wrapper_next {
+	width: 15px;
+	background: url("<?php echo $vars['url']; ?>mod/elggchat/_graphics/arrow.png") top right no-repeat transparent;
+	text-decoration: none;
+	margin: 2px;
+}
+#elggchat_sessions_wrapper_next span {
+	visibility: hidden;
 }
