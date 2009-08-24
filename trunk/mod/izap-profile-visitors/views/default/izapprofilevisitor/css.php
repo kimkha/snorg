@@ -9,7 +9,7 @@
 	 * @compatibility elgg-1.5
 	*/
 ?>
-.izapWrapper{.
+.izapWrapper{
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   background: white;
@@ -18,7 +18,7 @@
   float:left;
 }
 
-.izapWrapperOnline{.
+.izapWrapperOnline{
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   background: #A4DA89;

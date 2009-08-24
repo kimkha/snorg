@@ -88,8 +88,8 @@
 	background-position: 0 -16px;
 }
 /* IE 6 fix */
-* html .thewire-post .delete_note a { background-position-y: 2px; }
-* html .thewire-post .delete_note a:hover { background-position-y: -14px; }
+* html .thewire-post .delete_note a { background-position: 0 2px; }
+* html .thewire-post .delete_note a:hover { background-position: 0 -14px; }
 
 .post_to_wire {
 	background: white;
