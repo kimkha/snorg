@@ -409,7 +409,7 @@ span.contentIntro p {
 *************************************** */
 #elgg_topbar {
    	background:#333333;
-	//*color:#eeeeee;*//
+	/*color:#eeeeee;*/
 	border-bottom:2px solid #f5f5f5;
 	min-width:998px;
 	position:relative;
@@ -621,7 +621,7 @@ ul.topbardropdownmenu ul {
 	border-top:1px solid black;
 }
 ul.topbardropdownmenu *:hover {
-	background-color: none;
+	background: none;
 }
 ul.topbardropdownmenu a {
 	padding:3px;
@@ -655,7 +655,7 @@ ul.topbardropdownmenu ul a.hover {
 	background-color: #333;
 }
 ul.topbardropdownmenu ul a {
-	opacity: 1;
+	opacity: 0.9;
 	filter: alpha(opacity=90);
 }
 
@@ -1534,7 +1534,7 @@ border:1px solid #AAAAAA;
 .ownerblockline {
 	padding:0;
 	margin:0;
-	//*border-bottom:1px solid #cccccc;*//
+	/*border-bottom:1px solid #cccccc;*/
 	height:1px;
 }
 #owner_block_submenu {
