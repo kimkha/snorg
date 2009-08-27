@@ -62,7 +62,7 @@ END;
 
 	
 
-	<link type="text/css" href="<?php echo $vars['url']; ?>vendors/jquery/css/smoothness/ui.all.css" rel="stylesheet" > </link>
+	<link type="text/css" href="<?php echo $vars['url']; ?>vendors/jquery/css/smoothness/ui.all.css" rel="stylesheet" />
 	
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/browserDetect.js">
 	</script>
@@ -122,6 +122,9 @@ window.attachEvent("onload", correctPNG);
 </script>
 <![endif]-->
 
+	<link rel="stylesheet" href="<?php echo $vars['url']; ?>vendors/snorg/style.css" type="text/css" />
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/snorg/dialog.js"></script>
 </head>
 
 <body>
+<div id="kdialog" class="kDlg"></div>

@@ -1,0 +1,101 @@
+
+	/**
+	 * KDialog Stylesheet
+	 * 
+	 * @author KimKha
+	 */
+	
+.kDlg {
+	width:300px;
+	background-color: #F2F2F2;
+	color:#000000;
+	border-bottom: 2px solid #969696;
+	border-right: 2px solid #969696;
+	border-top: 1px solid #969696;
+	border-left: 1px solid #969696;
+    -webkit-border-top-right-radius: 2px; 
+    -webkit-border-bottom-left-radius: 2px; 
+	-moz-border-radius-topright: 2px;
+	-moz-border-radius-bottomleft: 2px;
+}
+
+#koverlay {
+	z-index: 10000;
+	position:fixed;
+	left:0px;
+	top:0px;
+	width:100%;
+	min-height:768px;
+	display:none;
+	background-color:#E1E1E1;
+	opacity:0.6;
+	filter: anpha(opacity=60);
+}
+
+#kdialog {
+	z-index: 10001;
+	position:fixed;
+	left:400px;
+	top:150px;
+	display:none;
+}
+
+.kdialogTitle {
+	padding: 3px 10px;
+	
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #2779E7;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+}
+
+.kdialogTitle .kdialogPanel {
+	float: right;
+	text-align: right;
+}
+.kdialogTitle .kdialogPanel #kdialogClose {
+	background: url('./icon_close.png') top left no-repeat transparent;
+	width: 14px;
+	cursor: pointer;
+}
+.kdialogTitle .kdialogPanel #kdialogClose:hover {
+	background-position: bottom left;
+}
+
+.kdialogContent {
+	padding: 5px 10px;
+	overflow: hidden;
+	font-size: 11px;
+}
+
+.kdialogContent input[type='text'] {
+	height: 14px;
+	padding: 3px 5px;
+	font-size: 11px;
+}
+
+.kdialogContent input[type='button'],
+.kdialogContent input[type='submit'],
+.kdialogContent input[type='reset'] {
+	padding: 1px 6px;
+	height: 20px;
+	width: 70px !important;
+	font-size: 10px;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.kdialogContent .kdialogMessage {
+	text-align: left;
+}
+
+.kdialogContent .kdialogButton {
+	float: right;
+	padding-right: 20px;
+}
+
+
+
+
+

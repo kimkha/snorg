@@ -432,15 +432,6 @@ span.contentIntro p {
 	height:24px;
 	z-index: 9000; /* if you have multiple position:relative elements, then IE sets up separate Z layer contexts for each one, which ignore each other */
 }
-#elgg_topbar_container_left {
-	float:left;
-	height:24px;
-	left:0px;
-	top:0px;
-	position:absolute;
-	text-align:left;
-	width:60%;
-}
 #elgg_topbar_container_right {
 	float:right;
 	height:24px;
@@ -450,9 +441,7 @@ span.contentIntro p {
 	/* width:120px;*/
 	text-align:right;
 }
-#elgg_topbar_container_right {
-	float: right;
-}
+
 #elgg_topbar_container_search {
 	float:right;
 	height:21px;
@@ -462,6 +451,16 @@ span.contentIntro p {
 	text-align:right;
 	margin:3px 0 0 0;
 }
+
+#elgg_topbar_container_logout {
+	height:21px;
+	position:absolute;
+	right:0px;
+	top:0px;
+	text-align:right;
+	margin:3px 0 0 0;
+}
+
 #elgg_topbar_container_left .toolbarimages {
 	float:left;
 	margin-right:20px;
