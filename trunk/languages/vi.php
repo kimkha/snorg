@@ -88,6 +88,7 @@ $vietnamese = array(
 	'profile:edit:default' => 'Thay Đổi Các Trường Dữ Liệu Trong Hồ Sơ',
 	'profile:edit:default' => 'Thay Đổi Trường Dữ Liệu Hồ Sơ',
 	'friend:add' => 'Kết bạn',
+	'email:settings' => 'Thiết lập Email',
 	// END NEW STRING
 );
 

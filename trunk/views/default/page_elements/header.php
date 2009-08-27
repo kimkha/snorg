@@ -63,7 +63,7 @@ END;
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-1.2.6.pack.js"></script>
 <script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-ui-1.6.custom.min.js">
 	</script>
-	<link type="text/css" href="<?php echo $vars['url']; ?>vendors/jquery/css/smoothness/ui.all.css" rel="stylesheet" > </link>
+	<link type="text/css" href="<?php echo $vars['url']; ?>vendors/jquery/css/smoothness/ui.all.css" rel="stylesheet" />
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/browserDetect.js">
 	</script>
 			

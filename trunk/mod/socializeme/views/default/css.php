@@ -277,7 +277,7 @@ border:1px solid #ccc;
 .contentWrapper {
 	background:#fff; 
     border:1px solid #ccc;
-       	-webkit-border-radius: 8px; 
+   	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;	
     padding:10px;
     margin:0 10px 10px 10px;
@@ -429,21 +429,31 @@ span.contentIntro p {
 #elgg_topbar_container_right {
 	float:right;
 	height:24px;
-	position:absolute;
 	right:0px;
 	top:0px;
 	/* width:120px;*/
 	text-align:right;
 }
+
 #elgg_topbar_container_search {
 	float:right;
 	height:21px;
 	/*width:280px;*/
 	position:relative;
-	right:120px;
+	right:100px;
 	text-align:right;
 	margin:3px 0 0 0;
 }
+
+#elgg_topbar_container_logout {
+	height:21px;
+	position:absolute;
+	right:0px;
+	top:0px;
+	text-align:right;
+	margin:3px 0 0 0;
+}
+
 #elgg_topbar_container_left .toolbarimages {
 	float:left;
 	margin-right:20px;
@@ -1891,7 +1901,7 @@ ul#friends_collections_accordian {
 a.toggle_customise_edit_panel { 
 	float:right;
 	clear:right;
-    	-webkit-border-radius: 8px; 
+	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 	color: #fff;
     font-weight:bold;
@@ -2662,6 +2672,7 @@ border-top:none;
 	position: fixed;
 	bottom: 0px;
 	height: 25px;
+	min-width: 964px;
 	left: 0px;
 	z-index: 9999;
 	background: #E1E1E1;

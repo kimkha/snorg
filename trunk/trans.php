@@ -1,19 +1,36 @@
-<html>
-<head>
-	<title>sksksk</title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-
 <?php
 
 if ($_POST['key']!='')
 {
-	echo $_POST['message'];
-	$newstring = "'{$_POST['key']}' => '{$_POST['message']}',\n\t";
+	$key = $_POST['key'];
+	$message = $_POST['message'];
+	$newstring = "'{$key}' => '{$message}',\n\t";
+	
+	$str = split(":", $key);
+	$mod = $str[0];
+	
+	$filename = "languages/vi.php";
+	if (is_dir("mod/".$mod)) {
+		$filename = "mod/".$mod."/".$filename;
+	}
+	
+	if (!file_exists($filename)) {
+		$cont = "<?php
+
+\$vietnamese = array(
+	// NEW STRING HERE
+	// END NEW STRING
+);
+
+add_translation('vi', \$vietnamese);
+
+?>";
+		$handle = fopen($filename, 'w');
+		fwrite($handle, $cont);
+		fclose($handle);
+	}
 	
 	$findstring = "// END NEW STRING";
-	$filename = "languages/vi.php";
 	$handle = fopen($filename, 'r');
 	$content = fread($handle, filesize($filename));
 	fclose($handle);
@@ -24,17 +41,4 @@ if ($_POST['key']!='')
 	fwrite($handle, $cont);
 	fclose($handle);
 }
-else
-{
-	?>
-	<form action="trans.php?" method="POST">
-	Từ khóa: <input type="text" name="key" />
-	Chuỗi được dịch: <input type="text" name="message" />
-	<input type="submit" value="Lưu" />
-	</form>
-	<?php
-}
-
 ?>
-</body>
-</html>

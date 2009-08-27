@@ -108,7 +108,8 @@ $(document).ready(function () {
 	});
 	
 	/* CUSTOM */
-	$("span.p_t").rightClick(function (e) {
+	checkTranslator();
+/*	$("span.p_t").rightClick(function (e) {
 		a = $(this).html();
 		r = a;
 		do {
@@ -132,9 +133,51 @@ $(document).ready(function () {
 		$("span.p_t[title='"+$(this).attr('title')+"']").addClass('f_t');
 		$("span.p_t[title='"+$(this).attr('title')+"']").removeClass('p_t');
 		return false;
-	});
+	});*/
 	
 }); /* end document ready function */
+
+var trans_default;
+var trans_input;
+var trans_key;
+var alreadyCheckTranslator = false;
+function checkTranslator() {
+	$("span.p_t").rightClick(function(e){
+		enableTranslator($(this), e);
+	});
+	if (!alreadyCheckTranslator) {
+		alreadyCheckTranslator = true;
+		setTimeout("checkTranslator()", 5000);
+	}
+}
+function enableTranslator(ptr, evt){
+	trans_default = ptr.html();
+	trans_key = ptr.attr('title');
+	trans_input = trans_default;
+	$kprompt("Dịch đoạn văn bản:<br /><br /><div style=\"color:#1E57AC;padding:5px;border:1px dashed #1E57AC;\">"+trans_default+"</div>", trans_input, translate_step1);
+}
+function translate_step1(d){
+	trans_input = d;
+	if (!trans_input || trans_input=='' || trans_input == trans_default) {
+		return false;
+	}
+	else {
+		$kconfirm("<div style=\"color:#1E57AC;padding:5px;border:1px dashed #1E57AC;\">" +trans_default+ "</div><br /><center><b>Tương ứng với</b></center><br /><div style=\"color:#962323;padding:5px;border:1px dashed #962323;\">"+trans_input+"</div>", translate_step2);
+	}
+}
+function translate_step2(c){
+	if(!c) {
+		$kprompt("Dịch đoạn văn bản:<br /><br /><div style=\"color:#1E57AC;padding:5px;border:1px dashed #1E57AC;\">"+trans_default+"</div>", trans_input, translate_step1);
+	}
+	else {
+		$.post("<?php echo $CONFIG->wwwroot; ?>/trans.php", {key:trans_key, message:trans_input}, translate_step3);
+	}
+}
+function translate_step3(d){
+	$("span.p_t[title='"+trans_key+"']").html(trans_input);
+	$("span.p_t[title='"+trans_key+"']").addClass('f_t');
+	$("span.p_t[title='"+trans_key+"']").removeClass('p_t');
+}
 
 
 // List active widgets for each page column
@@ -262,7 +305,7 @@ jQuery.cookie = function(name, value, options) {
 	    if (document.cookie && document.cookie != '') {
 	        var cookies = document.cookie.split(';');
 	        for (var i = 0; i < cookies.length; i++) {
-	            var cookie = jQuery.trim(cookies[i]);
+	            var cookie = $.trim(cookies[i]);
 	            // Does this cookie string begin with the name we want?
 	            if (cookie.substring(0, name.length + 1) == (name + '=')) {
 	                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -335,6 +378,40 @@ $.fn.elgg_topbardropdownmenu = function(options) {
 };
 
 
+	/* Cookie Functions */
+	function createCookie(name, value, days) {
+		if (days) {
+			var date = new Date();
+			date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+			var expires = "Expires=" + date.toGMTString() + "; ";
+		} else {
+			var expires = "";
+		}
+		
+		document.cookie = name + "=" + value + "; " + expires + "Path=/;";
+	}
+
+	function readCookie(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+
+			while (c.charAt(0) == ' '){
+				c = c.substring(1, c.length);
+			}
+			
+			if (c.indexOf(nameEQ) == 0){
+				return c.substring(nameEQ.length, c.length);
+			}
+		}
+		return null;
+	}
+
+	function eraseCookie(name) {
+		createCookie(name, "", -1);
+	}	
 
 
 

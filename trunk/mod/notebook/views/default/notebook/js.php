@@ -74,7 +74,7 @@ function buildNotebook() {
 		notebookdata += "<div id='create_note_more'>"
 			notebookdata += "<div class='inputNotebook'>";
 			notebookdata += "<label for='inputCatNotebook'>Category:</label>";
-			notebookdata += "<input name='category' id='inputCatNotebook' autocomplete='off'></input>";
+			notebookdata += "<input name='category' id='inputCatNotebook' autocomplete='off' />";
 			notebookdata += "</div>";
 			
 			notebookdata += "<div class='inputNotebook'>";
