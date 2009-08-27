@@ -8,7 +8,7 @@ function viewFriendsBox(action, ownerId) {
 	var content;
 	var wrapper;
 	
-	title='kimkha friends';
+	title='Friends';
 	content = "<input id='inputFilter' type='text'/>";
 	content += "<div id =\"friends_wrapper\" style=\"max-height: 300px; overflow-y:auto;\"> </div>";
 	wrapper = $kbox(title, content);
@@ -21,10 +21,8 @@ function viewFriendsBox(action, ownerId) {
 	});
 	
 	$("#inputFilter").keypress(function(e){
-		if (e.which == 13){
-			var filteredFriends = filterFriends(friends, $("#inputFilter").val());
-			displayFriendsOnDialog(filteredFriends);
-		}
+		var filteredFriends = filterFriends(friends, $(this).val());
+		displayFriendsOnDialog(filteredFriends);
     });
 	
 }

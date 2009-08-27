@@ -118,7 +118,7 @@
 	   }
 	   else if ( $action == 'GetMutualFriends'){
 			   		
- 			$owner = get_user($vars['entity']->owner_guid);
+ 			$owner = get_user(get_input('owner'));
 			
 			$visitor = $_SESSION['user']->getGUID();
 		
@@ -154,12 +154,9 @@
 			
 			$mutual_array = array();
 			
-			$count = 0;
-			
 			foreach ($mutural as $mfriend)
 			{
-				$mutual_array = array($mfriend->username, $mfriend->getURL(), $mfriend->getIcon("small"));
-				$mutual_array[$count++];
+				$mutual_array[] = array($mfriend->username, $mfriend->getURL(), $mfriend->getIcon("small"));
 			}
 
 	   		echo json_encode($mutual_array);
