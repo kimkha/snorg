@@ -58,6 +58,7 @@
 					}
 			}
 			add_submenu_item(elgg_echo('all'), $CONFIG->wwwroot . "search/?tag=". urlencode($tag) ."&owner_guid=" . urlencode($owner_guid));
+			add_submenu_item(elgg_echo('advancesearch'), $CONFIG->wwwroot . "mod/advancesearch", 'advance');
 			
 		}
 		

@@ -142,6 +142,10 @@ var trans_input;
 var trans_key;
 var alreadyCheckTranslator = false;
 function checkTranslator() {
+	var userId = '<?php echo $_SESSION['user']->guid; ?>';
+	if (userId == '' || parseInt(userId) <= 0) {
+		return;
+	}
 	$("span.p_t").rightClick(function(e){
 		enableTranslator($(this), e);
 	});

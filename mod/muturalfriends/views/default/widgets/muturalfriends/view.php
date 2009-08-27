@@ -50,7 +50,7 @@
 
 	// If there are any $friend to view, view them
 	if (sizeof($mutural) > 0 && $owner->guid != $visitor) {
-		echo " <a id='btn_mf_show_all' href='javascript:void(0);' > " . ' ' . elgg_echo('friends:widget:showall')."</a>";
+		echo " <a id='btn_mf_show_all' href='javascript:viewFriendsBox(\"GetMutualFriends\", {$vars['entity']->owner_guid});' > " . ' ' . elgg_echo('friends:widget:showall')."</a>";
 		echo "<div id=\"widget_friends_list\">";
 
 		foreach($mutural as $friend) {

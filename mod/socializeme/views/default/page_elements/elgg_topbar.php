@@ -110,7 +110,7 @@
 </div><!-- /#elgg_topbar -->
 
 
-<div style="height:25px;"></div>
+<div class="clearfloat"></div>
 
 
 <?php
