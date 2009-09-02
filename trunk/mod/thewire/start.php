@@ -21,6 +21,7 @@
 	 * @param unknown_type $object
 	 */
 
+	
 		function thewire_init() {
 			
 			// Load system configuration
@@ -39,6 +40,7 @@
 		    //extend views
 				extend_view('activity/thewire', 'thewire/activity_view');
 				extend_view('profile/status', 'thewire/profile_status');
+				extend_view('profile/tabs', 'thewire/profile_tab', 400);
 				
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('thewire','thewire_page_handler');
@@ -161,7 +163,7 @@
 			
 			// Set its owner to the current user
 			$thewire->owner_guid = get_loggedin_userid();
-			
+
 			// For now, set its access to public (we'll add an access dropdown shortly)
 			$thewire->access_id = $access_id;
 			
@@ -174,7 +176,7 @@
 	        
 	        //save
 			$save = $thewire->save();
-
+			
 			if($save)
 				add_to_river('river/object/thewire/create','create',$_SESSION['user']->guid,$thewire->guid);
 	        
@@ -209,6 +211,8 @@
 	// Register actions
 		global $CONFIG;
 		register_action("thewire/add",false,$CONFIG->pluginspath . "thewire/actions/add.php");
+		register_action("thewire/add_tiny",false,$CONFIG->pluginspath . "thewire/actions/add_tiny.php");
 		register_action("thewire/delete",false,$CONFIG->pluginspath . "thewire/actions/delete.php");
+		register_action("thewire/thewire_tab",false,$CONFIG->pluginspath . "thewire/actions/thewire_tab.php");
 		
 ?>

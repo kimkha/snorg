@@ -52,6 +52,18 @@
 			
 		}
 		
+		/*
+		 * MOD START by Snow
+		 * add details toggle
+		 */
+		$info .= "<a href=\"\" class=\"user_details_toggle\" onclick=\"$('#user_details_toggle-{$vars['entity']->guid}').toggle();return false;\">".elgg_echo('profile:toggle_details')."</a>";
+		$info .= "<div id=\"user_details_toggle-{$vars['entity']->guid}\" style=\"display:none\">";
+		$info .= elgg_view('profile/details',$vars);
+		$info .= "</div>";
+		/*
+		 * MOD END by Snow
+		 */ 
+		
 		echo elgg_view_listing($icon, $info);
 			
 ?>

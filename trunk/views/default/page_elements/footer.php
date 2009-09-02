@@ -39,7 +39,7 @@
 	<tr>
 		<td width="210" height="28">
 		<a href="http://www.elgg.org" target="_blank">
-		<img src="<?php echo $vars['url']; ?>_graphics/powered_by_elgg_badge_drk_bckgnd.gif" border="0" />
+		<img src="<?php echo $vars['url']; ?>_graphics/powered_by_snorg_badge_drk_bckgnd.gif" border="0" />
 		</a>
 		</td>
 		

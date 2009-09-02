@@ -844,6 +844,26 @@
 		run_function_once("filestore_run_once");
 	}
 	
+	/**
+	 * Create image from email
+	 * 
+	 */
+	function createImageFromEmail($email) {
+		$filename = getPathOfImage($email);
+		
+		$filehandler = new ElggFile();
+	}
+	
+	function createImageDataOfEmail($email) {
+		$output = <<<EOD
+		<?php ?>
+EOD;
+	}
+	
+	function getPathOfImage($email) {
+		return "email/".md5($email).".png";
+	}
+	
 	// Register a startup event
 	register_elgg_event_handler('init','system','filestore_init',100);	
 ?>

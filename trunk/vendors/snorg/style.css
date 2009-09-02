@@ -25,7 +25,6 @@
 	left:0px;
 	top:0px;
 	width:100%;
-	min-height:768px;
 	display:none;
 	background-color:#E1E1E1;
 	opacity:0.6;
@@ -93,6 +92,21 @@
 .kdialogContent .kdialogButton {
 	float: right;
 	padding-right: 20px;
+}
+
+#ktabs_panel {
+	padding: 0px 10px;
+	border-bottom: 1px solid #008288;
+}
+#ktabs_panel a {
+	border: 1px solid #008288;
+	padding: 0px 3px 1px 3px;
+	background-color: #E2F3F5;
+	margin: 0px 2px;
+}
+#ktabs_panel a.tabPanel_active {
+	border-bottom: 1px solid #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 

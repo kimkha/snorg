@@ -37,8 +37,8 @@
 	<tr>
 		<td width="288" height="28">
 		<a href="http://www.elgg.org" target="_blank">
-		<img src="<?php echo $vars['url']; ?>_graphics/powered_by_elgg_badge_drk_bckgnd.gif" border="0" />		</a>
-		<a href="http://www.edesignerz.net" target="_blank"><img src="<?php echo $vars['url']; ?>mod/web1/graphics/designed_by_edesignerznet.jpg" border="0" /></a></td>
+		<img src="<?php echo $vars['url']; ?>_graphics/powered_by_snorg_badge_drk_bckgnd.gif" border="0" />
+		</a></td>
 		
 	  <td width="670" height="28" align="right">
 		<p class="footer_legal_links"><small>

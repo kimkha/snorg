@@ -20,19 +20,19 @@ function viewFriendsBox(action, ownerId) {
 		displayFriendsOnDialog(friends);
 	});
 	
-	$("#inputFilter").keypress(function(e){
+	$("#inputFilter").keyup(function(e){
 		var filteredFriends = filterFriends(friends, $(this).val());
-		displayFriendsOnDialog(filteredFriends);
+		displayFriendsOnDialog(filteredFriends, $(this).val());
     });
 	
 }
 
-function displayFriendsOnDialog(friends) {
+function displayFriendsOnDialog(friends, strFilter) {
 	var list = ''
 	for(index in friends){
 		list += "<div class='contentWrapper'>";
 		list += "<a href='" + friends[index][1] + "'>";
-		list += "<img src='" + friends[index][2] + "' alt='Avatar of " + friends[index][0] + "' /><b>" + friends[index][0] + "</b>";
+		list += "<img src='" + friends[index][2] + "' alt='Avatar of " + friends[index][0] + "' /><b>" + friends[index][0].replace(strFilter, "<span style='background:#D2D2D2;'>"+strFilter+"</span>") + "</b>";
 		list += "</a></div>";                                
 	}
 	$('#friends_wrapper').html(list);
@@ -46,7 +46,7 @@ function filterFriends(friends,strFilter){
     for (index in friends) {
     	var pos = friends[index][0].toLowerCase().indexOf(strFilter.toLowerCase());
 		if ( pos >=0 ){
-			filteredFriends[count++] = friends[index];      
+			filteredFriends[count++] = friends[index];
 		}
     }
     return filteredFriends;

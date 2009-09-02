@@ -1,5 +1,15 @@
 <?php
-
+	/**
+	 * Modified edit action to fit ElggObject based profile config
+	 * and add plugin hook after got input and save
+	 *
+	 * @package ImprovedProfile
+	 */
+	/**
+	 * @author Snow.Hellsing <snow@g7life.com>
+	 * @copyright FireBloom Studio
+	 * @link http://firebloom.cc
+	 */
 	/**
 	 * Elgg profile plugin edit action
 	 * 
@@ -17,14 +27,42 @@
 		$input = array();
 		$accesslevel = get_input('accesslevel');
 		if (!is_array($accesslevel)) $accesslevel = array();
+		/*
+		 * MOD START by Snow
+		 * to fit ElggObject based profile config
+		 *
+		 */
+		$profile = $CONFIG->profile;
+		try {
+			foreach($profile as $category) {
+				foreach ($category as $item) {
+					$shortname = $item->title;
+					$valuetype = $item->valuetype;
+					
+					switch ($valuetype) {
+						default:
+							$input[$shortname] = get_input($shortname);
+						break;
+						
+						case 'tags':
+							$input[$shortname] = string_to_tag_array_snowMod(get_input($shortname));
+						break;		
+					}
+				}
+			}
+			//put this out of foreach for performence thoughts
+			if (isset($profile['basic']['birthday'])) {					
+				$input['show_birth_year'] = get_input('show_birth_year');
+			}
 		
-		foreach($CONFIG->profile as $shortname => $valuetype) {
-			$input[$shortname] = get_input($shortname);
-			
-			if ($valuetype == 'tags')
-				$input[$shortname] = string_to_tag_array($input[$shortname]);
-		}
-		
+			$input = trigger_plugin_hook('profile:update:preprocess','user',$input,$input);
+		}catch (Exception $e){
+			register_error($e->getMessage());
+			friendlyforward();
+		}	
+		/*
+		 * MOD END by Snow
+		 */
 	// Save stuff if we can, and forward to the user's profile
 		
 		if ($user = page_owner()) {
@@ -59,6 +97,15 @@
 					}
 					
 				}
+			/*
+			 * MOD START by Snow
+			 *
+			 */
+			$input['user'] = $user;
+			trigger_plugin_hook('profile:update:postprocess','user',$input);
+			/*
+			 * MOD END by Snow
+			 */ 
 			$user->save();
 
 			// Notify of profile update

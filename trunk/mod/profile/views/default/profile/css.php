@@ -1,5 +1,9 @@
 <?php
-
+	/**
+	 * @author Snow.Hellsing <snow@g7life.com>
+	 * @copyright FireBloom Studio
+	 * @link http://firebloom.cc
+	 */
 	/**
 	 * Elgg Profile 
 	 * 
@@ -11,6 +15,10 @@
 	 */
 	 
 ?>
+.profile_category_title{
+	display: block;
+	border-top: 0.5px dotted;
+}
 
 #profile_icon_wrapper {
 	float:left;

@@ -95,7 +95,8 @@
 	}	
 	
 	function leaveSession(sessionid){
-		if(confirm("<?php echo elgg_echo('elggchat:chat:leave:confirm');?>")){
+		$kconfirm("<?php echo elgg_echo('elggchat:chat:leave:confirm');?>", function(ans){
+			if (!ans) return false;
 			eraseCookie("elggchat_session_" + sessionid);
 			var current = readCookie("elggchat");
 			if(current == sessionid){
@@ -106,7 +107,7 @@
 				checkForSessions();
 				floatChatWindow(0);
 			});
-		} 
+		});
 	}
 	
 	function elggchat_toolbar_resize(){

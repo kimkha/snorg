@@ -96,7 +96,7 @@
 			$this->attributes['enabled'] = "yes";
 			
 			// There now follows a bit of a hack
-			/* Problem: To speed things up, some objects are split over several tables, this means that it requires
+			/** Problem: To speed things up, some objects are split over several tables, this means that it requires
 			 * n number of database reads to fully populate an entity. This causes problems for caching and create events
 			 * since it is not possible to tell whether a subclassed entity is complete.
 			 * Solution: We have two counters, one 'tables_split' which tells whatever is interested how many tables 
