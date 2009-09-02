@@ -26,6 +26,7 @@
 			'thewire:doing' => "What are you doing? Tell everyone on the wire:",
 			'thewire:newpost' => 'New wire post',
 			'thewire:addpost' => 'Post to the wire',
+			'thewire:nomessage' => 'There are no post on the wire',
 
 	
         /**

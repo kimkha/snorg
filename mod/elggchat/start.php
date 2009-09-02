@@ -13,6 +13,7 @@
 	global $CONFIG;
 	
 	define("ELGGCHAT_MEMBER", "elggchat_member");
+	define("ELGGCHAT_LOGOUT", "elggchat_logout");
 	define("ELGGCHAT_SESSION_SUBTYPE", "elggchat_session");
 	define("ELGGCHAT_SYSTEM_MESSAGE", "elggchat_system_message");
 	define("ELGGCHAT_MESSAGE", "elggchat_message");	

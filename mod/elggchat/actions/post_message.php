@@ -15,7 +15,7 @@
 	
 	$sessionId = (int) get_input("chatsession");
 	$userId = get_loggedin_userid();
-//	$timestamp = date('H:i A', strtotime("-1 hours"));
+	
 	if(check_entity_relationship($sessionId, ELGGCHAT_MEMBER, $userId)){
 		$input = get_input("chatmessage");
 		$input = wordwrap($input, 8, "<wbr />", true);

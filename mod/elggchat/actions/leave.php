@@ -21,12 +21,14 @@
 		$user = get_user($userId);
 		
 		remove_entity_relationship($sessionId, ELGGCHAT_MEMBER, $userId);
+		add_entity_relationship($sessionId, ELGGCHAT_LOGOUT, $userId);
 		
 		$session->annotate(ELGGCHAT_SYSTEM_MESSAGE, sprintf(elgg_echo('elggchat:action:leave'), $user->name), ACCESS_LOGGED_IN, $userId);
 		
 		// Clean up
 		if($session->countEntitiesFromRelationship(ELGGCHAT_MEMBER) == 0){
 			// No more members
+			remove_entity_relationships($sessionId, ELGGCHAT_LOGOUT);
 			$session->delete();
 		}elseif($session->countAnnotations(ELGGCHAT_MESSAGE) == 0 && !check_entity_relationship($session->guid, ELGGCHAT_MEMBER, $session->owner_guid)){
 			// Owner left without leaving a real message

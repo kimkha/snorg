@@ -20,11 +20,18 @@
 	var ajaxloadRe = /^(http|https):\/\/([^\/\s]+)\/(\S+)$/i;
 	
 	function ajaxload(link) {
-		$("#layout_canvas > *").css('visibility', 'hidden');
 		window.location.href = "#"+link;
+		$("#layout_canvas").html($kloading());
 		$("#layout_canvas").load(ajaxloadRoot + link + " #layout_canvas > *", function () {
 			ajaxAllLinks();
-			$("#layout_canvas").css('visibility', 'visible');
+		});
+	}
+	
+	function ajaxloadP(input, link) {
+		window.location.href = "#"+link;
+		$("#layout_canvas").html($kloading());
+		$("#layout_canvas").load(ajaxloadRoot + link + " #layout_canvas > *", input, function () {
+			ajaxAllLinks();
 		});
 	}
 	
@@ -43,9 +50,14 @@
 		$("form").each(function(){
 			$(this).submit(function(){
 				var link = $(this).attr('action');
-				if (typeof(link) == "undefined" || link == '') return true;
+				if (typeof(link) == "undefined" || link == '') return false;
 				
-				return true;
+				if (link.match(ajaxloadHttp)) {
+					link = link.replace(ajaxloadRoot, "");
+					ajaxloadP($(this).serializeArray(), link);
+					return false;
+				}
+				return false;
 			});
 		});/**/
 	}

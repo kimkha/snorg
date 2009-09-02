@@ -18,6 +18,7 @@ function splitname($name, $num) {
 
 if($user = get_loggedin_user()){
 	$chat_sessions_count = get_entities_from_relationship(ELGGCHAT_MEMBER, $user->getGUID(), true, "", "", "", "time_created asc", null, null, true);
+	$chat_sessions_count += get_entities_from_relationship(ELGGCHAT_LOGOUT, $user->getGUID(), true, "", "", "", "time_created asc", null, null, true);
 	$result = array();
 	$currentTimestamp = get_input('currentTimestamp', 0);
 	$newTimestamp = time();
@@ -25,6 +26,8 @@ if($user = get_loggedin_user()){
 	if($chat_sessions_count > 0){
 		// Generate sessions
 		$chat_sessions = $user->getEntitiesFromRelationship(ELGGCHAT_MEMBER, true);
+		$chat_sessions1 = $user->getEntitiesFromRelationship(ELGGCHAT_LOGOUT, true);
+//		array_push($chat_sessions, $chat_sessions1);
 		krsort($chat_sessions);
 		
 		$result["sessions"] = array();
