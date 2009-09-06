@@ -17,10 +17,7 @@
 	$userId = get_loggedin_userid();
 	
 	if(check_entity_relationship($sessionId, ELGGCHAT_MEMBER, $userId)){
-		$input = get_input("chatmessage");
-		$input = wordwrap($input, 8, "<wbr />", true);
-		
-		$chat_message = nl2br($input);
+		$chat_message = nl2br(string_wrap(get_input("chatmessage")));
 		
 		if(!empty($chat_message)){
 			$session = get_entity($sessionId);

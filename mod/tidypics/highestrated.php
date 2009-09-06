@@ -28,7 +28,6 @@
 	}
 
 	list($group_holder, $album_id) = split(":", $groupname);
-//		echo "<pre>page: $page\ngroup: $groupname\nalbum: $album_id"; die;
 	
 	$user = get_user_by_username($friendname);
 	global $CONFIG;

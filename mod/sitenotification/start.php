@@ -81,8 +81,6 @@
 		 * @return true|false Depending on success
 		 */
 		function save_notification($from, $to , $action, $objectname = 0, $message = 0) {
-				
-			 //echo "<pre>";print_r($to);die;
 		    // Initialise a new ElggObject
 					$notification_message = new ElggObject();
 					

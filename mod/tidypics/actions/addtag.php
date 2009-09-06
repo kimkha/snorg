@@ -94,7 +94,6 @@
 			}
 		}
 	
-//	echo "<pre>"; print_r($image_guid); die;
     // send notification to User who is tagged.
 	if (notify_user($friend->getGUID(),$user->getGUID(), "tagged you" , "at photo"."-".$image->getURL()));					
 	else

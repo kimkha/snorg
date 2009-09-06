@@ -11,11 +11,6 @@
 	* @version 0.4
 	*/
 
-function splitname($name, $num) {
-	if (strlen($name) > $num) return substr($name, 0, $num-1)."..";
-	return $name;
-}
-
 if($user = get_loggedin_user()){
 	$chat_sessions_count = get_entities_from_relationship(ELGGCHAT_MEMBER, $user->getGUID(), true, "", "", "", "time_created asc", null, null, true);
 	$chat_sessions_count += get_entities_from_relationship(ELGGCHAT_LOGOUT, $user->getGUID(), true, "", "", "", "time_created asc", null, null, true);

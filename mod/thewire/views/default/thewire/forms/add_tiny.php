@@ -35,18 +35,25 @@ function textCounter(field,cntfield) {
     }
 }
 function submitnoteForm(thisForm){
-	myForm = $(thisForm);
 	value = "<?php echo $msg; ?>" + $("#thewire_tiny-textarea").val();
 	$("#thewire_tiny-textarea").val(value);
-	/*
+	
+	myForm = $(thisForm);
 	url = myForm.attr('action');
 	$.post(url, myForm.serializeArray(), function(data){
-		
-	}, 'json');*/
+		$(".profile_status").each(function(){
+			$(this).html(data.status);
+		});
+		$("#thewire-tab").prepend(data.list);
+		$("#wallpost").prepend(data.wall);
+		$("#thewire_tiny-textarea").val('');
+		thisForm.submit.blur();
+	}, 'json');
+	return false;
 }
 </script>
 
-	<form action="<?php echo $vars['url']; ?>action/thewire/add_tiny" method="post" name="noteForm" onsubmit="submitnoteForm(this);">
+	<form action="<?php echo $vars['url']; ?>action/thewire/add_tiny" method="post" name="noteForm" onsubmit="submitnoteForm(this);return false;">
 			<?php
 			    $display .= "<textarea name='note' onKeyDown=\"textCounter(document.noteForm.note,document.noteForm.remLen1)\" onKeyUp=\"textCounter(document.noteForm.note,document.noteForm.remLen1)\" id=\"thewire_tiny-textarea\"></textarea>";
                 $display .= "<div class='thewire_characters_remaining'><input readonly type=\"text\" name=\"remLen1\" size=\"3\" maxlength=\"3\" value=\"140\" class=\"thewire_characters_remaining_field\">";
@@ -55,6 +62,6 @@ function submitnoteForm(thisForm){
 			?>
 			<input type="hidden" name="method" value="site" />
 			<input type="hidden" name="owner" value="<?php echo $owner->guid; ?>" />
-			<input type="submit" value="<?php echo elgg_echo('save'); ?>" />
+			<input type="submit" name="submit" value="<?php echo elgg_echo('save'); ?>" />
 	</form>
 </div>

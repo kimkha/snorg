@@ -11,7 +11,6 @@
 ?>
 
 #custom_index {
-	margin:10px;
 }
 #index_left {
     width:325px;
@@ -70,7 +69,7 @@ padding-left:10px;
 	background: transparent;
 	width:262px;
 }
-h3{
+#custom_index h3{
 padding:8px;
 padding-left:15px;
 color:white;

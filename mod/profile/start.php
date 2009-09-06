@@ -85,7 +85,11 @@
 				extend_view('metatags','profile/metatags');
 				extend_view('css','profile/css');
 				extend_view('js/initialise_elgg','profile/javascript');
+				
+			// Add to tab of profile
+				extend_view('profile/tabs','profile/wall', 400);
 				extend_view('profile/tabs','profile/info', 500);
+				
 				if (get_context() == "profile") {
 				    extend_view('canvas_header/submenu','profile/submenu');
 				    
@@ -325,8 +329,10 @@
 
 	// Register actions
 		global $CONFIG;
+		register_action("wall_comment");
 		register_action("profile/edit",false,$CONFIG->pluginspath . "profile/actions/edit.php");
 		register_action("profile/info",false,$CONFIG->pluginspath . "profile/actions/info.php");
+		register_action("profile/wall",false,$CONFIG->pluginspath . "profile/actions/wall.php");
 		register_action("profile/iconupload",false,$CONFIG->pluginspath . "profile/actions/iconupload.php");
 		register_action("profile/cropicon",false,$CONFIG->pluginspath . "profile/actions/cropicon.php");
 		/*

@@ -8,7 +8,7 @@
 	$url_to_wire = $vars['url'] . "pg/thewire/" . $vars['entity']->username;
 	
 	//grab the users latest from the wire
-	$latest_wire = get_entities("object", "thewire", $owner, "", 1, 0, false, 0, $owner);
+	$latest_wire = get_entities("object", "thewire", $owner, "", 1, 0, false, 0);
 
 	if($latest_wire){
 		foreach($latest_wire as $lw){

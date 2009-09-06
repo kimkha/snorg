@@ -133,6 +133,6 @@ function setup_avatar_menu() {
 
 $(document).ready(function() {
 
-	setup_avatar_menu();						   
+	setup_avatar_menu();	
 								   
 });

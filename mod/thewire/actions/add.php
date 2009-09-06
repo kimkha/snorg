@@ -34,17 +34,12 @@
 	// Otherwise, save the thewire post 
 		} else {
 			
-			if (!thewire_save_post($body, $access_id, $parent, $method)) {
+			if (!thewire_save_post($body, $access_id, $parent, $method, $tagarray)) {
 				register_error(elgg_echo("thewire:error"));
 				if($location == "activity")
 					forward("mod/riverdashboard/");
 				else
 					forward("mod/thewire/add.php");
-			}
-	        
-	// Now let's add tags. We can pass an array directly to the object property! Easy.
-			if (is_array($tagarray)) {
-				$thewire->tags = $tagarray;
 			}
 	        
 	// Success message

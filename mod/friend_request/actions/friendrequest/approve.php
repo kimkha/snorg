@@ -42,11 +42,6 @@ if(remove_entity_relationship($friend->guid, 'friendrequest', $user->guid)) {
 	
 	system_message(sprintf(elgg_echo('friendrequest:successful'), $friend->name));
 	
-	//echo "<pre>"; print_r($user); die;
-	
-		
-	
-	
 	
 } else {
 	system_message(sprintf(elgg_echo('friendrequest:approvefail'), $friend->name));

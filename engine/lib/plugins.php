@@ -704,6 +704,7 @@
 			register_action("plugins/usersettings/save");
 			
 			register_action('admin/plugins/enable', false, "", true); // Enable
+			register_action('admin/plugins/re-enable', false, "", true); // Re-enable
 			register_action('admin/plugins/disable', false, "", true); // Disable
 			register_action('admin/plugins/enableall', false, "", true); // Enable all
 			register_action('admin/plugins/disableall', false, "", true); // Disable all

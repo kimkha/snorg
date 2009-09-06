@@ -41,6 +41,7 @@ function insertNotebook(data) {
 	
 	$("#recently_notebook .notebook_content").prepend(newnote);
 	$("#recently_notebook .notebook_content").attr("scrollTop", 0);
+	notebookid++;
 	return true;
 }
 

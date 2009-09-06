@@ -40,7 +40,6 @@
 				
 	   		$user_notifications = get_entities_from_metadata('to',$user_guid, 'object', 'notification',0, 15, 0,"",0,false);
 	   		$user_notifications_json = array();
-			//echo "<pre>"; print_r($user_notifications); die;
 			
 			$count = 0;
 			foreach ($user_notifications as $notification){
@@ -56,7 +55,6 @@
 				$notification_json[2] = $action;
 				$notification_json[3] = $target_object[0]; //object name
 				$notification_json[4] = $target_object[1]; //object url
-				//echo "<pre>"; print_r($target_object); die;
 				$user_notifications_json[$count++] = $notification_json;
 				                   
 	        }
@@ -68,7 +66,6 @@
 	   		
 	   		$user_notifications = get_entities_from_metadata_multi( array('to' => $user_guid, 'read_yet' => 0), 'object', 'notification',0, 9999, 0,"",0,false);
 	   		$user_notifications_json = array();
-			//echo "<pre>"; print_r($user_notifications); die;
 			
 			$count = 0;
 			foreach ($user_notifications as $notification){
@@ -84,7 +81,6 @@
 				$notification_json[2] = $action;
 				$notification_json[3] = $target_object[0]; //object name
 				$notification_json[4] = $target_object[1]; //object url
-				//echo "<pre>"; print_r($target_object); die;
 				$user_notifications_json[$count++] = $notification_json;
 				                   
 	        }

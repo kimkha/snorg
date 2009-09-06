@@ -2,10 +2,30 @@
 	/**
 	 * KDialog Script
 	 * 
+	 * Function:
+	 *         -  $ksimpleForm(thisForm, id)
+	 *         -  $kalert(msg)
+	 *         -  $kconfirm(msg, fn)
+	 *         -  $kprompt(msg, val, fn)
+	 *         -  $kbox(t, c)
+	 *         -  $kloading()
+	 * 
 	 * @author KimKha
 	 */
 	
 	var $k;
+	var max_ksimpleForm_id = 0;
+	
+	function $ksimpleForm(thisForm, id) {
+		myForm = $(thisForm);
+		url = myForm.attr('action');
+		$.post(url, myForm.serializeArray(), function(data){
+			$('#'+id).append("<div id='k_simpleForm_id_"+max_ksimpleForm_id+"'>"+data+"</div>");
+			myForm.find("textarea").val("");
+			max_ksimpleForm_id++;
+		});
+		return false;
+	}
 	
 	function $kalert(msg) {
 		$k.dialog.title = "SNORG Warning!";
@@ -199,6 +219,7 @@ function $ktabs() {
 	
 	/* Attributes */
 	tabList = new Array();
+	curr = -1;
 	
 	var kpanel = null;
 	var ktab = null;
@@ -209,34 +230,20 @@ function $ktabs() {
 		tab = findTab(tabpanel.attr('href'));
 		if (tab == null) return;
 		
-		if (tab.content == '') {
-			ktab.html($kloading());
+		ktab.find("div.contentOfTabs").css("display", "none");
+		tab.content.css("display","block");
+		kpanel.find(".tabPanel_active").removeClass("tabPanel_active");
+		tabpanel.addClass("tabPanel_active");
+		
+		if (!tab.exist) {
 			$.get(tab.url, function(data){
 				if (typeof(data) != "undefined") {
-					tab.content = data;
-					ktab.html(tab.content);
-					kpanel.find(".tabPanel_active").removeClass("tabPanel_active");
-					tabpanel.addClass("tabPanel_active");
+					tab.content.html(data);
+					tab.exist = true;
 				}
+				$kreset();
 			});
 		}
-		else {
-			ktab.html(tab.content);
-			kpanel.find(".tabPanel_active").removeClass("tabPanel_active");
-			tabpanel.addClass("tabPanel_active");
-		}
-	};
-	
-	buildTabs = function(tab){
-		tabList[maxId++] = {
-			name : tab.html(),
-			url : tab.attr('href'),
-			content : ''
-		};
-		tab.click(function(){
-			$k.tabs.open($(this));
-			return false;
-		});
 	};
 	
 	findTab = function(h){
@@ -248,13 +255,31 @@ function $ktabs() {
 		return null;
 	}
 	
+	buildTabs = function(tab){
+		ktab.append("<div class='contentOfTabs' id='tab-content-"+maxId+"'>"+$kloading()+"</div>");
+		t = ktab.find("#tab-content-"+maxId);
+		t.css("display", "none");
+		
+		tabList[maxId++] = {
+			name : tab.html(),
+			url : tab.attr('href'),
+			content : t,
+			exist : false
+		};
+		
+		tab.click(function(){
+			$k.tabs.open($(this));
+			return false;
+		});
+	};
+	
 	/* Constructor */
 	constructor = function(){
 		kpanel = $("#ktabs_panel");
+		ktab = $("#ktabs_content");
 		kpanel.find("a").each(function(){
 			buildTabs($(this));
 		});
-		ktab = $("#ktabs_content");
 		open($("#ktabs_panel a:first"));
 	};
 	this.constructor();
@@ -271,11 +296,31 @@ function $kloading() {
 	return "<div class=\"ajax_loader\" align=\"center\"></div>";
 }
 
+function setup_wallpost_textarea() {
+	$("#wallpost .wall_comments input[type='submit']").each(function(){
+		$(this).css("display", "none");
+	});
+	$("#wallpost .wall_comments textarea").each(function(){
+		$(this).focus(function(){
+			$(this).css('height', 'auto');
+			$(this).parent().find("input[type='submit']").css("display", "inline");
+		});
+		$(this).blur(function(){
+			if ($(this).val() == '') {
+				$(this).css('height', '13px');
+				$(this).parent().find("input[type='submit']").css("display", "none");
+			}
+		});
+	});
+}
+
 function kdemo(msg) {
 	$kalert("kimkha "+msg);
 }
 
+function $kreset() {
+	setup_wallpost_textarea();
+}
 $(document).ready(function(){
 	$k = $kk();
-//	$kprompt("KimKha", 'abc', kdemo);
 });

@@ -31,7 +31,7 @@
 	
 ?>
 
-	<div id="widget<?php echo $vars['entity']->getGUID(); ?>">
+	<div id="widget<?php echo $vars['entity']->getGUID(); ?>" class="<?php echo $handler; ?>">
 	<div class="collapsable_box">
 	<div class="collapsable_box_header">
 	<a href="javascript:void(0);" class="toggle_box_contents">-</a><?php if ($vars['entity']->canEdit()) { ?><a href="javascript:void(0);" class="toggle_box_edit_panel"><?php echo elgg_echo('edit'); ?></a><?php } ?>

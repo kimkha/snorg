@@ -14,10 +14,10 @@
 	$userId = get_loggedin_userid();
 	
 	$result = array();
-	$result['title'] = nl2br(wordwrap(get_input('title'), 8, "<wbr />", true));
-	$result['description'] = nl2br(wordwrap(get_input('description'), 8, "<wbr />", true));
-	$result['category'] = nl2br(wordwrap(get_input('category'), 8, "<wbr />", true));
-	$result['comment'] = nl2br(wordwrap(get_input('comment'), 8, "<wbr />", true));
+	$result['title'] = nl2br(string_wrap(get_input('title')));
+	$result['description'] = nl2br(string_wrap(get_input('description')));
+	$result['category'] = nl2br(string_wrap(get_input('category')));
+	$result['comment'] = nl2br(string_wrap(get_input('comment')));
 	
 		$notebook = new ElggObject();
 		$notebook->subtype = NOTEBOOK_SUBTYPE;
