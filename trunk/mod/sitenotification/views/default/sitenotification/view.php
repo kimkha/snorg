@@ -6,7 +6,6 @@
 	//$notifications = get_entities("object", 'notification');
 //	$user_notifications = array();
 //	$i=0;
-//	//echo "<pre>"; print_r($notifications); die;
 //	foreach ($notifications as $notification){
 //		 
 //		if ( ($notification->to != null) && ($notification->to == '10' )){

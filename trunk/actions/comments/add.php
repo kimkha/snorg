@@ -45,9 +45,7 @@
 					unset($otherUser[array_search($entity->owner_guid,$otherUser)]);
 					
 					foreach ($otherUser as $uid) {
-						
-					//	echo "<pre>"; print_r($lastUser->getGUID()); die;
-					
+											
 						notify_user($uid, $lastUser->getGUID(), "also comment on","  topic"."-".$entity->getURL());
 						
 					}

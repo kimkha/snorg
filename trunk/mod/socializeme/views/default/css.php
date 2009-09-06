@@ -2739,3 +2739,90 @@ border-top:none;
 	border-bottom: 2px solid #50D050;
 	cursor: help;
 }
+
+/* Wall post */
+.wall-singlepage {
+	margin:0 10px 0 10px;
+}
+.wall-singlepage .note_body {
+	margin:0;
+	padding:6px 4px 4px 4px;
+	min-height: 40px;
+	line-height: 1.4em;
+}
+.wall-singlepage .wall-post {
+	margin-bottom:5px;
+}
+.wall-post .note_date {
+	font-size:80%;
+	color:#999999;
+	padding:0;
+}
+.wall_icon {
+    float:left;
+    margin:0 3px 4px 2px;
+}
+.wall_status {
+	margin:0px;
+	font-size: 90%;
+}
+.wall_content {
+	font-size: 80%;
+	padding: 5px 5px 0px 55px;
+}
+.wall_content p {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+.wall_options {
+	float:right;
+	width:65px;
+}
+.wall_comments {
+	padding: 0px 10px;
+}
+.wall_comments textarea {
+	width: 100%;
+	height: 13px;
+	font-size: 70%;
+}
+.wall-post .comments {
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	background:#999999;
+	border: 2px solid #999999;
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px;
+	width: auto;
+	padding: 0 3px 2px 3px;
+	margin:0 0 5px 5px;
+	cursor: pointer;
+	float:right;
+}
+.wall-post .comments:hover {
+	background: #4690d6;
+	border: 2px solid #4690d6;
+	color:white;
+	text-decoration: none;
+}
+.wall-post .delete_note {
+	width:14px;
+	height:14px;
+	margin:3px 0 0 0;
+	float:right;
+}
+.wall-post .delete_note a {
+	display:block;
+	cursor: pointer;
+	width:14px;
+	height:14px;
+	background: url("<?php echo $vars['url']; ?>_graphics/icon_customise_remove.png") no-repeat 0 0;
+	text-indent: -9000px;
+}
+.wall-post .delete_note a:hover {
+	background-position: 0 -16px;
+}
+/* IE 6 fix */
+* html .wall-post .delete_note a { background-position: 0 2px; }
+* html .wall-post .delete_note a:hover { background-position: 0 -14px; }

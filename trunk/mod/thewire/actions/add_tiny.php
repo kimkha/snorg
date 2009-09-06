@@ -10,43 +10,49 @@
 	 * @link http://elgg.org/
 	 */
 
-	// Make sure we're logged in (send us to the front page if not)
-		if (!isloggedin()) forward();
+// Make sure we're logged in (send us to the front page if not)
+	if (!isloggedin()) exit();
 
-	// Get input data
-		$body = get_input('note');
-		$tags = get_input('thewiretags');
-		$access_id = get_default_access();
-		$location = get_input('location');
-		$method = get_input('method');
-		$owner = get_user(get_input('owner'));
-		$parent = (int)get_input('parent', 0);
-		if(!$parent)   
-		    $parent = 0;
-	// convert the shout body into tags
-	    $tagarray = filter_string($body);
-		
-	// Make sure the title / description aren't blank
-		if (empty($body)) {
-			register_error(elgg_echo("thewire:blank"));
-			
-	// Otherwise, save the thewire post 
-		} else {
-			
-			if (!thewire_save_post($body, $access_id, $parent, $method)) {
-				register_error(elgg_echo("thewire:error"));
-			}
-	        
-	// Now let's add tags. We can pass an array directly to the object property! Easy.
-			if (is_array($tagarray)) {
-				$thewire->tags = $tagarray;
-			}
-	        
-	// Success message
-			system_message(elgg_echo("thewire:posted"));
+// Get input data
+	$body = get_input('note');
+	$tags = get_input('thewiretags');
+	$access_id = get_default_access();
+	$location = get_input('location');
+	$method = get_input('method');
+	$owner = get_user(get_input('owner'));
+	$parent = (int)get_input('parent', 0);
+	if(!$parent)   
+	    $parent = 0;
+// convert the shout body into tags
+    $tagarray = filter_string($body);
 	
+// Make sure the title / description aren't blank
+	if (!empty($body)) {
+		if (thewire_save_post($body, $access_id, $parent, $method, $tagarray)) {
+			$latest_wire = get_entities("object", "thewire", $owner->guid, "", 1, 0, false, 0);
+			if ($latest_wire) {
+				$return = array();
+				$latest_wire = $latest_wire[0];
+				
+				// View new status
+				$return['status'] = $latest_wire->description;
+				if($owner->guid == $_SESSION['user']->guid)
+					$return['status'] .= " <a class=\"status_update\" href=\"{$url_to_wire}\">update</a>";
+				$return['status'] .= "<span> (" . friendly_time($latest_wire->time_created) . ")</span>";
+				
+				// Update list
+				$return['list'] = elgg_view_entity($latest_wire);
+				$return['wall'] = elgg_view("object/thewire", array('entity' => $latest_wire, 'full' => false, 'viewtype' => 'wall'));
+				
+				header("Content-Type: application/json; charset=UTF-8");
+				header("Cache-Control: no-store, no-cache, must-revalidate");
+				header("Cache-Control: post-check=0, pre-check=0", false);
+				header("Pragma: no-cache");
+				
+				echo json_encode($return);
+			}
 		}
-		
-		forward("pg/profile/".$owner->username);
-		
+	}
+	exit();
+
 ?>

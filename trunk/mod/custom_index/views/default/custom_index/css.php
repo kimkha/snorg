@@ -11,7 +11,6 @@
 ?>
 
 #custom_index {
-	margin:10px;
 }
 #index_left {
     width:442px;

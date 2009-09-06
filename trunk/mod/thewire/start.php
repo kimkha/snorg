@@ -40,7 +40,7 @@
 		    //extend views
 				extend_view('activity/thewire', 'thewire/activity_view');
 				extend_view('profile/status', 'thewire/profile_status');
-				extend_view('profile/tabs', 'thewire/profile_tab', 400);
+				extend_view('profile/tabs', 'thewire/profile_tab', 450);
 				
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('thewire','thewire_page_handler');
@@ -153,7 +153,7 @@
 		 * @param string $method The method (default: 'site')
 		 * @return bool
 		 */
-		function thewire_save_post($post, $access_id, $parent=0, $method = "site")
+		function thewire_save_post($post, $access_id, $parent=0, $method = "site", $tag = false)
 		{
 			// Initialise a new ElggObject
 			$thewire = new ElggObject();
@@ -174,6 +174,7 @@
 	        $thewire->method = $method; //method, e.g. via site, sms etc
 	        $thewire->parent = $parent; //used if the note is a reply
 	        
+	        if (is_array($tag)) $thewire->tags = $tag;
 	        //save
 			$save = $thewire->save();
 			
