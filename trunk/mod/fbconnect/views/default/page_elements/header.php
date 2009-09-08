@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg pageshell 
+	 * Elgg pageshell
 	 * The standard HTML header that displays across the site
 	 * 
 	 * @package Elgg
@@ -53,31 +53,28 @@ END;
 		$release = get_version(true);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="ElggRelease" content="<?php echo $release; ?>" />
 	<meta name="ElggVersion" content="<?php echo $version; ?>" />
 	<title><?php echo $title; ?></title>
 
-	
-
-	
-	
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/browserDetect.js">
-	</script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-1.2.6.pack.js"></script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery-ui-personalized-1.5.3.packed.js"></script>
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery.timer.js">
 	</script>
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>_css/js.php/<?php echo $vars['config']->lastcache; ?>?js=initialise_elgg&viewtype=<?php echo $vars['view']; ?>"></script>
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>javascript/browserDetect.js">
+	</script>
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>_css/js.php?lastcache=<?php echo $vars['config']->lastcache; ?>&js=initialise_elgg&viewtype=<?php echo $vars['view']; ?>"></script>
 <?php
 	global $pickerinuse;
 	if (isset($pickerinuse) && $pickerinuse == true) {
 ?>
 	<!-- only needed on pages where we have friends collections and/or the friends picker -->
 	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/jquery/jquery.easing.1.3.packed.js"></script>
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>_css/js.php/<?php echo $vars['config']->lastcache; ?>?js=friendsPickerv1&viewtype=<?php echo $vars['view']; ?>"></script>
+	<script type="text/javascript" src="<?php echo $vars['url']; ?>_css/js.php?lastcache=<?php echo $vars['config']->lastcache; ?>&js=friendsPickerv1&viewtype=<?php echo $vars['view']; ?>"></script>
 <?php
 	}
 ?>
@@ -87,44 +84,6 @@ END;
 		echo $feedref;
 		echo elgg_view('metatags',$vars); 
 	?>
-<!--[if lt IE 7]>
-<script language="JavaScript">
-function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
-{
-   var arVersion = navigator.appVersion.split("MSIE")
-   var version = parseFloat(arVersion[1])
-   if ((version >= 5.5) && (document.body.filters)) 
-   {
-      for(var i=0; i<document.images.length; i++)
-      {
-         var img = document.images[i]
-         var imgName = img.src.toUpperCase()
-         if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
-         {
-            var imgID = (img.id) ? "id='" + img.id + "' " : ""
-            var imgClass = (img.className) ? "class='" + img.className + "' " : ""
-            var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
-            var imgStyle = "display:inline-block;" + img.style.cssText 
-            if (img.align == "left") imgStyle = "float:left;" + imgStyle
-            if (img.align == "right") imgStyle = "float:right;" + imgStyle
-            if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
-            var strNewHTML = "<span " + imgID + imgClass + imgTitle
-            + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
-            + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
-            + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>" 
-            img.outerHTML = strNewHTML
-            i = i-1
-         }
-      }
-   }    
-}
-window.attachEvent("onload", correctPNG);
-</script>
-<![endif]-->
-
-	<link rel="stylesheet" href="<?php echo $vars['url']; ?>vendors/snorg/style.css" type="text/css" />
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/snorg/kk.js"></script>
 </head>
 
 <body>
-<div id="kdialog" class="kDlg"></div>
