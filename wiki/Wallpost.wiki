@@ -1,0 +1,13 @@
+#summary Hướng dẫn sử dụng Wallpost cho người lập trình
+#labels Phase-Implementation
+
+= Introduction =
+
+Chức năng này tạo một loại bài viết trên wall. Chỉ cần 2 thao tác: đăng ký và viết hàm hiển thị.
+
+
+= Details =
+
+Để đăng ký một subtype là wallpost:
+  # Trong hàm init (của module), thêm một câu lệnh: {{{register_wallpost($subtype, $view_function);}}}
+Trong đó $subtype là tên của subtype, $view_function là tên của hàm được xử lý
