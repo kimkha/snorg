@@ -13,19 +13,6 @@
 	 */
 
 		if (isset($vars['entity'])) {
-			if ($vars['viewtype']=='wall') {
-				$content_h = "<h4><a href='".$vars['entity']->getURL()."'>".$vars['entity']->title."</a></h4>";
-				$content_b = $vars['entity']->description;
-				echo elgg_view("object/wall", array(
-							'entity'	=> $vars['entity'],
-							'viewtype'	=> 'wall',
-							'title'		=> '',
-							'content'	=> $content_h.$content_b,
-							'status'	=> '',
-							'dellink'	=> ''
-				));
-			}
-			else {
 			
 			//display comments link?
 			if ($vars['entity']->comments_on == 'Off') {
@@ -157,8 +144,6 @@
 				
 			}
 				
-			}
-
 		}
 
 ?>

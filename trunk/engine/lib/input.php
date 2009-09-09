@@ -500,34 +500,6 @@
 		register_plugin_hook('validate', 'input', 'kses_filter_tags', 1);
 	}
 	
-	/**
-	 * Wrap string if it have long word
-	 * 
-	 * @author KimKha
-	 * @param $content Original string
-	 * @return string
-	 */
-	function string_wrap($content) {
-    	$cont = explode(' ', $content);
-    	$return = array();
-    	foreach ($cont as $i => $val) {
-    		$return[] = wordwrap($val, 8, "<wbr />", true);
-    	}
-    	return implode(" ", $return);
-	}
-	
-	/**
-	 * Split long name and insert '..' if yes
-	 * 
-	 * @author KimKha
-	 * @param $name Name to split
-	 * @param $num Max numbers of name
-	 * @return Splitted name
-	 */
-	function splitname($name, $num=15) {
-		if (strlen($name) > $num) return substr($name, 0, $num-1)."..";
-		return $name;
-	}
 	
 	register_elgg_event_handler('init','system','input_init');
         

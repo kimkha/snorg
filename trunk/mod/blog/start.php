@@ -42,6 +42,9 @@
 			// Extend hover-over menu	
 				extend_view('profile/menu/links','blog/menu');
 				
+			// Register a wallpost type
+				register_wallpost('blog', 'blog_wallpost');
+			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('blog','blog_page_handler');
 				
@@ -226,6 +229,39 @@
 		function blog_incoming_ping($event, $object_type, $object)
 		{
 			// TODO: Get incoming ping object, see if its a ping on a blog and if so attach it as a comment
+		}
+		
+		/**
+		 * View blog post on wallpost
+		 */
+		function blog_wallpost($vars){
+			if ($vars['viewtype']!='wall' || !elgg_view_exists("object/wall")){
+				return false;
+			}
+			
+			// thewire entity
+			$entity = $vars['entity'];
+			
+			$viewtype = $vars['viewtype'];
+			
+			$title = '';
+			
+			$content = "<h4><a href='".$vars['entity']->getURL()."'>".$vars['entity']->title."</a></h4>";
+			$content .= $vars['entity']->description;
+			
+			$status = ''; // make it default
+			
+			$dellink = '';
+			
+			echo elgg_view("object/wall", array(
+						'entity'	=> $entity,
+						'viewtype'	=> $viewtype,
+						'title'		=> $title,
+						'content'	=> $content,
+						'status'	=> $status,
+						'dellink'	=> $dellink
+			));
+			return true;
 		}
 		
 	// Make sure the blog initialisation function is called on initialisation

@@ -131,6 +131,31 @@ function setup_avatar_menu() {
 
 }
 
+function setup_wallpost_textarea(id, def) {
+	$("#"+id+" input[type='submit']").css("display", "none");
+	$("#"+id+" input[type='submit']").css("float", "right");
+	$("#"+id+" textarea").width( $("#"+id).width() - 22 );
+	$("#"+id+" textarea").focus(function(){
+		$(this).css('height', 'auto');
+		$("#"+id+" input[type='submit']").css("display", "block");
+		if ($(this).val() == def) {
+			$(this).val('');
+		}
+	});
+	$("#"+id+" textarea").blur(function(){
+		if ($(this).val() == '') {
+			$(this).css('height', '13px');
+			$("#"+id+" input[type='submit']").css("display", "none");
+			$(this).val(def);
+		}
+	});
+}
+
+function delete_element(id){
+	$('#'+id).remove();
+}
+
+
 $(document).ready(function() {
 
 	setup_avatar_menu();	

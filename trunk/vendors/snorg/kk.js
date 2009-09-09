@@ -20,9 +20,26 @@
 		myForm = $(thisForm);
 		url = myForm.attr('action');
 		$.post(url, myForm.serializeArray(), function(data){
-			$('#'+id).append("<div id='k_simpleForm_id_"+max_ksimpleForm_id+"'>"+data+"</div>");
+			$('#'+id).append(data);
 			myForm.find("textarea").val("");
-			max_ksimpleForm_id++;
+			myForm.find("textarea").blur();
+			
+			myForm.find("input[type='text']").val("");
+			myForm.find("input[type='text']").blur();
+			
+			myForm.find("input[type='submit']").blur();
+		});
+		return false;
+	}
+	
+	function $kconfirmlink(link, msg, fn, id) {
+		url = $(link).attr("href");
+		$kconfirm(msg, function(re){
+			if(re){
+				$.get(url, function(data){
+					eval(fn+"('"+id+"');");
+				});
+			}
 		});
 		return false;
 	}
@@ -241,7 +258,6 @@ function $ktabs() {
 					tab.content.html(data);
 					tab.exist = true;
 				}
-				$kreset();
 			});
 		}
 	};
@@ -294,24 +310,6 @@ function $kk() {
 
 function $kloading() {
 	return "<div class=\"ajax_loader\" align=\"center\"></div>";
-}
-
-function setup_wallpost_textarea() {
-	$("#wallpost .wall_comments input[type='submit']").each(function(){
-		$(this).css("display", "none");
-	});
-	$("#wallpost .wall_comments textarea").each(function(){
-		$(this).focus(function(){
-			$(this).css('height', 'auto');
-			$(this).parent().find("input[type='submit']").css("display", "inline");
-		});
-		$(this).blur(function(){
-			if ($(this).val() == '') {
-				$(this).css('height', '13px');
-				$(this).parent().find("input[type='submit']").css("display", "none");
-			}
-		});
-	});
 }
 
 function kdemo(msg) {

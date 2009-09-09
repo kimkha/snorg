@@ -15,24 +15,12 @@
 	 */
 
 	if (isset($vars['entity'])) {
-		if ($vars['viewtype']=='wall'){
-			echo elgg_view("object/wall", array(
-						'entity'	=> $vars['entity'],
-						'viewtype'	=> 'wall',
-						'title'		=> preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/thewire/$1">$1</a>',$vars['entity']->description),
-						'content'	=> '',
-						'status'	=> elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"), friendly_time($vars['entity']->time_created) ) . " " . elgg_echo("thewire:via") . " " . $vars['entity']->method,
-						'dellink'	=> $vars['url'] . "action/thewire/delete?thewirepost=" . $vars['entity']->getGUID()
-			));
-		}
-		else {
-    		
-    		$user_name = $vars['entity']->getOwnerEntity()->name;
-    		
-    		//if the note is a reply, we need some more info
-    		
-			$note_url = '';
-			$note_owner = elgg_echo("thewire:notedeleted");
+		$user_name = $vars['entity']->getOwnerEntity()->name;
+		
+		//if the note is a reply, we need some more info
+		
+		$note_url = '';
+		$note_owner = elgg_echo("thewire:notedeleted");
     		
 ?>
 <div class="thewire-singlepage">
@@ -108,8 +96,6 @@
 </div>
 <?php
 
-
-		}
 	}
 
 ?>

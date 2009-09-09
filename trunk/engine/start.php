@@ -72,6 +72,11 @@
 			exit;
 		}
 		
+		if (!include_once(dirname(__FILE__) . "/vendors/snorg/kk.php")) {		// special kk library
+			echo "Error in installation: could not load the special kk library.";
+			exit;
+		}
+		
 		
 		
 		// Use fallback view until sanitised

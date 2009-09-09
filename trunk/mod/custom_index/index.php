@@ -31,12 +31,12 @@
     //display the contents in our new canvas layout
 	$body = elgg_view_layout('new_index',$login, $files, $newest_members, $blogs, $groups, $bookmarks);
 	/**/
-	
+/*	
 	if (isadminloggedin()) {
 		$owner = get_loggedin_userid();
 		set_page_owner($owner);
 	} else {
-		set_page_owner(0);
+		set_page_owner();
 	}
 	set_context('index');
 	$body = elgg_view_layout('widgets',"","","");
