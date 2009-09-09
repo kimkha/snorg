@@ -13,48 +13,6 @@
 	 */
 
 	/**
-	 * Get content from URL
-	 * 
-	 * @author KimKha
-	 */
-function cfopen($url, $limit = 8192)
-{
-	$matches = parse_url($url);
-	$host = $matches['host'];
-	$script = (isset($matches['path'])?$matches['path']:'/').(isset($matches['query'])?'?'.$matches['query']:'').(isset($matches['fragment'])?'#'.$matches['fragment']:'');
-	$port = !empty($matches['port']) ? $matches['port'] : 80;
-
-	$out = "GET $script HTTP/1.1\r\n";
-	$out .= "Accept: */*\r\n";
-	$out .= "Accept-Language: en-us\r\n";
-	$out .= "User-Agent: $_SERVER[HTTP_USER_AGENT]\r\n";
-	$out .= "Host: $host\r\n";
-	$out .= "Connection: Close\r\n\r\n";
-
-	$fp = fsockopen($host, $port, $errno, $errstr, 30);
-
-	$return = '';
-	if($fp)
-	{
-		stream_set_blocking($fp, TRUE);
-		stream_set_timeout($fp, 30);
-		@fwrite($fp, $out);
-		$status = stream_get_meta_data($fp);
-		if ( !$status['timed_out'] )
-		{
-			while(!feof($fp)) {
-				$return .= @fread($fp, $limit);
-			}
-/*			$return = preg_replace("/\r\n\r\n/", "\n\n", $return, 1);
-			$strpos = strpos($return, "\n\n");
-			$strpos = $strpos !== FALSE ? $strpos + 2 : 0;
-			$return = substr($return, $strpos);*/
-		}
-	}
-	@fclose($fp);
-	return $return;
-}
-	/**
 	 * Getting directories and moving the browser
 	 */
 
@@ -1276,13 +1234,7 @@ function cfopen($url, $limit = 8192)
 			if (!isset($CONFIG->registers[$register_name]))
 				$CONFIG->registers[$register_name]  = array();
 			
-			$subregister = new stdClass;
-			$subregister->name = $subregister_name;
-			$subregister->value = $subregister_value;
-				
-			if (is_array($children_array)) {	
-				$subregister->children = $children_array;
-			}
+			$subregister = make_register_object($subregister_name, $subregister_value, $children_array);
 			
 			$CONFIG->registers[$register_name][$subregister_name] = $subregister;
 			return true;
@@ -2293,7 +2245,8 @@ function cfopen($url, $limit = 8192)
 		elgg_view_register_simplecache('js/friendsPickerv1');
 		elgg_view_register_simplecache('js/initialise_elgg');
 	}
-		
+	
+	
 	/**
 	 * Some useful constant definitions
 	 */

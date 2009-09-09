@@ -2742,7 +2742,7 @@ border-top:none;
 
 /* Wall post */
 .wall-singlepage {
-	margin:0 10px 0 10px;
+	margin:0 10px 20px 10px;
 }
 .wall-singlepage .note_body {
 	margin:0;
@@ -2766,25 +2766,22 @@ border-top:none;
 	margin:0px;
 	font-size: 90%;
 }
+.wall_content_wrap {
+	padding: 5px 3px 0px 53px;
+}
 .wall_content {
 	font-size: 80%;
-	padding: 5px 5px 0px 55px;
+	border: 1px solid #E7E7E7;
+	padding: 2px;
 }
 .wall_content p {
 	margin: 0px !important;
 	padding: 0px !important;
+	line-height: 1em !important;
 }
 .wall_options {
 	float:right;
 	width:65px;
-}
-.wall_comments {
-	padding: 0px 10px;
-}
-.wall_comments textarea {
-	width: 100%;
-	height: 13px;
-	font-size: 70%;
 }
 .wall-post .comments {
 	font: 11px/100% Arial, Helvetica, sans-serif;
@@ -2806,13 +2803,13 @@ border-top:none;
 	color:white;
 	text-decoration: none;
 }
-.wall-post .delete_note {
+.wall-singlepage .delete_note {
 	width:14px;
 	height:14px;
 	margin:3px 0 0 0;
 	float:right;
 }
-.wall-post .delete_note a {
+.wall-singlepage .delete_note a {
 	display:block;
 	cursor: pointer;
 	width:14px;
@@ -2820,9 +2817,42 @@ border-top:none;
 	background: url("<?php echo $vars['url']; ?>_graphics/icon_customise_remove.png") no-repeat 0 0;
 	text-indent: -9000px;
 }
-.wall-post .delete_note a:hover {
+.wall-singlepage .delete_note a:hover {
 	background-position: 0 -16px;
 }
 /* IE 6 fix */
-* html .wall-post .delete_note a { background-position: 0 2px; }
-* html .wall-post .delete_note a:hover { background-position: 0 -14px; }
+* html .wall-singlepage .delete_note a { background-position: 0 2px; }
+* html .wall-singlepage .delete_note a:hover { background-position: 0 -14px; }
+
+.wall_comments {
+	margin: 0px 10px;
+	border: 1px solid #E7E7E7;
+	background: #C5E3F3;
+}
+.wall_comments .form_comment {
+	margin: 5px;
+}
+.wall_comments .form_comment textarea {
+	height: 13px;
+	font-size: 70%;
+}
+.wall_comments .form_comment input[type='submit'] {
+	margin: 3px 0px;
+}
+.commentOnWall {
+	font-size: 80%;
+	margin: 2px 5px;
+	border-bottom: 1px solid #0E79D1;
+}
+.commentOnWall .profile-icon {
+	float:left;
+    margin:0 3px 4px 0px;
+}
+.commentOnWall .content-wrap {
+	padding: 0px 3px 0px 43px;
+}
+.commentOnWall .post-date {
+	font-size:90%;
+	color:#999999;
+}
+

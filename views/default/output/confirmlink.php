@@ -20,5 +20,13 @@
 	$confirm = $vars['confirm'];
 	if (!$confirm)
 		$confirm = elgg_echo('question:areyousure');
+	
+	$ajax = $vars['ajax'];
+	if (!$ajax) {
+		$click = "confirm('".addslashes($confirm)."');";
+	}
+	else {
+		$click = "\$kconfirmlink(this, '".addslashes($confirm)."', '".$ajax."', '".$vars['param']."')";
+	}
 ?>
-<a href="<?php echo $vars['href']; ?>" onclick="return confirm('<?php echo addslashes($confirm); ?>');"><?php echo htmlentities($vars['text'], ENT_QUOTES, 'UTF-8'); ?></a>
+<a href="<?php echo $vars['href']; ?>" onclick="return <?php echo $click; ?>;"><?php echo htmlentities($vars['text'], ENT_QUOTES, 'UTF-8'); ?></a>

@@ -25,6 +25,8 @@
 							'href' => $dellink,
 							'text' => elgg_echo('delete'),
 							'confirm' => elgg_echo('deleteconfirm'),
+							'ajax' => 'delete_element',
+							'param' => 'wall-singlepage-'.$entity->getGUID(),
 			));
 		}
 		if ($status==''){
@@ -35,7 +37,7 @@
 		$username = $user->username;
 		
 ?>
-<div class="wall-singlepage">
+<div class="wall-singlepage" id="wall-singlepage-<?php echo $entity->getGUID(); ?>">
 	<div class="wall-post">
 	    <!-- the actual shout -->
 		<div class="note_body">
@@ -73,11 +75,19 @@
 			echo parse_urls($title);
 		?>
 		</div>
-		<div class="wall_content">
 		<?php
-			echo $content;
+			if ($content != '') {
 		?>
+		<div class="wall_content_wrap">
+			<div class="wall_content">
+		<?php
+				echo $content;
+		?>
+			</div>
 		</div>
+		<?php
+			}
+		?>
 		<div class="clearfloat"></div>
 		</div>
 		<div class="note_date">
@@ -89,16 +99,30 @@
 		?>
 		</div>
 	</div>
-	<div class="wall_comments">
-		<div id="wall_comments_<?php echo $entity->getGUID(); ?>">
+	<div class="wall_comments" id="wall-comments-<?php echo $entity->getGUID(); ?>">
+		<div id="wall_comment_<?php echo $entity->getGUID(); ?>">
+		<?php
+			$comments = $entity->getAnnotations('generic_comment');
+			foreach ($comments as $c) {
+				echo elgg_view_comment($c);
+			}
+		?>
 		</div>
 		
-		<form action="<?php echo $vars['url']; ?>action/wall_comment?id=<?php echo $entity->getGUID(); ?>" onsubmit="return $ksimpleForm(this,'wall_comments_<?php echo $entity->getGUID(); ?>');">
-		<textarea name="content"></textarea><br />
-		<input type='submit' value="Comment" />
-		</form>
+		<div class="form_comment">
+			<form action="<?php echo $vars['url']; ?>action/wall_comment?id=<?php echo $entity->getGUID(); ?>" onsubmit="return $ksimpleForm(this,'wall_comment_<?php echo $entity->getGUID(); ?>');">
+			<textarea name="content"><?php echo elgg_echo("generic_comments:add"); ?></textarea>
+			<input type='submit' value="<?php echo elgg_echo("generic_comments:text"); ?>" />
+			</form>
+			<div class="clearfloat"></div>
+		</div>
 	</div>
 	<div class="clearfloat"></div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		setup_wallpost_textarea("wall-comments-<?php echo $entity->getGUID(); ?>", "<?php echo elgg_echo("generic_comments:add"); ?>");
+	});
+	</script>
 </div>
 <?php
 	}

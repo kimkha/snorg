@@ -40,8 +40,11 @@
 		    //extend views
 				extend_view('activity/thewire', 'thewire/activity_view');
 				extend_view('profile/status', 'thewire/profile_status');
-				extend_view('profile/tabs', 'thewire/profile_tab', 450);
+				extend_view('profile/tabs', 'thewire/profile_tab', 400);
 				
+			// Register a wallpost type
+				register_wallpost('thewire', 'thewire_wallpost');
+			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('thewire','thewire_page_handler');
 				
@@ -203,6 +206,38 @@
 			}
 					
 			return true; // always create the shout even if it can't be sent
+		}
+		
+		/**
+		 * View the wire on wallpost
+		 */
+		function thewire_wallpost($vars) {
+			if ($vars['viewtype']!='wall' || !elgg_view_exists("object/wall")){
+				return false;
+			}
+			
+			// thewire entity
+			$entity = $vars['entity'];
+			
+			$viewtype = $vars['viewtype'];
+			
+			$title = preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/thewire/$1">$1</a>',$vars['entity']->description);
+			
+			$content = '';
+			
+			$status = elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"), friendly_time($vars['entity']->time_created) ) . " " . elgg_echo("thewire:via") . " " . $vars['entity']->method;
+			
+			$dellink = $vars['url'] . "action/thewire/delete?thewirepost=" . $vars['entity']->getGUID();
+			
+			echo elgg_view("object/wall", array(
+						'entity'	=> $entity,
+						'viewtype'	=> $viewtype,
+						'title'		=> $title,
+						'content'	=> $content,
+						'status'	=> $status,
+						'dellink'	=> $dellink
+			));
+			return true;
 		}
 	
 	// Make sure the thewire initialisation function is called on initialisation
