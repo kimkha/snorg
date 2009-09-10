@@ -1,0 +1,37 @@
+CHANGE LOG
+
+0.5
+
+Initial release
+
+0.51 
+
+Fixed event overlap detection
+
+0.6
+
+Fixed a bug that prevented more than one person adding a given event to
+his/her personal calendar.
+
+Fixed a bug that made the page owner the person who created the event. This
+is now the group for group events, otherwise the currently logged in user.
+
+Added river support.
+
+0.7
+
+Reworked design for Elgg 1.5
+
+Fixed several bugs, including in the list of people who added an event to 
+their personal calendar (now shows the proper group navigation if this is 
+a group event).
+
+Added the ability to view all/friends/mine events for logged-in users.
+
+Added numerous configuration options (accessible via event_calendar settings
+on the admin tools configuration page). This allows, for example, any logged-in
+user to add events to the site calendar, to remove group calendars, etc.
+
+People who create an event now have the event automatically added to their
+personal event calendar. This behaviour can be configured via the admin event
+calendar settings.
