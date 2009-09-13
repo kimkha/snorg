@@ -261,5 +261,27 @@
 		
 		return $return;
 	}
+	
+	/**
+	 * Unique given array of entities by an attribute
+	 * 
+	 * @author "KimKha 
+	 * @param array $list Array of entities
+	 * @param string $attr Name of attribute
+	 * @return array Result
+	 */
+	function array_unique_by_attribute($list, $attr) {
+		$new = array();
+		$exist = array();
+		
+		foreach ($list as $object) {
+			if (!in_array($object->$attr, $exist)) {
+				$new[] = $object;
+				$exist[] = $object->$attr;
+			}
+		}
+		
+		return $new;
+	}
 
 ?>
