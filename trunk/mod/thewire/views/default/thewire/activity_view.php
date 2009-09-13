@@ -26,7 +26,7 @@ function textCounter(field,cntfield,maxlimit) {
 	<form action="<?php echo $vars['url']; ?>action/thewire/add" method="post" name="noteForm">
 			
 		<?php
-			$display .= "<h3>" . elgg_echo('thewire:newpost') . "</h3><textarea name='note' value='' onKeyDown=\"textCounter(document.noteForm.note,document.noteForm.remLen1,140)\" onKeyUp=\"textCounter(document.noteForm.note,document.noteForm.remLen1,140)\" id=\"thewire_sidebarInputBox\">{$msg}</textarea><br />";
+			$display .= "<h3>" . elgg_echo('thewire:newpost') . "</h3><textarea name='note' value='' class='notinymce' onKeyDown=\"textCounter(document.noteForm.note,document.noteForm.remLen1,140)\" onKeyUp=\"textCounter(document.noteForm.note,document.noteForm.remLen1,140)\" id=\"thewire_sidebarInputBox\">{$msg}</textarea><br />";
 			$display .= "<div class='thewire_characters_remaining'><input readonly type=\"text\" name=\"remLen1\" size=\"3\" maxlength=\"3\" value=\"140\" class=\"thewire_characters_remaining_field\">";
 			echo $display;
 			echo elgg_echo("thewire:charleft") . "</div>";
