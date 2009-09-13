@@ -36,7 +36,7 @@
 		$owner = get_loggedin_userid();
 		set_page_owner($owner);
 	} else {
-		set_page_owner(0);
+		set_page_owner(1);
 	}
 	
 	set_context('index');
