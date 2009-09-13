@@ -15,6 +15,9 @@
 	
         // Extend system CSS with our own styles
 			extend_view('css','custom_index/css');
+			
+	//		extend_view('index/main','custom_index/main', 450);
+			extend_view('index/block','custom_index/login', 450);
 				
 		// Replace the default index page
 			register_plugin_hook('index','system','custom_index');
@@ -25,7 +28,6 @@
 			add_widget_type('index_groups', elgg_echo('custom:groups'), elgg_echo('custom:groups:description'), 'index');
 			add_widget_type('index_files', elgg_echo('custom:files'), elgg_echo('custom:files:description'), 'index');
 			add_widget_type('index_members', elgg_echo('custom:members'), elgg_echo('custom:members:description'), 'index');
-			add_widget_type('index_login', elgg_echo('custom:login'), elgg_echo('custom:login:description'), 'index');
     }
     
     function custom_index() {

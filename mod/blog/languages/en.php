@@ -59,6 +59,7 @@
 		 */
 	
 			'blog:posted' => "Your blog post was successfully posted.",
+			'blog:edited' => "Your blog post was successfully edited.",
 			'blog:deleted' => "Your blog post was successfully deleted.",
 	
 		/**

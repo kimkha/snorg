@@ -42,7 +42,7 @@
 				
 				// Update list
 				$return['list'] = elgg_view_entity($latest_wire);
-				$return['wall'] = elgg_view("object/thewire", array('entity' => $latest_wire, 'full' => false, 'viewtype' => 'wall'));
+				$return['wall'] = view_wallpost($latest_wire->getSubtype(), array('entity' => $latest_wire, 'viewtype' => 'wall'));
 				
 				header("Content-Type: application/json; charset=UTF-8");
 				header("Cache-Control: no-store, no-cache, must-revalidate");

@@ -48,6 +48,9 @@
 	 * @return true|false
 	 */
 	function register_wallpost($object, $view_func) {
+		if (!is_registered_entity_type("object", $object)) { // Not exist this subtype
+			register_entity_type("object", $object);
+		}
 		return add_to_register("wallpost_type", $object, $view_func);
 	}
 	
@@ -55,11 +58,23 @@
 	 * Get list of wallpost object
 	 * 
 	 * @author "KimKha 
-	 * @param int $owner_guid User guid of owner, or 0 to get all object name
+	 * @param int|array $owner_guid GUID of user(s), or 0 to get all object name
 	 * @return array|false Array of object name
 	 */
 	function get_register_wallpost($owner_guid = 0) {
 		$all = get_register("wallpost_type");
+		if (!$all) return false;
+		
+		// Multi-user
+		if (is_array($owner_guid) && count($owner_guid) >0) {
+			$return = array();
+			foreach ($owner_guid as $own) {
+				$own = (int) $own;
+				$result = get_register_wallpost($own);
+				$return = array_merge($return, $result);
+			}
+			return $return;
+		}
 		
 		if ($owner_guid > 0) {
 			foreach ($all as $key => $value) {
@@ -73,6 +88,38 @@
 		}
 		
 		return array_keys($all);
+	}
+	
+	/**
+	 * Get array of all wallpost object.
+	 * 
+	 * @author "KimKha 
+	 * @param int $user_guid The GUID of the owning user
+	 * @param string $subtype Optionally, the subtype of objects
+	 * @param int $limit The number of results to return (default 10)
+	 * @param int $offset Indexing offset, if any
+	 * @param int $timelower The earliest time the entity can have been created. Default: all
+	 * @param int $timeupper The latest time the entity can have been created. Default: all
+	 * @return false|array An array of ElggObjects or false, depending on success
+	 */
+	function get_user_wallpost_objects($user_guid, $subtype = "", $limit = 10, $offset = 0, $timelower = 0, $timeupper = 0) {
+		if (is_array($subtype)) {
+			if (!isset($subtype['object'])) $subtype['object'] = array();
+			$subtype['object'][] = 'wallpost';
+		}
+		else if ($subtype == "") {
+			$subtype = "wallpost";
+		}
+		else {
+			$new = $subtype;
+			$subtype = array();
+			$subtype['object'] = array($new, "wallpost");
+		}
+		return get_user_objects($user_guid, $subtype, $limit, $offset, $timelower, $timeupper);
+	}
+	
+	function create_wallpost_object($owner_guid, $viewtype = 'wall', $title, $content, $status, $dellink) {
+		
 	}
 		
 	/**
@@ -98,16 +145,17 @@
 	 * @param string $object The object name to view 
 	 * @param array $vars The array of parameter for callback function: 
 	 * 				use $vars['entity'] to get current entity 
+	 * @return HTML
 	 */
 	function view_wallpost($object, $vars) {
 		$all = get_register("wallpost_type");
 		$view_func = $all[$object]->value;
 		
 		if (!empty($view_func) && function_exists($view_func)) {
-			$view_func($vars);
+			return $view_func($vars);
 		}
 		else {
-			echo elgg_view("object/wall", $vars);
+			return elgg_view("object/wall", $vars);
 		}
 	}
 	
@@ -116,10 +164,11 @@
 	 * 
 	 * @author "KimKha 
 	 * @param int $owner_guid User guid of owner, or 0 to get all object name 
-	 * @return array of subtype structure
+	 * @return array|false Array of subtype structure
 	 */
 	function get_wallpost_object($owner_guid = 0) {
 		$object = get_register_wallpost($owner_guid);
+		if (!$object) $object = array("srghshl");
 		return array('object' => $object);
 	}
 	
@@ -188,6 +237,29 @@
 		}
 		return true;
 	}
-
+	
+	/**
+	 * Get list of entities with subtype from given entities list
+	 * 
+	 * @author "KimKha 
+	 * @param array $entities Array of given entities
+	 * @param string $subtype Subtype you need to get
+	 * @return array|false 
+	 */
+	function parse_entities_by_subtype($entities, $subtype) {
+		if (!is_array($entities)) {
+			return false;
+		}
+		
+		$return = array();
+		
+		foreach ($entities as $entity) {
+			if ($entity->getSubtype() == $subtype) {
+				$return[] = $entity;
+			}
+		}
+		
+		return $return;
+	}
 
 ?>

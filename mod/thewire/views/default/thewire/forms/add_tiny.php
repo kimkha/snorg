@@ -20,8 +20,6 @@
 		}
 
 ?>
-<div class="post_to_wire">
-<h3><?php echo elgg_echo("thewire:doing"); ?></h3>
 <script>
 var maxLength = -1;
 function textCounter(field,cntfield) {
@@ -51,15 +49,45 @@ function submitnoteForm(thisForm){
 	}, 'json');
 	return false;
 }
+function thewire_tiny_toggle() {
+	var def = "<?php echo elgg_echo("thewire:tinydoing"); ?>";
+	
+	var thewire_tiny = $("#thewire_tiny");
+	var textarea_thewire = $("#thewire_tiny-textarea");
+	
+	thewire_tiny.find(".thewire_characters_remaining").css("display", "none");
+	thewire_tiny.find("input[type='submit']").css("display", "none");
+	
+	textarea_thewire.width(thewire_tiny.width()-12);
+	textarea_thewire.height(17);
+	
+	textarea_thewire.focus(function(){
+		textarea_thewire.css("height", "auto");
+		thewire_tiny.find(".thewire_characters_remaining").css("display", "block");
+		thewire_tiny.find("input[type='submit']").css("display", "inline");
+		if ($(this).val() == def) {
+			$(this).val('');
+		}
+	});
+	
+	textarea_thewire.blur(function(){
+		if ($(this).val() == '') {
+			textarea_thewire.css("height", "17px");
+			thewire_tiny.find(".thewire_characters_remaining").css("display", "none");
+			thewire_tiny.find("input[type='submit']").css("display", "none");
+			$(this).val(def);
+		}
+	});
+}
+$(document).ready(function(){
+	thewire_tiny_toggle();
+});
 </script>
-
+<div class="post_to_wire" id="thewire_tiny">
 	<form action="<?php echo $vars['url']; ?>action/thewire/add_tiny" method="post" name="noteForm" onsubmit="submitnoteForm(this);return false;">
-			<?php
-			    $display .= "<textarea name='note' onKeyDown=\"textCounter(document.noteForm.note,document.noteForm.remLen1)\" onKeyUp=\"textCounter(document.noteForm.note,document.noteForm.remLen1)\" id=\"thewire_tiny-textarea\"></textarea>";
-                $display .= "<div class='thewire_characters_remaining'><input readonly type=\"text\" name=\"remLen1\" size=\"3\" maxlength=\"3\" value=\"140\" class=\"thewire_characters_remaining_field\">";
-                echo $display;
-                echo elgg_echo("thewire:charleft") . "</div>";
-			?>
+		<textarea name='note' onkeydown="textCounter(document.noteForm.note,document.noteForm.remLen1)" onkeyup="textCounter(document.noteForm.note,document.noteForm.remLen1)" id="thewire_tiny-textarea"><?php echo elgg_echo("thewire:tinydoing"); ?></textarea>
+		<div class='thewire_characters_remaining'>
+			<input readonly="true" type="text" name="remLen1" size="3" maxlength="3" value="140" class="thewire_characters_remaining_field" /><?php echo elgg_echo("thewire:charleft") . "</div>"; ?>
 			<input type="hidden" name="method" value="site" />
 			<input type="hidden" name="owner" value="<?php echo $owner->guid; ?>" />
 			<input type="submit" name="submit" value="<?php echo elgg_echo('save'); ?>" />

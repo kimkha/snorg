@@ -8,7 +8,7 @@ $user = get_user($_GET['userid']);
 header('Content-type: image/png');
 
 // Create the image
-$im = @imagecreatetruecolor(270, 16)
+$im = @imagecreatetruecolor(350, 16)
 	or die("Cannot create image");
 
 imagealphablending($im, false);

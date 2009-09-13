@@ -66,7 +66,7 @@
 				$blog->comments_on = $comments_on; //whether the users wants to allow comments or not on the blog post
 
 		// Success message
-				system_message(elgg_echo("blog:posted"));
+				system_message(elgg_echo("blog:edited"));
 		//add to the river
 				add_to_river('river/object/blog/update','update',$_SESSION['user']->guid,$blog->guid);
 		// Remove the blog post cache
@@ -75,7 +75,7 @@
 				remove_metadata($_SESSION['user']->guid,'blogbody');
 				remove_metadata($_SESSION['user']->guid,'blogtags');
 		// Forward to the main blog page
-				forward("pg/blog/" . $owner->username);
+				forward($blog->getURL());
 					
 			}
 		
