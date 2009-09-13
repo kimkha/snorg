@@ -26,7 +26,7 @@
 	if (is_array($list_obj) && sizeof($list_obj) > 0) {
 		foreach ($list_obj as $entity) {
 			$subtype = $entity->getSubtype();
-			view_wallpost($subtype, array('entity'=>$entity, 'viewtype'=>'wall'));
+			echo view_wallpost($subtype, array('entity'=>$entity, 'viewtype'=>'wall'));
 		}
 	}
 	else {

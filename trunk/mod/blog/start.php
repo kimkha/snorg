@@ -253,7 +253,7 @@
 			
 			$dellink = '';
 			
-			echo elgg_view("object/wall", array(
+			return elgg_view("object/wall", array(
 						'entity'	=> $entity,
 						'viewtype'	=> $viewtype,
 						'title'		=> $title,
@@ -261,7 +261,6 @@
 						'status'	=> $status,
 						'dellink'	=> $dellink
 			));
-			return true;
 		}
 		
 	// Make sure the blog initialisation function is called on initialisation

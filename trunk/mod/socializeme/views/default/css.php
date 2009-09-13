@@ -1,21 +1,3 @@
-<?php
-
-	/**
-	 * Elgg example theme
-	 * core CSS file 
-	 * 
-	 * Updated 9 March 09
-	 * 
-	 * @package Elgg
-	 * @subpackage Core
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @copyright Curverider Ltd 2008-2009
-	 * @link http://elgg.org/
-	 * 
-	 * @uses $vars['wwwroot'] The site URL
-	 */
-
-?>
 
 /* ***************************************
 	RESET BASE STYLES
@@ -206,11 +188,11 @@ blockquote p {
 }
 #layout_canvas {
 	margin:0 0 10px 0;
-	padding:10px;
+	padding:5px;
 	min-height: 360px;
-    -webkit-border-radius: 8px; 
-	-moz-border-radius: 8px;
-	background: #e9e9e9;
+    -webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
+	background: #F5F5F5;
 	border:1px solid #cccccc;
     
 }
@@ -290,9 +272,12 @@ span.contentIntro p {
 }
 
 /* canvas layout: widgets (profile and dashboard) */
+#widget_table {
+	width: 100%;
+}
 #widgets_left {
 	width:300px;
-	margin:0 20px 20px 0;
+	margin:0 5px 0px 0;
 	min-height:360px;
 	padding:0;
 }
@@ -302,8 +287,8 @@ span.contentIntro p {
 	padding:0;
 }
 #widgets_right {
-	width:310px;
-	margin:0px 0 20px 20px;
+	width:240px;
+	margin:0px;
 	float:left;
 	padding:0;
 }
@@ -313,6 +298,7 @@ span.contentIntro p {
 	margin:0;
 	text-align: left;
 	vertical-align: top;
+	height: 100%;
 }
 /* IE6 fixes */
 * html #widgets_right { float:none; }
@@ -716,7 +702,7 @@ ul.topbardropdownmenu ul a {
   COLLAPSABLE BOXES
 *************************************** */
 .collapsable_box {
-	margin: 0 0 20px 0;
+	margin: 0 0 5px 0;
 	height:auto;
 
 }
@@ -725,36 +711,30 @@ ul.topbardropdownmenu ul a {
 	height:10px;
 }
 .collapsable_box_header {
-background:#fff;
-border-bottom:2px solid #2779e7;
-color:#2779e7;
-height:19px;
-margin:0;
-padding:4px 12px 2px;
+	background:#F5F5F5;
+	border-bottom:1px solid #2779e7;
+	color:#2779e7;
+	margin:0;
+	padding:4px 2px 2px;
 }
 .collapsable_box_header h1 {
 	color: #2779e7;
-	font-size:1.0em;
-	line-height: 1.2em;
+	font-size:0.9em;
 }
 .collapsable_box_content {
-background:#f5f5f5 none repeat scroll 0 0;
-height:auto;
-margin:0;
-padding:10px 0;
-	border-left: 1px solid #cccccc;
-	border-right: 1px solid #cccccc;
-	border-bottom: 1px solid #cccccc;
+	background:#f5f5f5 none repeat scroll 0 0;
+	height:auto;
+	margin:0;
+	padding:10px 0;
 }
 .collapsable_box_content .contentWrapper {
 	margin-bottom:5px;
-    
 }
 .collapsable_box_editpanel {
 	display: none;
-	background: #f5f5f5;
+	background: #B6DEF3;
 	padding:10px 10px 5px 10px;
-	border: 1px solid #CCC;
+	border-bottom: 1px solid #2779E7;
 }
 .collapsable_box_editpanel p {
 	margin:0 0 5px 0;
@@ -764,7 +744,6 @@ padding:10px 0;
 	cursor:pointer;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size:20px;
-	font-weight: bold;
 	text-decoration:none;
 	float:right;
 	margin: 0;
@@ -880,12 +859,28 @@ input[type="submit"] {
 /* ***************************************
 	LOGIN / REGISTER
 *************************************** */
+#welcome-box {
+	margin:0 0 10px 0;
+	padding:0;
+	background: #FFFFFF;
+	width:238px;
+    text-align:left;
+    border: 1px solid #E1E1E1;
+}
+#welcome-box h2 {
+	color:#2779E7;
+	font-size:1.0em;
+	line-height:1.2em;
+	padding:5px;
+}
 #login-box {
 	margin:0 0 10px 0;
-	padding:0 0 10px 0;
-	background: #000000;
-	width:240px;
+	padding:0 0 3px 0;
+	background: #FFFFFF;
+	width:238px;
     text-align:left;
+    border: 1px solid #E1E1E1;
+    font-size: 0.9em;
 }
 #login-box form {
 	margin:0 10px 0 10px;
@@ -894,18 +889,20 @@ input[type="submit"] {
 	width:200px;
 }
 #login-box h2 {
-	color:#FFFFFF;
-	font-size:1.35em;
-	line-height:1.2em;
-	margin:0 0 0 8px;
+	color:#2779E7;
+	font-size:1.0em;
+	margin:0 0 5px 8px;
 	padding:5px 5px 0 5px;
 }
 #login-box .login-textarea {
-	width:250px;
+	width:188px;
 }
 #login-box label {
-font-size: 1.2em;
-color:grey;
+	font-size: 0.9em;
+	color:grey;
+}
+#login-box a {
+	font-size: 0.9em;
 }
 #register-box label {
 	font-size: 1.2em;
@@ -915,23 +912,33 @@ color:grey;
 	margin:0;
 }
 #login-box input[type="text"],
+#login-box input[type="password"] {
+	padding: 2px 5px;
+	height: 16px;
+	font-size: 11px;
+}
+#login-box input[type="submit"] {
+	font-size: 11px;
+	height: 19px;
+	padding: 1px 10px;
+}
+#login-box input[type="text"],
 #login-box input[type="password"],
+#login-box input[type="submit"],
 #register-box input[type="text"],
 #register-box input[type="password"] {
-	margin:0 0 10px 0;
+	margin:0 0 5px 0;
 }
 #register-box input[type="text"],
 #register-box input[type="password"] {
 	width:380px;
 }
-#login-box h2,
 #login-box-openid h2,
 #register-box h2,
 #add-box h2,
 #forgotten_box h2 {
 	color:#000000;
-	font-size:1.35em;
-	line-height:1.2em;
+	font-size:1.1em;
 	margin:0pt 0pt 5px;
 }
 #register-box {
@@ -942,9 +949,15 @@ color:grey;
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 }
+#persistent_login {
+	float: right;
+}
 #persistent_login label {
-	font-size:1.0em;
+	font-size:0.9em;
 	font-weight: normal;
+}
+#persistent_login input {
+	height: 10px;
 }
 /* login and openID boxes when not running custom_index mod */
 #two_column_left_sidebar #login-box {
@@ -964,36 +977,43 @@ color:grey;
 	width:158px;
 }
 
+.main-box {
+	background: #FFFFFF;
+	padding: 5px;
+	margin: 0px 5px 10px 0px;
+	min-height: 200px;
+	border: 1px solid #E1E1E1;
+}
 
 /* ***************************************
 	PROFILE
 *************************************** */
 #profile_info {
-	margin:0 0 20px 0;
+/*	margin:0 0 20px 0;
 	padding:20px;
 	border:1px solid #cccccc;
-	background: #c5e3ff;
+	background: #c5e3ff;*/
 
 }
 #profile_info_column_left {
 	float:left;
 	padding: 0;
-	margin:0 20px 0 0;
+	margin:0 10px 0 0;
 }
 #profile_info_column_middle {
-background:#FFFFFF none repeat scroll 0 0;
-border:1px solid #AAAAAA;
-float:left;
-padding:13px;
-width:330px;
-margin-bottom:10px;
+	background:#FFFFFF none repeat scroll 0 0;
+	border:1px solid #AAAAAA;
+	float:left;
+	padding:9px;
+	width:492px;
+	margin-bottom:10px;
 }
 #profile_info_column_right {
-background:#FFFFFF none repeat scroll 0 0;
-border:1px solid #AAAAAA;
-margin:0;
-padding:16px;
-width:554px;
+	background:#FFFFFF none repeat scroll 0 0;
+	border:1px solid #AAAAAA;
+	margin:0;
+	padding:16px;
+	width:554px;
 }
 #dashboard_info {
 	margin:0px 0px 0 0px;
@@ -2679,11 +2699,11 @@ border-top:none;
 	margin: 0px 20px;
 	border: 1px solid #969696;
 	border-bottom: 0px;
-	padding-bottom: 2px;
-	-webkit-border-top-left-radius: 8px; 
-	-webkit-border-top-right-radius: 8px; 
-	-moz-border-radius-topleft: 8px;
-	-moz-border-radius-topright: 8px;
+	padding: 0 5px 2px;
+	-webkit-border-top-left-radius: 5px; 
+	-webkit-border-top-right-radius: 5px; 
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
 }
 
 #leftside_taskbar {
@@ -2711,10 +2731,10 @@ border-top:none;
 	color: #FFFFFF;
 	padding: 3px 5px;
 	
-	-moz-border-radius-bottomright:5px; 
-	-moz-border-radius-bottomleft:5px; 
-	-webkit-border-bottom-left-radius:5px;
-	-webkit-border-bottom-right-radius:5px;
+	-moz-border-radius-bottomright:3px; 
+	-moz-border-radius-bottomleft:3px; 
+	-webkit-border-bottom-left-radius:3px;
+	-webkit-border-bottom-right-radius:3px;
 }
 
 #leftside_taskbar .contentWindow {
@@ -2725,8 +2745,8 @@ border-top:none;
 
 #leftside_taskbar .messageWindow {
 	background:white;
-	-webkit-border-radius: 8px; 
-	-moz-border-radius: 8px;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
     padding:5px 8px;
     margin:0 5px 5px 5px;
 }

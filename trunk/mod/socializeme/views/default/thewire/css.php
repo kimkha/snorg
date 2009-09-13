@@ -134,5 +134,6 @@ input.thewire_characters_remaining_field:focus {
 .thewire_characters_remaining {
 	text-align: right;
 	color:#000000;
+	float: right;
 }
 

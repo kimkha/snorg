@@ -254,13 +254,13 @@
 
 <table cellspacing="0" id="widget_table">
   <tr>
-    <td colspan="2" align="left" valign="top" height="1px">
+    <td colspan="2" height="1px">
 		<!-- profile box or 'dashboard info' notice -->
 		<?php if (isset($vars['area1'])) echo $vars['area1']; ?>
 	</td>
-    <td rowspan="2" align="left" valign="top" height="100%">
+    <td rowspan="2" width="240">
 		<?php 
-		if($_SESSION['user']->guid == page_owner()){
+		if($_SESSION['user']->guid == page_owner() && isloggedin()){
 		?>
 		<!-- customise page button -->
 		<a href="javascript:void(0);" class="toggle_customise_edit_panel"><?php echo(elgg_echo('dashboard:configure')); ?></a>
@@ -271,6 +271,7 @@
 
 		<div id="widgets_right">
 		<?php
+			if (isset($vars['area5'])) echo $vars['area5'];
 		
 			if (is_array($area3widgets) && sizeof($area3widgets) > 0)
 			foreach($area3widgets as $widget) {

@@ -12,7 +12,7 @@
 
 	// Get the Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
-		
+		/*
     //get required data		
 	set_context('search');//display results in search mode, which is list view
 	//grab the latest 4 blog posts. to display more, change 4 to something else
@@ -31,15 +31,20 @@
     //display the contents in our new canvas layout
 	$body = elgg_view_layout('new_index',$login, $files, $newest_members, $blogs, $groups, $bookmarks);
 	/**/
-/*	
+	
 	if (isadminloggedin()) {
 		$owner = get_loggedin_userid();
 		set_page_owner($owner);
 	} else {
-		set_page_owner();
+		set_page_owner(0);
 	}
+	
 	set_context('index');
-	$body = elgg_view_layout('widgets',"","","");
+	
+	$main = "<div class='main-box'>".elgg_view("index/main")."</div>";
+	$block = elgg_view("index/block");
+	
+	$body = elgg_view_layout('widgets',$main,"",$main,"",$block);
 	$body = '<div id="custom_index">'.$body.'</div>';
    /**/
     page_draw($title, $body);

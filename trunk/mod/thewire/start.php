@@ -212,6 +212,7 @@
 		 * View the wire on wallpost
 		 */
 		function thewire_wallpost($vars) {
+			global $CONFIG;
 			if ($vars['viewtype']!='wall' || !elgg_view_exists("object/wall")){
 				return false;
 			}
@@ -227,9 +228,9 @@
 			
 			$status = elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"), friendly_time($vars['entity']->time_created) ) . " " . elgg_echo("thewire:via") . " " . $vars['entity']->method;
 			
-			$dellink = $vars['url'] . "action/thewire/delete?thewirepost=" . $vars['entity']->getGUID();
+			$dellink = $CONFIG->wwwroot . "action/thewire/delete?thewirepost=" . $vars['entity']->getGUID();
 			
-			echo elgg_view("object/wall", array(
+			return elgg_view("object/wall", array(
 						'entity'	=> $entity,
 						'viewtype'	=> $viewtype,
 						'title'		=> $title,
@@ -237,7 +238,6 @@
 						'status'	=> $status,
 						'dellink'	=> $dellink
 			));
-			return true;
 		}
 	
 	// Make sure the thewire initialisation function is called on initialisation
