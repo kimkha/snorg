@@ -208,15 +208,15 @@
 	
 // snorg - bkit06 register action
 	
-	//This overwrites the original friend requesting stuff.
+	// snorg - bkit06 register action //This overwrites the original friend requesting stuff.
 	register_action("eventrequest/invite", false, $CONFIG->pluginspath . "event_calendar/actions/invite.php", false);
 	
-	//Our friendrequest handlers...
+	// snorg - bkit06 register action //Our friendrequest handlers...
 	register_action("eventrequest/attend", false, $CONFIG->pluginspath . "event_calendar/actions/attend.php");
 	
-	
+	// snorg - bkit06 register action
    	register_action("eventrequest/notattend", false, $CONFIG->pluginspath . "event_calendar/actions/not_attend.php");
-   	
+   	// snorg - bkit06 register action
    	register_action("eventrequest/maybeattend", false, $CONFIG->pluginspath . "event_calendar/actions/maybe_attend.php");
 
 ?>

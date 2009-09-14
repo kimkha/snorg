@@ -214,31 +214,6 @@
 	}
 	
 	/**
-	 * Change subtype of Object to another one
-	 * 
-	 * @author KimKha
-	 * @param ElggEntity $object Current object
-	 * @param string $subtype New subtype name
-	 * @return true|false Depend on success
-	 */
-	function change_subtype(ElggEntity $object, $subtype) {
-		global $CONFIG;
-		
-		$type = $object->getType();
-		$id = get_subtype_id($type, $subtype);
-		
-		if ($id == 0) {
-			return false;
-		}
-		
-		$object->subtype = $subtype;
-		if (!$object->save()) {
-			return false;
-		}
-		return true;
-	}
-	
-	/**
 	 * Get list of entities with subtype from given entities list
 	 * 
 	 * @author "KimKha 

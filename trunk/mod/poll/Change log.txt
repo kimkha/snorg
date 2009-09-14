@@ -1,0 +1,69 @@
+This version is modified to work with Elggv1.5
+===============================================
+
+Modified by Team Webgalli
+
+===============================================
+Contact drsanupmoideen[at]gmail[dot]com
+
+Website = www.webgalli.com
+
+Elgg powered site :www.m4medicine.com
+
+===============================================
+
+Elgg Poll Pluggin Changes v1.6
+----------------------------------------------
+More modifications in css for making the appearence neat
+
+Fixed some missing languages
+
+Added some translations
+
+Widgets Appears more neat.
+
+Fixed the river issue in v1.5
+
+Created a new river support for votes
+
+Prevented the poll owner from casting multiple votes
+
+Poll owner or admin can view the result without need of voting
+
+==============================================
+
+Elgg Poll Pluggin Changes v1.5
+----------------------------------------------
+Modifications in css for making the appearence neat
+
+Fixed some missing languages
+
+Added some translations
+
+Widgets Appears more neat.
+
+Created river support for Elgg v1.5
+==============================================
+
+ToDo V1.5
+----------------------------------------------
+
+In the river there is no link to the poll. dont know why its so :(
+
+----------------------------------------------
+
+==============================================
+
+Elgg Poll Pluggin Changes V1.2
+----------------------------------------------
+Original author = John Mellberg
+
+website =http://www.syslogicinc.com
+
+copyright =(C) John Mellberg 2009
+
+----------------------------------------------
+
+
+
+

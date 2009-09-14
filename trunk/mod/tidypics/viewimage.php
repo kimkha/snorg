@@ -12,7 +12,7 @@
 	// get the album entity
 	$photo_guid = (int) get_input('guid');
 	$photo = get_entity($photo_guid);
-
+	 //echo "<pre>"; print_r($photo_guid); die;
 	// panic if we can't get it
 	if (!$photo) forward();
 
@@ -49,8 +49,9 @@
 	$title = $photo->title;
 	$area2 = elgg_view_title($title);
 	$area2 .= elgg_view_entity($photo, true);
+	$block = elgg_view("tidypics/owner_block",array('entity' => $photo_guid));
+	
 
-	$body = elgg_view_layout('two_column_left_sidebar', '', $area2);
-
+	$body = elgg_view_layout('two_column_left_sidebar', '', $area2, $block);
 	page_draw($title, $body);
 ?>
