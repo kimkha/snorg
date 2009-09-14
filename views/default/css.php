@@ -2538,6 +2538,78 @@ a.delete_report_button:hover {
 }
 
 
+/* ----------- tagging ---------------- */
+#tidypics_tag_instructions {
+background:#BBDAF7; 
+border:1px solid #4690D6;  
+padding:10px;
+height:25px;
+width:360px;
+display:none;
+overflow:hidden; 
+position:absolute; 
+z-index:10000;
+}
+
+#tidypics_tag_instruct_text {
+padding-top: 3px;
+float: left;
+}
+
+#tidypics_tag_instruct_button_div {
+float: left;
+margin-left: 15px;
+}
+
+#tidypics_tag_instruct_button {
+margin:0;
+}
+
+#tidypics_tag_menu {
+}
+
+#tidypics_delete_tag_menu {
+}
+
+.tidypics_tag {
+display:none;
+background:url(<?php echo $vars['url']; ?>mod/tidypics/graphics/spacer.gif); 
+border:2px solid #ffffff; 
+overflow:hidden; 
+position:absolute; 
+z-index:0;
+}
+
+.tidypics_tag_text {
+display:none;
+overflow:hidden; 
+position:absolute; 
+z-index:0;
+text-align:center;
+background:#BBDAF7;
+border:1px solid #3B5999;
+-webkit-border-radius:3px; 
+-moz-border-radius:3px;
+padding:1px;
+}
+
+#tidypics_phototags_list {
+padding:0 20px 0 20px;
+}
+
+#tidypics_phototags_list ul {
+list-style:none; 
+margin:0px; 
+padding:8px;
+}
+
+#tidypics_phototags_list ul li {
+padding-right:10px;
+margin:2px 0px; 
+display:inline;
+} 
+
+
 /* CUSTOM */
 #elgg_taskbar {
 	position: fixed;

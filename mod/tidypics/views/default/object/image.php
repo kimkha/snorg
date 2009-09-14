@@ -41,8 +41,13 @@ if ($photo_tags) {
 		//	$phototag_link = $vars['url'] . "pg/photos/search/" . $photo_tag->value;
 		
 		// thay doi mac dinh( hien thi link search) thanh hien thi link den profile cua member
+		// snorg - bkit06
 			$phototag_link = $vars['url'] . "pg/profile/". $user->username;
 			
+		}
+		if ($photo_tag->type === 'word')
+		{
+			$phototag_link = $file->getURL();
 		}
 
 		// hack to handle format of Pedro Prez's tags - ugh
@@ -255,6 +260,8 @@ if ($photo_tags) {
 <?php
 
 			echo elgg_view_comments($file);
+			
+			//echo elgg_view("tidypics/forms/addpost", array('entity' => $vars['entity']));
 
 			echo '</div>';  // content wrapper
 

@@ -14,7 +14,14 @@
 	<ul>
 <?php
 		foreach ($links as $id=>$link) {
-			echo "<li><a class='tidypics_phototag_links' id='taglink{$id}' href='{$link[1]}'>{$link[0]}</a></li>";
+		//	if ($photo_tags_json->type === 'user')
+			//{
+				echo "<li><a class='tidypics_phototag_links' id='taglink{$id}' href='{$link[1]}'>{$link[0]}</a></li>";
+			//}
+			//else if ($photo_tags_json->type === 'word')
+			//{
+		//			echo "<li>{$link[0]}</li>";
+			//}
 		}
 ?>
 	</ul>
@@ -79,5 +86,6 @@
 	}
 	echo '</div>'; // tidypics_delete_tag_menu
 	
-	echo elgg_view('js/tagging', array('photo_tags_json' => $photo_tags_json,) );
+	echo elgg_view('js/tagging', array('photo_tags_json' => $photo_tags_json) );
+
 ?>

@@ -120,7 +120,7 @@
 	}
 
 
-	function selectUser(id, name) 
+	function selectUser1(id, name) 
 	{
 		user_id = id;
 		$("input.input-filter").val(name);

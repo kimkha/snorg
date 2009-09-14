@@ -403,5 +403,13 @@
 	register_action("tidypics/download", true, $CONFIG->pluginspath . "tidypics/actions/download.php");
 	register_action("tidypics/addtag", true, $CONFIG->pluginspath . "tidypics/actions/addtag.php");
 	register_action("tidypics/deletetag", true, $CONFIG->pluginspath . "tidypics/actions/deletetag.php");
+	
+	// snorg - bkit06
+	register_action("tidypics/addpost",false,$CONFIG->pluginspath . "tidypics/actions/addpost.php"
+	);
+	
+	// snorg - bkit06 - taguser
+	register_action("tidypics/taguser",false,$CONFIG->pluginspath . "tidypics/actions/taguser.php"
+	);
 
 ?>

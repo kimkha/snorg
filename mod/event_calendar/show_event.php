@@ -45,6 +45,7 @@ if ($event_id && ($event = get_entity($event_id))) {
 	$body = elgg_view('object/event_calendar',array('entity'=>$event,'full'=>true));
 	$title = $event->title;
 	$block = elgg_view("event_calendar/owner_block", array('entity'=>$event,'full'=>true));
+	
 	$content = elgg_view_layout("two_column_left_sidebar", "", elgg_view_title($title) . $body, $block);
 	page_draw($title, $content);
 } else {
