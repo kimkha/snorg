@@ -35,3 +35,16 @@
 #stick-blog-list .stick-blog-date {
 	font-size: 11px;
 }
+
+.user_menu_stickuser {
+	margin: 0;
+	padding: 0;
+}
+
+#commend-user-form {
+	margin: 0px 10px;
+}
+
+#view-commend {
+	padding: 5px;
+}

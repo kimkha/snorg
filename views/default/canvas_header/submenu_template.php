@@ -6,8 +6,10 @@
 		$selected = "";
 	}
 	
-	if (isset($vars['onclick']) && $vars['onclick'] == true) {
+	if (isset($vars['onclick']) && $vars['onclick'] === true) {
 		$onclick = "onclick=\"javascript:return confirm('". elgg_echo('deleteconfirm') . "')\"";
+	}else if (is_string($vars['onclick'])) {
+		$onclick = "onclick=\"javascript:return ".$vars['onclick'].";\"";
 	} else {
 		$onclick = "";
 	}

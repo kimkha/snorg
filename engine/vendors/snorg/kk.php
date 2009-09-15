@@ -1,5 +1,8 @@
 <?php
 
+	define("_WALLPOST_LIKE_", "wallpost_like");
+	define("_WALLPOST_UNLIKE_", "wallpost_unlike");
+
 	/**
 	 * Get content from URL
 	 * 
@@ -51,7 +54,8 @@
 		if (!is_registered_entity_type("object", $object)) { // Not exist this subtype
 			register_entity_type("object", $object);
 		}
-		return add_to_register("wallpost_type", $object, $view_func);
+		
+		return (is_register_wallpost($object) || add_to_register("wallpost_type", $object, $view_func));
 	}
 	
 	/**
@@ -118,10 +122,6 @@
 		return get_user_objects($user_guid, $subtype, $limit, $offset, $timelower, $timeupper);
 	}
 	
-	function create_wallpost_object($owner_guid, $viewtype = 'wall', $title, $content, $status, $dellink) {
-		
-	}
-		
 	/**
 	 * Whether object is wallpost
 	 * 
@@ -155,8 +155,108 @@
 			return $view_func($vars);
 		}
 		else {
-			return elgg_view("object/wall", $vars);
+			return view_onwall_wallpost($vars);
 		}
+	}
+	
+	/**
+	 * Send message to wallpost
+	 * 
+	 * @author "KimKha 
+	 * @param int $owner_guid
+	 * @param string $title 
+	 * @param string $content It is null if $type='short'
+	 * @param string $type Value is 'short' or 'full'
+	 * @param int $access_id 
+	 * @return int|false GUID of new ElggObject of this message or failure
+	 */
+	function wallpost($owner_guid=0, $title="", $content="", $type="full", $access_id=ACCESS_PUBLIC) {
+		if ($owner_guid <= 0) return false;
+		
+		
+		switch ($type) {
+			case "short":
+				if ($title=="") return false;
+				$content = '';
+				$subtype = "short_wallpost";
+				break;
+			case "full":
+			default:
+				if ($title=="" && $content=="") return false;
+				$subtype = "wallpost";
+				break;
+		}
+		
+		if (!is_registered_entity_type("object", $subtype)) {
+			register_wallpost($subtype, "view_onwall_".$subtype);
+		}
+		
+		$obj = new ElggObject();
+		$obj->subtype = $subtype;
+		$obj->owner_guid = $owner_guid;
+		$obj->container_guid = $owner_guid;
+		$obj->access_id = $access_id;
+		$obj->title = $title;
+		$obj->description = $content;
+		
+		return $obj->save();
+	}
+	
+	
+	/**
+	 * View full wallpost, sent by message to wallpost() function
+	 * 
+	 * @author "KimKha 
+	 * @param array $vars = array('entity'=>$entity, 'viewtype'=>'wall') 
+	 * @return string|false HTML to view
+	 */
+	function view_onwall_wallpost($vars) {
+		global $CONFIG;
+		if ($vars['viewtype']!='wall' || !elgg_view_exists("object/wall")){
+			return false;
+		}
+		
+		$entity = $vars['entity'];
+		$viewtype = $vars['viewtype'];
+		
+		$title = $entity->title;
+		$content = $entity->description;
+		$status = ' ';
+		$dellink = '';
+		
+		return elgg_view("object/wall", array(
+					'entity'	=> $entity,
+					'viewtype'	=> $viewtype,
+					'title'		=> $title,
+					'content'	=> $content,
+					'status'	=> $status,
+					'dellink'	=> $dellink
+		));
+	}
+	
+	/**
+	 * View short wallpost, sent by message to wallpost() function
+	 * 
+	 * @author "KimKha 
+	 * @param array $vars = array('entity'=>$entity, 'viewtype'=>'wall') 
+	 * @return string|false HTML to view
+	 */
+	function view_onwall_short_wallpost($vars) {
+		global $CONFIG;
+		if ($vars['viewtype']!='wall' || !elgg_view_exists("object/wall")){
+			return false;
+		}
+		
+		$entity = $vars['entity'];
+		$viewtype = $vars['viewtype'];
+		$user = $entity->getOwnerEntity();
+		
+		$title = $entity->title;
+		$img = elgg_view('profile/icon', array('entity' => $user, 'size' => 'topbar', 'align' => 'left'));
+		
+		$content = "<div class='short-wall-singlepage' id='wall-singlepage-{$entity->guid}'><div class='short-wall-post'>".$img.$title."</div></div>";
+		
+		return $content;
 	}
 	
 	/**
@@ -168,7 +268,7 @@
 	 */
 	function get_wallpost_object($owner_guid = 0) {
 		$object = get_register_wallpost($owner_guid);
-		if (!$object) $object = array("srghshl");
+		if (!$object) $object = array("srghsreyhjhl");
 		return array('object' => $object);
 	}
 	
@@ -214,6 +314,31 @@
 	}
 	
 	/**
+	 * Change subtype of Object to another one
+	 * 
+	 * @author KimKha
+	 * @param ElggEntity $object Current object
+	 * @param string $subtype New subtype name
+	 * @return true|false Depend on success
+	 */
+	function change_subtype(ElggEntity $object, $subtype) {
+		global $CONFIG;
+		
+		$type = $object->getType();
+		$id = get_subtype_id($type, $subtype);
+		
+		if ($id == 0) {
+			return false;
+		}
+		
+		$object->subtype = $subtype;
+		if (!$object->save()) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * Get list of entities with subtype from given entities list
 	 * 
 	 * @author "KimKha 
@@ -238,15 +363,68 @@
 	}
 	
 	/**
+	 * Check whether multi relationship is exist.
+	 * Each relationship string is $relationship.$subrelationship[index]
+	 * 
+	 * @param int $guid_one 
+	 * @param string $relationship 
+	 * @param int $guid_two 
+	 * @param array $subrelationship
+	 * @return true|false  
+	 */
+	function check_entity_multi_relationship($guid_one, $relationship, $guid_two, $subrelationship=array()) {
+		if (empty($subrelationship)) return check_entity_relationship($guid_one, $relationship, $guid_two);
+		
+		foreach ($subrelationship as $s) {
+			if ($obj = check_entity_relationship($guid_one, $relationship.$s, $guid_two)) {
+				return $obj;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Trim string and replace whitespace to make smart name (for array)
+	 * 
+	 * @author "KimKha 
+	 * @param array $array Array of strings to convert 
+	 * @return array Result array
+	 */
+	function convert_whitespace_array($array) {
+		if (empty($array)) return false;
+		
+		$return = array();
+		foreach ($array as $value) {
+			$return[] = convert_whitespace($value);
+		}
+		return $return;
+	}
+	
+	/**
+	 * Trim string and replace whitespace to make smart name
+	 * 
+	 * @author "KimKha 
+	 * @param string $current String to convert
+	 * @return string Result string
+	 */
+	function convert_whitespace($current) {
+		$current = trim($current);
+		$current = strtolower($current);
+		$current = str_replace(" ", "___", $current);
+		return $current;
+	}
+	
+	/**
 	 * Unique given array of entities by an attribute
 	 * 
 	 * @author "KimKha 
 	 * @param array $list Array of entities
 	 * @param string $attr Name of attribute
+	 * @param array $given Given array that list are inserted into
 	 * @return array Result
 	 */
-	function array_unique_by_attribute($list, $attr) {
-		$new = array();
+	function array_unique_by_attribute($list, $attr, $given = array()) {
+		$new = $given;
 		$exist = array();
 		
 		foreach ($list as $object) {
@@ -258,5 +436,40 @@
 		
 		return $new;
 	}
-
+	
+	/**
+	 * Check whether a file is included
+	 * 
+	 * @author "KimKha 
+	 * @param string $filename
+	 * @return true|false
+	 */
+	function is_included($filename) {
+		$filename = str_replace("\\", "/", $filename);
+		$filename = trim($filename);
+		
+		$all = get_included_files();
+		
+		foreach ($all as $included) {
+			$included = str_replace("\\", "/", $included);
+			$included = trim($included);
+			if ($filename == $included) return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Init something for KK lib
+	 * 
+	 * @author "KimKha 
+	 */
+	function kk_init() {
+		register_wallpost("wallpost", "view_onwall_wallpost");
+		register_wallpost("short_wallpost", "view_onwall_short_wallpost");
+	}
+	
+	// register something for kk lib
+	register_elgg_event_handler('init','system','kk_init');
+	
 ?>
