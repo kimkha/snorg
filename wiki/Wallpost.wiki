@@ -11,3 +11,5 @@ Chức năng này tạo một loại bài viết trên wall. Chỉ cần 2 thao 
 Để đăng ký một subtype là wallpost:
   # Trong hàm init (của module), thêm một câu lệnh: {{{register_wallpost($subtype, $view_function);}}}
 Trong đó $subtype là tên của subtype, $view_function là tên của hàm được xử lý
+
+Nếu muốn gửi một message đến Wall thì có thể dùng hàm {{{wallpost($owner_guid=0, $title="", $content="", $type="full", $access_id=ACCESS_PUBLIC)}}}
