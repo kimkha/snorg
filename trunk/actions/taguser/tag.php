@@ -38,24 +38,13 @@
 	
 	//Save annotation
 	if ($image->annotate('taguser', $friend, null,$user_id )) {
-	// if tag is a user id, add relationship for searching (find all images with user x
-	$friends = $image->getAnnotations('taguser');
-	//	echo "<pre>"; print_r($friends); die;
-	   system_message("okie");
-	  // $friends = $image->getAnnotations('taguser');
-	   //echo "<pre>"; print_r($friends); die;
-				
-				// also add this to the river
-			
 
-   // get_user_objects_by_metadata()
-    // Snorg - Bkit06
-				
-	//else
-	//	register_error("can not send a Notify");
-	
+	   system_message(elgg_echo('taguser:sysnotify:sucessful'));
+	}
+	else 
+	{
+		 system_message(elgg_echo('taguser:sysnotify:fail'));
 		
-		system_message(elgg_echo("tidypics:phototagging:success"));
 	}
 
 

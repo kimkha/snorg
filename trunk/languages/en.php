@@ -911,6 +911,20 @@ You cannot reply to this email.",
 		 * Word blacklists
 		 */
 			'word:blacklist' => 'and, the, then, but, she, his, her, him, one, not, also, about, now, hence, however, still, likewise, otherwise, therefore, conversely, rather, consequently, furthermore, nevertheless, instead, meanwhile, accordingly, this, seems, what, whom, whose, whoever, whomever',
+			
+			
+			
+			//snorg taguser
+			
+			'taguser:actiontag' => "Tag",
+			'taguser:tagthisphoto' => "Tag people in this note",
+			'taguser:chooseuser' => "Type any name:",
+			'taguser:sysnotify:sucessful' => "Tag succesful",
+			'taguser:sysnotify:fail' => "Cannot Tag - Please try again",
+			'taguser:usertaggedin' => "User in this note:",
+			'taguser:remove' => "Remove",
+			'taguser:untag' => "Untag Sucessful",
+			'taguser:notuntag' => "Untag Fail - Please Try Again",
 	
 		/**
 		 * Languages according to ISO 639-1
@@ -1058,6 +1072,10 @@ You cannot reply to this email.",
 			"za" => "Zuang",
 			"zh" => "Chinese",
 			"zu" => "Zulu",
+			
+			
+		
+			
 	);
 	
 	add_translation("en",$english);

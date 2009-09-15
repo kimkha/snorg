@@ -50,6 +50,26 @@
 						
 					}
 					
+					
+						// snorg - bkit06 - send notify to person who is tagged in photo
+					$friends = get_entities_from_relationship('phototag', $entity->getGUID(), true , user , '', 0, 'time_created desc', 1000);
+					if ($friends) {
+							foreach($friends as $friend) {
+								$friend_array[] = $friend->getGUID();
+							}
+						
+							foreach($friend_array as $uid)
+							{
+								unset($otherUser[array_search($uid,$otherUser)]);
+							//	echo "<pre>"; print_r($uid); die;	
+								notify_user($uid, $lastUser->getGUID(), " Commented on a Photo has you at","  here -".$entity->getURL());
+							}
+							
+							
+					}
+	
+
+
 					system_message(elgg_echo("generic_comment:posted"));
 					//add to river
 					add_to_river('annotation/annotate','comment',$_SESSION['user']->guid,$entity->guid);
