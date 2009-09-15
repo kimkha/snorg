@@ -1,0 +1,16 @@
+#summary Hướng Dẫn sử dụng hệ thống taguser
+#labels Phase-Implementation
+
+
+
+= Hệ thống Taguser = 
+
+Để sử dụng hệ thống taguser tương tự facebook chỉ cần dùng câu lệnh:
+
+* elgg_view_taguser($entity);*
+
+view này sẽ trả về mã HTML bao gồm 2 phần:
+ * phần tag 1 user mới.
+ * hiển thị các user được tag.
+
+Sau đó chỉ cần show đoạn view này ở vị trí bạn muốn
