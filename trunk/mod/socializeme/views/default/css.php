@@ -2762,7 +2762,7 @@ border-top:none;
 
 /* Wall post */
 .wall-singlepage {
-	margin:0 10px 20px 10px;
+	margin:10px 10px 20px 10px;
 }
 .wall-singlepage .note_body {
 	margin:0;
@@ -2772,6 +2772,18 @@ border-top:none;
 }
 .wall-singlepage .wall-post {
 	margin-bottom:5px;
+}
+.short-wall-singlepage {
+	margin: 10px 30px;
+}
+.short-wall-singlepage .short-wall-post {
+	margin: 0px;
+	padding: 1px 10px;
+	background-color: #E2F3F5;
+	border-bottom: 1px dashed #2779E7;
+}
+.short-wall-singlepage .short-wall-post .usericon img {
+	margin: 1px 5px 0px 0px;
 }
 .wall-post .note_date {
 	font-size:80%;

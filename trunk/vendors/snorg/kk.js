@@ -17,10 +17,10 @@
 	var max_ksimpleForm_id = 0;
 	
 	function $ksimpleForm(thisForm, id) {
-		myForm = jQuery(thisForm);
+		myForm = $(thisForm);
 		url = myForm.attr('action');
-		jQuery.post(url, myForm.serializeArray(), function(data){
-			jQuery('#'+id).append(data);
+		$.post(url, myForm.serializeArray(), function(data){
+			$('#'+id).append(data);
 			myForm.find("textarea").val("");
 			myForm.find("textarea").blur();
 			
@@ -33,10 +33,10 @@
 	}
 	
 	function $kconfirmlink(link, msg, fn, id) {
-		url = jQuery(link).attr("href");
+		url = $(link).attr("href");
 		$kconfirm(msg, function(re){
 			if(re){
-				jQuery.get(url, function(data){
+				$.get(url, function(data){
 					eval(fn+"('"+id+"');");
 				});
 			}
@@ -51,7 +51,7 @@
 		$k.dialog.content = msg;
 		$k.dialog.show();
 		
-		jQuery("#kInternalForm").submit(function(){
+		$("#kInternalForm").submit(function(){
 			$k.dialog.hide();
 			return false;
 		});
@@ -64,18 +64,18 @@
 		$k.dialog.content = msg;
 		$k.dialog.show();
 		
-		jQuery("#kInternalForm").submit(function(){
+		$("#kInternalForm").submit(function(){
 			$k.dialog.hide();
-			fn.call(jQuery(this), true);
+			fn.call($(this), true);
 			return false;
 		});
-		jQuery("#kButtonCancel").click(function(){
+		$("#kButtonCancel").click(function(){
 			$k.dialog.hide();
-			fn.call(jQuery(this), false);
+			fn.call($(this), false);
 			return false;
 		});
-		jQuery("#kdialogClose").click(function(){
-			fn.call(jQuery(this), false);
+		$("#kdialogClose").click(function(){
+			fn.call($(this), false);
 			return false;
 		});
 	}
@@ -91,12 +91,12 @@
 		$k.dialog.content = msg;
 		$k.dialog.show();
 		
-		jQuery("#kInternalForm").submit(function(){
+		$("#kInternalForm").submit(function(){
 			$k.dialog.hide();
-			fn.call(jQuery(this),jQuery(this).find("#kButtonInput").val());
+			fn.call($(this),$(this).find("#kButtonInput").val());
 			return false;
 		});
-		jQuery("#kButtonCancel").click(function(){
+		$("#kButtonCancel").click(function(){
 			$k.dialog.hide();
 		});
 	}
@@ -123,7 +123,7 @@ function $kdialog() {
 	maxIndex = 1;
 	
 	ref = this;
-	var kdialog = jQuery("#kdialog");
+	var kdialog = $("#kdialog");
 	var koverlay;
 	kboxContent = '';
 	
@@ -139,7 +139,7 @@ function $kdialog() {
 		kdialog.css('display', 'block');
 		koverlay.css('display', 'block');
 		
-		jQuery("#kdialogClose").click(function(){
+		$("#kdialogClose").click(function(){
 			$k.dialog.hide();
 		});
 		this.clickOverlay();
@@ -184,7 +184,7 @@ function $kdialog() {
 	createWindow = function(){
 		maxId = maxId+1;
 		kdialog.after("<div id='kwindow-"+maxId+"' class='kDlg'></div>");
-		var kwindow = jQuery("#kwindow-"+maxId);
+		var kwindow = $("#kwindow-"+maxId);
 		kwindow.css("z-index", maxIndex); maxIndex++;
 		
 		return $kwindow(maxId);
@@ -197,7 +197,7 @@ function $kdialog() {
 	resetKbox = function () {
 		kdialog.html(kboxContent);
 		kboxContent = '';
-		jQuery("#kdialogClose").click(function(){
+		$("#kdialogClose").click(function(){
 			$k.dialog.hide();
 		});
 	};
@@ -206,11 +206,28 @@ function $kdialog() {
 	constructor = function () {
 		/* construct overlay */
 		kdialog.before("<div id='koverlay'></div>");
-		koverlay = jQuery("#koverlay");
+		koverlay = $("#koverlay");
 		koverlay.height(window.outerHeight);
 		
 		this.clickOverlay();
 	}
+	this.constructor();
+	return this;
+}
+
+function $kwindow(i){
+	/* Attributes */
+	id = i;
+	
+	var kwindow;
+	
+	/* Functions */
+	
+	/* Constructor */
+	constructor = function(){
+		kwindow = $("#kwindow-"+id);
+		kwindow.css();
+	};
 	this.constructor();
 	return this;
 }
@@ -236,7 +253,7 @@ function $ktabs() {
 		tabpanel.addClass("tabPanel_active");
 		
 		if (!tab.exist) {
-			jQuery.get(tab.url, function(data){
+			$.get(tab.url, function(data){
 				if (typeof(data) != "undefined") {
 					tab.content.html(data);
 					tab.exist = true;
@@ -267,19 +284,19 @@ function $ktabs() {
 		};
 		
 		tab.click(function(){
-			$k.tabs.open(jQuery(this));
+			$k.tabs.open($(this));
 			return false;
 		});
 	};
 	
 	/* Constructor */
 	constructor = function(){
-		kpanel = jQuery("#ktabs_panel");
-		ktab = jQuery("#ktabs_content");
+		kpanel = $("#ktabs_panel");
+		ktab = $("#ktabs_content");
 		kpanel.find("a").each(function(){
-			buildTabs(jQuery(this));
+			buildTabs($(this));
 		});
-		open(jQuery("#ktabs_panel a:first"));
+		open($("#ktabs_panel a:first"));
 	};
 	this.constructor();
 	return this;
@@ -295,6 +312,13 @@ function $kloading() {
 	return "<div class=\"ajax_loader\" align=\"center\"></div>";
 }
 
-jQuery(document).ready(function(){
+function kdemo(msg) {
+	$kalert("kimkha "+msg);
+}
+
+function $kreset() {
+	setup_wallpost_textarea();
+}
+$(document).ready(function(){
 	$k = $kk();
 });

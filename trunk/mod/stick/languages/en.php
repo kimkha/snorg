@@ -12,14 +12,34 @@
 	
 	$english = array(
 		'stick' => 'Stick',
+		'stick:notexist' => 'There is no post',
 		'stick:postit' => 'Stick to homepage',
 		'stick:removeit' => 'Unstick from homepage',
+		'stick:ipostit' => 'Stick to common gallery',
+		'stick:iremoveit' => 'Unstick from common gallery',
+		'stick:upostit' => 'Commend user',
+		'stick:uremoveit' => 'Uncommend user',
 		
 		'stick:successful' => 'This post is sticked successful',
 		'stick:error' => 'There is an error when stick this post',
 		'stick:removesuccessful' => 'This post is unsticked successful',
 		'stick:removeerror' => 'There is an error when unstick this post',
 		'stick:notpublic' => 'This post can not be sticked because it is not public',
+		
+		'stick:isuccessful' => 'This image is sticked successful',
+		'stick:ierror' => 'There is an error when stick this image',
+		'stick:inotpublic' => 'This image can not be sticked because it is not public',
+		
+		'stick:usuccessful' => 'This user is commended',
+		'stick:uerror' => 'There is an error when commend this user',
+		'stick:uremovesuccessful' => 'This user is uncommended successful',
+		'stick:uremoveerror' => 'There is an error when uncommend this user',
+		
+		'stick:user:notempty' => 'Please enter both title and description',
+		'stick:user:error' => 'There is an error when save new commend this user',
+		'stick:user:successful' => 'You commended this user successful',
+		'stick:user:removeerror' => 'There is an error when uncommend this user',
+		'stick:user:removesuccessful' => 'You uncommended this user successful',
 	);
 					
 	add_translation("en",$english);
