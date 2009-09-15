@@ -21,7 +21,7 @@
 			
 			if ($comment->canEdit()) {
 				$comment->delete();
-				system_message(elgg_echo("generic_comment:deleted"));
+				system_message(elgg_echo("taguser:untag"));
 				forward($entity->getURL());
 			}
 			
@@ -29,7 +29,7 @@
 			$url = "";
 		}
 		
-		register_error(elgg_echo("generic_comment:notdeleted"));
+		register_error(elgg_echo("taguser:notuntag"));
 		forward($entity->getURL());
 
 ?>
