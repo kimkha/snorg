@@ -9,7 +9,7 @@
 	 * @Modified By Team Webgalli to work with ElggV1.5
 	 * www.webgalli.com or www.m4medicine.com	 */
 	 
-
+ // echo "<pre>"; print_r($vars['entity']); die;
 	if (isset($vars['entity'])) {
 			
 		if (get_context() == "search") {
