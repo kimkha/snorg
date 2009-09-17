@@ -18,6 +18,7 @@
 		// Register homepage
 		extend_view("css", "stick/css", 600);
 		extend_view("index/main", "stick/homepage", 450);
+		extend_view("index/block", "stick/commend", 400);
 		extend_view("js/initialise_elgg", "stick/js");
 		
 		// Page handler for blogspot
