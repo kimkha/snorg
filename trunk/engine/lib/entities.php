@@ -1606,6 +1606,133 @@
 		}
 	}
 	
+	
+	function get_entities_order_by_metadata($type = "", $subtype = "", $owner_guid = 0, $order_by = "", $limit = 10, $offset = 0, $count = false, $site_guid = 0, $container_guid = null, $timelower = 0, $timeupper = 0)
+	{
+		global $CONFIG;
+		
+		if ($subtype === false || $subtype === null || $subtype === 0)
+			return false;
+		/////////////////////////////////////	
+		$e = 'e.';
+		$md = 'md.';
+		$ms1 = 'ms1.';
+		$ms2 = 'ms2.';
+		
+		$from = "{$CONFIG->dbprefix}entities as e ";
+		$from .= "left join ( {$CONFIG->dbprefix}metadata as md ";
+		$from .= "join {$CONFIG->dbprefix}metastrings as ms1 ";
+		$from .= "join {$CONFIG->dbprefix}metastrings as ms2) ";
+		
+		$on =  "( {$md}entity_guid = {$e}guid )";
+		$on.= "AND ({$md}name_id = {$ms1}id)";
+		$on.= "AND ({$md}value_id = {$ms2}id)";
+		$on.= "AND ({$ms1}string = '{$order_by}')";
+
+		
+		//////////////////////////////////////
+		if ($order_by == "") $order_by = "time_created desc";
+		$order_by = sanitise_string($order_by);
+		$limit = (int)$limit;
+		$offset = (int)$offset;
+		$site_guid = (int) $site_guid;
+		$timelower = (int) $timelower;
+		$timeupper = (int) $timeupper;
+		if ($site_guid == 0)
+			$site_guid = $CONFIG->site_guid;
+				
+		$where = array();
+		//////////////////////////////////
+		
+		
+		if (is_array($subtype)) {			
+			$tempwhere = "";
+			if (sizeof($subtype))
+			foreach($subtype as $typekey => $subtypearray) {
+				foreach($subtypearray as $subtypeval) {
+					$typekey = sanitise_string($typekey);
+					if (!empty($subtypeval)) {
+						$subtypeval = (int) get_subtype_id($typekey, $subtypeval);
+					} else {
+						$subtypeval = 0;
+					}
+					if (!empty($tempwhere)) $tempwhere .= " or ";
+					$tempwhere .= "({$e}type = '{$typekey}' and {$e}subtype = {$subtypeval})";
+					
+				}								
+			}
+			if (!empty($tempwhere)) $where[] = "({$tempwhere})";
+			
+		} else {
+		
+			$type = sanitise_string($type);
+			if ($subtype !== "")
+				$subtype = get_subtype_id($type, $subtype);
+			
+			if ($type != "")
+				$where[] = "{$e}type='$type'";
+			if ($subtype!=="")
+				$where[] = "{$e}subtype=$subtype";
+				
+		}
+			
+		if ($owner_guid != "") {
+			if (!is_array($owner_guid)) {
+				$owner_array = array($owner_guid);
+				$owner_guid = (int) $owner_guid;
+			//	$where[] = "{$e}owner_guid = '$owner_guid'";
+			} else if (sizeof($owner_guid) > 0) {
+				$owner_array = array_map('sanitise_int', $owner_guid);
+				// Cast every element to the owner_guid array to int
+			//	$owner_guid = array_map("sanitise_int", $owner_guid);
+			//	$owner_guid = implode(",",$owner_guid);
+			//	$where[] = "owner_guid in ({$owner_guid})";
+			}
+			if (is_null($container_guid)) {
+				$container_guid = $owner_array;
+			}
+		}
+		if ($site_guid > 0)
+			$where[] = "{$e}site_guid = {$site_guid}";
+
+		if (!is_null($container_guid)) {
+			if (is_array($container_guid)) {
+				foreach($container_guid as $key => $val) $container_guid[$key] = (int) $val;
+				$where[] = "{$e}container_guid in (" . implode(",",$container_guid) . ")";
+			} else {
+				$container_guid = (int) $container_guid;
+				$where[] = "{$e}container_guid = {$container_guid}";
+			}
+		}
+		
+		if ($timelower)
+			$where[] = "{$e}time_created >= {$timelower}";
+		if ($timeupper)
+			$where[] = "{$e}time_created <= {$timeupper}";
+			
+		if (!$count) {
+			$query = "SELECT e.* from {$from} on {$on} where ";
+		} else {
+			$query = "SELECT count(guid) as total from {$from} on {$on}  where ";
+		}
+		
+		foreach ($where as $w)
+			$query .= " $w and ";
+		$query .= "( (1 = 1) and e.enabled='yes')";
+		
+		if (!$count) {
+			$query .= " order by CAST({$ms2}string as DECIMAL) desc";
+			if ($limit) $query .= " limit $offset, $limit"; // Add order and limit
+			
+			$dt = get_data($query, "entity_row_to_elggstar");
+			return $dt;
+		} else {
+			$total = get_data_row($query);
+			return $total->total;
+		}
+	}
+	
+	
 	/**
 	 * Returns a viewable list of entities
 	 *
@@ -1624,7 +1751,7 @@
 		
 		$offset = (int) get_input('offset');
 		$count = get_entities($type, $subtype, $owner_guid, "", $limit, $offset, true);
-		$entities = get_entities($type, $subtype, $owner_guid, "", $limit, $offset);
+		$entities = get_entities_order_by_metadata($type, $subtype, $owner_guid, "ratetotal", $limit, $offset);
 
 		return elgg_view_entity_list($entities, $count, $offset, $limit, $fullview, $viewtypetoggle, $pagination);
 		

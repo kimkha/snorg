@@ -9,7 +9,7 @@
 		foreach($vars['config']->cv as $lable => $valtype) {
 			
 			if ($metadata = get_metadata_byname($vars['entity']->guid, $lable)) {
-				
+				 
 				if (is_array($metadata)) {
 					$value = '';
 					foreach($metadata as $md) {
