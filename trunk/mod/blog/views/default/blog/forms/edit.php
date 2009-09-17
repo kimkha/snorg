@@ -75,9 +75,6 @@
 		  $never = elgg_echo('blog:never');
 		  $allowcomments = elgg_echo('blog:comments:allow');
 		  
-		  $taguser =  elgg_view_taguer($vars['entity']);
-		
-		  
 	// INSERT EXTRAS HERE
 		  $extras = elgg_view('categories',$vars);
 		  if (!empty($extras)) $extras = '<div id="blog_edit_sidebar">' . $extras . '</div>';
@@ -119,7 +116,6 @@
 					</label></p>
 			</div>
 		</div>
-		
 
 		{$extras}
 
@@ -128,8 +124,6 @@
 	<!-- main content -->
 	<div id="two_column_left_sidebar_maincontent">
 EOT;
-
-
 
 ?>
 
