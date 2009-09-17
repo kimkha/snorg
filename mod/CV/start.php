@@ -58,7 +58,7 @@ function cv_fields_setup()
 		$cv_defaults = $loaded_defaults;
 	}
 	
-	$CONFIG->cv = trigger_plugin_hook('cv:fields', 'cv', NULL, $cv_defaults);
+	$CONFIG->cv = trigger_plugin_hook('cv:fields', 'cv', $cv_defaults, $cv_defaults);
 }
 		
 		

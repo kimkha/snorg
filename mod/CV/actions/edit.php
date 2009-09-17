@@ -54,7 +54,7 @@
 						foreach($value as $interval) {
 							$i++;
 							if ($i == 1) { $multiple = false; } else { $multiple = true; }
-							
+							print_r($lable);die;
 							create_metadata($user->guid, $lable, $interval, 'text', $user->guid, $access_id, $multiple);
 						}
 					} else {

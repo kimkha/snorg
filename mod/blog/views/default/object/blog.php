@@ -87,13 +87,15 @@
 				<?php
 	
 					$tags = elgg_view('output/tags', array('tags' => $vars['entity']->tags));
-					if (!empty($tags)) {
-						echo '<p class="tags">' . $tags . '</p>';
-					}
+					
 				
 					$categories = elgg_view('categories/view', $vars);
+					$rating = elgg_view('blograte/starsinput', $vars);
 					if (!empty($categories)) {
-						echo '<p class="categories">' . $categories . '</p>';
+						echo '<div class="categories">' . $categories . '</div>';
+					}
+					if (!empty($rating)) {
+						echo $rating;
 					}
 				
 				?>
@@ -104,13 +106,17 @@
 				<?php
 			
 							echo elgg_view('output/longtext',array('value' => $vars['entity']->description));
-				
+							if (!empty($tags)) {
+							echo '<div class="tags"> <b> Tags: </b>'  . $tags . '</div>';
+					}
+
 				?>
 			</div><div class="clearfloat"></div>			
 			<!-- display edit options if it is the blog post owner -->
 			<p class="options">
+			
 			<?php
-	
+									
 				if ($canedit) {
 					
 				?>
