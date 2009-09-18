@@ -48,3 +48,31 @@
 #view-commend {
 	padding: 5px;
 }
+
+#commend-box {
+	margin: 0px 0px 10px;
+	padding: 5px;
+	border: 1px solid #E1E1E1;
+	background-color: #FFFFFF;
+}
+#commend-box .commend-header {
+	color: #2779E7;
+	font-size: 1.0em;
+	line-height: 1.2em;
+	font-weight: bold;
+	padding: 0px 0px 5px;
+}
+#commend-box .usericon {
+	width: 100px;
+	margin: 0px auto;
+}
+#commend-box .commend-title {
+	width: 100%;
+	text-align: center;
+	padding: 3px 0px;
+}
+
+.main-box .stick-album {
+	margin: 30px 0px 0px;
+	border-top: 1px dashed #CCCCCC;
+}
