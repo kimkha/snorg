@@ -979,7 +979,7 @@ input[type="submit"] {
 
 .main-box {
 	background: #FFFFFF;
-	padding: 5px;
+	padding: 15px 5px 5px;
 	margin: 0px 5px 10px 0px;
 	min-height: 200px;
 	border: 1px solid #E1E1E1;
