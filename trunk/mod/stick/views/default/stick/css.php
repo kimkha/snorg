@@ -76,3 +76,8 @@
 	margin: 30px 0px 0px;
 	border-top: 1px dashed #CCCCCC;
 }
+
+.main-box .stick-album-viewall {
+	float: right;
+	margin-right: 40px;
+}
