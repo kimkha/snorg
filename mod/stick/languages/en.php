@@ -12,6 +12,7 @@
 	
 	$english = array(
 		'stick' => 'Stick',
+		'stick:viewall' => 'View all',
 		'stick:notexist' => 'There is no post',
 		'stick:postit' => 'Stick to homepage',
 		'stick:removeit' => 'Unstick from homepage',

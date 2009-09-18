@@ -15,16 +15,16 @@
 	$images = get_entities_from_relationship(_STICK_PHOTO_RELATIONSHIP_, 1);
 	
 	$title = "Our Company Gallery";
-	$desc = "Our activities, our productions,<p> our employees, </p>and more...";
+	$desc = "Our activities, our productions, our employees, and more...";
 	$url = $CONFIG->wwwroot . "pg/stick/album";
 	
 ?>
 <div class="stick-album">
 <?php
 	
-	echo elgg_view_title($title);
+	echo "<div id='content_area_user_title'><h2><a href='" . $CONFIG->wwwroot . "pg/stick/album'>" . $title . "</a></h2></div>";
 	
-	echo '<div id="tidypics_desc">' . autop($desc) . '</div>';
+	echo "<div id='tidypics_desc'>" . autop($desc) . "</div>";
 	
 	//build array for back | next links 
 	$_SESSION['image_sort'] = array();
@@ -49,8 +49,13 @@
 		echo '<div class="tidypics_info">' . elgg_echo('image:none') . '</div>';
 		$num_images = 0;
 	}
-
+	
 ?>
 	<div class="clearfloat"></div>
+<?php
+	if (get_input("index_limit", 0) != 0) {
+		echo "<div class='stick-album-viewall'><a href='" . $CONFIG->wwwroot . "pg/stick/album'>" . elgg_echo("stick:viewall") . "</a></div>";
+	}
+?>
 	</div>
 </div>
