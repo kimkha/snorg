@@ -64,7 +64,7 @@ function cv_fields_setup()
 		
 register_elgg_event_handler('init','system','cv_init');
 register_elgg_event_handler('pagesetup','system','cv_pagesetup');
-register_elgg_event_handler('init','system','cv_fields_setup', 10000); // Ensure this runs after other plugins
+register_elgg_event_handler('init','system','cv_fields_setup', 9999); // Ensure this runs after other plugins
 
 global $CONFIG;
 

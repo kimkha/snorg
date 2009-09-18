@@ -41,7 +41,7 @@
 		$topentries.= "<li><a href=\"". $entry->getURL() . "\">". $entry->title . "</a> +{$entry->ratetotal} | " . substr($entry->rateaverage,0,3) . "</li> ";
 	}
 	$topentries .= '</ol>'; 
-	create_metadata($user->guid, 'TOP ENTRIES', $topentries, 'text', $user->guid, 'ACCESS_PUBLIC');
+	create_metadata($user->guid, 'TOP ENTRIES', $topentries, 'text', $user->guid, ACCESS_PUBLIC);
 	
 	$result = $rate_entry->rateaverage;
 	$result .= '-';
