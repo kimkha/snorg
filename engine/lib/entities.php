@@ -1751,7 +1751,7 @@
 		
 		$offset = (int) get_input('offset');
 		$count = get_entities($type, $subtype, $owner_guid, "", $limit, $offset, true);
-		$entities = get_entities_order_by_metadata($type, $subtype, $owner_guid, "ratetotal", $limit, $offset);
+		$entities = get_entities($type, $subtype, $owner_guid, "", $limit, $offset);
 
 		return elgg_view_entity_list($entities, $count, $offset, $limit, $fullview, $viewtypetoggle, $pagination);
 		
