@@ -71,6 +71,10 @@
 	text-align: center;
 	padding: 3px 0px;
 }
+#commend-box .stick-commend-viewall {
+	float:right;
+	margin-right:10px;
+}
 
 .main-box .stick-album {
 	margin: 30px 0px 0px;
@@ -80,4 +84,8 @@
 .main-box .stick-album-viewall {
 	float: right;
 	margin-right: 40px;
+}
+
+.stick-commend-details {
+	margin: 5px 20px;
 }

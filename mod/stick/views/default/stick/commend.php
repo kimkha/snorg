@@ -29,6 +29,8 @@
 <div class="commend-title">
 	<a href="<?php echo $CONFIG->wwwroot; ?>pg/stick/commend?id=<?php echo $last->guid; ?>"><?php echo $last->title; ?></a>
 </div>
+<div class="stick-commend-viewall"><a href='<?php echo $CONFIG->wwwroot; ?>pg/stick/commend'><?php echo elgg_echo("stick:viewall"); ?></a></div>
+<div class="clearfloat"></div>
 </div>
 <?php
 	}

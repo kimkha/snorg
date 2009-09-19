@@ -313,6 +313,14 @@
 		return $name;
 	}
 	
+	/**
+	 * Remove all HTML tags and split it
+	 * 
+	 * @author KimKha
+	 * @param string $string HTML string
+	 * @param int $num Number of characters to split
+	 * @return string Spitted string
+	 */
 	function split_html($string, $num=100) {
 		$alltags = '(?:table|thead|tfoot|caption|colgroup|tbody|tr|td|th|div|dl|dd|dt|ul|ol|li|pre|select|form|map|area|blockquote|address|math|style|input|p|h[1-6]|hr|br|b|i|strong|u|img|a|object|param|embed|script|style|wbr)';
 		$string = preg_replace('!(<' . $allblocks . '[^>]*>)!', "", $string);
