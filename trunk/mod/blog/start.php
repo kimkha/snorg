@@ -247,7 +247,7 @@
 			$title = '';
 			
 			$content = "<h4><a href='".$vars['entity']->getURL()."'>".$vars['entity']->title."</a></h4>";
-			$content .= "<p>". split_html($vars['entity']->description, 250) ."</p>";
+			$content .= "<p>". split_html($vars['entity']->description) ."</p>";
 			
 			$status = ''; // make it default
 			

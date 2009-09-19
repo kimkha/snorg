@@ -314,17 +314,44 @@
 	}
 	
 	/**
-	 * Remove all HTML tags and split it
+	 * Remove all HTML tags and split first paragraph of string
 	 * 
 	 * @author KimKha
 	 * @param string $string HTML string
-	 * @param int $num Number of characters to split
-	 * @return string Spitted string
+	 * @param int $num Number of characters to split (0 = unlimited)
+	 * @return string Spitted first paragraph
 	 */
-	function split_html($string, $num=100) {
-		$alltags = '(?:table|thead|tfoot|caption|colgroup|tbody|tr|td|th|div|dl|dd|dt|ul|ol|li|pre|select|form|map|area|blockquote|address|math|style|input|p|h[1-6]|hr|br|b|i|strong|u|img|a|object|param|embed|script|style|wbr)';
-		$string = preg_replace('!(<' . $allblocks . '[^>]*>)!', "", $string);
-		$string = preg_replace('!(</' . $allblocks . '>)!', "", $string);
+	function split_html($string, $num=0) {
+		$ptags = array(
+			'th', 'td', 'div', 'pre', 'p', 'blockquote'
+		);
+		foreach ($ptags as $p) {
+			$pos = strpos($string, '</' . $p . '>');
+			if ($pos !== FALSE) {
+				$string = substr($string, 0, $pos);
+				$pos = strrpos($string, '<' . $p);
+				$string = substr($string, $pos);
+			}
+		}
+		$brtags = array (
+			'br', 'br /'
+		);
+		foreach ($brtags as $b) {
+			$pos = strpos($string, '<' . $b . '>');
+			if ($pos !== FALSE) {
+				$string = substr($string, 0, $pos);
+			}
+		}
+		
+		$alltags = '(?:table|thead|tfoot|caption|colgroup|tbody|tr|td|th|div|dl|dd|dt|ul|ol|li|pre|select|form|map|area|blockquote|address|math|style|input|p|h[1-6]|hr|br|img|object|param|embed|script|style)';
+		$string = preg_replace('!(<' . $alltags . '[^>]*>)!', "", $string);
+		$string = preg_replace('!(</' . $alltags . '>)!', "", $string);
+		
+		$string = parse_urls($string);
+		
+		if ($num <= 0) {
+			return $string;
+		}
 		return splitname($string, $num);
 	}
 	

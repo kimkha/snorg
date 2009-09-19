@@ -18,7 +18,7 @@
 	if (isset($vars['entity'])) {
 		$entity = $vars['entity'];
 		
-		$update = elgg_view("input/hidden", array('internalname'=>'guid', 'value'=>$vars['entity']->guid));
+		$update = elgg_view("input/hidden", array('internalname'=>'id', 'value'=>$vars['entity']->guid));
 		$title = $entity->title;
 		$description = $entity->description;
 	}
