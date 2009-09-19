@@ -107,8 +107,8 @@
 		
 		$title = elgg_echo('stick:user:wall');
 		
-		$content = "<h4><a href='".$entity->getURL()."'>".$entity->title."</a></h4>";
-		$content .= "<p>". split_html($entity->description, 250) ."</p>";
+		$content = "<h4><a href='".$CONFIG->wwwroot."pg/stick/commend?id=".$entity->guid."'>".$entity->title."</a></h4>";
+		$content .= "<p>". split_html($entity->description) ."</p>";
 		
 		$status = elgg_echo('stick:user:wallstatus') . friendly_time($entity->time_created);
 		$dellink = '';
