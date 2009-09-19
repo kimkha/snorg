@@ -10,19 +10,11 @@
 	 * @link http://elgg.com/
 	 */
 	
-	$userId = (int) get_input('userid');
-	$user = get_entity($userId);
+	$id = (int) get_input('id');
+	$entity = get_entity($id);
+	$user = $entity->getOwnerEntity();
 	
-	$object = get_user_objects($userId, _STICK_COMMEND_SUBTYPE_);
-	
-	$success = false;
-	foreach ($object as $o) {
-		if ($o->delete()) {
-			$success = true;
-		}
-	}
-	
-	if ($success) {
+	if ($entity->delete()) {
 		system_message(elgg_echo("stick:user:removesuccessful"));
 		forward("pg/profile/".$user->username);
 	} else {

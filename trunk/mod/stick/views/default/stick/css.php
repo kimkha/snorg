@@ -40,6 +40,11 @@
 	margin: 0;
 	padding: 0;
 }
+.user_menu_stickuser1 {
+	margin: 0;
+	padding: 0;
+	background-color: #0F9118 !important;
+}
 
 #commend-user-form {
 	margin: 0px 10px;
