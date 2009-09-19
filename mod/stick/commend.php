@@ -10,10 +10,14 @@
 	 * @link http://elgg.com/
 	 */
 	
+	global $CONFIG;
 	$id = (int) get_input("id", 0);
 	
 	if ($id != 0) {
 		$entity = get_entity($id);
+		
+		if (isadminloggedin()) 
+			add_submenu_item(elgg_echo('stick:user:edit'), $CONFIG->wwwroot."action/stick/editcommend?id=".$id, "_admin");
 		
 		$user = get_entity($entity->getOwner());
 		

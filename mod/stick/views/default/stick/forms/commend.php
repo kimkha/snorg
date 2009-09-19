@@ -16,14 +16,20 @@
 	$user = get_entity($userId);
 	
 	if (isset($vars['entity'])) {
+		$entity = $vars['entity'];
+		
 		$update = elgg_view("input/hidden", array('internalname'=>'guid', 'value'=>$vars['entity']->guid));
+		$title = $entity->title;
+		$description = $entity->description;
 	}
 	else {
 		$update = '';
+		$title = '';
+		$description = '';
 	}
 	
-	$body = "<p><label>Title: ".elgg_view('input/text', array('internalname'=>'title')) ."</label></p>";
-	$body .= "<p><label>Description: ".elgg_view('input/longtext', array('internalname'=>'description'))."</label></p>";
+	$body = "<p><label>Title: ".elgg_view('input/text', array('internalname'=>'title', 'value' => $title)) ."</label></p>";
+	$body .= "<p><label>Description: ".elgg_view('input/longtext', array('internalname'=>'description', 'value' => $description))."</label></p>";
 	$body .= elgg_view('input/hidden', array('internalname'=>'userid', 'value'=>$userId));
 	$body .= $update;
 	$body .= elgg_view('input/submit', array('internalname'=>'submit-commend', 'value'=>"Submit"));

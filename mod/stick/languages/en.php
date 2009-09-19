@@ -36,9 +36,11 @@
 		'stick:uremovesuccessful' => 'This user is uncommended successful',
 		'stick:uremoveerror' => 'There is an error when uncommend this user',
 		
+		'stick:user:edit' => 'Edit commend post',
 		'stick:user:view' => 'View commend post',
 		'stick:user:viewall' => 'View all commended users',
 		'stick:user:notempty' => 'Please enter both title and description',
+		'stick:user:emptyid' => 'Please choose the correctly commend post to edit',
 		'stick:user:error' => 'There is an error when save new commend this user',
 		'stick:user:successful' => 'You commended this user successful',
 		'stick:user:removeerror' => 'There is an error when uncommend this user',
