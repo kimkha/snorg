@@ -37,14 +37,14 @@ jQuery.fn.rating = function(url, options) {
   };
 	
   if(options) {
-    jQuery.extend(settings, options);
+    $.extend(settings, options);
   };
-  jQuery.extend(settings, {cancel: (settings.maxvalue > 1) ? true : false});
+  $.extend(settings, {cancel: (settings.maxvalue > 1) ? true : false});
    
    
-  var container = jQuery(this);
+  var container = $(this);
 	
-	jQuery.extend(container, {
+	$.extend(container, {
     averageRating: settings.curvalue,
     url: settings.url
   });
@@ -72,8 +72,8 @@ jQuery.fn.rating = function(url, options) {
     s++;
   }
 	
-	var stars = jQuery(container).children('.star');
-  var cancel = jQuery(container).children('.cancel');
+	var stars = $(container).children('.star');
+  var cancel = $(container).children('.cancel');
 
 		
 	  stars
@@ -98,14 +98,14 @@ jQuery.fn.rating = function(url, options) {
 	  	if (!settings.disable){
 			if(settings.cancel == true){
 	      
-	      jQuery.post(container.url, {
-	        "rating": jQuery(this).children('a')[0].href.split('#')[1],
+	      $.post(container.url, {
+	        "rating": $(this).children('a')[0].href.split('#')[1],
 			"user": settings.user,
 			"entity": settings.entity 
 	      }, function(data){
 	      		token = data.split('-');    	
 	      		settings.curvalue = rateround(token[0]); 
-				jQuery("#ratepoint"+settings.entity).html("+"+token[1]);
+				$("#ratepoint"+settings.entity).html("+"+token[1]);
 				settings.disable = true;		
 	      	   } 
 		  );
@@ -113,8 +113,8 @@ jQuery.fn.rating = function(url, options) {
 			} else if (settings.maxvalue == 1) {
 				settings.curvalue = (settings.curvalue == 0) ? 1 : 0;
 				$(this).toggleClass('on');
-				jQuery.post(container.url, {
-	        "rating": jQuery(this).children('a')[0].href.split('#')[1],
+				$.post(container.url, {
+	        "rating": $(this).children('a')[0].href.split('#')[1],
 			"user": settings.user,
 			"entity": settings.entity 
 	      });
@@ -132,27 +132,27 @@ jQuery.fn.rating = function(url, options) {
     cancel
     .mouseover(function(){
       event.drain();
-      jQuery(this).addClass('on');
+      $(this).addClass('on');
     })
     .mouseout(function(){
       event.reset();
-      jQuery(this).removeClass('on');
+      $(this).removeClass('on');
     })
     .focus(function(){
       event.drain();
-      jQuery(this).addClass('on');
+      $(this).addClass('on');
     })
     .blur(function(){
       event.reset();
-      jQuery(this).removeClass('on');
+      $(this).removeClass('on');
     });
       
     // click events.
     cancel.click(function(){
       event.drain();
       settings.curvalue = 0;
-      jQuery.post(container.url, {
-        "rating": jQuery(this).children('a')[0].href.split('#')[1],
+      $.post(container.url, {
+        "rating": $(this).children('a')[0].href.split('#')[1],
 		"user": <?php echo $vars['user']->guid ?> 
       });
       return false;
