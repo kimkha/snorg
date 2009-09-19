@@ -16,8 +16,10 @@
 	if ($id != 0) {
 		$entity = get_entity($id);
 		
-		if (isadminloggedin()) 
+		if (isadminloggedin()) {
 			add_submenu_item(elgg_echo('stick:user:edit'), $CONFIG->wwwroot."action/stick/editcommend?id=".$id, "_admin");
+			add_submenu_item(elgg_echo('stick:uremoveit'), $CONFIG->wwwroot."action/stick/uncommend?id=".$id, "_admin");
+		}
 		
 		$user = get_entity($entity->getOwner());
 		

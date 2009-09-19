@@ -20,7 +20,7 @@
 	if($latest_wire){
 		echo "<div class=\"profile_status\">";
 		echo $content;
-		if($owner == $_SESSION['user']->guid)
+		if($owner == $_SESSION['user']->guid && get_context() != "profile")
 			echo " <a class=\"status_update\" href=\"{$url_to_wire}\">update</a>";
 		echo $time;
 		echo "</div>";

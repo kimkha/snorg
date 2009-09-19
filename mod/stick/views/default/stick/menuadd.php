@@ -14,9 +14,9 @@
 	$n = count($list);
 	$last = $list[0];
 	
-	if ($n>0) {
+	if (!empty($last)) {
 ?>
-	<p class="user_menu_stickuser">
+	<p class="user_menu_stickuser1">
 		<a href="<?php echo $vars['url']; ?>pg/stick/commend?id=<?php echo $last->guid; ?>"><?php echo elgg_echo('stick:user:view'); ?></a>	
 	</p>
 <?

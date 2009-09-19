@@ -27,6 +27,8 @@
 		
 		// Register subtype
 		register_entity_type('object',_STICK_COMMEND_SUBTYPE_);
+		
+		register_wallpost(_STICK_COMMEND_SUBTYPE_, "stick_wallpost_commend");
 	}
 	
 	function stick_pagesetup() {
@@ -92,6 +94,33 @@
 				break;
 		}
 		return false;
+	}
+	
+	function stick_wallpost_commend($vars) {
+		global $CONFIG;
+		if ($vars['viewtype']!='wall' || !elgg_view_exists("object/wall")){
+			return false;
+		}
+		
+		$entity = $vars['entity'];
+		$viewtype = $vars['viewtype'];
+		
+		$title = elgg_echo('stick:user:wall');
+		
+		$content = "<h4><a href='".$entity->getURL()."'>".$entity->title."</a></h4>";
+		$content .= "<p>". split_html($entity->description, 250) ."</p>";
+		
+		$status = elgg_echo('stick:user:wallstatus') . friendly_time($entity->time_created);
+		$dellink = '';
+		
+		return elgg_view("object/wall", array(
+					'entity'	=> $entity,
+					'viewtype'	=> $viewtype,
+					'title'		=> $title,
+					'content'	=> $content,
+					'status'	=> $status,
+					'dellink'	=> $dellink
+		));
 	}
 	
 	register_elgg_event_handler('init','system','stick_init');
