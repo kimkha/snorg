@@ -1494,7 +1494,7 @@
 	 * 
 	 * @param string $type The type of entity (eg "user", "object" etc)
 	 * @param string $subtype The arbitrary subtype of the entity
-	 * @param int $owner_guid The GUID of the owning user
+	 * @param int $owner_guid The GUID of the owning user	
 	 * @param string $order_by The field to order by; by default, time_created desc
 	 * @param int $limit The number of entities to return; 10 by default
 	 * @param int $offset The indexing offset, 0 by default
@@ -1752,6 +1752,16 @@
 		$offset = (int) get_input('offset');
 		$count = get_entities($type, $subtype, $owner_guid, "", $limit, $offset, true);
 		$entities = get_entities($type, $subtype, $owner_guid, "", $limit, $offset);
+
+		return elgg_view_entity_list($entities, $count, $offset, $limit, $fullview, $viewtypetoggle, $pagination);
+		
+	}
+	
+	function list_entities_order_by_metadata($type= "", $subtype = "", $order_by = "time_created", $owner_guid = 0, $limit = 10, $fullview = true, $viewtypetoggle = false, $pagination = true) {
+		
+		$offset = (int) get_input('offset');
+		$count = get_entities_order_by_metadata($type, $subtype, $owner_guid, $order_by, $limit, $offset, true);
+		$entities = get_entities_order_by_metadata($type, $subtype, $owner_guid, $order_by, $limit, $offset);
 
 		return elgg_view_entity_list($entities, $count, $offset, $limit, $fullview, $viewtypetoggle, $pagination);
 		

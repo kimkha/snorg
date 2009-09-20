@@ -12,7 +12,6 @@
 	$friend = get_user($user_id);
 	$image_guid = get_input('image_guid');
 	
-//	echo "<pre>"; print_r($friend); die;
 	
 	if ($image_guid == 0) {
 		register_error(elgg_echo("tidypics:phototagging:error"));

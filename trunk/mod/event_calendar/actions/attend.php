@@ -32,7 +32,6 @@ if(remove_entity_relationship($event_guid, 'eventrequest', $user_guid)) {
 		system_message("okie");						
 	else
 		register_error("can not notify");
-//	echo "<pre>"; print_r("hoai"); die;
 	
 	
 	
@@ -43,7 +42,6 @@ if(remove_entity_relationship($event_guid, 'eventrequest', $user_guid)) {
 	// Snorg - Bkit06	
 	
 	
-	//echo "<pre>"; print_r($user); die;
 	
 		
 	

@@ -7,24 +7,24 @@
 	if (is_array($vars['config']->cv) && sizeof($vars['config']->cv) > 0)
 		
 		foreach($vars['config']->cv as $lable => $valtype) {
-			
-			if ($metadata = get_metadata_byname($vars['entity']->guid, $lable)) {
-				 
-				if (is_array($metadata)) {
-					$value = '';
-					foreach($metadata as $md) {
-						if (!empty($value)) $value .= ', ';
-						$value .= $md->value;
-						$access_id = $md->access_id;
+			if ($valtype != 'readonly'){
+				if ($metadata = get_metadata_byname($vars['entity']->guid, $lable)) {
+					 
+					if (is_array($metadata)) {
+						$value = '';
+						foreach($metadata as $md) {
+							if (!empty($value)) $value .= ', ';
+							$value .= $md->value;
+							$access_id = $md->access_id;
+						}
+					} else {
+						$value = $metadata->value;
+						$access_id = $metadata->access_id;
 					}
 				} else {
-					$value = $metadata->value;
-					$access_id = $metadata->access_id;
+					$value = '';
+					$access_id = ACCESS_DEFAULT;
 				}
-			} else {
-				$value = '';
-				$access_id = ACCESS_DEFAULT;
-			}
 
 ?>
 
@@ -42,7 +42,8 @@
 
 <?php
 
-		}
+			}
+	}
 
 ?>
 

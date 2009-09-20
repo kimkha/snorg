@@ -43,7 +43,6 @@ if(remove_entity_relationship($event_guid, 'eventrequest', $user_guid)) {
 	// Snorg - Bkit06	
 	
 	
-	//echo "<pre>"; print_r($user); die;
 	
 		
 	
