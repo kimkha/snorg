@@ -15,7 +15,7 @@
 	 $type = $vars['type'];
 	 
 	 //set the url
-	 $url = $vars['url'] . "pg/expages/index.php?type=";
+	 $url = $vars['url'] . "pg/expages?type=";
 
 ?>
 

@@ -21,6 +21,7 @@
 			'expages:addcontent' => "You can add content here via your admin tools. Look for the external pages link under admin.",
 			'item:object:front' => 'Front page items',
 	
+			'expages:create' => "Create page",
 		/**
 		 * Status messages
 		 */
