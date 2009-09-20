@@ -57,7 +57,7 @@
 		// Before we can set metadata, save
 			if (!$expages->save()) {
 				register_error(elgg_echo("expages:error"));
-				forward("mod/expages/add.php");
+				forward($_SERVER['HTTP_REFERER']);
 			}
 		// Now let's add tags. We can pass an array directly to the object property! Easy.
 			if (is_array($tagarray)) {
@@ -73,7 +73,7 @@
 						
 		
 	// Forward back to the page
-			forward("pg/expages/index.php?type={$type}");
+			forward($_SERVER['HTTP_REFERER']);
 				
 		}
 		

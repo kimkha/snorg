@@ -220,7 +220,7 @@
 		$viewtype = $vars['viewtype'];
 		
 		$title = $entity->title;
-		$content = $entity->description;
+		$content = "<p>". split_html($entity->description) ."</p>";
 		$status = ' ';
 		$dellink = '';
 		
@@ -483,7 +483,7 @@
 	 * Check whether a file is included
 	 * 
 	 * @author "KimKha 
-	 * @param string $filename
+	 * @param string $filename You can use pages/edit.php
 	 * @return true|false
 	 */
 	function is_included($filename) {

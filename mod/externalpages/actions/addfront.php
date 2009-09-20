@@ -42,7 +42,7 @@
 		// Before we can set metadata, save
 			if (!$frontpage->save()) {
 				register_error(elgg_echo("expages:error"));
-				forward("pg/expages/index.php?type=front");
+				forward($_SERVER['HTTP_REFERER']);
 			}
 		
 		// Success message
@@ -50,6 +50,6 @@
 		
 		
 	// Forward back to the page
-			forward("pg/expages/index.php?type=front");
+			forward($_SERVER['HTTP_REFERER']);
 		
 ?>

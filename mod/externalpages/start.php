@@ -24,6 +24,8 @@
 		extend_view('index/righthandside', 'expages/front_right');
 		extend_view('index/lefthandside', 'expages/front_left');
 		
+		// Register entity type
+		register_entity_type('object', 'expages');
 	}
 	
 	/**
@@ -35,6 +37,10 @@
 		if (get_context() == 'admin' && isadminloggedin()) {
 			global $CONFIG;
 			add_submenu_item(elgg_echo('expages'), $CONFIG->wwwroot . 'pg/expages/');
+			
+			if (is_included('expages/index.php')) {
+				add_submenu_item(elgg_echo('expages:create'), $CONFIG->wwwroot . 'pg/expages/?act=new', 'expages');
+			}
 		}
 	}
 	
@@ -54,14 +60,16 @@
 		{
 			switch ($page[0])
 			{
-				case "read":		set_input('expages',$page[1]);
-										@include(dirname(__FILE__) . "/read.php");
-										break;
-				default : include($CONFIG->pluginspath . "externalpages/index.php"); 
+				case "read":
+					set_input('expages',$page[1]);
+					@include(dirname(__FILE__) . "/read.php");
+					break;
+				default : 
+					@include(dirname(__FILE__) . "/index.php"); 
 			}
 		}
 		else
-			include($CONFIG->pluginspath . "externalpages/index.php"); 
+			@include(dirname(__FILE__) . "/index.php"); 
 	}
 	
 	// Initialise log browser
