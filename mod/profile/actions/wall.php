@@ -7,7 +7,7 @@
 	 * 
 	 */
 	
-	$user = get_user(get_input("owner", 0));
+	$user = get_user((int) get_input("owner", 0));
 	if (!$user) exit();
 	
 	$enable_subtype = get_wallpost_object($user->guid);
@@ -34,5 +34,5 @@
 	}
 	
 	echo "</div>";
-	
+	exit();
 ?>

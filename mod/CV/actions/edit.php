@@ -21,7 +21,6 @@
 		foreach($CONFIG->cv as $lable => $valuetype) {
 			$tmp = str_replace(" ", "______", $lable);
 			$input[$lable] = get_input($tmp);
-			//print_r($lable . ' ' .$value); die;
 			if ($valuetype == 'tags')
 				$input[$lable] = string_to_tag_array($input[$lable]);
 		}
@@ -54,7 +53,6 @@
 						foreach($value as $interval) {
 							$i++;
 							if ($i == 1) { $multiple = false; } else { $multiple = true; }
-							print_r($lable);die;
 							create_metadata($user->guid, $lable, $interval, 'text', $user->guid, $access_id, $multiple);
 						}
 					} else {

@@ -11,7 +11,7 @@
 	 * 
 	 * @uses $vars['entity'] Optionally, the blog post to view
 	 */
-
+	
 		if (isset($vars['entity'])) {
 			
 			//display comments link?

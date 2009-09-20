@@ -13,6 +13,8 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
+		global $CONFIG;
+		
 	// Get the current page's owner
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner)) {
@@ -27,13 +29,40 @@
 			//$area1 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog'));
 		}
 		
+		$order_type = get_input("orderby","");
+		$selected_time = "";
+		$selected_total = "";
+		$selected_average = "";
+		
+		if ($order_type == "ratetotal"){
+			$selected_total = "selected=\"selected\"";
+		} else if ($order_type == "rateaverage"){
+			$select_average = "selected=\"selected\"";
+		} else {
+			$selected_time = "selected=\"selected\"";
+		}
+		
+		$order = "<div> Order by </div>";
+		$order .= "<form id=\"frm_orderby\" action=\"{$CONFIG->wwwroot}pg/blog/Huyvtq\" method=\"GET\" onchange=\"this.submit()\" >";
+		$order .= "<select name=\"orderby\">";
+		$order .= "<option value=\"\" {$selected_time}> Created time </option>";
+		$order .= "<option value=\"ratetotal\" {$selected_total}> Rate point </option>";
+		$order .= "<option value=\"rateaverage\" {$select_average}> Average rate point </option>";
+		$order .= "</select>";
+		$order .= "</form>";
+		
+		$area2 .= $order;
 	// Get a list of blog posts
-		$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
-
+		if ((!$order_type) || ($order_type=="")){
+			$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
+		} else {	
+			
+			$area2 .= list_entities_order_by_metadata('object','blog',$order_type,$page_owner->getGUID(),10,false);	
+		}
 	// Get blog tags
 
 		// Get categories, if they're installed
-		global $CONFIG;
+		
 		$area3 = elgg_view('blog/categorylist',array('baseurl' => $CONFIG->wwwroot . 'search/?subtype=blog&owner_guid='.$page_owner->guid.'&tagtype=universal_categories&tag=','subtype' => 'blog', 'owner_guid' => $page_owner->guid));
 		
 	// Display them in the page

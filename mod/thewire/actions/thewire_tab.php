@@ -12,5 +12,5 @@
 		echo '<i>'.elgg_echo("thewire:nomessage").'</i>';
 	}
 	echo "</div>";
-
+	exit();
 ?>

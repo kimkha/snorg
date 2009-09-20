@@ -13,7 +13,6 @@
 	if (is_array($vars['config']->cv) && sizeof($vars['config']->cv) > 0)
 		
 		foreach($vars['config']->cv as $lable => $valtype) {
-			//echo "<pre>"; print_r($vars['config']->cv);die;
 			if ($metadata = get_metadata_byname(page_owner_entity()->guid, $lable)) {
 				
 				if (is_array($metadata)) {

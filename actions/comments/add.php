@@ -61,7 +61,6 @@
 							foreach($friend_array as $uid)
 							{
 								unset($otherUser[array_search($uid,$otherUser)]);
-							//	echo "<pre>"; print_r($uid); die;	
 								notify_user($uid, $lastUser->getGUID(), " Commented on a Photo has you at","  here -".$entity->getURL());
 							}
 							
