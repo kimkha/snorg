@@ -104,8 +104,15 @@
 
 			<!-- display the actual blog post -->
 				<?php
-			
+						if (isset($vars['full']) && $vars['full'] == true) {
 							echo elgg_view('output/longtext',array('value' => $vars['entity']->description));
+						}
+						else {
+							echo '<div style="max-height:115px; overflow:hidden">';
+							echo elgg_view('output/longtext',array('value' => $vars['entity']->description));
+							echo '</div>';
+						}
+							
 							if (!empty($tags)) {
 							echo '<div class="tags"> <b> Tags: </b>'  . $tags . '</div>';
 					}
