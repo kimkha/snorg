@@ -9,6 +9,8 @@ if(!$friend = get_entity(get_input("guid",0))) {
 	exit;
 }
 
+
+
 if(remove_entity_relationship($friend->guid, 'friendrequest', $user->guid)) {
 	if(isset($CONFIG->events['create']['friend'])) {
 		$oldEventHander = $CONFIG->events['create']['friend'];
@@ -31,14 +33,18 @@ if(remove_entity_relationship($friend->guid, 'friendrequest', $user->guid)) {
 	
   	
 	// send notify to friend when approve
-			
-	if (notify_user($friend->getGUID(),$user->getGUID(), "approve" , sprintf(elgg_echo('approve:content'),$friend->name, $user->name , $user->name, $user->name,$user->name) , NULL))	
+	//snorg - bkit06 - wallpost
+		
+		wallpost($user->getGUID(), sprintf(elgg_echo('friendrequest:wallpost:title'),$friend->username,$friend->name),null, $type="short", $access_id=ACCESS_PUBLIC);
+		wallpost($friend->getGUID(), sprintf(elgg_echo('friendrequest:wallpost:title'),$user->username,$user->name),null, $type="short", $access_id=ACCESS_PUBLIC);
+		
+	//snorg - bkit06
+	if (notify_user($friend->getGUID(),$user->getGUID(), elgg_echo('approve:system:notification') , NULL))
+		
 		system_message(sprintf(elgg_echo('approve:system:notify'),$friend->name));						
 	else
 		register_error("can not approve");
-	
-	
-	
+
 	
 	system_message(sprintf(elgg_echo('friendrequest:successful'), $friend->name));
 	

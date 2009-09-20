@@ -98,7 +98,7 @@
 		$content .= "<input type='hidden' name='user_id' id='user_id' value='' />";
 			
 		$content .= "<ul id='phototag_list'>";
-		$content .= "<li><a href='javascript:void(0)' onclick='selectUser({$viewer->getGUID()},\"{$viewer->name}\")'> {$viewer->name} (" . elgg_echo('me') . ")</a></li>";
+	//	$content .= "<li><a href='javascript:void(0)' onclick='selectUser({$viewer->getGUID()},\"{$viewer->name}\")'> {$viewer->name} (" . elgg_echo('me') . ")</a></li>";
 	
 		if ($friends) {
 			foreach($friend_array as $friend_name => $friend_guid) {

@@ -89,6 +89,11 @@ p.message_item_timestamp {
 	background-position: 0 -16px;
 }
 
+.group-wrapper {
+	max-height: 200px;
+	overflow: auto;
+}
+
 
 
 

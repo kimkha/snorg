@@ -100,6 +100,12 @@
     
     // snorg - bkit06 add more for invite people
     'event_calendar:invite'  =>  "Invite Friends",
+    
+    'event:notify:userinvited' => "Notify Sucessful",
+    'event:notify:usernotinvited' => "Cannot sent notify",
+    "event:usernotinvited" => "Cannot invite this user",
+    "event:useralreadyinvited" => "This user has been invited",
+    "event:notowner" => "Not permission",
 	);
 	
 	

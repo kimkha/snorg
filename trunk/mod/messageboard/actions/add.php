@@ -10,6 +10,7 @@
 	 * @link http://elgg.org/
 	 */
 
+
 	// Make sure we're logged in; forward to the front page if not
 		if (!isloggedin()) forward();
 		
@@ -21,7 +22,12 @@
 		
 	// Let's see if we can get a user entity from the specified page_owner
 		if ($user && !empty($message_content)) {
-    		
+			
+		// = get_group_entity_as_row(54);
+		
+	//	$group = get_group_members(54);
+		//$owner = get_entity(page_owner());
+    		//echo "<pre>"; print_r($page_owner ); die;
 	        // If posting the comment was successful, say so
 				if ($user->annotate('messageboard',$message_content,$user->access_id, $_SESSION['user']->getGUID())) {
 					

@@ -25,7 +25,7 @@
 	$owner = page_owner_entity();
 	
 		echo "<div class=\"contentWrapper\">";
-		echo "<h3>Let " . $owner->name . " know what you think!</h3>";
+		echo "<h4>Let " . $owner->name . " know what you think!</h4>";
 		echo "</div>";
 	
 	

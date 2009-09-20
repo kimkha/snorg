@@ -6,16 +6,16 @@
 		 * Menu items and titles
 		 */
 	
-			'messageboard:board' => "Message board",
-			'messageboard:messageboard' => "message board",
+			'messageboard:board' => "Testimony Board",
+			'messageboard:messageboard' => "Testimony Board",
 			'messageboard:viewall' => "View all",
 			'messageboard:postit' => "Post it",
 			'messageboard:history' => "history",
-			'messageboard:none' => "There is nothing on this message board yet",
-			'messageboard:num_display' => "Number of messages to display",
-			'messageboard:desc' => "This is a message board that you can put on your profile where other users can comment.",
+			'messageboard:none' => "There is nothing on this testimony board yet",
+			'messageboard:num_display' => "Number of testimony message  to display",
+			'messageboard:desc' => "This is a testimony board that you can put on your profile where other users can comment.",
 	
-			'messageboard:user' => "%s's message board",
+			'messageboard:user' => "%s's testimony board",
 	
 			'messageboard:history' => "History",
 			
@@ -23,26 +23,26 @@
 	     * Message board widget river
 	     **/
 	        
-	        'messageboard:river:annotate' => "%s has had a new comment posted on their message board.",
-	        'messageboard:river:create' => "%s added the message board widget.",
-	        'messageboard:river:update' => "%s updated their message board widget.",
+	        'messageboard:river:annotate' => "%s has had a new comment posted on their testimony board.",
+	        'messageboard:river:create' => "%s added the testimony board widget.",
+	        'messageboard:river:update' => "%s updated their testimony board widget.",
 	        'messageboard:river:added' => "%s posted on",
-		    'messageboard:river:messageboard' => "message board",
+		    'messageboard:river:messageboard' => "testimony board",
 
 			
 		/**
 		 * Status messages
 		 */
 	
-			'messageboard:posted' => "You successfully posted on the message board.",
+			'messageboard:posted' => "You successfully posted on the testimony board.",
 			'messageboard:deleted' => "You successfully deleted the message.",
 	
 		/**
 		 * Email messages
 		 */
 	
-			'messageboard:email:subject' => 'You have a new message board comment!',
-			'messageboard:email:body' => "You have a new message board comment from %s. It reads:
+			'messageboard:email:subject' => 'You have a new testimony board comment!',
+			'messageboard:email:body' => "You have a new testimony board comment from %s. It reads:
 
 			
 %s

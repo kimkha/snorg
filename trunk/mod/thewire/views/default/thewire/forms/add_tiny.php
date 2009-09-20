@@ -11,6 +11,7 @@
 	 * 
 	 */
 
+	global $CONFIG;
 		$owner = page_owner_entity();
 		$user = get_loggedin_userid();
 		if ($user != $owner->guid) {
@@ -45,7 +46,7 @@ function submitnoteForm(thisForm){
 		$("#thewire-tab").prepend(data.list);
 		$("#wallpost").prepend(data.wall);
 		$("#thewire_tiny-textarea").val('');
-		$("#thewire_tiny-textarea").blur();
+		thisForm.submit.blur();
 	}, 'json');
 	return false;
 }
@@ -84,7 +85,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="post_to_wire" id="thewire_tiny">
-	<form action="<?php echo $vars['url']; ?>action/thewire/add_tiny" method="post" name="noteForm" onsubmit="submitnoteForm(this);return false;">
+	<form action="<?php echo $CONFIG->wwwroot; ?>action/thewire/add_tiny" method="post" name="noteForm" onsubmit="submitnoteForm(this);return false;">
 		<textarea name='note' onkeydown="textCounter(document.noteForm.note,document.noteForm.remLen1)" onkeyup="textCounter(document.noteForm.note,document.noteForm.remLen1)" id="thewire_tiny-textarea"><?php echo elgg_echo("thewire:tinydoing"); ?></textarea>
 		<div class='thewire_characters_remaining'>
 			<input readonly="true" type="text" name="remLen1" size="3" maxlength="3" value="140" class="thewire_characters_remaining_field" /><?php echo elgg_echo("thewire:charleft") . "</div>"; ?>

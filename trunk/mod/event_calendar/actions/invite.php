@@ -32,7 +32,10 @@
 				
 				if (get_loggedin_userid() == $event->owner_guid)
 				{
-					if (!check_entity_relationship($event->guid, 'eventrequest', $user->guid))
+					
+						
+					
+					if( (!check_entity_relationship($event->guid, 'eventrequest', $user->guid))&&(!check_entity_relationship($event->guid, 'eventattend', $user->guid)) && (!check_entity_relationship($event->guid, 'eventmaybeattend', $user->guid))  )
 					{
 						if ($user->isFriend())
 						{
@@ -43,21 +46,22 @@
 							// Send email
 							// Snorg - Bkit06
 							
-							if (notify_user($user->getGUID(), $event->owner_guid, " invite you to Gourp ".$event->name." ,to accept click"	, 
-									"here-{$CONFIG->url}action/eventrequest/attend?user_guid={$user->guid}&event_guid={$event->guid}". " cancel - {$CONFIG->url}action/eventrequest/notattend?user_guid={$user->guid}&event_guid={$event->guid}"." maybe - {$CONFIG->url}action/eventrequest/maybeattend?user_guid={$user->guid}&event_guid={$event->guid}"))
-								system_message(elgg_echo("groups:userinvited"));
+							if (notify_user($user->getGUID(), $event->owner_guid, " invite you to Gourp ".$event->name))
+								system_message(elgg_echo("event:notify:userinvited"));
 							else
-								register_error(elgg_echo("groups:usernotinvited"));
+								register_error(elgg_echo("event:notify:usernotinvited"));
 							
 						}
 						else
-							register_error(elgg_echo("groups:usernotinvited"));
+							register_error(elgg_echo("event:usernotinvited"));
 					}
 					else
-						register_error(elgg_echo("groups:useralreadyinvited"));
+						register_error(elgg_echo("event:useralreadyinvited"));
+				
+						
 				}
 				else
-					register_error(elgg_echo("groups:notowner"));
+					register_error(elgg_echo("event:notowner"));
 			}
 		}
 	}
