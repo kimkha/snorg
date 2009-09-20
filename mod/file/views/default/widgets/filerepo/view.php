@@ -44,7 +44,7 @@ $('a.show_file_desc').click(function () {
             foreach($files as $f){
             	
                 $mime = $f->mimetype;
-                echo "<a href=\"{$f->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $f->thumbnail, 'file_guid' => $f->guid)) . "</a>";
+                echo "<a href=\"hoai.com\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $f->thumbnail, 'file_guid' => $f->guid)) . "</a>";
             				
             }
             
@@ -57,12 +57,12 @@ $('a.show_file_desc').click(function () {
             	
                 $mime = $f->mimetype;
                 echo "<div class=\"filerepo_widget_singleitem\">";
-            	echo "<div class=\"filerepo_listview_icon\"><a href=\"{$f->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $f->thumbnail, 'file_guid' => $f->guid)) . "</a></div>";
-            	echo "<div class=\"filerepo_widget_content\">";
-            	echo "<div class=\"filerepo_listview_title\"><p class=\"filerepo_title\">" . $f->title . "</p></div>";
-            	echo "<div class=\"filerepo_listview_date\"><p class=\"filerepo_timestamp\"><small>" . friendly_time($f->time_created) . "</small></p></div>";
-            	$description = $f->description;
-		        if (!empty($description)) echo "<a href=\"javascript:void(0);\" class=\"show_file_desc\">". elgg_echo('more') ."</a><br /><div class=\"filerepo_listview_desc\">" . $description . "</div>";
+                
+                echo '<marquee behavior="scroll" direction="up" scrollamount="3">';
+            	echo "<div class=\"filerepo_listview_icon\"><a href=\"{$f->description}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => 'large', 'file_guid' => $f->guid)) . "</a></div>";
+            
+		        echo "</marquee>";
+		        
 		        echo "</div><div class=\"clearfloat\"></div></div>";
             				
         	}

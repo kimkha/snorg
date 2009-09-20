@@ -31,6 +31,12 @@
 	echo elgg_view_entity($sticked[0]);
 	
 	unset($sticked[0]);
+	
+	if (isset($sticked[1])) {
+		echo elgg_view_entity($sticked[1]);
+		unset($sticked[1]);
+	}
+	
 	$limit = 5;
 	
 	if (is_array($sticked) && count($sticked) > 0) {

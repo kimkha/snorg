@@ -33,7 +33,7 @@
 			extend_view('css','messageboard/css');
         
         // Register a page handler, so we can have nice URLs
-			register_page_handler('messageboard','messageboard_page_handler');
+			register_page_handler('testimony','messageboard_page_handler');
         
 	    // add a messageboard widget
             add_widget_type('messageboard',"". elgg_echo("messageboard:board") . "","" . elgg_echo("messageboard:desc") . ".", "profile");
@@ -67,5 +67,7 @@
 		global $CONFIG;
 		register_action("messageboard/add",false,$CONFIG->pluginspath . "messageboard/actions/add.php");
 		register_action("messageboard/delete",false,$CONFIG->pluginspath . "messageboard/actions/delete.php");
+		
+		register_action("testimony/group",false,$CONFIG->pluginspath . "messageboard/actions/group.php");
 		
 ?>

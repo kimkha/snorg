@@ -187,7 +187,7 @@
 
 	if ($vars['full']) {
 		
-		echo elgg_view_comments($file);
+	//	echo elgg_view_comments($file);
 		
 	}
 

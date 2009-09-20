@@ -7,7 +7,7 @@
 	gatekeeper();
 	action_gatekeeper();
 	
-	$user = $_SESSION['user'];
+	//$user = $_SESSION['user'];
 	$user_id = get_input('user_id');
 	$friend = get_user($user_id);
 	$image_guid = get_input('image_guid');
@@ -34,11 +34,35 @@
 
 
 
-	
+	// can check them truong hop da duoc add roi.
 	//Save annotation
+	
+	
+	$annotations = $image->getAnnotations('taguser',1000);
+	foreach ($annotations as $annotation )
+	{
+		if ( $annotation->owner_guid == $user_id)
+		{
+			system_message(elgg_echo('taguser:sysnotify:exits'));
+			forward($_SERVER['HTTP_REFERER']);
+		}
+	}
+	
 	if ($image->annotate('taguser', $friend, null,$user_id )) {
 
 	   system_message(elgg_echo('taguser:sysnotify:sucessful'));
+	   
+	   // register to wall Post
+	   if ( $image->description != null)
+	   {
+	   	
+	    wallpost($user_id, sprintf(elgg_echo('taguser:wallpost:title'),$image->getURL()),$image->description, $type="full", $access_id=ACCESS_PUBLIC);
+	    
+	    }
+	    else if ( $image->title!= null )
+	    {
+	    	wallpost($user_id, sprintf(elgg_echo('taguser:wallpost:title'),$image->getURL()),$image->title, $type="full", $access_id=ACCESS_PUBLIC);
+	    }
 	}
 	else 
 	{

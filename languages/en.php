@@ -925,8 +925,10 @@ You cannot reply to this email.",
 			'taguser:remove' => "Remove",
 			'taguser:untag' => "Untag Sucessful",
 			'taguser:notuntag' => "Untag Fail - Please Try Again",
-			'taguser:wallpost:title' => 'You has been Tagged at <a href="%s"> here</s>',
-			'taguser:sysnotify:exits' => "This user has been tagged in the past",
+			'taguser:wallpost:title' => 'You has been tagged at <a href="%s">Here</a>',
+			'taguser:sysnotify:exits' =>' This user has been tagged',
+			
+			
 	
 		/**
 		 * Languages according to ISO 639-1

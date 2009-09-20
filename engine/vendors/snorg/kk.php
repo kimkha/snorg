@@ -356,6 +356,32 @@
 	}
 	
 	/**
+	 * @author KimKha
+	 * @param string $string HTML string
+	 * @param int $p Number of paragraphs
+	 */
+	function split_paragraph($string, $num=1) {
+		$ptags = array(
+			'p', 'div', 'pre', 'blockquote'
+		);
+		$count = 0;
+		$finish = false;
+		foreach ($ptags as $p) {
+			$pos = strpos($string, '</' . $p . '>');
+			if ($pos !== FALSE) {
+				$count++;
+				if ($count >= $num) {
+					$string = substr($string, 0, $pos);
+					$pos = strrpos($string, '<' . $p);
+					$string = substr($string, $pos);
+					break;
+				}
+			}
+		}
+		return $string;
+	}
+	
+	/**
 	 * Change subtype of Object to another one
 	 * 
 	 * @author KimKha

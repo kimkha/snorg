@@ -85,7 +85,7 @@ END;
 		echo elgg_view('metatags',$vars); 
 	?>
 	<link rel="stylesheet" href="<?php echo $vars['url']; ?>vendors/snorg/style.css" type="text/css" />
-	<script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/snorg/kk.js"></script>
+	<!-- <script type="text/javascript" src="<?php echo $vars['url']; ?>vendors/snorg/kk.js"></script>-->
 </head>
 
 <body>

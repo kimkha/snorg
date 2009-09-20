@@ -75,8 +75,8 @@
 		}
 		
 		// Insert submenu into user profile
-		//extend_view('profile/menu/links','stick/menuadd', 400);
-	//	extend_view('profile/menu/linksownpage','stick/menuadd', 400);
+		extend_view('profile/menu/links','stick/menuadd', 400);
+		extend_view('profile/menu/linksownpage','stick/menuadd', 400);
 	}
 	
 	function stick_page($page) {

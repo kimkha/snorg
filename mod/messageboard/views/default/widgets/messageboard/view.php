@@ -23,6 +23,10 @@
      //if no num set, set to one
      if(!$num_display)
         $num_display = 5;
+        
+        echo "<div class=\"contentWrapper\">";
+		echo "<h4>What do you think about " . $entity->name . "?</h4>";
+		echo "</div>";
 	 
 ?>
 <script type="text/JavaScript">
@@ -62,7 +66,7 @@ $(document).ready(function(){
     
     <!-- menu options -->
     <div id="messageboard_widget_menu">
-        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_entity(page_owner())->username; ?>"><?php echo elgg_echo("messageboard:viewall"); ?></a>
+        <a href="<?php echo $vars['url']; ?>pg/testimony/<?php echo get_entity(page_owner())->username; ?>"><?php echo elgg_echo("messageboard:viewall"); ?></a>
     </div>
     
     <!-- loading graphic -->
@@ -76,9 +80,9 @@ $(document).ready(function(){
 		$contents = $entity->getAnnotations('messageboard', $num_display, 0, 'desc');
 		
 		//as long as there is some content to display, display it
-		if (!empty($contents)) {
-    		
-    		echo elgg_view('messageboard/messageboard',array('annotation' => $contents));
+		if (!empty($contents)) {			
+		
+    		echo elgg_view('messageboard/widget',array('annotation' => $contents));
 		
 		} else {
     		

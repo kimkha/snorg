@@ -16,7 +16,7 @@ You can view your pending friend requests at (Make sure you are logged into the 
 
 (You cannot reply to this email.)",
 
-	'friendrequest:successful' => "You are now friends with %s!",
+	'friendrequest:successful' => "You and %s are now friends ",
 	'friendrequest:remove:success' => "Successfully removed friend request.",
 	'friendrequest:remove:fail' => "Unable to remove friend request.",
 	'friendrequest:approvefail' => "Unknown error while trying to add %s as a friend!",
@@ -27,6 +27,12 @@ You can view your pending friend requests at (Make sure you are logged into the 
 	
 	You can view %s's profile at : http://localhost/snorg1/pg/profile/%s",
 	'approve:system:notify' => "approve notify has been sended to %s",
+	
+	
+	//wall post
+	'friendrequest:wallpost:title' => 'you and  <a href="%s">%s</a> are now friend',
+	'approve:system:notification' => 'Has been approve your request',
+	'invite:system:notification' => 'want to make friend with you, to view detail click',
 );
 				
 add_translation("en",$english);
