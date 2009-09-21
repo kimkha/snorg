@@ -9,8 +9,8 @@
 	}
 
 	function insert_toprate_entries($hook, $type, $returnvalue, $params){
-		$params['TOP ENTRIES'] = 'readonly';
-		return $params;		
+		$returnvalue['TOP ENTRIES'] = 'readonly';
+		return $returnvalue;		
 	}
 	
 	global $CONFIG;
