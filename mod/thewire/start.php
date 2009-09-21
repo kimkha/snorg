@@ -40,7 +40,7 @@
 		    //extend views
 				extend_view('activity/thewire', 'thewire/activity_view');
 				extend_view('profile/status', 'thewire/profile_status');
-				extend_view('profile/tabs', 'thewire/profile_tab', 400);
+	//			extend_view('profile/tabs', 'thewire/profile_tab', 400);
 				
 			// Register a wallpost type
 				register_wallpost('thewire', 'thewire_wallpost');
@@ -156,7 +156,7 @@
 		 * @param string $method The method (default: 'site')
 		 * @return bool
 		 */
-		function thewire_save_post($post, $access_id, $parent=0, $method = "site", $tag = false)
+		function thewire_save_post($post, $access_id, $parent=0, $method = "site", $tag = false, $container_guid = 0)
 		{
 			// Initialise a new ElggObject
 			$thewire = new ElggObject();
@@ -166,6 +166,13 @@
 			
 			// Set its owner to the current user
 			$thewire->owner_guid = get_loggedin_userid();
+			
+			if ($container_guid==0) {
+				$thewire->container_guid = get_loggedin_userid();
+			}
+			else {
+				$thewire->container_guid = $container_guid;
+			}
 
 			// For now, set its access to public (we'll add an access dropdown shortly)
 			$thewire->access_id = $access_id;

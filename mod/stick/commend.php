@@ -29,7 +29,8 @@
 		
 		$header = elgg_view_title($title);
 		
-		$body = "<div id='view-commend'>{$entity->description}</div>";
+		$body = "<div id='view-commend' class='contentWrapper singleview'>{$entity->description}</div>";
+		$body .= elgg_view_comments($entity);
 		
 		$content = elgg_view_layout("two_column_left_sidebar", $block, $header.$body);
 	}

@@ -85,6 +85,6 @@
 		}
 		
 	// Forward to the 
-		forward($entity->getURL());
+		forward($_SERVER['HTTP_REFERER']);
 
 ?>
