@@ -128,8 +128,8 @@
 	}
 	
 	function stick_commend_cv($hook, $type, $returnvalue, $params) {
-		$params['stick:user:all'] = 'readonly';
-		return $params;
+		$returnvalue['stick:user:all'] = 'readonly';
+		return $returnvalue;
 	}
 	
 	register_elgg_event_handler('init','system','stick_init');
