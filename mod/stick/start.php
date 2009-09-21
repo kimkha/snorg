@@ -17,10 +17,14 @@
 	function stick_init() {
 		// Register homepage
 		extend_view("css", "stick/css", 600);
-		extend_view("index/main", "stick/homepage", 450);
-		extend_view("index/main", "stick/album", 451);
 		extend_view("index/block", "stick/commend", 400);
 		extend_view("js/initialise_elgg", "stick/js");
+		
+		if (is_plugin_enabled("blog")) 
+			extend_view("index/main", "stick/homepage", 450);
+		
+		if (is_plugin_enabled("tidypics")) 
+			extend_view("index/main", "stick/album", 451);
 		
 		// Page handler for blogspot
 		register_page_handler("stick", "stick_page");
