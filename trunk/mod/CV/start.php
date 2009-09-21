@@ -3,6 +3,8 @@ function cv_init(){
 	
 	extend_view('profile/tabs', 'cv/profile_tab', 450);
 	
+	extend_view('css', 'cv/css');
+	
 	register_page_handler('cv', cvedit_page_handler);	
 	
 }

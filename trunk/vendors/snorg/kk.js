@@ -36,9 +36,14 @@
 		url = $(link).attr("href");
 		$kconfirm(msg, function(re){
 			if(re){
-				$.get(url, function(data){
-					eval(fn+"('"+id+"');");
-				});
+				if (typeof(fn) != "undefined" && fn != 'none') {
+					$.get(url, function(data){
+						eval(fn+"('"+id+"');");
+					});
+				}
+				else {
+					window.location.href = link;
+				}
 			}
 		});
 		return false;

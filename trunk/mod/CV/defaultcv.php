@@ -18,27 +18,40 @@
 	// List form elements
 	$n = 0;
 	$loaded_defaults = array();
-	$listing .= "<div class=\"contentWrapper\">";
+	$listing = '';
 	while ($translation = get_plugin_setting("admin_defined_cv_$n", 'cv'))
 	{
 		$type = get_plugin_setting("admin_defined_cv_type_$n", 'cv');
 			
 		$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';					
 	
-		$listing .= "<p class=\"{$even_odd}\"><b>$translation: </b>";
-		$listing .= elgg_view("output/{$type}",array('value' => " [$type]"));
+		$listing .= "<p class=\"{$even_odd}\"><b>$translation:</b> [$type]";
 		$listing .= "</p>";
 		
 		$n++;
 	}
-	$listing .= "</div>";
 	
-	$listing .= "<div class=\"contentWrapper resetdefaultprofile\">" . elgg_view('input/form', 
-		array(
-			'body' => elgg_view('input/submit', array('value' => elgg_echo('cv:resetdefault'))), 
-			'action' => $CONFIG->wwwroot . 'action/cv/editdefault/reset'
-		)
-	) . "</div>";
+	if ($listing != '') {
+		$listing = "<div class=\"contentWrapper cv-default\">" . $listing;
+		
+		if ($vars['disable_security']!=true)
+		{
+			$ts = time();
+			$token = generate_action_token($ts);
+			$security = '?__elgg_token='. $token;
+			$security .= '&__elgg_ts=' . $ts;
+		}
+		
+		$listing .= "<div class=\"resetdefaultprofile\">" . elgg_view("output/confirmlink",array(
+								'href' => $CONFIG->wwwroot . 'action/cv/editdefault/reset'.$security,
+								'text' => elgg_echo('cv:resetdefault'),
+								'confirm' => elgg_echo('cv:confirmreset'),
+								'ajax' => 'none',
+				)
+		) . "</div>";
+		
+		$listing .= "<div class='clearfloat'></div></div>";
+	}
 	
 	set_context('admin');
 	
