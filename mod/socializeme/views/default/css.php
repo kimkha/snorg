@@ -422,11 +422,10 @@ span.contentIntro p {
 #elgg_topbar_container_search {
 	float:right;
 	height:21px;
-	/*width:280px;*/
 	position:relative;
 	right:100px;
 	text-align:right;
-	margin:3px 0 0 0;
+	margin:0;
 }
 
 #elgg_topbar_container_logout {
