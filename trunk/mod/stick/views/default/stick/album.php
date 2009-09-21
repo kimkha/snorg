@@ -55,6 +55,7 @@
 <?php
 	if (get_input("index_limit", 0) != 0) {
 		echo "<div class='stick-album-viewall'><a href='" . $CONFIG->wwwroot . "pg/stick/album'>" . elgg_echo("stick:viewall") . "</a></div>";
+		echo '<div class="clearfloat"></div>';
 	}
 ?>
 	</div>
