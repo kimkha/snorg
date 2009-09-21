@@ -7,25 +7,28 @@
 	if ($login_user->guid == $page_owner->guid){
 	
  ?>
-		<div id='btnEditCV' align="right"> <a href="<?php echo $CONFIG->wwwroot ?>mod/cv/edit.php?username=<?php echo $page_owner->name; ?>">Edit CV</a></div> 
+		<div id='btnEditCV' class="profile_info_edit_buttons" align="right"> <a href="<?php echo $CONFIG->wwwroot ?>mod/cv/edit.php?username=<?php echo $page_owner->name; ?>">Edit CV</a></div> 
 <?php
 	}
 	if (is_array($vars['config']->cv) && sizeof($vars['config']->cv) > 0)
 		
-		foreach($vars['config']->cv as $lable => $valtype) {
-			if ($metadata = get_metadata_byname(page_owner_entity()->guid, $lable)) {
+		foreach($vars['config']->cv as $label => $valtype) {
+			
+			if ($metadata = get_metadata_byname(page_owner_entity()->guid, $label)) {
+				$value = '<ul class="CV-list">';
 				
 				if (is_array($metadata)) {
-					$value = '';
 					foreach($metadata as $md) {
-						if (!empty($value)) $value .= ', ';
-						$value .= $md->value;
+						$value .= "<li class='CV-list-item'>".$md->value."</li>";
 						$access_id = $md->access_id;
 					}
 				} else {
-					$value = $metadata->value;
+					$value .= "<li class='CV-list-item'>".$metadata->value."</li>";
 					$access_id = $metadata->access_id;
 				}
+				
+				$value .= "</ul>";
+				
 			} else {
 				
 				$value = '';
@@ -34,10 +37,9 @@
 
 ?>
 
-	<p>
+	<p class="CV-detail">
 		<label>
-			<?php echo elgg_echo($lable) ?> 
-			
+			<?php echo elgg_echo($label) ?> 
 		</label>
 			<?php echo $value; ?>  
 			

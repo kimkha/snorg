@@ -215,28 +215,12 @@ function $kdialog() {
 	return this;
 }
 
-function $kwindow(i){
-	/* Attributes */
-	id = i;
-	
-	var kwindow;
-	
-	/* Functions */
-	
-	/* Constructor */
-	constructor = function(){
-		kwindow = $("#kwindow-"+id);
-		kwindow.css();
-	};
-	this.constructor();
-	return this;
-}
-
 function $ktabs() {
 	
 	/* Attributes */
 	tabList = new Array();
 	curr = -1;
+	isLoad = false;
 	
 	var kpanel = null;
 	var ktab = null;
@@ -253,11 +237,13 @@ function $ktabs() {
 		tabpanel.addClass("tabPanel_active");
 		
 		if (!tab.exist) {
+			isLoad = true;
 			$.get(tab.url, function(data){
 				if (typeof(data) != "undefined") {
 					tab.content.html(data);
 					tab.exist = true;
 				}
+				$k.tabs.isLoad = false;
 			});
 		}
 	};
@@ -284,6 +270,8 @@ function $ktabs() {
 		};
 		
 		tab.click(function(){
+			if ($k.tabs.isLoad) return false;
+			
 			$k.tabs.open($(this));
 			return false;
 		});
