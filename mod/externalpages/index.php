@@ -17,9 +17,22 @@
 	// Set admin user for user block
 	set_page_owner($_SESSION['guid']);
 	
-	if (get_input("act") == 'act') {
+	if (get_input("act") == 'new') {
 		$type = "expages";
 		$edit = elgg_view('expages/forms/editpage');
+		$body = elgg_view('page_elements/contentwrapper',array('body' => $edit));
+	}
+	else if (get_input("act") == 'edit' && ($id = (int) get_input("id",0)) != 0) {
+		$type = "expages";
+		$entity = get_entity($id);
+		$edit = elgg_view('expages/forms/editpage', array('entity'=>$entity));
+		$body = elgg_view('page_elements/contentwrapper',array('body' => $edit));
+	}
+	else if (get_input("act") == 'delete' && ($id = (int) get_input("id",0)) != 0) {
+		$entity = get_entity($id);
+		$entity->delete();
+		system_message(elgg_echo("expages:deleted"));
+		forward();
 	}
 	else {
 		$type = get_input('type'); //the type of page e.g about, terms etc
@@ -32,13 +45,13 @@
 		else
 			$edit = elgg_view('expages/forms/edit', array('type' => $type));
 		
+		// Display the menu
+		$body = elgg_view('page_elements/contentwrapper',array('body' => elgg_view('expages/menu', array('type' => $type)).$edit));
 	}
 	
 	//display the title
 	$title = elgg_view_title(elgg_echo('expages'));
 	
-		// Display the menu
-	$body = elgg_view('page_elements/contentwrapper',array('body' => elgg_view('expages/menu', array('type' => $type)).$edit));
 	
 	$block = elgg_view("expages/sidebar");
 		

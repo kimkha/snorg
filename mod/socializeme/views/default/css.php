@@ -2636,12 +2636,12 @@ border-top:none;
  #tabs6 {
       float:right;
       margin-top:-10px;
-      width:760px;
+      width:759px;
       font-size:93%;
-            }
+      padding-top:5px;
+}
     #tabs6 ul {
           margin:0;
-          padding:5px 5px 0 5px;
           list-style:none;
       }
     #tabs6 li {
@@ -2650,27 +2650,20 @@ border-top:none;
       padding:0;
       }
     #tabs6 a {
-      float:right;
-      background:#333;
       margin:0;
-      padding:0 0 0 2px;
       text-decoration:none;
       }
     #tabs6 a span {
       float:left;
       display:block;
-      padding:5px 5px 4px 6px;
+      padding:3px 5px 2px;
       color:#FFF;
-      }
+     }
     /* Commented Backslash Hack hides rule from IE5-Mac \*/
     #tabs6 a span {float:none;}
     /* End IE5-Mac hack */
     #tabs6 a:hover span {
       color:#FFF;
-      }
-    #tabs6 a:hover {
-            background:#2779e7;
-
       }
 
 
@@ -2876,3 +2869,10 @@ border-top:none;
 	color:#999999;
 }
 
+#navigation {
+	float: right;
+	background:#333;
+}
+#navigation li ul {
+	margin-top: 5px;
+}

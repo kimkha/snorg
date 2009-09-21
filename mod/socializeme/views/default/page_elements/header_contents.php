@@ -28,23 +28,20 @@
 <?php
      if (isloggedin()) {
 ?>
-<table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="959" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="200" valign="top"><a href="<?php echo $vars['url']; ?>">
 			<img src="<?php echo $vars['url']; ?>mod/socializeme/graphics/logo.png" border="0" /></a></td>
-    <td width="760" valign="top" align="right"> <div id="tabs6">
-                        <ul>
-                                <!-- CSS Tabs -->
-<li><a href="<?php echo $vars['url']; ?>mod/thewire/everyone.php"><span>Wire</span></a></li>
-<li><a href="<?php echo $vars['url']; ?>mod/file/world.php"><span>Files</span></a></li>
-<li><a href="<?php echo $vars['url']; ?>mod/pages/world.php"><span>Pages</span></a></li>
-<li><a href="<?php echo $vars['url']; ?>mod/members/index.php"><span>Members</span></a></li>
-<li><a href="<?php echo $vars['url']; ?>mod/bookmarks/everyone.php"><span>Bookmarks</span></a></li>
-<li><a href="<?php echo $vars['url']; ?>pg/groups/world/"><span>Groups</span></a></li>
-<li><a href="<?php echo $vars['url']; ?>mod/blog/everyone.php"><span>Blogs</span></a></li>
-<li id="current"><a href="<?php echo $vars['url']; ?>"><span>Home</span></a></li>
+    <td width="759" valign="top" align="right"> <div id="tabs6">
+    
+    	<ul id="navigation" class="topbardropdownmenu">
+			<li id="current"><a href="<?php echo $vars['url']; ?>"><span>Home</span></a></li>
+    <?php
+    	echo elgg_view("expages/navigation");
+    ?>
+    		<li><a href="<?php echo $vars['url']; ?>"><span>Contact</span></a></li>
+    	</ul>
 
-                        </ul>
         </div>
          <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>

@@ -38,16 +38,16 @@
 			global $CONFIG;
 			add_submenu_item(elgg_echo('expages'), $CONFIG->wwwroot . 'pg/expages/');
 			
-			if (is_included('expages/index.php')) {
+			if (is_included($CONFIG->path."mod/externalpages/index.php")) {
 				add_submenu_item(elgg_echo('expages:create'), $CONFIG->wwwroot . 'pg/expages/?act=new', 'expages');
 			}
 		}
 	}
 	
-	function expages_url($expage) {
+	function expages_url($expage = "") {
 			
 			global $CONFIG;
-			return $CONFIG->url . "pg/expages/";
+			return $CONFIG->url . "pg/expages/".$expage;
 			
 	}
 	
@@ -72,6 +72,16 @@
 			@include(dirname(__FILE__) . "/index.php"); 
 	}
 	
+	function expages_parent_tree(&$array, $container_guid=0, $prefix="", $prefix_more="") {
+		$expages = get_entities("object", "expages", 0, "", 0, 0, false, 0, $container_guid);
+		if ($expages && is_array($expages)) {
+			foreach ($expages as $item) {
+				$array[$item->guid] = $prefix.$item->title;
+				expages_parent_tree($array, $item->guid, $prefix.$prefix_more, $prefix_more);
+			}
+		}
+	}
+	
 	// Initialise log browser
 	register_elgg_event_handler('init','system','expages_init');
 	register_elgg_event_handler('pagesetup','system','expages_pagesetup');
@@ -82,5 +92,6 @@
 		register_action("expages/addfront",false,$CONFIG->pluginspath . "externalpages/actions/addfront.php");
 		register_action("expages/edit",false,$CONFIG->pluginspath . "externalpages/actions/edit.php");
 		register_action("expages/delete",false,$CONFIG->pluginspath . "externalpages/actions/delete.php");
+		register_action("expages/page",false,$CONFIG->pluginspath . "externalpages/actions/page.php");
 			
 ?>
