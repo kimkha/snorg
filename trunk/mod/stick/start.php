@@ -127,8 +127,16 @@
 		));
 	}
 	
+	function stick_commend_cv($hook, $type, $returnvalue, $params) {
+		$params['stick:user:all'] = 'readonly';
+		return $params;
+	}
+	
 	register_elgg_event_handler('init','system','stick_init');
 	register_elgg_event_handler('pagesetup','system','stick_pagesetup');
+	
+	// Register commend on CV
+	register_plugin_hook('cv:fields','cv', "stick_commend_cv");
 	
 	// Register actions
 	global $CONFIG;
