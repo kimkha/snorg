@@ -111,17 +111,16 @@ div.usericon a.icon img {
 }
 
 .resetdefaultprofile {
-	padding:0 10px 0 10px;
+	padding:0 10px;
 }
-.resetdefaultprofile input[type="submit"] {
+.resetdefaultprofile a {
 	background: #dedede;
-	border-color: #dedede;
 	color:#333333;
+	padding: 3px 5px 2px 5px;
 }
-.resetdefaultprofile input[type="submit"]:hover {
-	background: red;
-	border-color: red;
-	color:white;
+.resetdefaultprofile a:hover {
+	background: #FF0000;
+	color:#FFFFFF;
 }
 
 /* Banned user */

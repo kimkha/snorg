@@ -663,7 +663,7 @@ ul.topbardropdownmenu ul a {
     z-index: 8000;
 	margin:0;
 	position:fixed;
-	top:30px;
+	top:40px;
 	width:969px;
 	border:4px solid #00CC00;
 	cursor: pointer;
@@ -676,7 +676,7 @@ ul.topbardropdownmenu ul a {
     z-index: 8000;
 	margin:0;
 	position:fixed;
-	top:30px;
+	top:40px;
 	width:969px;
 	cursor: pointer;
 }
