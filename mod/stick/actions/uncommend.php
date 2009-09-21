@@ -15,6 +15,13 @@
 	$user = $entity->getOwnerEntity();
 	
 	if ($entity->delete()) {
+		$meta = get_metadata_byname($user->guid, 'stick:user:all');
+		foreach ($meta as $item) {
+			if ($item->owner_guid == $id) {
+				delete_metadata($item->guid);
+			}
+		}
+		
 		system_message(elgg_echo("stick:user:removesuccessful"));
 		forward("pg/profile/".$user->username);
 	} else {

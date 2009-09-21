@@ -10,6 +10,7 @@
 	 * @link http://elgg.com/
 	 */
 	
+	global $CONFIG;
 	admin_gatekeeper();
 	action_gatekeeper();
 	
@@ -42,6 +43,17 @@
 	if (!$object->save()) {
 		register_error(elgg_echo("stick:user:error"));
 		forward($_SERVER['HTTP_REFERER']);
+	}
+	
+	if ($id == 0) {
+		$time = friendly_time($object->time_created);
+		$post = "<a href='".$CONFIG->wwwroot."pg/stick/commend?id=".$object->guid."'>" .$time."</a>";
+		
+		$by = "<a href='".$user->getURL()."'>".$user->name."</a>";
+		
+		$message = sprintf(elgg_echo('stick:user:cv'), $post, $by);
+		
+		create_metadata($userId, 'stick:user:all', $message, 'text', $object->guid, ACCESS_PUBLIC);
 	}
 	
 	system_message(elgg_echo("stick:user:successful"));
