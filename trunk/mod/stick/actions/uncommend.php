@@ -16,11 +16,17 @@
 	
 	if ($entity->delete()) {
 		$meta = get_metadata_byname($user->guid, 'stick:user:all');
-		foreach ($meta as $item) {
-			if ($item->owner_guid == $id) {
-				delete_metadata($item->guid);
+		if (is_array($meta)) {
+			foreach ($meta as $item) {
+				if ($item->owner_guid == $id) {
+					$item->delete();
+				}
 			}
 		}
+		else if ($meta && $meta->owner_guid == $id) {
+			$meta->delete();
+		}
+		
 		
 		system_message(elgg_echo("stick:user:removesuccessful"));
 		forward("pg/profile/".$user->username);

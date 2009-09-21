@@ -38,7 +38,7 @@
 		
 		'stick:user:wall' => 'Congratulations! You are commended!',
 		'stick:user:wallstatus' => 'This user is commended ',
-		'stick:user:cv' => 'Commended in %s, by %s',
+		'stick:user:cv' => 'Commended by %s, with %s.',
 		'stick:user:edit' => 'Edit commend post',
 		'stick:user:all' => 'All commendation of this user',
 		'stick:user:view' => 'View recently commend post',
