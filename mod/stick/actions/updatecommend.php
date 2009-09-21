@@ -46,12 +46,11 @@
 	}
 	
 	if ($id == 0) {
-		$time = friendly_time($object->time_created);
-		$post = "<a href='".$CONFIG->wwwroot."pg/stick/commend?id=".$object->guid."'>" .$time."</a>";
+		$post = "<a href='".$CONFIG->wwwroot."pg/stick/commend?id=".$object->guid."'>" .$object->title."</a>";
 		
 		$by = "<a href='".$user->getURL()."'>".$user->name."</a>";
 		
-		$message = sprintf(elgg_echo('stick:user:cv'), $post, $by);
+		$message = sprintf(elgg_echo('stick:user:cv'), $by, $post);
 		
 		create_metadata($userId, 'stick:user:all', $message, 'text', $object->guid, ACCESS_PUBLIC);
 	}
