@@ -15,9 +15,7 @@
 			$content = $lw->description;
 			$time = "<span> (" . friendly_time($lw->time_created) . ")</span>";
 		}
-	}
-	
-	if($latest_wire){
+		
 		echo "<div class=\"profile_status\">";
 		echo $content;
 		if($owner == $_SESSION['user']->guid && get_context() != "profile")

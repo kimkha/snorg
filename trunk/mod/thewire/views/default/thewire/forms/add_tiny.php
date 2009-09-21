@@ -40,13 +40,18 @@ function submitnoteForm(thisForm){
 	myForm = $(thisForm);
 	url = myForm.attr('action');
 	$.post(url, myForm.serializeArray(), function(data){
-		$(".profile_status").each(function(){
-			$(this).html(data.status);
-		});
+		
+		if (data.status != '') {
+			$(".profile_status").each(function(){
+				$(this).html(data.status);
+			});
+		}
+		
 		$("#thewire-tab").prepend(data.list);
 		$("#wallpost").prepend(data.wall);
 		$("#thewire_tiny-textarea").val('');
 		thisForm.submit.blur();
+		$("#thewire_tiny-textarea").blur();
 	}, 'json');
 	return false;
 }

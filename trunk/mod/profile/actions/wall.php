@@ -19,7 +19,8 @@
 	
 	// Get object
 	$timelower = time() - ($time * 24 * 60 * 60);
-	$list_obj = get_user_objects($user->getGUID(), $enable_subtype, $count, 0, $timelower);
+//	$list_obj = get_user_objects($user->getGUID(), $enable_subtype, $count, 0, $timelower);
+	$list_obj = get_entities('object',$enable_subtype, null, "", $count, 0, false,0,$user->getGUID(),$timelower, 0);
 	
 	echo "<div id='wallpost'>";
 	
