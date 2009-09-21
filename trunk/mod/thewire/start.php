@@ -28,11 +28,11 @@
 				global $CONFIG;
 				
 			// Set up menu for logged in users
-				if (isloggedin()) {
+	/*			if (isloggedin()) {
 		
 					add_menu(elgg_echo('thewire'), $CONFIG->wwwroot . "mod/thewire/everyone.php");
 			
-				} 
+				} */
 				
 			// Extend system CSS with our own styles, which are defined in the thewire/css view
 				extend_view('css','thewire/css');
