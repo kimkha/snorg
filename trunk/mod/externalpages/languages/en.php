@@ -22,6 +22,7 @@
 			'item:object:front' => 'Front page items',
 	
 			'expages:create' => "Create page",
+			'expages:invalidparent' => "Invalid parent page",
 		/**
 		 * Status messages
 		 */

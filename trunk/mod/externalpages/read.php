@@ -16,7 +16,22 @@
 		
 	// set some variables
 		$type = get_input('expages');
-											
+		
+		set_context("index");
+		
+	if (is_numeric($type)) {
+		
+		$entity = get_entity($type);
+		
+		$area1 = elgg_view_title($entity->title);
+		$area1 .= elgg_view('page_elements/contentwrapper',array('body' => $entity->description));
+		
+		if (isadminloggedin()) {
+			$area1 .= "<a href='".expages_url("?act=edit&id=".$entity->guid)."'>".elgg_echo("edit")."</a>";
+			$area1 .= " <a href='".expages_url("?act=delete&id=".$entity->guid)."'>".elgg_echo("delete")."</a>";
+		}
+	}
+	else {
 	// Set the title appropriately
 		$area1 = elgg_view_title(elgg_echo($type));
 		
@@ -29,11 +44,15 @@
 			}
 		}else
 			$area1 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_echo("expages:notset")));
+	}
+											
 
-	// Display through the correct canvas area
-		$body = elgg_view_layout("one_column", $area1);
+	// View it
+		$main = "<div class='main-box'>".$area1."</div>";
+		$block = elgg_view("index/block");
 		
-	// Display page
+		$body = elgg_view_layout('widgets',$main,"",$main,"",$block);
+		
 		page_draw($title,$body);
 		
 ?>
