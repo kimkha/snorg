@@ -12,6 +12,21 @@
 
 ?>
 
+.CV-list-item .short-wall-post .usericon{
+	float: left;
+}
+
+.CV-list-item .short-wall-post {
+
+	border-bottom: 1px dashed #2779E7;
+	margin: 0;
+	padding: 1px 10px;
+}
+.CV-list-item .short-wall-post p {
+	margin: 0  !important;
+	padding: 0 0 0 20px !important;
+}
+
 /* input msg area */
 #mb_input_wrapper {
 	margin:0 10px 5px 10px;
@@ -25,8 +40,9 @@
 	width:675px;
 }
 .collapsable_box_content #mb_input_wrapper .input_textarea {
-	width:259px;
+	width:100%;
 }
+
 .message_item_timestamp {
 	font-size:90%;
 	padding:10px 0 0 0;
