@@ -12,34 +12,49 @@
 	 * @link http://elgg.org/
 	 */
 	
+
     //the page owner
 	$owner = page_owner_entity();
 
     //the number of files to display
-		$num = 20;
+		$num = 8;
 		
 	//get the correct size
     	$size_value = "tiny";
 		
-    // Get the users friends
-	$friends = $owner->getFriends("", $num, $offset = 0);
+	$list = $owner->getFriends();
+	shuffle($list);
 	
+	$mutural = array();
+	$i = 0;
+	foreach ($list as $friend) 
+	{
+		$i++;
+		if ($i>$num) {
+			break;
+		}
+		if ($friend->isFriendOf($visitor)) // This is a mutural friend 
+		{
+			$mutural[] = $friend;
+		}
+	}
+
 	// If there are any $friend to view, view them
-	if (is_array($friends) && sizeof($friends) > 0) {
-		echo "<div id='friends-leftbar' class='collapsable_box'>";
+	if (sizeof($mutural) > 0 && $owner->guid != $visitor) {
+		echo "<div id='muturalfriends-leftbar' class='collapsable_box'>";
 		echo "<div class='collapsable_box_header'>";
 		echo '<a class="toggle_box_contents" href="javascript:void(0);">-</a>';
-		echo '<h1>'.elgg_echo("friends").'</h1>';
+		echo '<h1>'.elgg_echo("muturalfriends").'</h1>';
 		echo "</div>";
 		
 		echo '<div class="collapsable_box_content">';
 		
-		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$vars['entity']->owner_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
-		echo "<div id=\"list\">";
 		
-		foreach($friends as $friend) {
+		echo " <a id='btn_mf_show_all' href='javascript:viewFriendsBox(\"GetMutualFriends\", {$vars['entity']->owner_guid});' > " . ' ' . elgg_echo('friends:widget:showall')."</a>";
+		echo "<div id=\"list\">";
+
+		foreach($mutural as $friend) {
 			echo "<div class=\"singlefriend\" >";
-			
 			echo elgg_view("profile/icon",array('entity' => get_user($friend->guid), 'size' => $size_value));
 			echo "</div>";
 		}
@@ -47,6 +62,7 @@
 		echo "<div class='clearfloat'></div></div>";
 			
 	    echo "</div></div>";
+			
     }
     echo " ";
 	

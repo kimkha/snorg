@@ -26,12 +26,6 @@
 		if (is_plugin_enabled("tidypics")) 
 			extend_view("index/main", "stick/album", 451);
 		
-		if (isadminloggedin()) {
-			// Insert submenu into user profile
-//			extend_view('profile/menu/actions','stick/menuadd');
-//			extend_view('profile/menu/linksownpage','stick/menuadd', 400);
-		}
-
 		// Page handler for blogspot
 		register_page_handler("stick", "stick_page");
 		
@@ -82,6 +76,16 @@
 			}
 		}
 		
+		if (isadminloggedin()) {
+			// Insert submenu into user profile
+			$list = get_user_objects(page_owner(), _STICK_COMMEND_SUBTYPE_);
+	
+			if ($list) {
+				extend_view('profile/menu/actions','stick/menu', 400);
+			}
+			extend_view('profile/menu/actions','stick/menuadd', 401);
+//			extend_view('profile/menu/linksownpage','stick/menuadd', 400);
+		}
 	}
 	
 	function stick_page($page) {
