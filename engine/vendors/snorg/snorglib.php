@@ -702,14 +702,14 @@
 	function kk_init() {
 		register_wallpost("wallpost", "view_onwall_wallpost");
 		register_wallpost("short_wallpost", "view_onwall_short_wallpost");
+		// snorg - bkit06
+		register_action("taguser/tag");
+		register_action("taguser/untag");
+		
 	}
 	
 	// register something for kk lib
 	register_elgg_event_handler('init','system','kk_init');
 	
 	
-		// snorg - bkit06
-		register_action("taguser/tag");
-		register_action("taguser/untag");
-		
 ?>
