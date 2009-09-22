@@ -1321,7 +1321,6 @@ table.search_gallery {
 /* friends widget */
 #widget_friends_list {
 	display:table;
-	width:275px;
 	margin:0 10px 0 10px;
 	padding:8px 0 4px 8px;
 	background:white;

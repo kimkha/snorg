@@ -28,7 +28,7 @@
 		
 		if (isadminloggedin()) {
 			// Insert submenu into user profile
-			extend_view('profile/menu/actions','stick/menuadd');
+//			extend_view('profile/menu/actions','stick/menuadd');
 //			extend_view('profile/menu/linksownpage','stick/menuadd', 400);
 		}
 
