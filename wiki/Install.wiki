@@ -3,7 +3,7 @@
 =Cài Đặt SNORG=
 ==1.	 Upload Snorg:==
 o	Upload mã nguồn snorg lên web server của bạn.
-	Nếu muốn Snorg nằm ở tên miền gốc ( ví dụ : http://snorg.com) cần up nội dung mã nguồn lên thư mục gốc của host.
+	Nếu muốn Snorg nằm ở tên miền gốc ( ví dụ : http://snorg.com) cần up nội dung mã nguồn lên thư mục gốc của host.<br>
 	Nếu muốn Snorg nằm ở một tên miền con ví dụ : http://snorg.com/mangxahoi/  bạn cần up nội dung mã nguồn snorg lên thư mục mangxahoi nằm trong thư mục gốc của host.
 ==2.	Tạo thư mục chưa dữ liệu:==
 o	Snorg cần một thư mục để chưa các dữ liệu được tải lên mạng (Music, Video, Photo…), bạn sẽ phải tạo thư mục này trên hosting. Để đảm bảo tính bảo mật của hệ thống thư mục này không nên nằm chung với thư mục gốc của mã nguồn mà nên nằm ngang hàng với thư mục gốc.
