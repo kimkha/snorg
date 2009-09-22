@@ -14,8 +14,8 @@
 	
 	$images = get_entities_from_relationship(_STICK_PHOTO_RELATIONSHIP_, 1);
 	
-	$title = "Our Company Gallery";
-	$desc = "Our activities, our productions, our employees, and more...";
+	$title = elgg_echo('stick:ititle');
+	$desc = elgg_echo('stick:idescription');
 	$url = $CONFIG->wwwroot . "pg/stick/album";
 	
 ?>
@@ -46,7 +46,7 @@
 		
 		$num_images = count($images);
 	} else {
-		echo '<div class="tidypics_info">' . elgg_echo('image:none') . '</div>';
+		echo '<div class="tidypics_info">' . sprintf(elgg_echo('stick:noimage'), $CONFIG->wwwroot."pg/photos/world/") . '</div>';
 		$num_images = 0;
 	}
 	

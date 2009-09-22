@@ -27,6 +27,9 @@
 		'stick:removeerror' => 'There is an error when unstick this post',
 		'stick:notpublic' => 'This post can not be sticked because it is not public',
 		
+		'stick:ititle' => 'Our Company Gallery',
+		'stick:idescription' => 'Our activities, our productions, our employees, and more...',
+		'stick:noimage' => 'No images have been added yet. Please <a href="%s">browse to insert</a>.',
 		'stick:isuccessful' => 'This image is sticked successful',
 		'stick:ierror' => 'There is an error when stick this image',
 		'stick:inotpublic' => 'This image can not be sticked because it is not public',
