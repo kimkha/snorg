@@ -933,24 +933,6 @@
            
         }
         
-        
-        /**
-	 * Automatically views taguser
-	 *
-	 * @author snorg- bkit06
-	 */
-        	function elgg_view_taguer($entity){
-        	
-			if (!($entity instanceof ElggEntity)) return false;
-            		  
-			$taggeduser .= elgg_view('taguser/tagblock',array('entity' => $entity->getGUID()));
-	            
-	        return $taggeduser;           
-	            
-	          
-			}
-           
-        
 
 	/**
 	 * Count the number of comments attached to an entity
@@ -2259,11 +2241,6 @@
 		// Actions
 		register_action('comments/add');
 		register_action('comments/delete');
-		
-		// snorg - bkit06
-		register_action("taguser/tag");
-		register_action("taguser/untag");
-		
 		
 		elgg_view_register_simplecache('css');
 		elgg_view_register_simplecache('js/friendsPickerv1');
