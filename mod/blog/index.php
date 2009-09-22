@@ -22,13 +22,7 @@
 			set_page_owner($_SESSION['guid']);
 		}
 
-	//set blog title
-		if($page_owner == $_SESSION['user']){
-			$area2 = elgg_view_title(elgg_echo('blog:your'));
-		}else{
-			//$area1 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog'));
-		}
-		
+	// Get order by
 		$order_type = get_input("orderby","time");
 		
 		$select_options = array(
@@ -51,9 +45,16 @@
 			'disable_security' => true,
 			'body' => $select,
 		)) . "</div>";
+		$area2 = $order;
+
+	//set blog title
+		if($page_owner == $_SESSION['user']){
+			$area2 .= elgg_view_title(elgg_echo('blog:your'));
+		}else{
+			$area2 .= elgg_view_title(sprintf(elgg_echo('blog:user'), $page_owner->username));
+		}
 		
 		
-		$area2 .= $order;
 	// Get a list of blog posts
 		if ((!$order_type) || ($order_type=="")){
 			$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
