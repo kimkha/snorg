@@ -242,7 +242,7 @@ function $ktabs() {
 		tabpanel.addClass("tabPanel_active");
 		
 		if (!tab.exist) {
-			$k.tabs.isLoad = true;
+			isLoad = true;
 			$.get(tab.url, function(data){
 				if (typeof(data) != "undefined") {
 					tab.content.html(data);
@@ -305,13 +305,6 @@ function $kloading() {
 	return "<div class=\"ajax_loader\" align=\"center\"></div>";
 }
 
-function kdemo(msg) {
-	$kalert("kimkha "+msg);
-}
-
-function $kreset() {
-	setup_wallpost_textarea();
-}
 $(document).ready(function(){
 	$k = $kk();
 });

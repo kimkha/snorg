@@ -59,14 +59,19 @@
 	{
 		// If not recommend
 		if (!in_array($p, $recommend)) {
-			continue;
+			// Enable
+			if (disable_plugin($p))
+				system_message(sprintf(elgg_echo('admin:plugins:disable:yes'), $p));
+			else
+				register_error(sprintf(elgg_echo('admin:plugins:disable:no'), $p));
 		}
-		
-		// Enable
-		if (enable_plugin($p))
-			system_message(sprintf(elgg_echo('admin:plugins:enable:yes'), $p));
-		else
-			register_error(sprintf(elgg_echo('admin:plugins:enable:no'), $p));	
+		else {
+			// Enable
+			if (enable_plugin($p))
+				system_message(sprintf(elgg_echo('admin:plugins:enable:yes'), $p));
+			else
+				register_error(sprintf(elgg_echo('admin:plugins:enable:no'), $p));
+		}
 	}		
 	
 	// Regen view cache
