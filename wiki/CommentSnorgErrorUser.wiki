@@ -4,3 +4,7 @@
 <b>- Lỗi Không thể click vào nút sửa đổi trang trong dashboard</b>
   <b>Lí do:</b> bạn chưa active bất kì 1 widget nào.
   <b>Khắc phục:</b> active widget để có thể sử dụng chức năng sửa đổi của trang.
+
+<b>- Lỗi khi kích hoạt một plugin nào đó thì trang hiển thị bị lỗi chỉ xuất hện màu trắng.
+<b> Lí do</b>: có thể Plugin dó đã bị lỗi hoặc không tương thích với một plugin nào đó trong hệ thống.
+<b> khắc phục:</b> vào thư mục /mod/ trên host đỏi tên hoặc delete plugin vừa kích hoạt gây lỗi sau đó sẽ vào lại trang bình thường.
