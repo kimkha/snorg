@@ -242,7 +242,7 @@ function $ktabs() {
 		tabpanel.addClass("tabPanel_active");
 		
 		if (!tab.exist) {
-			isLoad = true;
+			$k.tabs.isLoad = true;
 			$.get(tab.url, function(data){
 				if (typeof(data) != "undefined") {
 					tab.content.html(data);
