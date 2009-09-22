@@ -7,6 +7,7 @@
 	 * Get content from URL
 	 * 
 	 * @author "KimKha 
+	 * @package snorg
 	 */
 	function cfopen($url, $limit = 8192)
 	{
@@ -49,6 +50,7 @@
 	 * @param string $object The object name
 	 * @param string $view_func The callback function
 	 * @return true|false
+	 * @package snorg
 	 */
 	function register_wallpost($object, $view_func) {
 		if (!is_registered_entity_type("object", $object)) { // Not exist this subtype
@@ -64,6 +66,7 @@
 	 * @author "KimKha 
 	 * @param int|array $owner_guid GUID of user(s), or 0 to get all object name
 	 * @return array|false Array of object name
+	 * @package snorg
 	 */
 	function get_register_wallpost($owner_guid = 0) {
 		$all = get_register("wallpost_type");
@@ -105,6 +108,7 @@
 	 * @param int $timelower The earliest time the entity can have been created. Default: all
 	 * @param int $timeupper The latest time the entity can have been created. Default: all
 	 * @return false|array An array of ElggObjects or false, depending on success
+	 * @package snorg
 	 */
 	function get_user_wallpost_objects($user_guid, $subtype = "", $limit = 10, $offset = 0, $timelower = 0, $timeupper = 0) {
 		if (is_array($subtype)) {
@@ -128,6 +132,7 @@
 	 * @author "KimKha 
 	 * @param string $object The object name
 	 * @return true|false
+	 * @package snorg
 	 */
 	function is_register_wallpost($object) {
 		$all = get_register("wallpost_type");
@@ -146,6 +151,7 @@
 	 * @param array $vars The array of parameter for callback function: 
 	 * 				use $vars['entity'] to get current entity 
 	 * @return HTML
+	 * @package snorg
 	 */
 	function view_wallpost($object, $vars) {
 		$all = get_register("wallpost_type");
@@ -169,6 +175,7 @@
 	 * @param string $type Value is 'short' or 'full'
 	 * @param int $access_id 
 	 * @return int|false GUID of new ElggObject of this message or failure
+	 * @package snorg
 	 */
 	function wallpost($owner_guid=0, $title="", $content="", $type="full", $access_id=ACCESS_PUBLIC) {
 		if ($owner_guid <= 0) return false;
@@ -209,6 +216,7 @@
 	 * @author "KimKha 
 	 * @param array $vars = array('entity'=>$entity, 'viewtype'=>'wall') 
 	 * @return string|false HTML to view
+	 * @package snorg
 	 */
 	function view_onwall_wallpost($vars) {
 		global $CONFIG;
@@ -240,6 +248,7 @@
 	 * @author "KimKha 
 	 * @param array $vars = array('entity'=>$entity, 'viewtype'=>'wall') 
 	 * @return string|false HTML to view
+	 * @package snorg
 	 */
 	function view_onwall_short_wallpost($vars) {
 		global $CONFIG;
@@ -265,6 +274,7 @@
 	 * @author "KimKha 
 	 * @param int $owner_guid User guid of owner, or 0 to get all object name 
 	 * @return array|false Array of subtype structure
+	 * @package snorg
 	 */
 	function get_wallpost_object($owner_guid = 0) {
 		$object = get_register_wallpost($owner_guid);
@@ -278,6 +288,7 @@
 	 * @author "KimKha 
 	 * @param ElggAnnotation $comment 
 	 * @return string HTML to view 
+	 * @package snorg
 	 */
 	function elgg_view_comment(ElggAnnotation $comment, $bypass = true, $debug = false) {
 		$comment->view = "annotation/onwall";
@@ -290,6 +301,7 @@
 	 * @author "KimKha 
 	 * @param $content Original string
 	 * @return string
+	 * @package snorg
 	 */
 	function string_wrap($content) {
     	$cont = explode(' ', $content);
@@ -307,6 +319,7 @@
 	 * @param $name Name to split
 	 * @param $num Max numbers of name
 	 * @return Splitted name
+	 * @package snorg
 	 */
 	function splitname($name, $num=15) {
 		if (strlen($name) > $num) return substr($name, 0, $num-1)."..";
@@ -320,6 +333,7 @@
 	 * @param string $string HTML string
 	 * @param int $num Number of characters to split (0 = unlimited)
 	 * @return string Spitted first paragraph
+	 * @package snorg
 	 */
 	function split_html($string, $num=0) {
 		$ptags = array(
@@ -388,6 +402,7 @@
 	 * @param ElggEntity $object Current object
 	 * @param string $subtype New subtype name
 	 * @return true|false Depend on success
+	 * @package snorg
 	 */
 	function change_subtype(ElggEntity $object, $subtype) {
 		global $CONFIG;
@@ -413,6 +428,7 @@
 	 * @param array $entities Array of given entities
 	 * @param string $subtype Subtype you need to get
 	 * @return array|false 
+	 * @package snorg
 	 */
 	function parse_entities_by_subtype($entities, $subtype) {
 		if (!is_array($entities)) {
@@ -439,6 +455,7 @@
 	 * @param int $guid_two 
 	 * @param array $subrelationship
 	 * @return true|false  
+	 * @package snorg
 	 */
 	function check_entity_multi_relationship($guid_one, $relationship, $guid_two, $subrelationship=array()) {
 		if (empty($subrelationship)) return check_entity_relationship($guid_one, $relationship, $guid_two);
@@ -457,6 +474,7 @@
 	 * @author "KimKha 
 	 * @param array $array Array of strings to convert 
 	 * @return array Result array
+	 * @package snorg
 	 */
 	function convert_whitespace_array($array) {
 		if (empty($array)) return false;
@@ -474,6 +492,7 @@
 	 * @author "KimKha 
 	 * @param string $current String to convert
 	 * @return string Result string
+	 * @package snorg
 	 */
 	function convert_whitespace($current) {
 		$current = trim($current);
@@ -490,6 +509,7 @@
 	 * @param string $attr Name of attribute
 	 * @param array $given Given array that list are inserted into
 	 * @return array Result
+	 * @package snorg
 	 */
 	function array_unique_by_attribute($list, $attr, $given = array()) {
 		$new = $given;
@@ -511,6 +531,7 @@
 	 * @author "KimKha 
 	 * @param string $filename You can use pages/edit.php
 	 * @return true|false
+	 * @package snorg
 	 */
 	function is_included($filename) {
 		$filename = str_replace("\\", "/", $filename);
@@ -528,9 +549,155 @@
 	}
 	
 	/**
+	 * Automatically views taguser
+	 *
+	 * @author bkit06
+	 * @package snorg
+	 */
+	function elgg_view_taguer($entity){
+		if (!($entity instanceof ElggEntity)) return false;
+	    		  
+		$taggeduser .= elgg_view('taguser/tagblock',array('entity' => $entity->getGUID()));
+	        
+	    return $taggeduser;
+	}
+	
+	/**
+	 * 
+	 * @author Huyvtq
+	 * @package snorg
+	 */
+	function get_entities_order_by_metadata($type = "", $subtype = "", $owner_guid = 0, $order_by = "", $limit = 10, $offset = 0, $count = false, $site_guid = 0, $container_guid = null, $timelower = 0, $timeupper = 0)
+	{
+		global $CONFIG;
+		
+		if ($subtype === false || $subtype === null || $subtype === 0)
+			return false;
+		/////////////////////////////////////	
+		$e = 'e.';
+		$md = 'md.';
+		$ms1 = 'ms1.';
+		$ms2 = 'ms2.';
+		
+		$from = "{$CONFIG->dbprefix}entities as e ";
+		$from .= "left join ( {$CONFIG->dbprefix}metadata as md ";
+		$from .= "join {$CONFIG->dbprefix}metastrings as ms1 ";
+		$from .= "join {$CONFIG->dbprefix}metastrings as ms2) ";
+		
+		$on =  "( {$md}entity_guid = {$e}guid )";
+		$on.= "AND ({$md}name_id = {$ms1}id)";
+		$on.= "AND ({$md}value_id = {$ms2}id)";
+		$on.= "AND ({$ms1}string = '{$order_by}')";
+
+		
+		//////////////////////////////////////
+		if ($order_by == "") $order_by = "time_created desc";
+		$order_by = sanitise_string($order_by);
+		$limit = (int)$limit;
+		$offset = (int)$offset;
+		$site_guid = (int) $site_guid;
+		$timelower = (int) $timelower;
+		$timeupper = (int) $timeupper;
+		if ($site_guid == 0)
+			$site_guid = $CONFIG->site_guid;
+				
+		$where = array();
+		//////////////////////////////////
+		
+		
+		if (is_array($subtype)) {			
+			$tempwhere = "";
+			if (sizeof($subtype))
+			foreach($subtype as $typekey => $subtypearray) {
+				foreach($subtypearray as $subtypeval) {
+					$typekey = sanitise_string($typekey);
+					if (!empty($subtypeval)) {
+						$subtypeval = (int) get_subtype_id($typekey, $subtypeval);
+					} else {
+						$subtypeval = 0;
+					}
+					if (!empty($tempwhere)) $tempwhere .= " or ";
+					$tempwhere .= "({$e}type = '{$typekey}' and {$e}subtype = {$subtypeval})";
+					
+				}								
+			}
+			if (!empty($tempwhere)) $where[] = "({$tempwhere})";
+			
+		} else {
+		
+			$type = sanitise_string($type);
+			if ($subtype !== "")
+				$subtype = get_subtype_id($type, $subtype);
+			
+			if ($type != "")
+				$where[] = "{$e}type='$type'";
+			if ($subtype!=="")
+				$where[] = "{$e}subtype=$subtype";
+				
+		}
+			
+		if ($owner_guid != "") {
+			if (!is_array($owner_guid)) {
+				$owner_array = array($owner_guid);
+				$owner_guid = (int) $owner_guid;
+			//	$where[] = "{$e}owner_guid = '$owner_guid'";
+			} else if (sizeof($owner_guid) > 0) {
+				$owner_array = array_map('sanitise_int', $owner_guid);
+				// Cast every element to the owner_guid array to int
+			//	$owner_guid = array_map("sanitise_int", $owner_guid);
+			//	$owner_guid = implode(",",$owner_guid);
+			//	$where[] = "owner_guid in ({$owner_guid})";
+			}
+			if (is_null($container_guid)) {
+				$container_guid = $owner_array;
+			}
+		}
+		if ($site_guid > 0)
+			$where[] = "{$e}site_guid = {$site_guid}";
+
+		if (!is_null($container_guid)) {
+			if (is_array($container_guid)) {
+				foreach($container_guid as $key => $val) $container_guid[$key] = (int) $val;
+				$where[] = "{$e}container_guid in (" . implode(",",$container_guid) . ")";
+			} else {
+				$container_guid = (int) $container_guid;
+				$where[] = "{$e}container_guid = {$container_guid}";
+			}
+		}
+		
+		if ($timelower)
+			$where[] = "{$e}time_created >= {$timelower}";
+		if ($timeupper)
+			$where[] = "{$e}time_created <= {$timeupper}";
+			
+		if (!$count) {
+			$query = "SELECT e.* from {$from} on {$on} where ";
+		} else {
+			$query = "SELECT count(guid) as total from {$from} on {$on}  where ";
+		}
+		
+		foreach ($where as $w)
+			$query .= " $w and ";
+		$query .= "( (1 = 1) and e.enabled='yes')";
+		
+		if (!$count) {
+			$query .= " order by CAST({$ms2}string as DECIMAL) desc";
+			if ($limit) $query .= " limit $offset, $limit"; // Add order and limit
+			
+			$dt = get_data($query, "entity_row_to_elggstar");
+			return $dt;
+		} else {
+			$total = get_data_row($query);
+			return $total->total;
+		}
+	}
+
+	
+	/**
 	 * Init something for KK lib
 	 * 
 	 * @author "KimKha 
+	 * @package snorg
 	 */
 	function kk_init() {
 		register_wallpost("wallpost", "view_onwall_wallpost");
@@ -540,4 +707,9 @@
 	// register something for kk lib
 	register_elgg_event_handler('init','system','kk_init');
 	
+	
+		// snorg - bkit06
+		register_action("taguser/tag");
+		register_action("taguser/untag");
+		
 ?>

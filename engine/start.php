@@ -72,7 +72,8 @@
 			exit;
 		}
 		
-		if (!include_once(dirname(__FILE__) . "/vendors/snorg/kk.php")) {		// special kk library
+		// This code is edited by SNORG Team
+		if (!include_once(dirname(__FILE__) . "/vendors/snorg/snorglib.php")) {		// Installation SNORG library
 			echo "Error in installation: could not load the special kk library.";
 			exit;
 		}
