@@ -15,6 +15,8 @@
 	float: left;
 	border-right: 1px solid #000000;
 	padding: 0px 5px;
+	height: 21px;
+	margin: 2px 0px;
 }
 
 #notebook_wrapper {

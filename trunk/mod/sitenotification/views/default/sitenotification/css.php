@@ -7,8 +7,8 @@
 	float: left;
 	border-right: 1px solid #000000;
 	padding: 0px 5px;
-	margin: 0;
-	height: 25px;
+	margin: 2px 0;
+	height: 21px;
 }
 
 #notification_wrapper {
