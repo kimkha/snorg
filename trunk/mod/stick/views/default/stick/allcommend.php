@@ -30,8 +30,7 @@
 		$time = friendly_time($time);
 		$info .= "<div class='stick-comment-time'>" . $time ."</div>";
 		
-		$info .= "<a class='user_details_toggle' href='' onclick=\"$('#user_details_toggle-$i').toggle();return false;\">" .elgg_echo('profile:toggle_details'). "</a>";
-		$info .= "<div class='stick-commend-details' id='user_details_toggle-$i' style='display:none'>";
+		$info .= "<div class='stick-commend-details'>";
 		$info .= "<h3><a href=\"" . $CONFIG->wwwroot . "pg/stick/commend?id=" . $item->guid . "\" rel=\"$rel\">" . $item->title . "</a></h3>";
 		$info .= split_html($item->description, 300);
 		$info .= "</div>";
