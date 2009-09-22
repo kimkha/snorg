@@ -18,29 +18,29 @@
 		$page_owner = $_SESSION['user'];
 		set_page_owner($_SESSION['guid']);
 		
-		$order_type = get_input("orderby","");
-		$selected_time = "";
-		$selected_total = "";
-		$selected_average = "";
+		$order_type = get_input("orderby","time");
 		
-		if ($order_type == "ratetotal"){
-			$selected_total = "selected=\"selected\"";
-		} else if ($order_type == "rateaverage"){
-			$select_average = "selected=\"selected\"";
-		} else {
-			$selected_time = "selected=\"selected\"";
-		}
+		$select_options = array(
+			'time' => 'Created time',
+			'ratetotal' => 'Rate point',
+			'rateaverage' => 'Average rate point',
+		);
 		
-		$order = "<div> Order by </div>";
-		$order .= "<form id=\"frm_orderby\" action=\"{$CONFIG->wwwroot}mod/blog/everyone.php\" method=\"GET\" onchange=\"this.submit()\" >";
-		$order .= "<select name=\"orderby\">";
-		$order .= "<option value=\"\" {$selected_time}> Created time </option>";
-		$order .= "<option value=\"ratetotal\" {$selected_total}> Rate point </option>";
-		$order .= "<option value=\"rateaverage\" {$select_average}> Average rate point </option>";
-		$order .= "</select>";
-		$order .= "</form>";
+		$select = "Order by: ".elgg_view("input/pulldown", array(
+			'internalname' => 'orderby',
+			'options_values' => $select_options,
+			'value' => $order_type,
+			'js' => 'onchange="$(this).parent(\'form\').submit()"',
+		));
 		
-		
+		$order = "<div id='order-blog'>" . elgg_view("input/form", array(
+			'internalid' => 'frm_orderby',
+			'action' => '?',
+			'method' => 'GET',
+			'disable_security' => true,
+			'body' => $select,
+		)) . "</div>";
+		$order = "<div class='clearfloat'></div>";
 		
 		
 		$area2 = elgg_view_title(elgg_echo('blog:everyone'));

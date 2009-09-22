@@ -196,6 +196,10 @@
 	font-size: 100%;
 }
 
+#order-blog {
+	float: right;
+	padding: 0 10px;
+}
 
 
 

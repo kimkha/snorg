@@ -38,6 +38,7 @@
 
 #notification_content {
 	max-height: 350px !important;
+	min-height: 50px !important;
 	overflow: auto;
 	border-top: 1px dashed #2779E7;
 }
