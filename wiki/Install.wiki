@@ -6,13 +6,13 @@ o	Upload mã nguồn snorg lên web server của bạn.
 	Nếu muốn Snorg nằm ở tên miền gốc ( ví dụ : http://snorg.com) cần up nội dung mã nguồn lên thư mục gốc của host.<br>
 	Nếu muốn Snorg nằm ở một tên miền con ví dụ : http://snorg.com/mangxahoi/  bạn cần up nội dung mã nguồn snorg lên thư mục mangxahoi nằm trong thư mục gốc của host.
 ==2.	Tạo thư mục chưa dữ liệu:==
-o	Snorg cần một thư mục để chưa các dữ liệu được tải lên mạng (Music, Video, Photo…), bạn sẽ phải tạo thư mục này trên hosting. Để đảm bảo tính bảo mật của hệ thống thư mục này không nên nằm chung với thư mục gốc của mã nguồn mà nên nằm ngang hàng với thư mục gốc.
-	VD bạn cài đặt elgg trên /home/snorg/html/ thì thư mục data nên được tạo tại /home/snorg/data. Hoặc trường hợp snorg được cài đặt trên /home/username/public_html/ thì bạn có thể tạo thư mục data tại /home/username/elgg/
-o	Khi thư mục data đã được tạo bạn phải cấu hình quyền truy cập cho thư mục để đảm bảo thư mục có thể được truy cập bởi người sử dụng ( nếu sử dụng một phần mềm ftp hoặc trang quản lý cpanel bạn có thể nhấp chuột phải vào thư mục chọn CMOD và thiết lập giá trị 777 cho thư mục).
+o	Snorg cần một thư mục để chưa các dữ liệu được tải lên mạng (Music, Video, Photo…), bạn sẽ phải tạo thư mục này trên hosting. Để đảm bảo tính bảo mật của hệ thống thư mục này không nên nằm chung với thư mục gốc của mã nguồn mà nên nằm ngang hàng với thư mục gốc.<br>
+	VD bạn cài đặt elgg trên /home/snorg/html/ thì thư mục data nên được tạo tại /home/snorg/data. Hoặc trường hợp snorg được cài đặt trên /home/username/public_html/ thì bạn có thể tạo thư mục data tại /home/username/elgg/<br>
+o	Khi thư mục data đã được tạo bạn phải cấu hình quyền truy cập cho thư mục để đảm bảo thư mục có thể được truy cập bởi người sử dụng ( nếu sử dụng một phần mềm ftp hoặc trang quản lý cpanel bạn có thể nhấp chuột phải vào thư mục chọn CMOD và thiết lập giá trị 777 cho thư mục).<br>
 ==3.	Tạo cơ sở dữ liệu:==
-o	Sử dụng công cụ quản trị cơ sỡ dữ liệu hệ thống của bạn ( nếu bạn không chắc có thể hỏi người quản lý hệ thống ) để tạo một database mới cho snorg, đồng thời tạo một tài khoản sử dụng và gán quyền để tài khoản này có thể thao tác trên database bạn vừa tạo.
-o	Ghi nhớ  tên database, tên tài khoản truy cập và mật khẩu của tài khoản đề điền vào trong quá trình cài đặt snorg.
+o	Sử dụng công cụ quản trị cơ sỡ dữ liệu hệ thống của bạn ( nếu bạn không chắc có thể hỏi người quản lý hệ thống ) để tạo một database mới cho snorg, đồng thời tạo một tài khoản sử dụng và gán quyền để tài khoản này có thể thao tác trên database bạn vừa tạo.<br>
+o	Ghi nhớ  tên database, tên tài khoản truy cập và mật khẩu của tài khoản đề điền vào trong quá trình cài đặt snorg.<br>
 ==4.	Tiến hành cài đặt trang:==
 o	Bạn chạy tên miền dẫn đến nơi cài đặt snorg ( vd http://snorg.com ).
-o	Giao diện cài đặt sẽ hiển thị , sau đó bạn điền các thông số ở bước bên trên vào giao diện cài đặt.
-o	Sauk hi hoàn thành quá trình điền các thông số bạn đã có thể chạy được hệ thống snorg của mình bằng cách truy cập vào địa chỉ đặt snorg ( VD http://snorg.com )
+o	Giao diện cài đặt sẽ hiển thị , sau đó bạn điền các thông số ở bước bên trên vào giao diện cài đặt.<br>
+o	Sau khi hoàn thành quá trình điền các thông số bạn đã có thể chạy được hệ thống snorg của mình bằng cách truy cập vào địa chỉ đặt snorg ( VD http://snorg.com )<br>
