@@ -12,6 +12,7 @@
 	
 	global $CONFIG;
 	$category = get_plugin_setting("blogcategory", "stick");
+	if (!$category) $category = "Technical, Tourist, Company birthday";
 	
 	$array = explode(",", $category);
 	$array = array_combine($array, $array);
