@@ -47,6 +47,7 @@
 		'sitenotification',
 		'socializeme',
 		'stick',
+		'testimony',
 		'thewire',
 		'tidypics',
 		'tinymce',
