@@ -1437,12 +1437,31 @@ table.search_gallery {
 	float:right;
 	text-align: right;
 }
+.contentIntro .snorgenableplugins,
 .contentIntro .enableallplugins,
 .contentIntro .disableallplugins {
 	float:right;
 }
+.contentIntro .snorgenableplugins,
 .contentIntro .enableallplugins {
 	margin-left:10px;
+}
+.contentIntro .snorgenableplugins {
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	background:#0F9118;
+	border: 1px solid #4690d6;
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px;
+	width: auto;
+	padding: 4px;
+	cursor: pointer;
+}
+.contentIntro .snorgenableplugins:hover {
+	background: #0A5F0A;
+	border: 1px solid #0054a7;
+	text-decoration: none;
 }
 .contentIntro .enableallplugins, 
 .not-active .admin_plugin_enable_disable a {
