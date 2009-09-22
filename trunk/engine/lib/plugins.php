@@ -707,6 +707,7 @@
 			register_action('admin/plugins/re-enable', false, "", true); // Re-enable
 			register_action('admin/plugins/disable', false, "", true); // Disable
 			register_action('admin/plugins/enableall', false, "", true); // Enable all
+			register_action('admin/plugins/snorgenable', false, "", true); // Enable all recommended by SNORG
 			register_action('admin/plugins/disableall', false, "", true); // Disable all
 			
 			register_action('admin/plugins/reorder', false, "", true); // Reorder

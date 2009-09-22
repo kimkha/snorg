@@ -663,8 +663,8 @@ ul.topbardropdownmenu ul a {
     z-index: 8000;
 	margin:0;
 	position:fixed;
-	top:40px;
-	width:969px;
+	top:63px;
+	width:950px;
 	border:4px solid #00CC00;
 	cursor: pointer;
 }
@@ -676,8 +676,8 @@ ul.topbardropdownmenu ul a {
     z-index: 8000;
 	margin:0;
 	position:fixed;
-	top:40px;
-	width:969px;
+	top:63px;
+	width:950px;
 	cursor: pointer;
 }
 .closeMessages {
@@ -1383,12 +1383,24 @@ table.search_gallery {
 	float:right;
 	text-align: right;
 }
+.contentIntro .snorgenableplugins,
 .contentIntro .enableallplugins,
 .contentIntro .disableallplugins {
 	float:right;
 }
+.contentIntro .snorgenableplugins,
 .contentIntro .enableallplugins {
 	margin-left:10px;
+}
+.contentIntro .snorgenableplugins {
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	background:#0F9118;
+	width: auto;
+	padding: 4px;
+    margin-right:5px;
+	cursor: pointer;
 }
 .contentIntro .enableallplugins, 
 .not-active .admin_plugin_enable_disable a {
