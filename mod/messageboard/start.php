@@ -24,6 +24,12 @@
 	 * @param unknown_type $object
 	 */
 	 
+	 
+	 function insert_testimony($hook, $type, $returnvalue, $params){
+		$returnvalue['TESTIMONY'] = 'readonly';
+		return $returnvalue;		
+	}
+	
     function messageboard_init() {
         
         // Load system configuration
@@ -69,5 +75,6 @@
 		register_action("messageboard/delete",false,$CONFIG->pluginspath . "messageboard/actions/delete.php");
 		
 		register_action("testimony/group",false,$CONFIG->pluginspath . "messageboard/actions/group.php");
+		register_plugin_hook('cv:fields','cv', insert_testimony);
 		
 ?>

@@ -71,7 +71,8 @@ function iagree_event_create_friendrequest($event, $object_type, $object) {
 		$view_friends_url = $CONFIG->url . "pg/friendrequests";
 		
 		// Notify target user
-		return notify_user($object->guid_two,$object->guid_one, elgg_echo('invite:system:notification') ,"here-{$CONFIG->url}pg/friendrequests");	
+		return notify_user($object->guid_two,$object->guid_one, elgg_echo('invite:system:notification') ,"here-{$CONFIG->url}pg/friendrequests");
+			
 	}
 }
 

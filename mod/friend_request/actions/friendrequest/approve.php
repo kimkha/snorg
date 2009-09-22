@@ -2,7 +2,6 @@
 
 global $CONFIG;
 gatekeeper();
-action_gatekeeper();
 
 $user = $_SESSION['user'];
 if(!$friend = get_entity(get_input("guid",0))) {
@@ -39,11 +38,9 @@ if(remove_entity_relationship($friend->guid, 'friendrequest', $user->guid)) {
 		wallpost($friend->getGUID(), sprintf(elgg_echo('friendrequest:wallpost:title'),$user->username,$user->name),null, $type="short", $access_id=ACCESS_PUBLIC);
 		
 	//snorg - bkit06
-	if (notify_user($friend->getGUID(),$user->getGUID(), elgg_echo('approve:system:notification') , NULL))
+	notify_user($friend->getGUID(),$user->getGUID(), elgg_echo('approve:system:notification') , NULL);
 		
 		system_message(sprintf(elgg_echo('approve:system:notify'),$friend->name));						
-	else
-		register_error("can not approve");
 
 	
 	system_message(sprintf(elgg_echo('friendrequest:successful'), $friend->name));
