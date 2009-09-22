@@ -26,6 +26,12 @@
 		if (is_plugin_enabled("tidypics")) 
 			extend_view("index/main", "stick/album", 451);
 		
+		if (isadminloggedin()) {
+			// Insert submenu into user profile
+			extend_view('profile/menu/actions','stick/menuadd');
+//			extend_view('profile/menu/linksownpage','stick/menuadd', 400);
+		}
+
 		// Page handler for blogspot
 		register_page_handler("stick", "stick_page");
 		
@@ -42,10 +48,8 @@
 			set_input("index_limit", 4);
 		}
 		
-		if (!isadminloggedin()) return false;
-		
 		// Insert menu to blogspot
-		if (get_context() == "blog") {
+		if (get_context() == "blog" && isadminloggedin()) {
 			$post = (int) get_input('blogpost');
 			if ($blogpost = get_entity($post)) {
 				
@@ -66,7 +70,7 @@
 		}
 		
 		// Insert submenu into photo view
-		if (get_context() == "photos" && is_included($CONFIG->path."mod/tidypics/viewimage.php")) {
+		if (get_context() == "photos" && is_included($CONFIG->path."mod/tidypics/viewimage.php") && isadminloggedin()) {
 			$photo = (int) get_input('guid');
 			$object = check_entity_relationship(1, _STICK_PHOTO_RELATIONSHIP_, $photo);
 			
@@ -78,9 +82,6 @@
 			}
 		}
 		
-		// Insert submenu into user profile
-		extend_view('profile/menu/links','stick/menuadd', 400);
-		extend_view('profile/menu/linksownpage','stick/menuadd', 400);
 	}
 	
 	function stick_page($page) {
@@ -125,6 +126,32 @@
 					'status'	=> $status,
 					'dellink'	=> $dellink
 		));
+	}
+	
+	function stick_cv_commend($commend) {
+		global $CONFIG;
+		
+		$user = $commend->getOwnerEntity();
+		
+		$post = "<a href='".$CONFIG->wwwroot."pg/stick/commend?id=".$commend->guid."'>" .$commend->title."</a>";
+		
+		$by = "<a href='".$user->getURL()."'>".$user->name."</a>";
+		
+		return sprintf(elgg_echo('stick:user:cv'), $by, $post);
+	}
+	
+	function stick_cv_commends($user_guid) {
+		$list = get_user_objects($user_guid, _STICK_COMMEND_SUBTYPE_, 0);
+		
+		$return = "<ul class='CV-list'>";
+		foreach ($list as $commend) {
+			$return .= "<li class='CV-list-item'>";
+			$return .= stick_cv_commend($commend);
+			$return .= "</li>";
+		}
+		
+		$return .= '</ul>';
+		return $return;
 	}
 	
 	function stick_commend_cv($hook, $type, $returnvalue, $params) {

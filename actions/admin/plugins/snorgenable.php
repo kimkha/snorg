@@ -24,6 +24,7 @@
 		'blograting',
 		'custom_index',
 		'CV',
+		'defaultwidgets',
 		'diagnostics',
 		'elggchat',
 		'event_calendar',

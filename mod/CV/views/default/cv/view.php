@@ -15,19 +15,17 @@
 		foreach($vars['config']->cv as $label => $valtype) {
 			
 			if ($metadata = get_metadata_byname(page_owner_entity()->guid, $label)) {
-				$value = '<ul class="CV-list">';
+				$value = '';
 				
 				if (is_array($metadata)) {
 					foreach($metadata as $md) {
-						$value .= "<li class='CV-list-item'>".$md->value."</li>";
+						$value .= $md->value;
 						$access_id = $md->access_id;
 					}
 				} else {
-					$value .= "<li class='CV-list-item'>".$metadata->value."</li>";
+					$value .= $metadata->value;
 					$access_id = $metadata->access_id;
 				}
-				
-				$value .= "</ul>";
 				
 			} else {
 				

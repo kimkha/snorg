@@ -10,18 +10,17 @@
 	 * @link http://elgg.com/
 	 */
 	
-	global $CONFIG;
-	$list = get_user_objects($vars['entity']->guid, _STICK_COMMEND_SUBTYPE_, 0);
+	$list = get_user_objects($vars['entity']->guid, _STICK_COMMEND_SUBTYPE_);
 	
-	if ($list && !empty($list)) {
+	if ($list) {
 		$last = $list[0];
 ?>
 	<p class="user_menu_stickuser1">
-		<a href="<?php echo $CONFIG->wwwroot; ?>pg/stick/commend?id=<?php echo $last->guid; ?>"><?php echo elgg_echo('stick:user:view'); ?></a>	
+		<a href="<?php echo $vars['url']; ?>pg/stick/commend?id=<?php echo $last->guid; ?>"><?php echo elgg_echo('stick:user:view'); ?></a>	
 	</p>
 <?
 	}
 ?>
 	<p class="user_menu_stickuser">
-		<a href="<?php echo $CONFIG->wwwroot; ?>action/stick/commend?userid=<?php echo $vars['entity']->guid; ?>"><?php echo elgg_echo('stick:upostit'); ?></a>	
+		<a href="<?php echo $vars['url']; ?>action/stick/commend?userid=<?php echo $vars['entity']->guid; ?>"><?php echo elgg_echo('stick:upostit'); ?></a>	
 	</p>
