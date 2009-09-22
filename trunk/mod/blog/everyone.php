@@ -40,11 +40,10 @@
 			'disable_security' => true,
 			'body' => $select,
 		)) . "</div>";
-		$order = "<div class='clearfloat'></div>";
 		
 		
-		$area2 = elgg_view_title(elgg_echo('blog:everyone'));
-		$area2 .= $order;
+		$area2 = $order;
+		$area2 .= elgg_view_title(elgg_echo('blog:everyone'));
 
 		if ((!$order_type) || ($order_type=="")){
 			$area2 .= list_entities('object','blog',0,10,false);
