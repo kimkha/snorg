@@ -63,11 +63,12 @@
     if ($vars['entity']->isBanned()) {
     	echo '<div id="profile_banned">'.elgg_echo('profile:banned').'<div>';
     }else{
-    	echo autop(filter_tags($vars['entity']->description));    	
+    	echo autop(filter_tags($vars['entity']->description)); 
     }
 /*
  * MOD END by Snow
  */        
+	echo "<div class='profile-leftbar'>".elgg_view("profile/leftbar", array("entity" => $vars['entity'])) ."</div>";
     // close profile_info_column_left
     echo "</div>";
 

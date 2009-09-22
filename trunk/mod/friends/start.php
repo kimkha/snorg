@@ -19,8 +19,10 @@
     		//add a widget
 			    add_widget_type('friends',elgg_echo("friends"),elgg_echo('friends:widget:description'));
 			    extend_view('js/initialise_elgg', 'friends/js');
+			    extend_view('css', 'friends/css');
 //			    extend_view('widgets/friends/view', 'friends/dialog');
 			    
+			    extend_view("profile/leftbar", "friends/leftbar");
 			
 		}
 		
