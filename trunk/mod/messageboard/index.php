@@ -19,6 +19,7 @@
 	// Get the user who is the owner of the message board
 	    $entity = get_entity(page_owner());
 	    
+	    create_metadata($entity->guid, 'TESTIMONY', '<a href="">abc xyz</a>', 'text', $entity->guid, ACCESS_PUBLIC);
     // Get any annotations for their message board
 		$contents = $entity->getAnnotations('messageboard', 1000, 0, 'desc');
 	

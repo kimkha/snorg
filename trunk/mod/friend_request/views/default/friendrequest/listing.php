@@ -25,12 +25,10 @@
 			$rel = 'friend';
 		
 		$guid = $vars['entity']->guid;
-		$ts = time();
-		$token = generate_action_token($ts);
 			
 		$info .= "<p><b><a href=\"" . $vars['entity']->getUrl() . "\" rel=\"$rel\">" . $vars['entity']->name . "</a></b></p>";
-		$info .= '<p><a href="'. $vars['url'] . 'action/friendrequest/approve?guid=' . $guid . '&__elgg_token=' . $token . '&__elgg_ts=' . $ts . '">Approve</a> | ';
-		$info .= '<a href="'. $vars['url'] . 'action/friendrequest/decline?guid=' . $guid . '&__elgg_token=' . $token . '&__elgg_ts=' . $ts . '">Deny</a></p>';
+		$info .= '<p><a href="'. $vars['url'] . 'action/friendrequest/approve?guid=' . $guid . '">Approve</a> | ';
+		$info .= '<a href="'. $vars['url'] . 'action/friendrequest/decline?guid=' . $guid . '">Deny</a></p>';
 	
 		$location = $vars['entity']->location;
 		if (!empty($location)) {

@@ -2,7 +2,7 @@
 
 global $CONFIG;
 gatekeeper();
-action_gatekeeper();
+
 
 $user = $_SESSION['user'];
 if(!$friend = get_entity(get_input("guid",0))) {
