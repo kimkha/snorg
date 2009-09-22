@@ -2688,6 +2688,7 @@ border-top:none;
 
 #leftside_taskbar {
 	float: left;
+	height: 25px;
 }
 
 #leftside_taskbar .wrapperWindow {

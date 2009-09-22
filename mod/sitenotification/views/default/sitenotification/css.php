@@ -7,6 +7,8 @@
 	float: left;
 	border-right: 1px solid #000000;
 	padding: 0px 5px;
+	margin: 0;
+	height: 25px;
 }
 
 #notification_wrapper {
@@ -29,8 +31,15 @@
 	overflow:hidden;
 }
 
+#notification_data .showall {
+	float: right;
+	margin: 0px 5px;
+}
+
 #notification_content {
 	max-height: 350px !important;
+	overflow: auto;
+	border-top: 1px dashed #2779E7;
 }
 
 #notification_content .loading {
