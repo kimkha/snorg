@@ -46,13 +46,8 @@
 	}
 	
 	if ($id == 0) {
-		$post = "<a href='".$CONFIG->wwwroot."pg/stick/commend?id=".$object->guid."'>" .$object->title."</a>";
-		
-		$by = "<a href='".$user->getURL()."'>".$user->name."</a>";
-		
-		$message = sprintf(elgg_echo('stick:user:cv'), $by, $post);
-		
-		create_metadata($userId, 'stick:user:all', $message, 'text', $object->guid, ACCESS_PUBLIC);
+		remove_metadata($userId, 'stick:user:all');
+		create_metadata($userId, 'stick:user:all', stick_cv_commends($userId), 'text', $object->guid, ACCESS_PUBLIC);
 	}
 	
 	system_message(elgg_echo("stick:user:successful"));
