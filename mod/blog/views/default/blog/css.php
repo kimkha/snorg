@@ -199,7 +199,7 @@
 #order-blog {
 	float: right;
 	padding: 0 10px;
-	margin: 10px 0 0;
+	margin: 8px 0 0;
 }
 
 

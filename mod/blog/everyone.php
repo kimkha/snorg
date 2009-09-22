@@ -17,6 +17,7 @@
 // Get the current page's owner
 		$page_owner = $_SESSION['user'];
 		set_page_owner($_SESSION['guid']);
+		set_context('blog');
 		
 		$order_type = get_input("orderby","time");
 		
