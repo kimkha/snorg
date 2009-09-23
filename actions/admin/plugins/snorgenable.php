@@ -20,25 +20,24 @@
 	
 	$recommend = array(
 		
+		// Level 0
+		'CV', // Must before blograting, stick, testimony
+		'groups', // Must before notifications
+		
 		// Level 1
 		'advancesearch',
 		'blog',
 		'blograting',
-		'custom_index',
-		'CV',
 		'defaultwidgets',
 		'diagnostics',
 		'elggchat',
 		'event_calendar',
 		'externalpages',
 		'fbconnect',
-		'friends',
-		'friends_of_friends', 
-		'friend_request', 
-		'groups', 
+		'files',
+		'friends', 
 		'invitefriends',
 		'logbrowser',
-		'logo',
 		'messageboard',
 		'muturalfriends',
 		'notebook',
@@ -47,7 +46,6 @@
 		'poll',
 		'profile',
 		'riverdashboard',
-		'sitenotification',
 		'socializeme',
 		'testimony',
 		'thewire',
@@ -57,6 +55,11 @@
 		
 		// Level 2
 		'stick', // Must after blog, tydypics
+		'custom_index', // Must after blog, bookmark, groups, files
+		'logo', // Must after files
+		'friends_of_friends', // Must after friends
+		'friend_request', // Must after friends
+		'sitenotification', // Must after notifications
 	);
 	
 	$disable_plugins = get_installed_plugins();

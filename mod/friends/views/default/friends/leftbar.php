@@ -19,7 +19,7 @@
 		$num = 20;
 		
 	//get the correct size
-    	$size_value = "tiny";
+    	$size_value = "small";
 		
     // Get the users friends
 	$friends = $owner->getFriends("", $num, $offset = 0);
