@@ -16,7 +16,7 @@
 	$entity = get_entity($id);
 	
 	if ($entity && $entity->getType() == "object" && $entity->getSubtype() == "image") {
-		if ($entity->getAccessID() == ACCESS_PUBLIC) {
+		if ($entity->access_id == ACCESS_PUBLIC) {
 			if (add_entity_relationship(1, _STICK_PHOTO_RELATIONSHIP_, $id)) {
 				system_message(elgg_echo("stick:isuccessful"));
 				forward("pg/stick/album");
