@@ -20,7 +20,7 @@
 		$num = 8;
 		
 	//get the correct size
-    	$size_value = "tiny";
+    	$size_value = "small";
 		
 	$list = $owner->getFriends();
 	shuffle($list);
