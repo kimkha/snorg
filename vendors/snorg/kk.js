@@ -119,21 +119,17 @@
 function $kdialog() {
 	
 	/* Attributes */
-	title = '';
-	content = '';
-	isKbox = false;
+	this.title = '';
+	this.content = '';
+	this.isKbox = false;
 	
-	// attributes for window
-	maxId = 0;
-	maxIndex = 1;
-	
-	ref = this;
+	this.ref = this;
 	var kdialog = $("#kdialog");
 	var koverlay;
-	kboxContent = '';
+	this.kboxContent = '';
 	
 	/* Functions */
-	show = function () {
+	this.show = function () {
 		if(this.isKbox) {
 			this.backupKbox();
 		}
@@ -150,7 +146,7 @@ function $kdialog() {
 		this.clickOverlay();
 	}
 	
-	hide = function () {
+	this.hide = function () {
 		if (this.kboxContent == '') this.isKbox = false;
 		else {
 			this.resetKbox();
@@ -163,11 +159,11 @@ function $kdialog() {
 		title = '';content = '';
 	}
 	
-	jQuery = function() {
+	this.jQuery = function() {
 		return kdialog.find("#kdialogContent");
 	}
 	
-	clickOverlay = function () {
+	this.clickOverlay = function () {
 		// shake dialog
 		koverlay.unbind('click');
 		koverlay.click(function(){
@@ -186,7 +182,7 @@ function $kdialog() {
 		});
 	};
 	
-	createWindow = function(){
+	this.createWindow = function(){
 		maxId = maxId+1;
 		kdialog.after("<div id='kwindow-"+maxId+"' class='kDlg'></div>");
 		var kwindow = $("#kwindow-"+maxId);
@@ -195,11 +191,11 @@ function $kdialog() {
 		return $kwindow(maxId);
 	};
 	
-	backupKbox = function () {
+	this.backupKbox = function () {
 		kboxContent = kdialog.html();
 		kdialog.html("");
 	};
-	resetKbox = function () {
+	this.resetKbox = function () {
 		kdialog.html(kboxContent);
 		kboxContent = '';
 		$("#kdialogClose").click(function(){
@@ -208,32 +204,30 @@ function $kdialog() {
 	};
 	
 	/* Constructor */
-	constructor = function () {
+	this.constructor = function () {
 		/* construct overlay */
 		kdialog.before("<div id='koverlay'></div>");
 		koverlay = $("#koverlay");
 		koverlay.height(window.outerHeight);
 		
 		this.clickOverlay();
-	}
-	this.constructor();
-	return this;
+	};
 }
 
 function $ktabs() {
 	
 	/* Attributes */
-	tabList = new Array();
-	curr = -1;
-	isLoad = false;
+	this.tabList = new Array();
+	this.curr = -1;
+	this.isLoad = false;
 	
 	var kpanel = null;
 	var ktab = null;
 	var maxId = 0;
 	
 	/* Functions */
-	open = function(tabpanel){
-		tab = findTab(tabpanel.attr('href'));
+	this.open = function(tabpanel){
+		tab = $k.tabs.findTab(tabpanel.attr('href'));
 		if (tab == null) return;
 		
 		ktab.find("div.contentOfTabs").css("display", "none");
@@ -242,7 +236,7 @@ function $ktabs() {
 		tabpanel.addClass("tabPanel_active");
 		
 		if (!tab.exist) {
-			isLoad = true;
+			$k.tabs.isLoad = true;
 			$.get(tab.url, function(data){
 				if (typeof(data) != "undefined") {
 					tab.content.html(data);
@@ -253,21 +247,22 @@ function $ktabs() {
 		}
 	};
 	
-	findTab = function(h){
-		for (index in tabList) {
-			if (tabList[index].url == h) {
-				return tabList[index];
+	this.findTab = function(h){
+		tl = $k.tabs.tabList
+		for (index in tl) {
+			if (tl[index].url == h) {
+				return tl[index];
 			}
 		}
 		return null;
 	}
 	
-	buildTabs = function(tab){
+	this.buildTabs = function(tab){
 		ktab.append("<div class='contentOfTabs' id='tab-content-"+maxId+"'>"+$kloading()+"</div>");
 		t = ktab.find("#tab-content-"+maxId);
 		t.css("display", "none");
 		
-		tabList[maxId++] = {
+		$k.tabs.tabList[maxId++] = {
 			name : tab.html(),
 			url : tab.attr('href'),
 			content : t,
@@ -283,22 +278,23 @@ function $ktabs() {
 	};
 	
 	/* Constructor */
-	constructor = function(){
+	this.constructor = function(){
 		kpanel = $("#ktabs_panel");
 		ktab = $("#ktabs_content");
 		kpanel.find("a").each(function(){
-			buildTabs($(this));
+			$k.tabs.buildTabs($(this));
 		});
-		open($("#ktabs_panel a:first"));
+		$k.tabs.open($("#ktabs_panel a:first"));
 	};
-	this.constructor();
-	return this;
 }
 
 function $kk() {
-	dialog = $kdialog();
-	tabs = $ktabs();
-	return this;
+	this.dialog = new $kdialog();
+	this.tabs = new $ktabs();
+	this.constructor = function(){
+		this.dialog.constructor();
+		this.tabs.constructor();
+	};
 }
 
 function $kloading() {
@@ -306,5 +302,6 @@ function $kloading() {
 }
 
 $(document).ready(function(){
-	$k = $kk();
+	$k = new $kk();
+	$k.constructor();
 });
