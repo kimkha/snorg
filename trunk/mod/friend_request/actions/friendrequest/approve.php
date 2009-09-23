@@ -37,10 +37,11 @@ if(remove_entity_relationship($friend->guid, 'friendrequest', $user->guid)) {
 		wallpost($user->getGUID(), sprintf(elgg_echo('friendrequest:wallpost:title'),$friend->username,$friend->name),null, $type="short", $access_id=ACCESS_PUBLIC);
 		wallpost($friend->getGUID(), sprintf(elgg_echo('friendrequest:wallpost:title'),$user->username,$user->name),null, $type="short", $access_id=ACCESS_PUBLIC);
 		
-	//snorg - bkit06
+	//snorg - bkit06 - eng
 	notify_user($friend->getGUID(),$user->getGUID(), elgg_echo('approve:system:notification') , NULL);
-		
-		system_message(sprintf(elgg_echo('approve:system:notify'),$friend->name));						
+	
+	//snorg - bkit06 - viet
+//	notify_user($friend->getGUID(),$user->getGUID(), "ау ch?p nh?n l?i m?i k?t b?n c?a b?n." , NULL);						
 
 	
 	system_message(sprintf(elgg_echo('friendrequest:successful'), $friend->name));

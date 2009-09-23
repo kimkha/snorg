@@ -38,7 +38,7 @@
 				// Group joined
 				// Snorg - Bkit06
 				system_message(elgg_echo('groups:joined'));
-				notify_user($group->owner_guid,$user_guid," Has joined into your group ",$group->name."-".$group->getURL());
+				notify_user($group->owner_guid,$user_guid," has joined into your group ",$group->name."-".$group->getURL());
 				
 				forward($group->getURL());
 				exit;
@@ -57,7 +57,7 @@
 				// Send email
 				// Snorg - Bkit06
 				if (notify_user($group->owner_guid, $user->getGUID(), 
-						" has requested to join your group ".$group->name." , to accept click", "here-{$CONFIG->url}action/groups/addtogroup?user_guid={$user->guid}&group_guid={$group->guid}",
+						' has requested to join your group <a href="'.$group->getURL().'">'.$group->name.'</a> ,to accept click', "here-{$CONFIG->url}action/groups/addtogroup?user_guid={$user->guid}&group_guid={$group->guid}",
 						NULL))
 					system_message(elgg_echo("groups:joinrequestmade"));
 				else

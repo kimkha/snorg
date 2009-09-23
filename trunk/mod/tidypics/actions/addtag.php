@@ -96,10 +96,10 @@
 
    	wallpost($friend->getGUID(), sprintf(elgg_echo('tagpicture:wall:title'),$image->getURL(),$image->title),null, $type="short", $access_id=ACCESS_PUBLIC);
     
-    // Snorg - Bkit06
-	//if (notify_user($friend->getGUID(),$user->getGUID(), "tagged you at" , "photo -".$image->getURL()))				
+    // Snorg - Bkit06 - eng
+	if (notify_user($friend->getGUID(),$user->getGUID(), "tagged you at photo" ,$image->title."-".$image->getURL()))				
 	//else
-	//	register_error("can not send a Notify");
+		register_error(elgg_echo("notify:error"));
 		
 		system_message(elgg_echo("tidypics:phototagging:success"));
 	}

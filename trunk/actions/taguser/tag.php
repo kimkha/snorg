@@ -58,13 +58,16 @@
 	   if ( $image->description != null)
 	   {
 	   	
-	    wallpost($user_id, sprintf(elgg_echo('taguser:wallpost:title'),$image->getURL()),$image->description, $type="full", $access_id=ACCESS_PUBLIC);
+	    wallpost($user_id, sprintf(elgg_echo('taguser:wallpost:title'),$image->getURL(),$image->title),$image->description, $type="full", $access_id=ACCESS_PUBLIC);
 	    
 	    }
 	    else if ( $image->title!= null )
 	    {
-	    	wallpost($user_id, sprintf(elgg_echo('taguser:wallpost:title'),$image->getURL()),$image->title, $type="full", $access_id=ACCESS_PUBLIC);
+	    	wallpost($user_id, sprintf(elgg_echo('taguser:wallpost:title'),$image->getURL(),$image->title),$image->title, $type="full", $access_id=ACCESS_PUBLIC);
 	    }
+	    
+	    notify_user($user_id, $_SESSION['user']->getGUID(),' has tagged you at ',$image->title."-". $image->getURL()); 
+	    
 	}
 	else 
 	{

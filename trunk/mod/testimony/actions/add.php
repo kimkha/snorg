@@ -33,17 +33,9 @@
 					
 					global $CONFIG;
 					
-					if ($user->getGUID() != $_SESSION['user']->getGUID())
-					notify_user($user->getGUID(), $_SESSION['user']->getGUID(), elgg_echo('messageboard:email:subject'), 
-						sprintf(
-									elgg_echo('messageboard:email:body'),
-									$_SESSION['user']->name,
-									$message_content,
-									$CONFIG->wwwroot . "pg/testimony/" . $user->username,
-									$_SESSION['user']->name,
-									$_SESSION['user']->getURL()
-								)
-					); 
+					
+					if ($user->getGUID() != $_SESSION['user']->getGUID());
+					notify_user($user->getGUID(), $_SESSION['user']->getGUID(),' has give you a testimony, to read it click','here-'. $CONFIG->wwwroot."pg/testimony/" . $user->username); 
 				
 				
             	
