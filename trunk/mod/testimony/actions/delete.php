@@ -12,7 +12,7 @@
 
 	// Ensure we're logged in
 		if (!isloggedin()) forward();
-		$user = get_entity(get_input('page_owner'));
+	 	$user = get_entity(get_input('page_owner'));
 	// Make sure we can get the comment in question
 		$annotation_id = (int) get_input('annotation_id');
 		
@@ -29,6 +29,8 @@
 				$message->delete();
 				//display message
 				system_message(elgg_echo("messageboard:deleted"));
+				
+				
 				//generate the url to forward to 
 				$url = $_SERVER['HTTP_REFERER'];
 				//forward the user back to their message board
@@ -36,6 +38,8 @@
 	    		$entity = get_entity($message->entity_guid);
 	    		 	
 	    		cv($user);
+	    		
+	    	//	echo "<pre>"; print_r("hoai"); die;
 				forward($url);
 			}
 			

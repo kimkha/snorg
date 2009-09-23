@@ -10,6 +10,8 @@
 	 * @link http://elgg.com/
 	 */
 	 
+	 
+	 
 ?>
 
 <div class="messageboard"><!-- start of messageboard div -->
@@ -30,20 +32,6 @@
 	<div class="message"><?php echo elgg_view("output/longtext",array("value" => parse_urls($vars['annotation']->value))); ?></div>
 	<div class="message_buttons">
 		    
-	<?php
-               
-        // if the user looking at the comment can edit, show the delete link
-	    if ($vars['annotation']->canEdit()) {
-    			    
-  
-			       echo "<div class='delete_message'>" . elgg_view("output/confirmlink",array(
-														'href' => $vars['url'] . "action/messageboard/delete?annotation_id=" . $vars['annotation']->id,
-														'text' => elgg_echo('delete'),
-														'confirm' => elgg_echo('deleteconfirm'),
-													)) . "</div>";
-		
-	    } //end of can edit if statement
-	?>
 		        <?php
 		            //if the message being looked at is owned by the current user, don't show the reply
 		            if($vars['annotation']->owner_guid != $_SESSION['guid']){
@@ -55,7 +43,7 @@
     		            
     		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_entity->name . "'s " . elgg_echo('messageboard:messageboard') . "</a> | ";
     		            
-    		            echo "<a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_entity->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
+    		            echo "<a href=\"" . $vars['url'] . "mod/testimony/history.php?user=" . $get_entity->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
     		            
     		                		            
 		            }
@@ -63,4 +51,4 @@
 		        
 		  </div>
 	<div class="clearfloat"></div>
-</div><!-- end of messageboard div -->
+</div>

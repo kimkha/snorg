@@ -11,15 +11,13 @@
 	 */
 	// set_context("showall");
 	
-	set_context("");
-	 
+	
 	 // Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
 	// Get the user who is the owner of the message board
 	    $entity = get_entity(page_owner());
 	    
-	    //create_metadata($entity->guid, 'TESTIMONY', '<a href="">abc xyz</a>', 'text', $entity->guid, ACCESS_PUBLIC);
     // Get any annotations for their message board
 		$contents = $entity->getAnnotations('messageboard', 1000, 0, 'desc');
 	
@@ -29,29 +27,13 @@
     // only display the add form and board to logged in users
     	if(isloggedin()){
     		
-   			$area2 .= elgg_view("messageboard/forms/add");
+   			$area2 .= elgg_view("testimony/forms/add");
 			$area2 .= elgg_view("testimony/showall", array('annotation' => $contents));
     		
     	
-    		
-    		//	add_submenu_item(elgg_echo('event_calendar:remove_from_my_calendar'), $CONFIG->url . "action/event_calendar/manage?event_action=remove_personal&event_id=".$event_id);
-    		
-    	/*	if (get_context() == "testimony")
-    		{
-    			//empty($area2);
-				$area2 .= elgg_view("messageboard/forms/add");
-				$area2 .= elgg_view("testimony/showall", array('annotation' => $contents));
-			//	$area2 .= elgg_view("testimony/showgroup", array('annotation' => $contents));
-			}
-			else 
-			{
-			//	echo "<pre>"; print_r(get_context()); die;
-			}
-			*/
 		}
-	    
 		
-    //select the correct canvas area
+     //select the correct canvas area
 	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);
 		
 	// Display page
