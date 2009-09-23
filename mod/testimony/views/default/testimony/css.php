@@ -22,14 +22,31 @@
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 }
+
+#mb_input_wrapper .input_textarea {
+	with 100%;
+}
  
+#cv-tab .short-wall-post{
+	border-bottom: 1px dashed #2779E7;
+	padding: 1px 10px;
+	
+}
+ 
+#cv-tab .short-wall-post .usericon .icon{
+	float: left;
+}
+
+#cv-tab .short-wall-post p{
+	margin: 0 !important;
+}
 
 
 #mb_input_wrapper .input_textarea {
 	width:675px;
 }
 .collapsable_box_content #mb_input_wrapper .input_textarea {
-	width:259px;
+	width:100%;
 }
 .message_item_timestamp {
 	font-size:90%;

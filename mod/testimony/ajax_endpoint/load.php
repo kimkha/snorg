@@ -36,7 +36,7 @@
 					elgg_echo('messageboard:email:body'),
 					$_SESSION['user']->name,
 					$message,
-					$CONFIG->wwwroot . "pg/messageboard/" . $user->username,
+					$CONFIG->wwwroot . "pg/testimony/" . $user->username,
 					$_SESSION['user']->name,
 					$_SESSION['user']->getURL()
 					)

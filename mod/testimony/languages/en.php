@@ -70,6 +70,7 @@ You cannot reply to this email.",
 			'messageboard:failure' => "An unexpected error occurred when adding your message. Please try again.",
 			
 			'messageboard:widget:title' => '<h4>What do you think about %s ?</h4>',
+			"testimony:cv:latest" => "5 latest testimony about ",
 	
 	);
 					

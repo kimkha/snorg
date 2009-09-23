@@ -28,7 +28,7 @@
 	
     // Get the content to display	
 		$area2 = elgg_view_title(elgg_echo('messageboard:history'));
-		$area2 .= elgg_view("messageboard/messageboard", array('annotation' => $contents));
+		$area2 .= elgg_view("testimony/showall", array('annotation' => $contents));
 	
 	//$area1 = "<h2>Profile owner: " . $current_user . "</h2>";
 	//$area1 .= "<h2>User guid: " . $history_user . "</h2>";

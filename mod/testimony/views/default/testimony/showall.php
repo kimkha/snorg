@@ -10,8 +10,6 @@
 	 * @link http://elgg.com/
 	 */
 	 
-	 
-	 //set_context($view_testimony);
 	 	$owner = get_entity(page_owner());
   	
 	  	if (is_array($vars['annotation']) && sizeof($vars['annotation']) > 0) {
@@ -20,7 +18,7 @@
 			
 		   $group_array =  SelectTestimony($annotations,$owner);
     		 		
-	  //	echo "<pre>"; print_r($group_array); die;
+
 	  
 	  
 		  	$pos = -1;
@@ -37,7 +35,7 @@
 	  			
 	  			foreach($contents as $content)
 					{
-					echo elgg_view("testimony/group", array('annotation' => $content));
+					echo elgg_view("testimony/showtestimony", array('annotation' => $content));
 					}
 					
 				echo "</div></div>";		
@@ -48,13 +46,14 @@
 					
 				echo "<div class=\"contentWrapper\">";
 				echo "<h2>Friends: </h2>";
+				echo "<div class='group-wrapper'>";
 			
 			//	echo "Friend";
 				foreach ($annotations as $annotation )
 				
-				echo elgg_view("testimoy/friend", array('annotation' =>$annotation));
+				echo elgg_view("testimony/showtestimony", array('annotation' =>$annotation));
 	  
-				
+				echo "</div></div>";
 			}
     
     		

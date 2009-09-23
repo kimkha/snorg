@@ -20,7 +20,7 @@
     		//loop through all annotations and display
 			foreach($vars['annotation'] as $content) {
 				
-				echo elgg_view("messageboard/messageboard_content", array('annotation' => $content));
+				echo elgg_view("testimony/showtestimony", array('annotation' => $content));
 				
 			}
 			

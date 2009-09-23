@@ -10,6 +10,8 @@
 	 * @link http://elgg.com/
 	 */
 	 
+	 
+	 
 ?>
 
 <div class="messageboard"><!-- start of messageboard div -->
@@ -37,7 +39,7 @@
     			    
   
 			       echo "<div class='delete_message'>" . elgg_view("output/confirmlink",array(
-														'href' => $vars['url'] . "action/messageboard/delete?annotation_id=" . $vars['annotation']->id . "&page_owner=".page_owner(),
+														'href' => $vars['url'] . "action/testimony/delete?annotation_id=" . $vars['annotation']->id. "&page_owner=".page_owner(),
 														'text' => elgg_echo('delete'),
 														'confirm' => elgg_echo('deleteconfirm'),
 													)) . "</div>";
@@ -51,11 +53,11 @@
     		            //get the message owner
     		            $get_entity = get_entity($vars['annotation']->owner_guid);
     		            //create the url to their messageboard
-    		            $user_mb = "pg/messageboard/" . $get_entity->username;
+    		            $user_mb = "pg/testimony/" . $get_entity->username;
     		            
     		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_entity->name . "'s " . elgg_echo('messageboard:messageboard') . "</a> | ";
     		            
-    		            echo "<a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_entity->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
+    		            echo "<a href=\"" . $vars['url'] . "mod/testimony/history.php?user=" . $get_entity->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
     		            
     		                		            
 		            }
