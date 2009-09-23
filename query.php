@@ -64,7 +64,7 @@
 	   		$user_guid =  get_input('user_guid');
 	   		
 	   		
-	   		$user_notifications = get_entities_from_metadata_multi( array('to' => $user_guid, 'read_yet' => 0), 'object', 'notification',0, 9999, 0,"",0,false);
+	   		$user_notifications = get_entities_from_metadata( 'to' , $user_guid, 'object', 'notification',0, 9999);
 	   		$user_notifications_json = array();
 			
 			$count = 0;

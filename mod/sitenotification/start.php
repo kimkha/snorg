@@ -94,6 +94,7 @@
 					$notification_message->title = $action;
 					$notification_message->description = $message;
 					$notification_message->read_yet = 0;
+					$notification_message->access_id = 2;
 					
 					
 			
