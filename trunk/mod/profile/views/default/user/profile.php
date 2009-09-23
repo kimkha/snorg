@@ -99,7 +99,8 @@
 	//insert a view that can be extended
 	echo elgg_view("profile/status", array("entity" => $vars['entity']));
 	
-	echo elgg_view("thewire/forms/add_tiny", $vars);
+	if (isloggedin())
+		echo elgg_view("thewire/forms/add_tiny", $vars);
 	
 /*	if ($vars['full'] == true) {
 		echo elgg_view('profile/details',$vars);

@@ -12,6 +12,7 @@
 	 */
 
 	global $CONFIG;
+	
 		$owner = page_owner_entity();
 		$user = get_loggedin_userid();
 		if ($user != $owner->guid) {
@@ -66,9 +67,11 @@ function thewire_tiny_toggle() {
 	
 	textarea_thewire.width(thewire_tiny.width()-12);
 	textarea_thewire.height(17);
+	textarea_thewire.css("overflow-y", 'hidden');
 	
 	textarea_thewire.focus(function(){
 		textarea_thewire.css("height", "auto");
+		textarea_thewire.css("overflow-y", 'auto');
 		thewire_tiny.find(".thewire_characters_remaining").css("display", "block");
 		thewire_tiny.find("input[type='submit']").css("display", "inline");
 		if ($(this).val() == def) {
@@ -79,6 +82,7 @@ function thewire_tiny_toggle() {
 	textarea_thewire.blur(function(){
 		if ($(this).val() == '') {
 			textarea_thewire.css("height", "17px");
+			textarea_thewire.css("overflow-y", 'hidden');
 			thewire_tiny.find(".thewire_characters_remaining").css("display", "none");
 			thewire_tiny.find("input[type='submit']").css("display", "none");
 			$(this).val(def);
