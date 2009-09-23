@@ -34,7 +34,7 @@
 		
 		echo '<div class="collapsable_box_content">';
 		
-		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$vars['entity']->owner_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
+		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$owner->guid});' >" . elgg_echo('friends:widget:showall')."</a>";
 		echo "<div id=\"list\">";
 		
 		foreach($friends as $friend) {
