@@ -29,6 +29,6 @@
 		system_message(sprintf(elgg_echo("friends:remove:successful"),$friend->name));			
 		
 	// Forward to the user friends page
-	forward("pg/friends/" . $_SESSION['user']->username . "/");
+	forward($_SERVER['HTTP_REFERER']);
 		
 ?>

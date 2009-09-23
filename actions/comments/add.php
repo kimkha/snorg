@@ -25,9 +25,9 @@
 				if ($entity->annotate('generic_comment',$comment_text,$entity->access_id, $_SESSION['guid'])) {
 					
 					if ($entity->owner_guid != $_SESSION['user']->getGUID())
-					notify_user($entity->owner_guid, $_SESSION['user']->getGUID(),"comment on"," topic"."-".$entity->getURL());
+					notify_user($entity->owner_guid, $_SESSION['user']->getGUID(),"comment on topic",$entity->title."-".$entity->getURL());
 					
-					
+				// snorg - bkit06 - get user who is commented in this topic	
 					$comments = $entity->getAnnotations('generic_comment');
 					$otherUser = array();
 					foreach ($comments as $comment) {
@@ -44,12 +44,7 @@
 					unset($otherUser[array_search($_SESSION['user']->getGUID(),$otherUser)]);
 					unset($otherUser[array_search($entity->owner_guid,$otherUser)]);
 					
-					foreach ($otherUser as $uid) {
-											
-						notify_user($uid, $lastUser->getGUID(), "also comment on","  topic"."-".$entity->getURL());
 						
-					}
-					
 					
 						// snorg - bkit06 - send notify to person who is tagged in photo
 					$friends = get_entities_from_relationship('phototag', $entity->getGUID(), true , user , '', 0, 'time_created desc', 1000);
@@ -57,15 +52,23 @@
 							foreach($friends as $friend) {
 								$friend_array[] = $friend->getGUID();
 							}
+							
+							unset($friend_array[array_search($_SESSION['user']->getGUID(),$friend_array)]);
 						
 							foreach($friend_array as $uid)
 							{
 								unset($otherUser[array_search($uid,$otherUser)]);
-								notify_user($uid, $lastUser->getGUID(), " Commented on a Photo has you at","  here -".$entity->getURL());
+								notify_user($uid, $lastUser->getGUID(), " Commented on photo ",$entity->title."-".$entity->getURL());
 							}
 							
 							
 					}
+						// snorg - bkit06 - send notify to person who is comment on this topic
+					foreach ($otherUser as $uid) {
+											
+						notify_user($uid, $lastUser->getGUID(), "also comment on topic",$entity->title."-".$entity->getURL());
+						
+					}	
 	
 
 

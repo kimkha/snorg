@@ -31,17 +31,7 @@
 			global $CONFIG;
 					
 			if ($user->getGUID() != $_SESSION['user']->getGUID())
-				notify_user($user->getGUID(), $_SESSION['user']->getGUID(), elgg_echo('messageboard:email:subject'), 
-				sprintf(
-					elgg_echo('messageboard:email:body'),
-					$_SESSION['user']->name,
-					$message,
-					$CONFIG->wwwroot . "pg/testimony/" . $user->username,
-					$_SESSION['user']->name,
-					$_SESSION['user']->getURL()
-					)
-				); 
-       		
+				notify_user($user->getGUID(), $_SESSION['user']->getGUID(),' has give you a testimony, to read it click','here-'.$CONFIG->wwwroot."pg/testimony/" . $user->username);    		
        		
        		
        		cv($user);
@@ -80,7 +70,7 @@
         
         foreach($contents as $content) {
 				
-			echo elgg_view("messageboard/messageboard_content", array('annotation' => $content));
+			echo elgg_view("testimony/showtestimony", array('annotation' => $content));
 				
 		}
         

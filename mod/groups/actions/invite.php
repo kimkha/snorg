@@ -43,9 +43,9 @@
 							// Send email
 							// Snorg - Bkit06
 						
-							if (notify_user($user->guid, $group->owner_guid, " invite you to Gourp ".$group->name." ,to accept click"	, "here-{$CONFIG->url}action/groups/join?user_guid={$user->guid}&group_guid={$group->guid}",NULL))	
+							if (notify_user($user->guid, $group->owner_guid, ' invite you to Gourp <a href="'.$group->getURL().'">'.$group->name.'</a> ,to accept click'	, "here-{$CONFIG->url}action/groups/join?user_guid={$user->guid}&group_guid={$group->guid}",NULL))	
 						//	notify_user($group->owner_guid,$user_guid," Has joined into your group ",$group->name."-".$group->getURL());
-								echo "<pre>"; print_r("hoai"); die;										
+																	
 								system_message(elgg_echo("groups:userinvited"));
 							else
 								register_error(elgg_echo("groups:usernotinvited"));

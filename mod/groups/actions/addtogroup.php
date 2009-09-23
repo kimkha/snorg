@@ -70,8 +70,7 @@
 							
 							// Send email
 							// Snorg - Bkit06
-							if (notify_user($user->getGUID(), $group->owner_guid, " invite you to Gourp ".$group->name." ,to accept click"	, 
-									"here-{$CONFIG->url}action/groups/join?user_guid={$user->guid}&group_guid={$group->guid}"))
+							if (notify_user($user->getGUID(), $group->owner_guid, ' invite you to gourp <a href="'.$group->getURL().'">'.$group->name.'</a> ,to accept click', "here-{$CONFIG->url}action/groups/join?user_guid={$user->guid}&group_guid={$group->guid}"))
 								system_message(elgg_echo("groups:userinvited"));
 							else
 								register_error(elgg_echo("groups:usernotinvited"));

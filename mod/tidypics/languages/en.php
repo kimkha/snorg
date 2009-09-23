@@ -192,6 +192,8 @@
 			'tag:system:notify' => "Tag notify has sended to %s",
 			
 			'tagpicture:wall:title' => 'you has been tagged in Photo <a href="%s">%s</a>',
+			
+			"notify:error" => " Can not sent notification",
 	);
 
 	add_translation("en",$english);

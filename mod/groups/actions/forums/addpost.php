@@ -54,12 +54,12 @@
 					unset($otherUser[array_search($topic->owner_guid,$otherUser)]);
 					
 				// notify to this post owner
-					notify_user($topic->owner_guid, $lastUser->getGUID(), "commented on your","  topic -".$topic->getURL());
+					notify_user($topic->owner_guid, $lastUser->getGUID(), "commented on your topic",$topic->title."-".$topic->getURL());
 					
 				//notify to invidial who has been post in this topic
 					foreach ($otherUser as $uid) {			
 						
-					notify_user($uid, $lastUser->getGUID(), "also commented on","  topic -".$topic->getURL());
+					notify_user($uid, $lastUser->getGUID(), "also commented on topic",$topic->title."-".$topic->getURL());
 					
 						
 					}

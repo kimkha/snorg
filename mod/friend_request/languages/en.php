@@ -16,22 +16,18 @@ You can view your pending friend requests at (Make sure you are logged into the 
 
 (You cannot reply to this email.)",
 
-	'friendrequest:successful' => "You and %s are now friends ",
+	'friendrequest:successful' => "You and %s are now friends.",
 	'friendrequest:remove:success' => "Successfully removed friend request.",
 	'friendrequest:remove:fail' => "Unable to remove friend request.",
 	'friendrequest:approvefail' => "Unknown error while trying to add %s as a friend!",
 	'approve:title' => " %s has approved your request",
-	'approve:content' => " Hi %s,
-	
-	%s has approved your friend request. Now you and %s are friends.
-	
-	You can view %s's profile at : http://localhost/snorg1/pg/profile/%s",
+
 	'approve:system:notify' => "approve notify has been sended to %s",
 	
 	
 	//wall post
 	'friendrequest:wallpost:title' => 'you and  <a href="%s">%s</a> are now friend',
-	'approve:system:notification' => 'Has been approve your request',
+	'approve:system:notification' => 'Has approved your friend request',
 	'invite:system:notification' => 'want to make friend with you, to view detail click',
 );
 				

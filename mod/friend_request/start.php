@@ -70,8 +70,11 @@ function iagree_event_create_friendrequest($event, $object_type, $object) {
 		
 		$view_friends_url = $CONFIG->url . "pg/friendrequests";
 		
-		// Notify target user
+		// Notify target user 
+		// snorg - bkit06 - eng
 		return notify_user($object->guid_two,$object->guid_one, elgg_echo('invite:system:notification') ,"here-{$CONFIG->url}pg/friendrequests");
+				// snorg - bkit06 - viet
+	//	return notify_user($object->guid_two,$object->guid_one, "mu?n k?t b?n v?i b?n, d? tr? l?i nh?n vào " ,"dây-{$CONFIG->url}pg/friendrequests");
 			
 	}
 }

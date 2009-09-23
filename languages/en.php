@@ -926,7 +926,7 @@ You cannot reply to this email.",
 			'taguser:remove' => "Remove",
 			'taguser:untag' => "Untag Sucessful",
 			'taguser:notuntag' => "Untag Fail - Please Try Again",
-			'taguser:wallpost:title' => 'You has been tagged at <a href="%s">Here</a>',
+			'taguser:wallpost:title' => 'You has been tagged at <a href="%s">%s</a>',
 			'taguser:sysnotify:exits' =>' This user has been tagged',
 			
 			
