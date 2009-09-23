@@ -32,6 +32,7 @@
 		 * to fit ElggObject based profile config
 		 *
 		 */
+		 //echo "<pre>"; print_r($CONFIG->profile);die;
 		$profile = $CONFIG->profile;
 		try {
 			foreach($profile as $category) {
@@ -39,30 +40,36 @@
 					$shortname = $item->title;
 					$valuetype = $item->valuetype;
 					
+					
 					switch ($valuetype) {
+						case 'tags':
+							$input[$shortname] = string_to_tag_array(get_input($shortname));
+						break;		
 						default:
 							$input[$shortname] = get_input($shortname);
-						break;
+													
 						
-						case 'tags':
-							$input[$shortname] = string_to_tag_array_snowMod(get_input($shortname));
-						break;		
 					}
 				}
 			}
+			
+			
 			//put this out of foreach for performence thoughts
 			if (isset($profile['basic']['birthday'])) {					
 				$input['show_birth_year'] = get_input('show_birth_year');
 			}
-		
+			
 			$input = trigger_plugin_hook('profile:update:preprocess','user',$input,$input);
+			
 		}catch (Exception $e){
 			register_error($e->getMessage());
 			friendlyforward();
 		}	
+		
 		/*
 		 * MOD END by Snow
 		 */
+		 
 	// Save stuff if we can, and forward to the user's profile
 		
 		if ($user = page_owner()) {
