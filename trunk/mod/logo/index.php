@@ -16,7 +16,7 @@
 
 		if(isadminloggedin()){
 			
-			$area2 = elgg_view_title($title = "hoai");
+			$area2 = elgg_view_title($title = elgg_echo('logo:home'));
 		
 
 	// Get objects

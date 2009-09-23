@@ -52,8 +52,8 @@
 		// Generate thumbnail (if image)
 		if (substr_count($file->getMimeType(),'image/'))
 		{
-			$thumbnail = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),60,60, true);
-			$thumbsmall = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),153,153, true);
+			$thumbnail = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),60,60, false);
+			$thumbsmall = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),200,200, false);
 			$thumblarge = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),600,600, false);
 			if ($thumbnail) {
 				$thumb = new ElggFile();
@@ -86,9 +86,9 @@
 	}
 		
 	if ($result){
-		system_message(elgg_echo("file:saved"));
+		system_message(elgg_echo("logo:saved"));
     }else
-		register_error(elgg_echo("file:uploadfailed"));
+		register_error(elgg_echo("logo:uploadfailed"));
 		
 	$container_user = get_entity($container_guid);
 	
