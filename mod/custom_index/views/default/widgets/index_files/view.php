@@ -21,5 +21,6 @@
     }else{
         echo "<p><?php echo elgg_echo('custom:nofiles'); ?></p>";
     }
+    echo "<div class='clearfloat'></div>";
 	
 ?>

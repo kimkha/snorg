@@ -19,5 +19,5 @@
 	if(is_plugin_enabled('blog')){
 		echo $blogs;
 	}
-	
+	echo "<div class='clearfloat'></div>";
 ?>
