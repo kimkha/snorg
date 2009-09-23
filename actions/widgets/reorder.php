@@ -14,12 +14,13 @@
 
 		$owner = get_input('owner');
 		$context = get_input('context');
+		$access_id = get_input('access_id', null);
 		
 		$maincontent = get_input('debugField1');
 		$sidebar = get_input('debugField2');
 		$rightbar = get_input('debugField3');
 		
-		$result = reorder_widgets_from_panel($maincontent, $sidebar, $rightbar, $context, $owner);
+		$result = reorder_widgets_from_panel($maincontent, $sidebar, $rightbar, $context, $owner, $access_id);
 		
 		if ($result) {
 			system_message(elgg_echo('widgets:panel:save:success'));

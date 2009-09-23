@@ -235,6 +235,7 @@
 <textarea type="textarea" value="Middle widgets" style="display:none" name="debugField2" id="debugField2" /><?php echo $middlecolumn_widgets; ?></textarea>
 <textarea type="textarea" value="Right widgets"  style="display:none" name="debugField3" id="debugField3" /><?php echo $rightcolumn_widgets; ?></textarea>
 
+<input type="hidden" name="access_id" value="<?php echo ACCESS_PUBLIC; ?>" />
 <input type="hidden" name="context" value="<?php echo get_context(); ?>" />
 <input type="hidden" name="owner" value="2" />
 <input type="submit" value="<?php echo elgg_echo('save'); ?>" class="submit_button" onclick="$('a.toggle_customise_edit_panel').click();" />

@@ -395,7 +395,13 @@
 			
 		}
 		
-		function reorder_widgets_from_panel($panelstring1, $panelstring2, $panelstring3, $context, $owner) {
+		/**
+		 * Edited by KimKha to make it more intelligent.
+		 * 
+		 * @param $access_id is added
+		 * @package snorg
+		 */
+		function reorder_widgets_from_panel($panelstring1, $panelstring2, $panelstring3, $context, $owner, $access_id=null) {
 			
 			$return = true;
 			
@@ -483,7 +489,7 @@
 						if ($guid == 0) {
 							$pos = ($key + 1) * 10;
 							$handler = $handlers[$column][$key];
-							if (!add_widget($owner,$handler,$context,$pos,$column))
+							if (!add_widget($owner,$handler,$context,$pos,$column, $access_id))
 								$return = false;
 						}
 					}
