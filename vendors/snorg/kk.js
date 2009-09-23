@@ -13,7 +13,7 @@
 	 * @author KimKha
 	 */
 	
-	var $k;
+	$k = null;
 	var max_ksimpleForm_id = 0;
 	
 	function $ksimpleForm(thisForm, id) {
@@ -64,12 +64,12 @@
 	
 	function $kconfirm(msg, fn) {
 		$k.dialog.title = "SNORG Confirm!";
-		msg = "<form id='kInternalForm'><div class='kdialogMessage'>"+msg+"</div>";
+		msg = "<form id='kInternalForm' onsubmit='return false;'><div class='kdialogMessage'>"+msg+"</div>";
 		msg += "<div class='kdialogButton'><input name='ok' value='OK' type='submit' id='kButtonOK' size='15' /><input name='cancel' value='Cancel' type='button' id='kButtonCancel' size='15' /></div><form>";
 		$k.dialog.content = msg;
 		$k.dialog.show();
 		
-		$("#kInternalForm").submit(function(){
+		$("#kButtonOK").click(function(){
 			$k.dialog.hide();
 			fn.call($(this), true);
 			return false;
