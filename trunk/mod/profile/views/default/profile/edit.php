@@ -21,13 +21,15 @@
 	 * @uses $vars['entity'] The user entity
 	 * @uses $vars['profile'] Profile items from $CONFIG->profile, defined in profile/start.php for now 
 	 */
-
+	
 ?>
+
 <div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/profile/edit" method="post">
 
 <?php
 	$profile = $vars['config']->profile;
+	//echo "<pre>"; print_r($profile);die;
 	//var_export($vars['profile']);
 	if (is_array($profile) && sizeof($profile) > 0){		
 		
