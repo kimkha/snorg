@@ -16,7 +16,7 @@
 //		
 //	}
 	
-	$user_notifications = get_entities_from_metadata('to',$_SESSION['user']->guid, 'object', 'notification',0, 9999, 0,"",0,false);
+	$user_notifications = get_entities_from_metadata('to',$_SESSION['user']->guid, 'object', 'notification');
 	
 	//$user_notifications = get_entities('object', 'notification',0, "", 9999, 0,false);
 	
