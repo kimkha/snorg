@@ -33,6 +33,7 @@
 		'friends',
 		'friends_of_friends', 
 		'friend_request', 
+		'groups', 
 		'invitefriends',
 		'logbrowser',
 		'logo',

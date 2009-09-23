@@ -1,4 +1,4 @@
-<?
+<?php
 	global $CONFIG;  
 	$system_url = $CONFIG->wwwroot . 'mod/tidypics/system.php';
 	$settings_url = $CONFIG->wwwroot . 'mod/tidypics/admin.php';

@@ -294,7 +294,7 @@
 		$("#elggchat_sessions .session").removeClass("chatsession_Active");
 		if(current != "block"){
 			createCookie("elggchat", id);
-			eraseCookie("chat_lastsessionId_"+i);
+			eraseCookie("chat_lastsessionId_"+id);
 			var last = $("#chatwindow" + id + " .chatmessages div:last").attr("id");
 			$("#chatwindow" + id + " .chatsessiondatacontainer").toggle();
 			$("#chatwindow" + id).toggleClass("chatsession_Active");
