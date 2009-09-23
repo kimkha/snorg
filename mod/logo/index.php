@@ -26,6 +26,6 @@
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 	
 	// Finally draw the page
-		page_draw(sprintf(elgg_echo("file:user"),page_owner_entity()->name), $body);
+		page_draw(sprintf(elgg_echo('logo:home'),page_owner_entity()->name), $body);
 		}
 ?>
