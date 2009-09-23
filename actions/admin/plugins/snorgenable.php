@@ -19,6 +19,8 @@
 	action_gatekeeper();
 	
 	$recommend = array(
+		
+		// Level 1
 		'advancesearch',
 		'blog',
 		'blograting',
@@ -47,33 +49,41 @@
 		'riverdashboard',
 		'sitenotification',
 		'socializeme',
-		'stick',
 		'testimony',
 		'thewire',
 		'tidypics',
 		'tinymce',
 		'uservalidation',
+		
+		// Level 2
+		'stick', // Must after blog, tydypics
 	);
 	
-	$plugins = get_installed_plugins();
+	$disable_plugins = get_installed_plugins();
+	$enable_plugins = array();
 	
-	foreach ($plugins as $p => $data)
+	foreach ($recommend as $r) {
+		if (!isset($disable_plugins[$r])) continue;
+		$enable_plugins[$r] = $disable_plugins[$r];
+		unset($disable_plugins[$r]);
+	}
+	
+	foreach ($enable_plugins as $p => $data)
 	{
-		// If not recommend
-		if (!in_array($p, $recommend)) {
-			// Enable
-			if (disable_plugin($p))
-				system_message(sprintf(elgg_echo('admin:plugins:disable:yes'), $p));
-			else
-				register_error(sprintf(elgg_echo('admin:plugins:disable:no'), $p));
-		}
-		else {
-			// Enable
-			if (enable_plugin($p))
-				system_message(sprintf(elgg_echo('admin:plugins:enable:yes'), $p));
-			else
-				register_error(sprintf(elgg_echo('admin:plugins:enable:no'), $p));
-		}
+		// Enable
+		if (enable_plugin($p))
+			system_message(sprintf(elgg_echo('admin:plugins:enable:yes'), $p));
+		else
+			register_error(sprintf(elgg_echo('admin:plugins:enable:no'), $p));
+	}		
+	
+	foreach ($disable_plugins as $p => $data)
+	{
+		// Disable
+		if (disable_plugin($p))
+			system_message(sprintf(elgg_echo('admin:plugins:disable:yes'), $p));
+		else
+			register_error(sprintf(elgg_echo('admin:plugins:disable:no'), $p));
 	}		
 	
 	// Regen view cache
