@@ -24,7 +24,7 @@
 		}
 
 	// Get order by
-		$order_type = get_input("orderby","time");
+		$order_type = get_input("orderby","");
 		
 		$select_options = array(
 			'time' => 'Created time',
@@ -58,6 +58,7 @@
 		
 	// Get a list of blog posts
 		if ((!$order_type) || ($order_type=="")){
+			
 			$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
 		} else {	
 			

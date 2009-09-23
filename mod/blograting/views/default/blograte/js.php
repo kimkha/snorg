@@ -95,9 +95,10 @@ jQuery.fn.rating = function(url, options) {
 	    });
 	
 	  stars.click(function(){
+	  	
 	  	if (!settings.disable){
 			if(settings.cancel == true){
-	      
+	      settings.disable = true;
 	      $.post(container.url, {
 	        "rating": $(this).children('a')[0].href.split('#')[1],
 			"user": settings.user,
@@ -106,7 +107,7 @@ jQuery.fn.rating = function(url, options) {
 	      		token = data.split('-');    	
 	      		settings.curvalue = rateround(token[0]); 
 				$("#ratepoint"+settings.entity).html("+"+token[1]);
-				settings.disable = true;		
+						
 	      	   } 
 		  );
 				return false;
