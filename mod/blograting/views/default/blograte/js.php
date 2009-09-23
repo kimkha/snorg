@@ -152,9 +152,9 @@ jQuery.fn.rating = function(url, options) {
       event.drain();
       settings.curvalue = 0;
       $.post(container.url, {
-        "rating": $(this).children('a')[0].href.split('#')[1],
-		"user": <?php echo $vars['user']->guid ?> 
-      });
+        rating: $(this).children('a')[0].href.split('#')[1],
+		user: '<?php echo $vars['user']->guid ?>'
+      }, function (data){return false;});
       return false;
     });
   }

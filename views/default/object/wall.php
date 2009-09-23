@@ -108,7 +108,9 @@
 			}
 		?>
 		</div>
-		
+		<?php
+			if (isloggedin() && $entity->comments_on != 'Off') {
+		?>
 		<div class="form_comment">
 			<form action="<?php echo $vars['url']; ?>action/wall_comment?id=<?php echo $entity->getGUID(); ?>" onsubmit="return $ksimpleForm(this,'wall_comment_<?php echo $entity->getGUID(); ?>');">
 			<textarea name="content"><?php echo elgg_echo("generic_comments:add"); ?></textarea>
@@ -116,13 +118,16 @@
 			</form>
 			<div class="clearfloat"></div>
 		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			setup_wallpost_textarea("wall-comments-<?php echo $entity->getGUID(); ?>", "<?php echo elgg_echo("generic_comments:add"); ?>");
+		});
+		</script>
+		<?php
+			}
+		?>
 	</div>
 	<div class="clearfloat"></div>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		setup_wallpost_textarea("wall-comments-<?php echo $entity->getGUID(); ?>", "<?php echo elgg_echo("generic_comments:add"); ?>");
-	});
-	</script>
 </div>
 <?php
 	}

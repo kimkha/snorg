@@ -68,7 +68,7 @@
 <div id="elgg_topbar_container_right">
 <div id="elgg_topbar_container_search">
 <form id="searchform" action="<?php echo $vars['url']; ?>search/" method="get">
-	<input type="text" size="21" name="tag" value="Search" onclick="if (this.value=='Search') { this.value='' }" onblur="if (this.value=='') { this.value='Search' }" class="search_input" />
+	<input type="text" size="21" name="tag" value="Search" onfocus="if (this.value=='Search') { this.value='' }" onblur="if (this.value=='') { this.value='Search' }" class="search_input" />
 	<input type="submit" value="Go" class="search_submit_button" />
 </form>
 </div>
