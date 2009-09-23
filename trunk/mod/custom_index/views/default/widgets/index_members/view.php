@@ -22,5 +22,6 @@
         echo elgg_view("profile/icon",array('entity' => $members, 'size' => 'small'));
         echo "</div>";
     }
+    echo "<div class='clearfloat'></div>";
 	
 ?>

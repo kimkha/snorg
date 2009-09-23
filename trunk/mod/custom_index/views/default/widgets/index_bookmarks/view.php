@@ -18,5 +18,5 @@
 	
     if (isset($bookmarks)) 
         echo $bookmarks; //display bookmarks
-	
+	echo "<div class='clearfloat'></div>";
 ?>
