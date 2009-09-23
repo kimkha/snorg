@@ -16,13 +16,16 @@
 	// Get profile fields
 		$input = array();
 		$accesslevel = get_input('accesslevel');
+		
 		if (!is_array($accesslevel)) $accesslevel = array();
 		
 		foreach($CONFIG->cv as $lable => $valuetype) {
-			$tmp = str_replace(" ", "______", $lable);
-			$input[$lable] = get_input($tmp);
-			if ($valuetype == 'tags')
-				$input[$lable] = string_to_tag_array($input[$lable]);
+			if ($valuetype != 'readonly'){
+				$tmp = str_replace(" ", "______", $lable);
+				$input[$lable] = get_input($tmp);
+				if ($valuetype == 'tags')
+					$input[$lable] = string_to_tag_array($input[$lable]);
+			}
 		}
 		
 	// Save stuff if we can, and forward to the user's profile
@@ -39,26 +42,28 @@
 			if (sizeof($input) > 0)
 				foreach($input as $lable => $value) {
 					
-					//$user->$shortname = $value;
-					remove_metadata($user->guid, $lable);
-					if (isset($accesslevel[$tmp])) {
-						$access_id = (int) $accesslevel[$tmp];
-					} else {
-						// this should never be executed since the access level should always be set
-						$access_id = ACCESS_PRIVATE;
-					}
-					if (is_array($value)) {
-						
-						$i = 0;
-						foreach($value as $interval) {
-							$i++;
-							if ($i == 1) { $multiple = false; } else { $multiple = true; }
-							create_metadata($user->guid, $lable, $interval, 'text', $user->guid, $access_id, $multiple);
+					
+						//$user->$shortname = $value;
+						remove_metadata($user->guid, $lable);
+						if (isset($accesslevel[$tmp])) {
+							$access_id = (int) $accesslevel[$tmp];
+						} else {
+							// this should never be executed since the access level should always be set
+							$access_id = ACCESS_LOGGED_IN;
 						}
-					} else {
-						
-						create_metadata($user->guid, $lable, $value, 'text', $user->guid, $access_id);
-					}
+						if (is_array($value)) {
+							
+							$i = 0;
+							foreach($value as $interval) {
+								$i++;
+								if ($i == 1) { $multiple = false; } else { $multiple = true; }
+								create_metadata($user->guid, $lable, $interval, 'text', $user->guid, $access_id, $multiple);
+							}
+						} else {
+							
+							create_metadata($user->guid, $lable, $value, 'text', $user->guid, $access_id);
+						}
+					
 					
 				}
 			$user->save();
