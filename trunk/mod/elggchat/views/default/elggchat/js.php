@@ -10,7 +10,7 @@
 	* @link http://www.coldtrick.com/
 	* @version 0.4
 	*/
-	//require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/engine/start.php");
+	
 	global $CONFIG;
 	$basesec = get_plugin_setting("chatUpdateInterval","elggchat");
 	if(!$basesec) $basesec = 5;
@@ -207,6 +207,7 @@
 							}
 							
 							autoHideChatWindow();
+							openSession(i);
 					} else {
 						if ($("#chatwindow" + i + ">a").html() != session.name) $("#chatwindow" + i + ">a").html(session.name);
 						var membersData = "";
