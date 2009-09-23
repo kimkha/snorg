@@ -101,7 +101,7 @@
 <?php 
 		echo '<div id="tidypics_desc">' . autop($desc) . '</div>';
 		
-		$images = get_entities("object", "image", $album_guid, '', 999);
+		$images = get_entities("object", "image", null, '', 999, 0, false, 0, $album_guid);
 		
 		//build array for back | next links 
 		$_SESSION['image_sort'] = array();
@@ -112,7 +112,7 @@
 			}
 			
 			// display the simple image views. Uses 'object/image' view
-			echo list_entities("object", "image", $album_guid, 24, false);
+			echo elgg_view_entity_list($images, count($images), (int) get_input('offset'), 24, false);
 			
 			$num_images = count($images);
 		} else {
