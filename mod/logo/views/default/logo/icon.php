@@ -38,7 +38,7 @@
 				if ($size == 'small') {
 					echo "<img src=\"{$vars['url']}action/logo/icon?file_guid={$vars['file_guid']}\" border=\"0\" /> ";
 				} else {
-					echo "<img src=\"{$vars['url']}mod/logo/thumbnail.php?size=large&file_guid={$vars['file_guid']}\" border=\"0\" /> ";
+					echo "<img src=\"{$vars['url']}mod/logo/thumbnail.php?size=small&file_guid={$vars['file_guid']}\" border=\"0\" /> ";
 				}
 				
 			}

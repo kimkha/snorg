@@ -31,13 +31,13 @@
 
 	if ($file->canEdit()) {
 	
-				$info .='<a href="'.$vars['url'].'mod/logo/edit.php?file_guid='.$file->getGUID().'">'.elgg_echo('edit').'</a>&nbsp'; 
+				$info .='<a href="'.$vars['url'].'mod/logo/edit.php?file_guid='.$file->getGUID().'">'.elgg_echo('logo:edit:link').'</a>&nbsp'; 
 					
 					$info .= elgg_view('output/confirmlink',array(
 						
 							'href' => $vars['url'] . "action/logo/delete?file=" . $file->getGUID(),
-							'text' => elgg_echo("delete"),
-							'confirm' => elgg_echo("file:delete:confirm"),
+							'text' => elgg_echo("logo:delete:link"),
+							'confirm' => elgg_echo("logo:delete:confirm"),
 						
 						));  
 	

@@ -11,14 +11,14 @@
 	global $CONFIG;
 	
 		if (isset($vars['entity'])) {
-			$title = sprintf(elgg_echo("blog:editpost"),$object->title);
+			$title = sprintf(elgg_echo("logo:edittitle"),$object->title);
 			$action = "logo/save";
 			$title = $vars['entity']->title;
 			$description = $vars['entity']->description;
 		//	$tags = $vars['entity']->tags;
 		//	$access_id = $vars['entity']->access_id;
 		} else  {
-			$title = elgg_echo("blog:addpost");
+			$title = elgg_echo("logo:upload");
 			$action = "logo/upload";
 			$tags = "";
 			$title = "";
@@ -38,7 +38,7 @@
 
 ?>
 		<p>
-			<label><?php echo elgg_echo("file:file"); ?><br />
+			<label><?php echo elgg_echo("logo:browser"); ?><br />
 			<?php
 
 				echo elgg_view("input/file",array('internalname' => 'upload'));
@@ -52,7 +52,7 @@
 
 ?>
 		<p>
-			<label><?php echo elgg_echo("title"); ?><br />
+			<label><?php echo elgg_echo("logo:upload:title"); ?><br />
 			<?php
 
 				echo elgg_view("input/text", array(
@@ -64,7 +64,7 @@
 			</label>
 		</p>
 		<p class="longtext_editarea">
-			<label><?php echo "Link"; ?><br />
+			<label><?php echo elgg_echo("logo:upload:link"); ?><br />
 			<?php
 
 				echo elgg_view("input/text",array(

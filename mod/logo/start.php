@@ -77,11 +77,11 @@
 		
 			if (get_context() == "logo") {
 				if ( isadminloggedin()) {
-					add_submenu_item(sprintf(elgg_echo("file:yours"),$page_owner->name), $CONFIG->wwwroot . "pg/logo/" . $page_owner->username);
+					add_submenu_item(sprintf(elgg_echo("logo:file"),$page_owner->name), $CONFIG->wwwroot . "pg/logo/" . $page_owner->username);
 				
 				} 
 				if (isadminloggedin())
-					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/logo/". $page_owner->username . "/new/");
+					add_submenu_item(elgg_echo('logo:upload'), $CONFIG->wwwroot . "pg/logo/". $page_owner->username . "/new/");
 			}
 		
 	}

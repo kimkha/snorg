@@ -43,7 +43,7 @@
         $mime = $f->mimetype;
      //   echo "<pre>"; print_r($files); die;
         
-        $content.= '<div><a href="'.$f->description.'">'. elgg_view("logo/icon", array("mimetype" => $mime, 'thumbnail' => $f->smallthumb, 'file_guid' => $f->guid, 'size'=>'large')) . "</a></div>";
+        $content.= '<div><a href="'.$f->description.'">'. elgg_view("logo/icon", array("mimetype" => $mime, 'thumbnail' => $f->thumbnail, 'file_guid' => $f->guid, 'size'=>'large')) . "</a></div>";
         
       
           
@@ -67,19 +67,21 @@
         
         	
             
-        foreach($files as $f){
-            	
-            	
+         foreach($files as $f){
+        
+	    	
+           	
         $mime = $f->mimetype;
+     //   echo "<pre>"; print_r($files); die;
         
+        $content.= '<div><a href="'.$f->description.'">'. elgg_view("logo/icon", array("mimetype" => $mime, 'thumbnail' => $f->thumbnail, 'file_guid' => $f->guid, 'size'=>'large')) . "</a></div>";
         
-        $content.= '<div><a href="'.$f->description.'">'. elgg_view("logo/icon", array("mimetype" => $mime, 'thumbnail' => $f->smallthumb, 'file_guid' => $f->guid, 'size'=>'large')) . "</a></div>";
-  
-        
-        echo $content;
+      
+          
+       
             				
          }
-            
+            echo $content;
             echo "</div>";
             echo "</div>";
             
