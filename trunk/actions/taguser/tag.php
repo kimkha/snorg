@@ -51,6 +51,8 @@
 	if ($image->annotate('taguser', $friend, null,$user_id )) {
 
 	   system_message(elgg_echo('taguser:sysnotify:sucessful'));
+	  // echo "<pre>"; print_r($image->description); die;
+	   
 	   
 	   // register to wall Post
 	   if ( $image->description != null)

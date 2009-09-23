@@ -121,7 +121,7 @@
 
 	
 	
-   if( $friends = $entity->getAnnotations('taguser'))
+ if( $friends = $entity->getAnnotations('taguser'))
    {
    	  	 
  //  	 print_r($friends); die;
@@ -143,9 +143,10 @@
 		
 			echo elgg_view("profile/icon",array('entity' => get_user($taggeduser->owner_guid), 'size' => 'small'));
 		
+			if($viewer == $owner) {
 			echo '<p><a href="'. $vars['url'] . 'action/taguser/untag?annotation_id=' . $taggeduser->id .'"> '.elgg_echo('taguser:remove').' </a></p>';
 			
-	
+			};
 		
 				//	echo "</div>";
 		
