@@ -79,7 +79,7 @@ END;
 	}
 ?>
 	<!-- include the default css file -->
-	<link rel="stylesheet" href="<?php echo $vars['url']; ?>_css/css.css?lastcache=<?php echo $vars['config']->lastcache; ?>&viewtype=<?php echo $vars['view']; ?>" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $vars['url']; ?>_css/css.php?lastcache=<?php echo $vars['config']->lastcache; ?>&viewtype=<?php echo $vars['view']; ?>" type="text/css" />
 	<?php 
 		echo $feedref;
 		echo elgg_view('metatags',$vars); 
