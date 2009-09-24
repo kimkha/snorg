@@ -46,7 +46,7 @@
 							// Send email
 							// Snorg - Bkit06
 							
-							if (notify_user($user->getGUID(), $event->owner_guid, " invite you to Gourp ".$event->name))
+							if (notify_user($user->getGUID(), $event->owner_guid, " invite you to event ",$event->title."-".$event->getURL() ))
 								system_message(elgg_echo("event:notify:userinvited"));
 							else
 								register_error(elgg_echo("event:notify:usernotinvited"));
