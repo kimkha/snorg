@@ -1,19 +1,25 @@
 #summary Lỗi thường gặp khi sử dụng Snorg
 #labels Featured
 
-== Dành cho quản trị ==
-=== Lỗi Không thể click vào nút sửa đổi trang trong dashboard ===
+=== Dành cho quản trị ===
+==== Lỗi Không thể click vào nút sửa đổi trang trong dashboard ====
   * *Lí do:* bạn chưa active bất kì 1 widget nào.
   * *Khắc phục:* active vài plugin có widget để có thể sử dụng chức năng sửa đổi của trang.
   * _*Mẹo:* Bạn hãy thử bật plugin blog và blograting_
 
-=== Lỗi khi kích hoạt một plugin nào đó thì trang hiển thị bị lỗi chỉ xuất hện màu trắng ===
+==== Lỗi khi kích hoạt một plugin nào đó thì trang hiển thị bị lỗi chỉ xuất hện màu trắng ====
   * *Lí do:* có thể Plugin dó đã bị lỗi hoặc không tương thích với một plugin nào đó trong hệ thống.
   * *Khắc phục:* vào thư mục `<root>/mod/` trên host đổi tên hoặc delete plugin vừa kích hoạt gây lỗi sau đó sẽ vào lại trang bình thường.
   * _*Mẹo:* Bạn nên dùng tính năng *SNORG Recommended* do chúng tôi cung cấp, nó sẽ kích hoạt các plugin cần thiết mà không gặp lỗi này_
 
-== Dành cho nhà phát triển ==
-=== Lỗi không thể nhìn thấy thay đổi khi sửa trực tiếp vào file ===
+==== Lỗi sau khi kích hoạt cả stick và blog thì không thấy category của stick ====
+  * *Lí do:* Bạn đã kích hoạt plugin stick trước plugin blog, hoặc chưa thiết lập đúng category.
+  * *Khắc phục:* Vào phần Quản lý tiện ích, xem lại thiết lập của stick có đúng chưa, sau đó re-enable stick.
+  * _*Mẹo:* Bạn nên dùng tính năng *SNORG Recommended* do chúng tôi cung cấp, nó sẽ không gặp lỗi này_
+
+
+=== Dành cho nhà phát triển ===
+==== Lỗi không thể nhìn thấy thay đổi khi sửa trực tiếp vào file ====
   * *Lí do:* Hệ thống có cache lại các file này (để tăng hiệu suất khi sử dụng).
   * *Khắc phục:* Vào trang Quản trị, tắt tính năng Simple Cache đi.
   * _*Mẹo:* Trong quá trình phát triển bạn nên tắt simple cache, khi nào chạy trên server thật thì nên bật lại_
