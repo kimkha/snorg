@@ -32,8 +32,9 @@
 		 * to fit ElggObject based profile config
 		 *
 		 */
-		 //echo "<pre>"; print_r($CONFIG->profile);die;
 		$profile = $CONFIG->profile;
+		unset($profile['contact']['email']);
+		
 		try {
 			foreach($profile as $category) {
 				foreach ($category as $item) {
@@ -63,7 +64,7 @@
 			
 		}catch (Exception $e){
 			register_error($e->getMessage());
-			friendlyforward();
+			forward();
 		}	
 		
 		/*

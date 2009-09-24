@@ -17,8 +17,10 @@
 		$user = get_loggedin_userid();
 		if ($user != $owner->guid) {
 			$msg = '@' . $owner->username . ' ';
+			$doing = elgg_echo("thewire:frienddoing");
 		} else {
 			$msg = '';
+			$doing = elgg_echo("thewire:tinydoing");
 		}
 
 ?>
@@ -57,7 +59,7 @@ function submitnoteForm(thisForm){
 	return false;
 }
 function thewire_tiny_toggle() {
-	var def = "<?php echo elgg_echo("thewire:tinydoing"); ?>";
+	var def = "<?php echo $doing; ?>";
 	
 	var thewire_tiny = $("#thewire_tiny");
 	var textarea_thewire = $("#thewire_tiny-textarea");
@@ -95,7 +97,7 @@ $(document).ready(function(){
 </script>
 <div class="post_to_wire" id="thewire_tiny">
 	<form action="<?php echo $CONFIG->wwwroot; ?>action/thewire/add_tiny" method="post" name="noteForm" onsubmit="submitnoteForm(this);return false;">
-		<textarea name='note' onkeydown="textCounter(document.noteForm.note,document.noteForm.remLen1)" onkeyup="textCounter(document.noteForm.note,document.noteForm.remLen1)" id="thewire_tiny-textarea"><?php echo elgg_echo("thewire:tinydoing"); ?></textarea>
+		<textarea name='note' onkeydown="textCounter(document.noteForm.note,document.noteForm.remLen1)" onkeyup="textCounter(document.noteForm.note,document.noteForm.remLen1)" id="thewire_tiny-textarea"><?php echo $doing; ?></textarea>
 		<div class='thewire_characters_remaining'>
 			<input readonly="true" type="text" name="remLen1" size="3" maxlength="3" value="140" class="thewire_characters_remaining_field" /><?php echo elgg_echo("thewire:charleft") . "</div>"; ?>
 			<input type="hidden" name="method" value="site" />

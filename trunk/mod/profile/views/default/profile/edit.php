@@ -30,7 +30,7 @@
 <?php
 	$profile = $vars['config']->profile;
 //	echo '<pre>'; print_r($vars['config']->profile['contact']['email']);die;
-	unset($vars['config']->profile['contact']['email']);
+	unset($profile['contact']['email']);
 //	echo '<pre>'; print_r($vars['config']->profile['contact']);die;
 	//var_export($vars['profile']);
 	if (is_array($profile) && sizeof($profile) > 0){		
