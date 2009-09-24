@@ -90,11 +90,11 @@
 			// Set its owner to the current user
 					
 					$notification_message->owner_guid = $from->getGUID();
-					$notification_message->to = $to->getGUID();
+					$notification_message->set("to", $to->getGUID());
 					$notification_message->title = $action;
 					$notification_message->description = $message;
-					$notification_message->read_yet = 0;
-					$notification_message->access_id = 2;
+					$notification_message->set("read_yet", 0);
+					$notification_message->access_id = ACCESS_PUBLIC;
 					
 					
 			
@@ -132,29 +132,27 @@
 			
 		}
 		
+		function get_unread_notification($guid) {
+			$all = get_entities('object', 'notification', 0, "", 9999);
+			
+			$unread = array();
+			foreach ($all as $obj) {
+				if ((int) $obj->get('to') == $guid && $obj->get('read_yet') == 0) {
+					$unread[] = $obj;
+				}
+			}
+			return $unread;
+		}
 		
-		function count_unread_sitenotification(){
-			$num_notification = get_entities_from_metadata_multi(array(
-		    							'to' => $_SESSION['user']->guid,
-		    							'read_yet' => 0,
-		    									   ),"object", "notification", 0 , 9999, 0, "", 0, false);
-		
-			if (is_array($num_notification))
-				$counter = sizeof($num_notification);
-			else
-				$counter = 0;
-				
-		    return $counter;
-            
+		function count_unread_sitenotification($guid){
+			$num_notification = get_unread_notification($guid);
+			return count($num_notification);
 		}
 	
-		function mark_all_as_read(){
-			$notyetread_notifications = get_entities_from_metadata_multi(array (
-										'to' => $_SESSION['user']->guid,
-										'read_yet' => 0,
-										), 'object', 'notification',0, 9999, 0,"",0,false);
+		function mark_all_as_read($guid){
+			$notyetread_notifications = get_unread_notification($guid);
 			foreach ($notyetread_notifications as $notification){
-				$notification->read_yet = 1;
+				$notification->setMetaData('read_yet', 1);
 			}
             
 		}

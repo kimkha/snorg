@@ -7,23 +7,25 @@
 		dialog += "<div class='closeWindow' onclick='openSitenotifcationDialog();'></div>";
 		dialog += "<div class='title headerWindow'><?php echo elgg_echo('sitenotification:title')?></div>";
 		dialog += "<div class='showall'><a href='<?php echo $CONFIG->wwwroot ?>pg/sitenotification'>Show all</a></div>";
-		dialog += "<div class='clearfloat'></div>"
-	
+		dialog += "<div class='clearfloat'></div>";
+		
 		dialog += "<div id='notification_content' class='contentWindow'>";
-		dialog += "<div class='loading'>Loading...</div>";
 		dialog += "</div>";
 		dialog += "</div>";
 		
 		$("#notification_wrapper").html(dialog);
 		getAllNotification();
 		
-		$.timer(10000, function (timer) {
-			$.getJSON("<?php echo $CONFIG->wwwroot; ?>query.php?action=GetNewSitenotificationCount",function(msg){
-				if (msg=='0'){
-					$('#notification_taskbar .notification_name').html('Not');
-				} else {
+		$.timer(5000, function (timer) {
+			$.getJSON("<?php echo $CONFIG->wwwroot; ?>query.php?action=GetNewSitenotificationCount&user_guid=<?php echo get_loggedin_userid(); ?>",function(data){
+				if (typeof(data) == "undefined") return false;
+				msg = data.count;
+				
+				if (msg!=0){
 					$('#notification_taskbar .notification_name').html('['+msg+']');
-					getUnreadNotification();
+					if ($("#notification_wrapper").css("display") == 'block') {
+						getUnreadNotification();
+					}
 				}
 			});
 		});
@@ -31,6 +33,7 @@
 	
 	function openSitenotifcationDialog() {
 		if ($("#notification_wrapper").css('display') == 'none') {
+			getUnreadNotification();
 			$(".wrapperWindow").hide();
 			$("#notification_wrapper").show();
 		}
@@ -48,16 +51,21 @@
 		getSitenotifcation("GetUnreadSitenotification");
 	}
 	function getSitenotifcation(control) {
-		$("#notification_content .loading").show();
+		$("#notification_load").prepend($kloading());
 		
-		$.getJSON("<?php echo $CONFIG->wwwroot; ?>query.php?action="+control+"&user_guid=<?php echo get_loggedin_userid() ?>", function(notifications){
-			var newNotification = "";
-			$.each(notifications, function (name, value) {
-				newNotification += viewSiteNotifcation(value);
-			});
-						
-			$("#notification_content .loading").hide();
-			$("#notification_content").prepend(newNotification);
+		$.getJSON("<?php echo $CONFIG->wwwroot; ?>query.php?action="+control+"&user_guid=<?php echo get_loggedin_userid(); ?>", function(notifications){
+			
+			if (typeof(notifications) != "undefined") {
+				var newNotification = "";
+				$.each(notifications, function (name, value) {
+					newNotification += viewSiteNotifcation(value);
+				});
+				
+				$("#notification_content").prepend(newNotification);
+				newNotification = "";
+			}
+			
+			$("#notification_load .ajax_loader").remove();
 			$('#notification_taskbar .notification_name').html('Not');
 		});
 	}

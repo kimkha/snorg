@@ -15,7 +15,6 @@
 	gatekeeper();
 	
 	set_context('sitenotification');
-	mark_all_as_read();
 	
 	$area1 = elgg_view_title(elgg_echo('sitenotification:title'));
 	$area2 = elgg_view('sitenotification/view');
@@ -23,7 +22,8 @@
 	// Format page
 	$body = elgg_view_layout('one_column', $area1.$area2);
 	
+	mark_all_as_read(get_loggedin_userid());
 
-	echo page_draw(elgg_echo('sitenotification:title'),$body);
+	page_draw(elgg_echo('sitenotification:title'),$body);
 	
 ?>

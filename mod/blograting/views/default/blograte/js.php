@@ -33,7 +33,7 @@ jQuery.fn.rating = function(url, options) {
     curvalue  : 0,    // number of selected stars
     user: -1,
     entity: -1,
-    disble: false
+    disable: false
   };
 	
   if(options) {
@@ -93,12 +93,14 @@ jQuery.fn.rating = function(url, options) {
 	      event.drain();
 	      event.reset();
 	    });
-	
+	  
+	  stars.unbind("dblclick");
+	  
 	  stars.click(function(){
 	  	
 	  	if (!settings.disable){
-			if(settings.cancel == true){
 	      settings.disable = true;
+			if(settings.cancel == true){
 	      $.post(container.url, {
 	        "rating": $(this).children('a')[0].href.split('#')[1],
 			"user": settings.user,
@@ -112,6 +114,7 @@ jQuery.fn.rating = function(url, options) {
 		  );
 				return false;
 			} else if (settings.maxvalue == 1) {
+				settings.disable = false;
 				settings.curvalue = (settings.curvalue == 0) ? 1 : 0;
 				$(this).toggleClass('on');
 				$.post(container.url, {
@@ -121,6 +124,7 @@ jQuery.fn.rating = function(url, options) {
 	      });
 				return false;
 			}
+			settings.disable = false;
 			return true;
 		} else {
 			alert ('<?php echo elgg_echo('blograting:hasrate') ?>')
