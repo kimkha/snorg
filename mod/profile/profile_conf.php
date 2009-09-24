@@ -66,26 +66,27 @@
 				'longtext',
 				'personal'
 				),
-			'goal' => ProfileItem(
-				'goal',
-				'text',
-				'personal'
-				),
+		
 			//contact
-			'mobile' => ProfileItem(
-				'mobile',
-				'text',
+			'facebook' => ProfileItem(
+				'facebook',
+				'url',
 				'contact',
 				TRUE
 				),
-			'qq' => ProfileItem(
-				'qq',
+			'yahoo' => ProfileItem(
+				'yahoo',
 				'text',
 				'contact',
 				TRUE
 				),
 			'msn' => ProfileItem(
 				'msn',
+				'text',
+				'contact'
+				),
+			'skype' => ProfileItem(
+				'skype',
 				'text',
 				'contact'
 				),
@@ -99,6 +100,12 @@
 				'phone',
 				'text',
 				'contact'
+				),
+			'mobile' => ProfileItem(
+				'mobile',
+				'text',
+				'contact',
+				TRUE
 				),
 			'location' => ProfileItem(
 				'location',

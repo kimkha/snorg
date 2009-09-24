@@ -21,6 +21,7 @@
 		'profile:gender' => 'Gender',
 		'profile:female' => 'Female',
 		'profile:male' => 'Male',
+		'profile:hometown' => 'Hometown',
 		#birthday
 		'profile:birthday' => 'Birthday',
 		'year' => 'Year',
@@ -28,6 +29,8 @@
 		'day' => 'Day',
 		'profile:birthday:show_year' => 'Show birth year-month-day in profile',
 		'profile:birthday:hide_year' => 'Only show month and day in profile',
+		'profile:goal' => 'Goal',
+		'profile:msn' => 'MSN',
 		#relationship
 		'profile:relationship_status' => 'Relationship Status',
 		'profile:single' => 'Single',
@@ -40,7 +43,9 @@
 		'profile:category:personal' => 'Personal Info',		
 		#contact
 		'profile:category:contact' => 'Contact Info',
-		'profile:qq' => 'QQ',
+		'profile:yahoo' => 'Yahoo',
+		'profile:facebook' => 'Facebook',
+		'profile:skype' => 'Skype',
 		'profile:email' => 'Email',		
 		#profession
 		'profile:category:profession' => 'Profession Info',
