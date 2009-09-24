@@ -13,7 +13,7 @@
 	$profile = $CONFIG->profile;
 	$entity = $vars['entity'];
 
-		if ($vars['entity']->canEdit()) {
+		if ($vars['entity']->guid == get_loggedin_userid()) {
 ?>
 		<p class="profile_info_edit_buttons">
 			<a href="<?php echo $vars['url']; ?>mod/profile/edit.php?username=<?php echo $vars['entity']->username; ?>"><?php echo elgg_echo("profile:edit"); ?></a>

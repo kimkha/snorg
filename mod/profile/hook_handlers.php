@@ -10,9 +10,6 @@
 				throw new DataFormatException(sprintf(elgg_echo('DataFormatException:invalid_input_format'),elgg_echo('profile:website')));
 			}
 		}
-		if (!is_email_address_snowMod($params['email'])) {
-			throw new DataFormatException(elgg_echo('registration:emailnotvalid'));
-		}
 		/*
 		 * check if in input qq,mobile,website is unique in this site
 	 	 * or own by the user her/him self

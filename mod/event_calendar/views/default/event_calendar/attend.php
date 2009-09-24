@@ -14,7 +14,7 @@
 	if (is_array($attender) && sizeof($attender) > 0) {
 		echo "<div class='contentWrapper'>";
 		
-		echo "<b>Confirm Guest:</b>";
+		echo "<b>Confirm Guest: </b>";
 		
 		echo "<a href='javascript:viewFriendsBox(\"calendar&relationship=eventattend\", {$event_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
 		

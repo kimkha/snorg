@@ -25,6 +25,7 @@
 			'thewire:notedeleted' => "note deleted",
 			'thewire:doing' => "What are you doing? Tell everyone on the wire:",
 			'thewire:tinydoing' => "What are you doing? Tell everyone...",
+			'thewire:frienddoing' => "Write something here...",
 			'thewire:newpost' => 'New wire post',
 			'thewire:addpost' => 'Post to the wire',
 			'thewire:nomessage' => 'There are no post on the wire',
