@@ -153,7 +153,7 @@
 				$CONFIG->url = $CONFIG->wwwroot;
 			
 			if (empty($CONFIG->sitename))
-				$CONFIG->sitename = "New Elgg site";
+				$CONFIG->sitename = "New SNORG site";
 				
 			if (empty($CONFIG->language))
 				$CONFIG->language = "en";
