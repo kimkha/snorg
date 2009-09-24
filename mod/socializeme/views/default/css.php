@@ -440,6 +440,7 @@ span.contentIntro p {
 #elgg_topbar_container_left .toolbarimages {
 	float:left;
 	margin-right:20px;
+	margin-top: 3px;
 }
 #elgg_topbar_container_left .toolbarlinks {
 	margin:0 0 10px 0;

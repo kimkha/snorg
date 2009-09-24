@@ -29,12 +29,12 @@
 		echo "<div id='friends-leftbar' class='collapsable_box'>";
 		echo "<div class='collapsable_box_header'>";
 		echo '<a class="toggle_box_contents" href="javascript:void(0);">-</a>';
+		echo "<div class='leftbar_show_all' onclick='viewFriendsBox(\"GetFriends\", {$owner->guid});' >" . elgg_echo('friends:widget:showall')."</div>";
 		echo '<h1>'.elgg_echo("friends").'</h1>';
-		echo "</div>";
+		echo "<div class='clearfloat'></div></div>";
 		
 		echo '<div class="collapsable_box_content">';
 		
-		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$owner->guid});' >" . elgg_echo('friends:widget:showall')."</a>";
 		echo "<div id=\"list\">";
 		
 		foreach($friends as $friend) {

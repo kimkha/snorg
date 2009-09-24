@@ -189,13 +189,14 @@
 	text-align:left;
 	position:absolute;
 	background: #333333;
-	width:100%;
-	opacity: 0.8;
-	filter: alpha(opacity=70);
+	width:216px;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
 	max-height:250px;
 	overflow-x: hidden;
 	overflow-y: auto;	
 	padding: 3px 10px;
+	color: #FFFFFF;
 }
 
 .chatmembersfunctions_invite a {

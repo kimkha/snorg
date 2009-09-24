@@ -16,7 +16,7 @@
 		$("#notification_wrapper").html(dialog);
 		getAllNotification();
 		
-		$.timer(5000, function (timer) {
+		$.timer(16000, function (timer) {
 			$.getJSON("<?php echo $CONFIG->wwwroot; ?>query.php?action=GetNewSitenotificationCount&user_guid=<?php echo get_loggedin_userid(); ?>",function(data){
 				if (typeof(data) == "undefined") return false;
 				msg = data.count;

@@ -60,6 +60,7 @@
 			$k.dialog.hide();
 			return false;
 		});
+		$("#kButtonOK").focus();
 	}
 	
 	function $kconfirm(msg, fn) {
@@ -83,6 +84,7 @@
 			fn.call($(this), false);
 			return false;
 		});
+		$("#kButtonOK").focus();
 	}
 	
 	function $kprompt(msg, val, fn) {
@@ -104,6 +106,7 @@
 		$("#kButtonCancel").click(function(){
 			$k.dialog.hide();
 		});
+		$("#kButtonOK").focus();
 	}
 	
 	function $kbox(t, c) {

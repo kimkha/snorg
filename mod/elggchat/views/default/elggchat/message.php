@@ -50,7 +50,7 @@
 		} elseif($message->name == ELGGCHAT_SYSTEM_MESSAGE) {
 			$result['offset'] = $offset;
 			$result['content'] = $message->value;
-			$result['guid'] = 0;
+			$result['guid'] = '0';
 		}
 		echo json_encode($result);
 	}

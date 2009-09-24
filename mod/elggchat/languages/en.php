@@ -20,7 +20,8 @@
 		'elggchat:friendspicker:info' => "Chat: Friends Online",
 		
 		'elggchat:conference' => "[Conference]",
-		'elggchat:chat:invite' => "Invite",
+		'elggchat:chat:invite' => "Invite more friends",
+		'elggchat:chat:caninvite' => "There is no active friend to invite",
 		'elggchat:chat:minimize' => "Minimize",
 		'elggchat:chat:leave' => "Leave",
 		'elggchat:chat:leave:confirm' => "Are you sure you wish to leave this session?",

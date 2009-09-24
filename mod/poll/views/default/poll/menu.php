@@ -13,6 +13,6 @@
 	 
 ?>
 
-	<p class="user_menu_poll">
+	<p class="user_menu_profile">
 		<a href="<?php echo $vars['url']; ?>pg/poll/<?php echo $vars['entity']->username; ?>"><?php echo elgg_echo("poll"); ?></a>	
 	</p>
