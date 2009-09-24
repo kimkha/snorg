@@ -641,7 +641,7 @@ To remove a widget drag it back to the <b>Widget gallery</b>.",
 	
 			'link:text' => 'view link',
 	
-			'snorgenable' => 'SNORG Recommended',
+			'snorgenable' => 'SNORG Recommendation',
 			'enableall' => 'Enable All',
 			'disableall' => 'Disable All',
 	

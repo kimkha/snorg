@@ -9,13 +9,13 @@
 
 	$event_guid = $vars['entity']->guid;
 	 
-	$attender = get_entities_from_relationship('eventrequest',$event_guid,false,'user',,,,3);
+	$attender = get_entities_from_relationship('eventrequest',$event_guid,false,'user','',0,'',3);
 	
 	if (is_array($attender) && sizeof($attender) > 0) {
 		
 		echo "<b>Confirm Guest:</b>";
 		
-		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$vars['entity']->owner_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
+		echo "<a href='javascript:viewFriendsBox(\"calendar&relationship=eventrequest\", {$event_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
 		
 		
 		echo "<div id=\"widget_friends_list\">";

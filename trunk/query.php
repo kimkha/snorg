@@ -27,6 +27,24 @@
 	        echo json_encode($friends_info);
 	        
 	        
+	   } else if ($action == 'calendar'){
+	        $relationship = get_input("relationship");
+	        //Get all friends of page owner
+	        $event_guid =  get_input('owner');
+	        
+	        $attender = get_entities_from_relationship($relationship, $event_guid, false, 'user');     
+	        
+	        //response xml data of all page owner friends
+	        
+	        $attenders_info = array();
+
+	        foreach ($attender as $friend){
+				$attenders_info[] = array($friend->username,$friend->getURL(),$friend->getIcon('tiny'));
+	        }
+	        
+	        echo json_encode($attenders_info);
+	        
+	        
 	   } else if ($action == 'GetSitenotification'){
 	   		$user_guid =  get_input('user_guid');
 	   		
