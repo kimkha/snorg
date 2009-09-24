@@ -1,10 +1,13 @@
 #summary Lỗi thường gặp khi sử dụng Snorg
 #labels Featured
 
-<b>- Lỗi Không thể click vào nút sửa đổi trang trong dashboard</b>
-  <b>Lí do:</b> bạn chưa active bất kì 1 widget nào.
-  <b>Khắc phục:</b> active widget để có thể sử dụng chức năng sửa đổi của trang.
+== Dành cho quản trị ==
+=== Lỗi Không thể click vào nút sửa đổi trang trong dashboard ===
+  * *Lí do:* bạn chưa active bất kì 1 widget nào.
+  * *Khắc phục:* active vài plugin có widget để có thể sử dụng chức năng sửa đổi của trang.
+  * _*Mẹo:* Bạn hãy thử bật plugin blog và blograting_
 
-<b>- Lỗi khi kích hoạt một plugin nào đó thì trang hiển thị bị lỗi chỉ xuất hện màu trắng.
-<b> Lí do</b>: có thể Plugin dó đã bị lỗi hoặc không tương thích với một plugin nào đó trong hệ thống.
-<b> khắc phục:</b> vào thư mục /mod/ trên host đỏi tên hoặc delete plugin vừa kích hoạt gây lỗi sau đó sẽ vào lại trang bình thường.
+=== Lỗi khi kích hoạt một plugin nào đó thì trang hiển thị bị lỗi chỉ xuất hện màu trắng ===
+  * *Lí do:* có thể Plugin dó đã bị lỗi hoặc không tương thích với một plugin nào đó trong hệ thống.
+  * *Khắc phục:* vào thư mục `<root>/mod/` trên host đổi tên hoặc delete plugin vừa kích hoạt gây lỗi sau đó sẽ vào lại trang bình thường.
+  * _*Mẹo:* Bạn nên dùng tính năng *SNORG Recommended* do chúng tôi cung cấp, nó sẽ kích hoạt các plugin cần thiết mà không gặp lỗi này_
