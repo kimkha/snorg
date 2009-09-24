@@ -5,7 +5,8 @@
 	 * added pulldown type to fields
 	 * added datepulldown input
 	 *
-	 * @package ImprovedProfile
+	 * @author KimKha
+	 * 
 	 */
 	/**
 	 * @author Snow.Hellsing <snow@g7life.com>
