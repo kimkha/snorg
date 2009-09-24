@@ -15,8 +15,7 @@
 		
 		echo "<b>Not Confirm Guest:</b><br>";
 		
-		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$vars['entity']->owner_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
-		
+		echo "<a href='javascript:viewFriendsBox(\"calendar&relationship=eventrequest\", {$event_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
 		
 		echo "<div id=\"widget_friends_list\">";
 		
@@ -38,8 +37,9 @@ $attender = get_entities_from_relationship('eventmaybeattend',$event_guid,false,
 	if (is_array($attender) && sizeof($attender) > 0) {
 		
 		echo "<b>Maybe Attend:</b><br>";
+	
 		
-		echo "<a id='btn_show_all' href='javascript:viewFriendsBox(\"GetFriends\", {$vars['entity']->owner_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
+		echo "<a href='javascript:viewFriendsBox(\"calendar&relationship=eventmaybeattend\", {$event_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
 		
 		
 		echo "<div id=\"widget_friends_list\">";
