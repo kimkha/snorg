@@ -30,15 +30,24 @@
 	if (!empty($body)) {
 		if (thewire_save_post($body, $access_id, $parent, $method, $tagarray, $owner->guid)) {
 			$latest_wire = get_entities("object", "thewire", null, "", 1, 0, false, 0, $owner->guid);
+			
+			
+				
 			if ($latest_wire) {
 				$return = array();
 				$latest_wire = $latest_wire[0];
+				
+				
 				
 				// View new status
 				$return['status'] = $latest_wire->description;
 				$return['status'] .= "<span> (" . friendly_time($latest_wire->time_created) . ")</span>";
 				if($owner->guid != $_SESSION['user']->guid) $return['status'] = '';
 				
+				if($owner->guid != $_SESSION['user']->guid)
+				{
+					notify_user($owner->guid, $_SESSION['user']->getGUID(),' đã viết lên',' tường của bạn -'. $CONFIG->wwwroot."pg/profile/" . $owner->username); 
+				}
 				// Update list
 				$return['list'] = elgg_view_entity($latest_wire);
 				$return['wall'] = view_wallpost($latest_wire->getSubtype(), array('entity' => $latest_wire, 'viewtype' => 'wall'));
