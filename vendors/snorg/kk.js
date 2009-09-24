@@ -211,7 +211,11 @@ function $kdialog() {
 		/* construct overlay */
 		kdialog.before("<div id='koverlay'></div>");
 		koverlay = $("#koverlay");
+		
+		koverlay.height($(window).height());
+		koverlay.width($(window).width());
 		koverlay.height(window.outerHeight);
+		koverlay.width(window.outerWidth);
 		
 		this.clickOverlay();
 	};
