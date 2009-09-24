@@ -133,7 +133,7 @@
 		}
 		
 		function get_unread_notification($guid) {
-			$all = get_entities('object', 'notification', 0, "", 9999);
+			$all = get_entities('object', 'notification', null, "", 9999);
 			
 			$unread = array();
 			foreach ($all as $obj) {

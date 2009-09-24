@@ -19,7 +19,7 @@
 		set_page_owner($_SESSION['guid']);
 		set_context('blog');
 		
-		$order_type = get_input("orderby","time");
+		$order_type = get_input("orderby","");
 		
 		$select_options = array(
 			'time' => 'Created time',

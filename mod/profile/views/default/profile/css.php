@@ -130,3 +130,6 @@ div.usericon a.icon img {
 	border:3px solid #FF0000;
 	padding:2px;
 }
+
+
+ 
