@@ -28,16 +28,18 @@ $(document).ready(function() {
 
 </script>
 
-
-<div id="starsinput<?php echo $vars['entity']->guid?>" class="rating">&nbsp; </div>
-<div id="ratepoint<?php echo $vars['entity']->guid?>"> +  
+<div class="blograting">
+<div id="starsinput<?php echo $vars['entity']->guid?>" class="rating"></div>
+<div id="ratepoint<?php echo $vars['entity']->guid?>" class="point">
 <?php
-	if (!$vars['entity']->ratetotal)
-		echo ' 0';
-	else  
-		echo ' '.$vars['entity']->ratetotal . ' ' . substr($vars['entity']->rateaverage,0,3) ;
-?> 
-
+	if ($vars['entity']->ratecount > 0) {
+		echo "<i>(";
+		echo sprintf(elgg_echo('blograting:summary'), $vars['entity']->ratecount);
+		echo ")</i>";
+	}
+?>
+</div>
+<div class="clearfloat"></div>
 </div>
 
 

@@ -49,28 +49,30 @@ jQuery.fn.rating = function(url, options) {
     url: settings.url
   });
   settings.increment = (settings.increment < .75) ? .5 : 1;
-  var s = 0;
+  
+  function reviewRate() {
+  	var s = 0;
 	for(var i= 0; i <= settings.maxvalue ; i++){
     if (i == 0) {
 	    if(settings.cancel == true){
-        var div = '<div class="cancel"><a href="#0" title="Cancel Rating">Cancel Rating</a></div>';
-        container.empty().append(div);
-      }
-    } else {
-      var $div = $('<div class="star"></div>')
-        .append('<a href="#'+i+'" title="Give it '+i+'/'+settings.maxvalue+'">'+i+'</a>')
-        .appendTo(container);
-      if (settings.increment == .5) {
-        if (s%2) {
-          $div.addClass('star-left');
-        } else {
-          $div.addClass('star-right');
+          var div = '<div class="cancel"><a href="#0" title="Cancel Rating">Cancel Rating</a></div>';
+          container.empty().append(div);
+        }
+      } else {
+        var $div = $('<div class="star"></div>')
+          .append('<a href="#'+i+'" title="Give it '+i+'/'+settings.maxvalue+'">'+i+'</a>')
+          .appendTo(container);
+        if (settings.increment == .5) {
+          if (s%2) {
+            $div.addClass('star-left');
+          } else {
+            $div.addClass('star-right');
+          }
         }
       }
+      i=i-1+settings.increment;
+      s++;
     }
-    i=i-1+settings.increment;
-    s++;
-  }
 	
 	var stars = $(container).children('.star');
   var cancel = $(container).children('.cancel');
@@ -102,15 +104,16 @@ jQuery.fn.rating = function(url, options) {
 	      settings.disable = true;
 			if(settings.cancel == true){
 	      $.post(container.url, {
-	        "rating": $(this).children('a')[0].href.split('#')[1],
-			"user": settings.user,
-			"entity": settings.entity 
-	      }, function(data){
-	      		token = data.split('-');    	
-	      		settings.curvalue = rateround(token[0]); 
-				$("#ratepoint"+settings.entity).html("+"+token[1]);
-						
-	      	   } 
+	        rating: $(this).children('a')[0].href.split('#')[1],
+			user: settings.user,
+			entity: settings.entity 
+	      }, function(data){   	
+	      		settings.curvalue = rateround(data.average); 
+				$("#ratepoint"+settings.entity).html(data.total);
+				stars.html("");
+				reviewRate();
+	      	   },
+			 'json'
 		  );
 				return false;
 			} else if (settings.maxvalue == 1) {
@@ -118,16 +121,16 @@ jQuery.fn.rating = function(url, options) {
 				settings.curvalue = (settings.curvalue == 0) ? 1 : 0;
 				$(this).toggleClass('on');
 				$.post(container.url, {
-	        "rating": $(this).children('a')[0].href.split('#')[1],
-			"user": settings.user,
-			"entity": settings.entity 
+	        rating: $(this).children('a')[0].href.split('#')[1],
+			user: settings.user,
+			entity: settings.entity 
 	      });
 				return false;
 			}
 			settings.disable = false;
 			return true;
 		} else {
-			alert ('<?php echo elgg_echo('blograting:hasrate') ?>')
+			$kalert('<?php echo elgg_echo('blograting:hasrate') ?>')
 		}				
 	  });
   
@@ -181,7 +184,10 @@ jQuery.fn.rating = function(url, options) {
 		}
 	};    
 	event.reset();
-	
+}
+  
+  reviewRate();
+
 	return(this);	
 
 };
