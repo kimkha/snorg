@@ -26,11 +26,11 @@
 		<td width="288" height="50">		</td>
 		
 	  <td width="670" height="50" align="right">
-		<p class="footer_toolbar_links">
+		<div class="footer_toolbar_links">
 		<?php
 			echo elgg_view('footer/links');
 		?>
-		</p>
+		</div>
 		</td>
 	</tr>
 	

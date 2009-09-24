@@ -43,12 +43,16 @@
 	$topentries .= '</ol>'; 
 	create_metadata($user->guid, 'TOP ENTRIES', $topentries, 'text', $user->guid, ACCESS_PUBLIC);
 	
-	$result = $rate_entry->rateaverage;
-	$result .= '-';
-	$result .=  $rate_entry->ratetotal;
+	$result = array();
+	$result['average'] = $rate_entry->rateaverage;
+	$result['total'] = "<i>(" .sprintf(elgg_echo('blograting:summary'), $rate_entry->ratecount). ")</i>";
 	
-	
-	echo $result;
+	header("Content-Type: application/json; charset=UTF-8");
+	header("Cache-Control: no-store, no-cache, must-revalidate");
+	header("Cache-Control: post-check=0, pre-check=0", false);
+	header("Pragma: no-cache");
+
+	echo json_encode($result);
 	
 	exit();
 ?>

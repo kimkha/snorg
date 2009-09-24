@@ -1,10 +1,19 @@
 <?php
 	
 ?>
-
+.blograting {
+	float: left;
+	margin: 0px;
+	padding: 2px 10px;
+}
+.blograting .point {
+	float: left;
+	display: inline-block;
+}
 .rating {
 	cursor: pointer;
-	
+	float: left;
+	display: inline-block;
 }
 .rating:after {
 	content: '.';
@@ -13,8 +22,8 @@
 	clear: both;
 	visibility: hidden;
 }
-.cancel,
-.star {
+.rating .cancel,
+.rating .star {
 	float: left;
 	width: 17px;
 	height: 15px;
@@ -22,22 +31,30 @@
 	text-indent: -999em;
 	cursor: pointer;
 }
-.star-left,
-.star-right {
+.rating .star-left,
+.rating .star-right {
   width: 8px
 }
-.cancel,
-.cancel a {background: url(<?php echo $vars['url'].'_graphics/'?>delete.gif) no-repeat 0 -16px;}
+.rating .cancel,
+.rating .cancel a {
+	background: url(<?php echo $vars['url'].'_graphics/'?>delete.gif) no-repeat 0 -16px;
+}
 
-.star,
-.star a {background: url(<?php echo $vars['url'].'_graphics/'?>star.gif) no-repeat 0 0px;}
-.star-left,
-.star-left a {background: url(<?php echo $vars['url'].'_graphics/'?>star-left.gif) no-repeat 0 0px;}
-.star-right,
-.star-right a {background: url(<?php echo $vars['url'].'_graphics/'?>star-right.gif) no-repeat 0 0px;}
+.rating .star,
+.rating .star a {
+	background: url(<?php echo $vars['url'].'_graphics/'?>star.gif) no-repeat 0 0px;
+}
+.rating .star-left,
+.rating .star-left a {
+	background: url(<?php echo $vars['url'].'_graphics/'?>star-left.gif) no-repeat 0 0px;
+}
+.rating .star-right,
+.rating .star-right a {
+	background: url(<?php echo $vars['url'].'_graphics/'?>star-right.gif) no-repeat 0 0px;
+}
 	
-.cancel a,
-.star a {
+.rating .cancel a,
+.rating .star a {
 	display: block;
 	width: 100%;
 	height: 100%;
