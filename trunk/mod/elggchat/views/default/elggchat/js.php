@@ -73,6 +73,7 @@
 		var currentChatWindow = $("#chatwindow" + sessionid + " .chatmembersfunctions_invite"); 
 		if(currentChatWindow.css("display") != "block"){
 			currentChatWindow.html("");
+			var canInvite = false;
 			$("#elggchat_friends_picker .chatmemberinfo").each(function(){
 				var friend = $(this).find("a");
 				if(!($("#chatwindow" + sessionid + " .chatmember a[rel='" + friend.attr('rel') + "']").length > 0)){
@@ -80,10 +81,16 @@
 					newFriend += friend.html();
 					newFriend += "</a><br />";
 					currentChatWindow.append(newFriend);
+					canInvite = true;
 				}
 			});
+			if (!canInvite) currentChatWindow.html("<i><?php echo elgg_echo('elggchat:chat:caninvite'); ?></i>");
 		}
 		currentChatWindow.slideToggle();
+		
+		currentChatWindow.blur(function(){
+			$(this).slideToggle();
+		});
 	}
 	
 	function addFriend(sessionid, friend){
@@ -312,6 +319,18 @@
 	function insertMessage(sessionid, msg) {
 		var last = $("#chatwindow" + sessionid + " .chatmessages div:last-child");
 		var newsession = "";
+		var uid = parseInt(msg.guid);
+		
+		if (uid == 0) {
+			newsession = "<div name='message' id='" + msg.offset + "' class='systemMessageWrapper'>";
+			newsession += msg.content;
+			newsession += "</div>";
+			$("#chatwindow" + sessionid + " .chatmessages").append(newsession);
+			scroll_to_bottom(sessionid);
+			eraseCookie("chat_current_time_"+sessionid);
+			return true;
+		}
+		
 		if (typeof(last) != "undefined") {
 			var msgGUID = last.find(".messageGUID").html();
 			var msgcontent = last.find(".messageContent").html();
@@ -320,22 +339,12 @@
 			
 			if (msgGUID != null && msgGUID != '') {
 				msgGUID = parseInt(msgGUID);
-				uid = parseInt(msg.guid);
 				msgtime = (msgtime == msg.time)?'':"<div class='messageTime'>" + msg.time + "</div>";
 				
 				if (msgGUID == uid) {
 					last.find(".messageContent").html(msgcontent + msgtime + "<p>" + msg.content + "</p>");
 					scroll_to_bottom(sessionid);
 					createCookie("chat_current_time_"+sessionid, msg.time, 1);
-					return true;
-				}
-				else if (uid == 0) {
-					newsession = "<div name='message' id='" + msg.offset + "' class='systemMessageWrapper'>";
-					newsession += msg.content;
-					newsession += "</div>";
-					$("#chatwindow" + sessionid + " .chatmessages").append(newsession);
-					scroll_to_bottom(sessionid);
-					eraseCookie("chat_current_time_"+sessionid);
 					return true;
 				}
 			}

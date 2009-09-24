@@ -28,7 +28,8 @@
 		// Load the language files
 		register_translations($CONFIG->pluginspath . "fbconnect/languages/");
 		
-		extend_view("account/forms/login", "fbconnect/login");
+		if (get_plugin_setting('api_key', 'fbconnect') != "" && get_plugin_setting('api_secret', 'fbconnect') != "")
+			extend_view("account/forms/login", "fbconnect/login");
 		
 		// Extend system CSS with our own styles
 		extend_view('css','fbconnect/css');

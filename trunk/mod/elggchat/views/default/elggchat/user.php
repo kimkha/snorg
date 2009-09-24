@@ -53,7 +53,9 @@ if(!empty($user) && $user instanceof ElggUser){
 		$diff = time() - $user->last_action;
 		
 		$inactive = (int) get_plugin_setting("onlinestatus_inactive", "elggchat");
+		if (!$inactive) $inactive = 600;
 		$active = (int) get_plugin_setting("onlinestatus_active", "elggchat");
+		if (!$active) $active = 60;
 		
 		$title = sprintf(elgg_echo("elggchat:session:onlinestatus"), friendly_time($user->last_action));
 		
