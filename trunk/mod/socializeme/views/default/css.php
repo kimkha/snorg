@@ -243,7 +243,7 @@ border:1px solid #ccc;
 	padding:0;
 }
 #two_column_left_sidebar_boxes .sidebarBox {
-	margin:0px;
+	margin: 0 0 10px 0px;
     width:210px;
     padding:4px 5px 5px 5px;
 }

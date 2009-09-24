@@ -50,11 +50,7 @@ background:#f5f5f5;
 	float:right;
 }
 .sidebarBox input.thewire_characters_remaining_field {
-	background: #dedede;
-}
-.sidebarBox input.thewire_characters_remaining_field:focus {
-	background: #dedede;
-	border:none;
+	background: #F5F5F5;
 }
 .sidebarBox input#thewire_submit_button {
 	margin:2px 0 0 0;

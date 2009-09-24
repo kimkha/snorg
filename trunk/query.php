@@ -20,12 +20,8 @@
 	        
 	        $friends_info = array();
 
-	               	
-	        $count =0;
 	        foreach ($friends as $friend){
-				$friend_info = array($friend->username,$friend->getURL(),$friend->getIcon('tiny'));
- 				$friends_info[$count++] = $friend_info;
-   			   
+				$friends_info[] = array($friend->username,$friend->getURL(),$friend->getIcon('tiny'));
 	        }
 	        
 	        echo json_encode($friends_info);
@@ -34,11 +30,8 @@
 	   } else if ($action == 'GetSitenotification'){
 	   		$user_guid =  get_input('user_guid');
 	   		
-	   		//Mark all as read
-			mark_all_as_read();   	
-			/////////////
-				
-	   		$user_notifications = get_entities_from_metadata('to',$user_guid, 'object', 'notification',0, 15, 0,"",0,false);
+			$user_notifications = get_unread_notification($user_guid);
+	   		
 	   		$user_notifications_json = array();
 			
 			$count = 0;
@@ -55,19 +48,24 @@
 				$notification_json[2] = $action;
 				$notification_json[3] = $target_object[0]; //object name
 				$notification_json[4] = $target_object[1]; //object url
-				$user_notifications_json[$count++] = $notification_json;
+				$user_notifications_json[] = $notification_json;
 				                   
 	        }
+	        
+	   		//Mark all as read
+			mark_all_as_read($user_guid);   	
+			/////////////
+			
 	        echo json_encode($user_notifications_json);
 	   		
 	   } else if ($action == 'GetUnreadSitenotification'){
 	   		$user_guid =  get_input('user_guid');
 	   		
 	   		
-	   		$user_notifications = get_entities_from_metadata( 'to' , $user_guid, 'object', 'notification',0, 9999);
+	   		$user_notifications = get_unread_notification($user_guid);
+	   		
 	   		$user_notifications_json = array();
 			
-			$count = 0;
 			foreach ($user_notifications as $notification){
 				$notification_json = array();
 				$from_user = get_user($notification->container_guid);
@@ -81,17 +79,20 @@
 				$notification_json[2] = $action;
 				$notification_json[3] = $target_object[0]; //object name
 				$notification_json[4] = $target_object[1]; //object url
-				$user_notifications_json[$count++] = $notification_json;
+				
+				$user_notifications_json[] = $notification_json;
 				                   
 	        }
+	        
 	        //Mark all as read
-			mark_all_as_read();   	
+			mark_all_as_read($user_guid);   	
 			/////////////
 				
 	        echo json_encode($user_notifications_json);
 	   		
 	   } else if ($action == 'GetNewSitenotificationCount'){
-	   		echo count_unread_sitenotification();
+	   		$user_guid = get_input('user_guid');
+	   		echo json_encode(array('count' => count_unread_sitenotification($user_guid)));
 	   } else if ($action == 'GetPeopleYouMayKnow'){
 	   	
 	   		$page_owner = get_loggedin_user();
