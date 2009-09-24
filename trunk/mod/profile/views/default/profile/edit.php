@@ -60,19 +60,6 @@
 				}
 	
 				/*
-				 * MOD START by Snow
-				 */
-				/*
-				 * HACK START
-				 * replace email field value with user->email instead of meta
-				 */
-				/*if ('email' == $shortname) {
-					$value = $vars['entity']->email;
-				}*/
-				/*
-				 * HACK END
-				 */
-				/*
 				 * now built the edit form
 				 */
 				if ($curr_field_category != $last_field_category) {

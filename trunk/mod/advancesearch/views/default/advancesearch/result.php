@@ -13,8 +13,13 @@
 $offset = get_input('offset', 0);
 
 if (is_array($vars['config']->profile) && sizeof($vars['config']->profile) > 0) {
-	$alltag = $vars['config']->profile;
+	$alltag = array();
+	foreach ($vars['config']->profile as $item) {
+		$alltag = array_merge($item, $alltag);
+	}
+	
 	unset($alltag['description']);
+	unset($alltag['birthday']);
 	
 	$result_array = array();
 	$max_score = 0;
