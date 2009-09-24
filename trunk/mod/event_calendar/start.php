@@ -118,7 +118,7 @@
 			add_submenu_item(elgg_echo("event_calendar:site_wide_link"), $CONFIG->wwwroot . "pg/event_calendar/");
 			$site_calendar = get_plugin_setting('site_calendar', 'event_calendar');
 			if (!$site_calendar || $site_calendar == 'admin') {
-				if (isadminloggedin()) {
+				if (isloggedin()) {
 					// only admins can post directly to the site-wide calendar
 					add_submenu_item(elgg_echo('event_calendar:new'), $CONFIG->url . "pg/event_calendar/new/", 'eventcalendaractions');
 				}
