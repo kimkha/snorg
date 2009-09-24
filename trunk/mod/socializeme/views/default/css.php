@@ -1051,13 +1051,13 @@ p.user_menu_friends_of {
 }
 /* profile owner name */
 #profile_info_column_middle h2 {
-	padding:0 0 14px 0;
 	margin:0;
+	line-height:1.2em;
+	display: inline;
 }
 #profile_info_column_middle .profile_status {
-	background:#fff5b1;
 	padding:2px 4px 2px 4px;
-	line-height:1.2em;
+	display: inline;
 }
 #profile_info_column_middle .profile_status span {
 	font-size:80%;
@@ -2755,7 +2755,9 @@ border-top:none;
 
 /* Wall post */
 .wall-singlepage {
-	margin:10px 10px 20px 10px;
+	margin:10px;
+	border-bottom: 1px solid #C5E3F3;
+	padding-bottom: 10px;
 }
 .wall-singlepage .note_body {
 	margin:0;
@@ -2850,7 +2852,7 @@ border-top:none;
 * html .wall-singlepage .delete_note a:hover { background-position: 0 -14px; }
 
 .wall_comments {
-	margin: 0px 10px;
+	margin: 0px 20px 0px 10px;
 	border: 1px solid #E7E7E7;
 	background: #C5E3F3;
 }

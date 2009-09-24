@@ -13,6 +13,14 @@
 	$profile = $CONFIG->profile;
 	$entity = $vars['entity'];
 
+		if ($vars['entity']->canEdit()) {
+?>
+		<p class="profile_info_edit_buttons">
+			<a href="<?php echo $vars['url']; ?>mod/profile/edit.php?username=<?php echo $vars['entity']->username; ?>"><?php echo elgg_echo("profile:edit"); ?></a>
+		</p>
+<?php
+		}
+
 	if (is_array($profile) && sizeof($profile) > 0){
 		$even_odd = null;		
 		foreach ($profile as $category) {
