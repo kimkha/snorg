@@ -29,7 +29,9 @@
 
 <?php
 	$profile = $vars['config']->profile;
-	//echo "<pre>"; print_r($profile);die;
+//	echo '<pre>'; print_r($vars['config']->profile['contact']['email']);die;
+	unset($vars['config']->profile['contact']['email']);
+//	echo '<pre>'; print_r($vars['config']->profile['contact']);die;
 	//var_export($vars['profile']);
 	if (is_array($profile) && sizeof($profile) > 0){		
 		
@@ -63,10 +65,10 @@
 				 * now built the edit form
 				 */
 				if ($curr_field_category != $last_field_category) {
-					echo "<p class=\"profile_category_title\" id=\"profile:category:$curr_field_category\">".elgg_echo("profile:category:$curr_field_category")."</p>";
+					echo "<p class=\"profile_category_title\" id=\"profile:category:$curr_field_category\">". strtoupper(elgg_echo("profile:category:$curr_field_category")) ."</p>";
 				}
 				echo "<p id=\"profile:{$shortname}\">";
-				echo "<lable>".elgg_echo("profile:{$shortname}").'<br />';
+				echo "<lable><b>".elgg_echo("profile:{$shortname}").'</b><br />';
 				switch ($valuetype) {
 					default:
 						echo elgg_view("input/{$valuetype}",

@@ -17,7 +17,8 @@
 ?>
 .profile_category_title{
 	display: block;
-	border-top: 0.5px dotted;
+	border-bottom: 0.5px dotted;
+	font-weight: bold;
 }
 
 #profile_icon_wrapper {
