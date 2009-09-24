@@ -33,17 +33,32 @@
 					foreach ($comments as $comment) {
 						$otherUser[] = $comment->owner_guid;
 					}
-					
+					//	echo "<pre>"; print_r($otherUser);	
+						//	echo "<pre>"; print_r("-----------");	
+				
 					
 					$otherUser = array_unique($otherUser);
-								
+							
+							//	echo "<pre>"; print_r($otherUser);	
+					//echo "<pre>"; print_r("-----------");	
 					
 					$lastUser = $_SESSION['user'];
 					
+					$int = array_search($_SESSION['user']->getGUID(),$otherUser);
+					if (is_numeric($int))
+						unset($otherUser[$int]);
+					//echo "<pre>"; print_r($otherUser);	
+				//	echo "<pre>"; print_r("-----------");
 					
-					unset($otherUser[array_search($_SESSION['user']->getGUID(),$otherUser)]);
-					unset($otherUser[array_search($entity->owner_guid,$otherUser)]);
+								
+					$int = array_search($entity->owner_guid,$otherUser);
+					if (is_numeric($int))
+						unset($otherUser[$int]);
+				//	echo "<pre>"; print_r($otherUser); die;
 					
+				//	echo "<pre>"; print_r($otherUser); die;
+						// snorg - bkit06 - send notify to person who is comment on this topic
+				
 						
 					
 						// snorg - bkit06 - send notify to person who is tagged in photo
@@ -53,23 +68,33 @@
 								$friend_array[] = $friend->getGUID();
 							}
 							
-							unset($friend_array[array_search($_SESSION['user']->getGUID(),$friend_array)]);
+						$int = array_search($_SESSION['user']->getGUID(),$friend_array);
+						if (is_numeric($int))
+						{
+								unset($friend_array[$int]);	
+						}
+						
 						
 							foreach($friend_array as $uid)
 							{
-								unset($otherUser[array_search($uid,$otherUser)]);
-								notify_user($uid, $lastUser->getGUID(), " Commented on photo ",$entity->title."-".$entity->getURL());
+								$int = array_search($uid,$otherUser);
+								if (is_numeric($int))
+									unset($otherUser[$int]);
+									
+								if ($uid != $entity->owner_guid )
+									notify_user($uid, $lastUser->getGUID(), " Commented on photo ",$entity->title."-".$entity->getURL());
 							}
 							
 							
 					}
-						// snorg - bkit06 - send notify to person who is comment on this topic
+					
+					
 					foreach ($otherUser as $uid) {
 											
 						notify_user($uid, $lastUser->getGUID(), "also comment on topic",$entity->title."-".$entity->getURL());
 						
 					}	
-	
+						//echo "<pre>"; print_r($otherUser); die;
 
 
 					system_message(elgg_echo("generic_comment:posted"));
