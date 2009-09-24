@@ -737,14 +737,14 @@ Once you have logged in, we highly recommend that you change your password.
 		 * Installation and system settings
 		 */
 	
-			'installation:error:htaccess' => "Elgg requires a file called .htaccess to be set in the root directory of its installation. We tried to create it for you, but Elgg doesn't have permission to write to that directory. 
+			'installation:error:htaccess' => "SNORG requires a file called .htaccess to be set in the root directory of its installation. We tried to create it for you, but SNORG doesn't have permission to write to that directory. 
 
 Creating this is easy. Copy the contents of the textbox below into a text editor and save it as .htaccess
 
 ",
-			'installation:error:settings' => "Elgg couldn't find its settings file. Most of Elgg's settings will be handled for you, but we need you to supply your database details. To do this:
+			'installation:error:settings' => "SNORG couldn't find its settings file. Most of SNORG's settings will be handled for you, but we need you to supply your database details. To do this:
 
-1. Rename engine/settings.example.php to settings.php in your Elgg installation.
+1. Rename engine/settings.example.php to settings.php in your SNORG installation.
 
 2. Open it with a text editor and enter your MySQL database details. If you don't know these, ask your system administrator or technical support for help.
 
@@ -753,18 +753,18 @@ Alternatively, you can enter your database settings below and we will try and do
 			'installation:error:configuration' => "Once you've corrected any configuration issues, press reload to try again.",
 	
 			'installation' => "Installation",
-			'installation:success' => "Elgg's database was installed successfully.",
+			'installation:success' => "SNORG's database was installed successfully.",
 			'installation:configuration:success' => "Your initial configuration settings have been saved. Now register your initial user; this will be your first system administrator.",
 	
 			'installation:settings' => "System settings",
-			'installation:settings:description' => "Now that the Elgg database has been successfully installed, you need to enter a couple of pieces of information to get your site fully up and running. We've tried to guess where we could, but <b>you should check these details.</b>",
+			'installation:settings:description' => "Now that the SNORG database has been successfully installed, you need to enter a couple of pieces of information to get your site fully up and running. We've tried to guess where we could, but <b>you should check these details.</b>",
 	
 			'installation:settings:dbwizard:prompt' => "Enter your database settings below and hit save:",
 			'installation:settings:dbwizard:label:user' => "Database user",
 			'installation:settings:dbwizard:label:pass' => "Database password",
-			'installation:settings:dbwizard:label:dbname' => "Elgg database",
+			'installation:settings:dbwizard:label:dbname' => "SNORG database",
 			'installation:settings:dbwizard:label:host' => "Database hostname (usually 'localhost')",
-			'installation:settings:dbwizard:label:prefix' => "Database table prefix (usually 'elgg')",
+			'installation:settings:dbwizard:label:prefix' => "Database table prefix (usually 'snorg')",
 	
 			'installation:settings:dbwizard:savefail' => "We were unable to save the new settings.php. Please save the following file as engine/settings.php using a text editor.",
 	
@@ -780,7 +780,7 @@ Alternatively, you can enter your database settings below and we will try and do
 			'installation:debug:label' => "Turn on debug mode",
 			'installation:httpslogin' => "Enable this to have user logins performed over HTTPS. You will need to have https enabled on your server for this to work.",
 			'installation:httpslogin:label' => "Enable HTTPS logins",
-			'installation:usage' => "This option lets Elgg send anonymous usage statistics back to Curverider.",
+			'installation:usage' => "This option lets SNORG send anonymous usage statistics back to SNORG Team.",
 			'installation:usage:label' => "Send anonymous usage statistics",
 			'installation:view' => "Enter the view which will be used as the default for your site or leave this blank for the default view (if in doubt, leave as default):",
 
