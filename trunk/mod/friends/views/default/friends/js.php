@@ -3,12 +3,11 @@
 
 ?>
 
-function viewFriendsBox(action, ownerId) {
-	var title;
+function viewFriendsBox(action, ownerId, title) {
 	var content;
 	var wrapper;
 	
-	title='Friends';
+	if (title == "") title='Friends';
 	content = "<input id='inputFilter' type='text'/>";
 	content += "<div id =\"friends_wrapper\" style=\"max-height: 300px; overflow-y:auto;\"> </div>";
 	wrapper = $kbox(title, content);

@@ -10,10 +10,6 @@
 	 * @link http://www.pedroprez.com.ar/
  */
 ?>
-
-	<p class="user_menu_friends">
-		<a href="<?php echo $vars['url']; ?>pg/friends/<?php echo $vars['entity']->username; ?>/"><?php echo elgg_echo("friends"); ?></a>	
-	</p>
 	<?php if(!$CONFIG->mod->friends_of_friends->config->hidefriendsof): ?>
 		<p class="user_menu_friends_of">
 			<a href="<?php echo $vars['url']; ?>pg/friendsof/<?php echo $vars['entity']->username; ?>/"><?php echo elgg_echo("friends:of"); ?></a>	

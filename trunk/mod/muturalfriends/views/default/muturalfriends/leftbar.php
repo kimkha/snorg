@@ -40,7 +40,7 @@
 		echo "<div id='muturalfriends-leftbar' class='collapsable_box'>";
 		echo "<div class='collapsable_box_header'>";
 		echo '<a class="toggle_box_contents" href="javascript:void(0);">-</a>';
-		echo " <div class='leftbar_show_all' href='javascript:viewFriendsBox(\"GetMutualFriends\", {$owner->guid});' > " . elgg_echo('friends:widget:showall')."</div>";
+		echo " <div class='leftbar_show_all' onclick='javascript:viewFriendsBox(\"GetMutualFriends\", {$owner->guid}, \"Mutural friends\");' > " . elgg_echo('friends:widget:showall')."</div>";
 		echo '<h1>'.elgg_echo("friends:mutural").'</h1>';
 		echo "<div class='clearfloat'></div></div>";
 		
