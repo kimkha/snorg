@@ -24,7 +24,7 @@
 	if ( count($list) > 0)
 	{
 		$i = 0;
-		echo " <a id='btn_pymk_show_all' href='javascript:void(0);'> " . ' ' . elgg_echo('friends:widget:showall')."</a>";
+		echo " <a href='javascript:viewFriendsBox(\"GetPeopleYouMayKnow\", ".$page_owner->guid.");'>" . elgg_echo('friends:widget:showall')."</a>";
 		echo "<div id=\"widget_friends_list\">";
 		foreach ( $list as $people)
 		{
