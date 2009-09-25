@@ -3,6 +3,7 @@
 	 * Comment on wall post
 	 * 
 	 * @author KimKha
+	 * @package SNORG
 	 */
 	
 	$entity = get_entity((int) get_input("id"));
