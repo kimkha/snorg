@@ -15,13 +15,13 @@ $vietnamese = array(
 	'poll:yourfriends' => 'Cuộc bầu chọn từ bạn bè',
 	'poll:question' => 'Câu hỏi bầu chọn',
 	'poll:responses' => 'Các phương án chọn lựa (Phân biệt bởi dấu phẩy)',
-	'poll:river:voted' => '<a href=\"http://bkitclub.net/release/pg/profile/facebook_613548833\">Luong Duy Hoai</a> đã bỏ phiếu',
+	'poll:river:voted' => '%s đã bỏ phiếu',
 	'poll:river:vote' => 'cho cuộc thăm dò: ',
-	'poll:river:updated' => '<a href=\"http://bkitclub.net/release/pg/profile/facebook_1336879630\">Tran Vu</a> đã cập nhật',
+	'poll:river:updated' => '%s đã cập nhật',
 	'poll:river:update' => 'cuộc thăm dò: ',
-	'poll:strapline' => '25 tháng 9, 2009',
-	'poll:user' => 'Cuộc thăm dò của Tran Vu',
-	'poll:user:friends' => 'Cuộc thăm dò của bạn bè Tran Vu',
+	'poll:strapline' => '%s',
+	'poll:user' => 'Cuộc thăm dò của %s',
+	'poll:user:friends' => 'Cuộc thăm dò của bạn bè %s',
 	// END NEW STRING
 
 );

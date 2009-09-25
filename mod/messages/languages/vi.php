@@ -7,8 +7,8 @@ $vietnamese = array(
 	// NEW STRING HERE
 
 	'messages:inbox' => 'Hộp thư',
-	'messages:compose' => 'Gửi 1 tin nhắn mới',
-	'messages:sentmessages' => 'Các tin nhắn đã gửi',
+	'messages:compose' => 'Soạn tin mới',
+	'messages:sentmessages' => 'Tin nhắn đã gửi',
 	'messages:to' => 'Đến',
 	'messages:title' => 'Tiêu đề',
 	'messages:message' => 'Nội dung',
