@@ -320,7 +320,6 @@ span.contentIntro p {
 	margin:0;
 	text-align: left;
 	vertical-align: top;
-	height: 100%;
 }
 /* IE6 fixes */
 * html #widgets_right { float:none; }
