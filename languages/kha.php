@@ -49,6 +49,7 @@ $vietnamese = array(
 	'resetpassword' => "Tạo lại mật khẩu",
 	'makeadmin' => "Cấp quyền quản trị",
 	'removeadmin' => "Thu lại quyền quản trị",
+	'invite' => "Mời",
 	
 	/**
 	 * Languages according to ISO 639-1
@@ -358,6 +359,31 @@ Tôi muốn mời bạn tham gia mạng xã hội của chúng tôi tại %s.",
 	
 	'profile:hard_to_tell' => "Đang gặp rắc rối",
 	
+	'messages:send' => "Gửi tin nhắn",
+	
+	'messages:fly' => "Gửi đi",
+	
+	'messages:user' => "Hộp thư đến",
+	
+	'messages:markread' => "Đánh dấu đã đọc",
+	
+	'messages:toggle' => "Đảo ngược lựa chọn",
+	
+	'messages:sentMessages' => "Hộp thư đã gửi",
+	
+	'groups:access:private' => "Nhóm đóng - Chỉ những người được mời",
+	
+	'groups:access:public' => "Nhóm mở - Ai cũng có thể tham gia",
+	
+	'groups:group' => "Nhóm",
+	
+	'izap_videos:save' => "Lưu",
+	
+	'izap_videos:deleteNow' => "Xoá ngay",
+	
+	'reportedcontent' => 'Báo cáo nội dung',
+	
+	'reportedcontent:add' => 'Gửi báo cáo',
 );
 
 

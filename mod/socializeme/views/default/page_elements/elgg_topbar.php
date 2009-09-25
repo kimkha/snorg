@@ -16,9 +16,9 @@
 <div id="elgg_topbar_container_left">
 	<div class="toolbarimages">
 		<a href="http://www.elgg.org" target="_blank"><img src="<?php echo $vars['url']; ?>mod/socializeme/graphics/elgg_toolbar_logo.png" /></a>
-		
-		<a href="<?php echo $_SESSION['user']->getURL(); ?>"><img class="user_mini_avatar" src="<?php echo $_SESSION['user']->getIcon('topbar'); ?>"></a>
-		
+	</div>
+	<div class="toolbarlinks">
+		<a href="<?php echo $_SESSION['user']->getURL(); ?>" class="pagelinks"><?php echo splitname($_SESSION['user']->name, 20); ?></a>
 	</div>
 	<div class="toolbarlinks">
 		<a href="<?php echo $vars['url']; ?>pg/dashboard/" class="pagelinks"><?php echo elgg_echo('dashboard'); ?></a>

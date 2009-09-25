@@ -17,6 +17,7 @@
 	
 			'item:object:reported_content' => 'Reported items',
 			'reportedcontent' => 'Reported content',
+			'reportedcontent:add' => 'Send report',
 			'reportedcontent:this' => 'Report this',
 			'reportedcontent:none' => 'There is no reported content',
 			'reportedcontent:report' => 'Report to admin',

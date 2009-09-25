@@ -56,8 +56,8 @@ END;
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="ElggRelease" content="<?php echo $release; ?>" />
-	<meta name="ElggVersion" content="<?php echo $version; ?>" />
+	<meta name="SnorgRelease" content="<?php echo $release; ?>" />
+	<meta name="SnorgVersion" content="<?php echo $version; ?>" />
 	<title><?php echo $title; ?></title>
 
 	
