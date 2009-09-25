@@ -17,7 +17,7 @@
 	$recommend = array(
 		
 		// Level 0
-		'CV', // Must before blograting, stick, testimony
+		'cv', // Must before blograting, stick, testimony
 		'groups', // Must before notifications
 		
 		// Level 1
