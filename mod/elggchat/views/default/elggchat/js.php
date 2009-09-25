@@ -247,7 +247,23 @@
 				});
 								
 				// register submit events on message input
-				$(".elggchatinput textarea").keypress(function(e){
+			/*	$(".elggchatinput textarea").keypress(function(e){
+					$(this).height($(this).attr("scrollHeight"));
+					
+					if (e.which == 13) {
+						var input = $.trim($(this).val());
+						
+						if(input != ""){
+							$.post("<?php echo $CONFIG->wwwroot;?>action/elggchat/post_message", $(this).parent().serialize(), function(data){
+								checkForSessions();
+							});
+						}
+						// empty input field
+						$(this).val("");
+						$(this).height(15);
+					}
+				});/**/
+				$(".elggchatinput textarea").keyup(function(e){
 					$(this).height($(this).attr("scrollHeight"));
 					
 					if (e.which == 13) {
@@ -308,6 +324,7 @@
 			$("#chatwindow" + id).toggleClass("chatsession_Active");
 		}
 		$("#chatwindow" + id + " input[name='chatmessage']").focus();
+		scroll_to_bottom(id);
 	}
 	
 	

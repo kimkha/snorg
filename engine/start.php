@@ -159,6 +159,7 @@
 			
 			throw new InstallationException(elgg_echo('installation:error:configuration'));
 			
+echo "sss";
 		}
 		
 		// Autodetect some default configuration settings

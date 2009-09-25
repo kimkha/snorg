@@ -298,6 +298,12 @@ $vietnamese = array(
 			"zu" => "Tiếng Zulu",
 	
 	
+	/**
+	 * Install
+	 */
+	'welcome_message' => "Chào mừng đã đến trang cài đặt SNORG.",
+	'exception:title' => "SNORG xin chào mừng bạn.",
+	
 	
 	/**
 	 * Other
@@ -329,6 +335,29 @@ Tôi muốn mời bạn tham gia mạng xã hội của chúng tôi tại %s.",
 	'elggchat:session:onlinestatus' => "Hoạt động lần cuối: %s",
 	
 	'unselected' => "Vui lòng chọn",
+	
+	'elggchat:conference' => "[Thảo luận]",
+	
+	'profile:female' => "Nữ",
+	
+	'profile:male' => "Nam",
+	
+	'profile:birthday' => "Ngày sinh",
+	
+	'profile:birthday:hide_year' => "Chỉ hiện tháng và ngày trong hồ sơ",
+	
+	'profile:birthday:show_year' => "Hiện đầy đủ ngày tháng năm trong hồ sơ",
+	
+	'profile:single' => "Độc thân",
+	
+	'profile:in_relationship' => "Đang hẹn hò",
+	
+	'profile:engaged' => "Đã đính hôn",
+	
+	'profile:married' => "Đã cưới",
+	
+	'profile:hard_to_tell' => "Đang gặp rắc rối",
+	
 );
 
 
