@@ -1,15 +1,12 @@
 <?php
 
-	/**
-	 * Elgg delete comment action
-	 * 
-	 * @package Elgg
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider <curverider.co.uk>
-	 * @copyright Curverider Ltd 2008-2009
-	 * @link http://elgg.org/
-	 */
-
+/**
+* Taguser
+* Taguser into a entity
+* 
+* @author BKIT06
+* @package SNORG
+*/
 	// Ensure we're logged in
 		if (!isloggedin()) forward();
 		

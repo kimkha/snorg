@@ -1,5 +1,12 @@
 
 <?php
+/**
+* Taguser
+* Taguser into a entity
+* 
+* @author BKIT06
+* @package SNORG
+*/
 
 	$photo_tags = $vars['photo_tags'];
 	$links = $vars['links'];

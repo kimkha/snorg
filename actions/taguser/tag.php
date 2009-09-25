@@ -1,8 +1,11 @@
 <?php
 	/**
-	 * Tidypics Add Photo Tag
-	 * 
-	 */
+* Taguser
+* Taguser into a entity
+* 
+* @author BKIT06
+* @package SNORG
+*/
 
 	gatekeeper();
 	action_gatekeeper();
