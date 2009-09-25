@@ -1,5 +1,12 @@
 <?php
 	/**
+	 * Add 2 button: Re-enable and SNORG Recommendation
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
+
+	/**
 	 * Elgg plugin manifest class
 	 * 
 	 * This file renders a plugin for the admin screen, including active/deactive, manifest details & display plugin

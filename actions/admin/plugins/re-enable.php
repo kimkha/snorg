@@ -1,13 +1,9 @@
 <?php
 	/**
-	 * Disable plugin action.
+	 * Re-enable plugin
 	 * 
-	 * @package Elgg
-	 * @subpackage Core
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2009
-	 * @link http://elgg.org/
+	 * @author KimKha
+	 * @package SNORG
 	 */
 
 	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/engine/start.php");
