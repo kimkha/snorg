@@ -30,11 +30,11 @@
     <td width="759" valign="top" align="right"> <div id="tabs6">
     
     	<ul id="navigation" class="topbardropdownmenu">
-			<li id="current"><a href="<?php echo $vars['url']; ?>"><span>Home</span></a></li>
+			<li id="current"><a href="<?php echo $vars['url']; ?>"><span><?php echo elgg_echo("home"); ?></span></a></li>
     <?php
     	echo elgg_view("expages/navigation");
     ?>
-    		<li><a href="<?php echo $vars['url']; ?>"><span>Contact</span></a></li>
+    		<li><a href="<?php echo $vars['url']; ?>pg/expages/read/About"><span><?php echo elgg_echo("contact"); ?></span></a></li>
     	</ul>
 
         </div>

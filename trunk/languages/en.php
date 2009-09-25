@@ -7,6 +7,8 @@
 		 */
 	
 			'item:site' => 'Sites',
+			'home' => 'Home',
+			'contact' => 'Contact',
 	
 		/**
 		 * Sessions
