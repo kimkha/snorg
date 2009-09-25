@@ -1,9 +1,14 @@
 <?php
 	/**
-	 * @author Snow.Hellsing <snow@g7life.com>
-	 * @copyright FireBloom Studio
-	 * @link http://firebloom.cc
+	 * Improved Profile plugin
+	 * uses an ElggObject based configure way
+	 * added pulldown type to fields
+	 * added datepulldown input
+	 *
+	 * @author KimKha
+	 * @package SNORG
 	 */
+
 	/**
 	 * Elgg Profile 
 	 * 

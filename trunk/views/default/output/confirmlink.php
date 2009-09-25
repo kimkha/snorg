@@ -1,6 +1,13 @@
 <?php
 
 	/**
+	 * Add more beautiful confirm box
+	 *
+	 * @author KimKha
+	 * @package SNORG
+	 */
+
+	/**
 	 * Elgg confirmation link
 	 * A link that displays a confirmation dialog before it executes
 	 * 

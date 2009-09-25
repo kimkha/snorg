@@ -1,4 +1,11 @@
 <?php
+	/**
+	 * Add static page
+	 * 
+	 * @author KimKha
+	 * @package Snorg
+	 */
+
 
 	global $CONFIG;
 	$entity = $vars['entity'];

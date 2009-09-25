@@ -1,10 +1,10 @@
 <?php
 
 	/**
-	 * Demo content for tabs of profile
-	 * 
+	 * Info tab on profile
+	 *
 	 * @author KimKha
-	 * 
+	 * @package SNORG
 	 */
 	
 	$user = get_user(get_input("owner", 0));

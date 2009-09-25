@@ -1,4 +1,28 @@
+<?php
 
+	/**
+	 * Improved CSS
+	 *
+	 * @author KimKha
+	 * @package SNORG
+	 */
+
+	/**
+	 * Elgg v1.5 Default Theme
+	 * core CSS file
+	 * 
+	 * Updated 10 March 09
+	 * 
+	 * @package Elgg
+	 * @subpackage Core
+	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
+	 * @copyright Curverider Ltd 2008-2009
+	 * @link http://elgg.org/
+	 * 
+	 * @uses $vars['wwwroot'] The site URL
+	 */
+
+?>
 /* ***************************************
 	RESET BASE STYLES
 *************************************** */
@@ -2679,7 +2703,7 @@ border-top:none;
 
 
 
-/* CUSTOM */
+/* CUSTOM by SNORG */
 #elgg_taskbar {
 	position: fixed;
 	bottom: 0px;
@@ -2890,3 +2914,4 @@ border-top:none;
 #navigation li ul {
 	margin-top: 5px;
 }
+/* End CUSTOM by SNORG */

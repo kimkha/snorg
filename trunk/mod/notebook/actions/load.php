@@ -5,7 +5,7 @@
 	* 
 	* All the Notebook CSS can be found here
 	* 
-	* @package notebook
+	* @package SNORG
 	* @author KimKha
 	*/
 	

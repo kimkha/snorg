@@ -1,14 +1,14 @@
 <?php
 	/**
-	 * Display profile items for a user 
+	 * Improved Profile plugin
+	 * uses an ElggObject based configure way
+	 * added pulldown type to fields
+	 * added datepulldown input
 	 *
-	 * @package ImporvedProfile
+	 * @author huyvtq
+	 * @package SNORG
 	 */
-	/**
-	 * @author Snow.Hellsing <snow.hellsing@firebloom.cc>
-	 * @copyright FireBloom Studio
-	 * @link http://firebloom.cc
-	 */
+
 	global $CONFIG;
 	$profile = $CONFIG->profile;
 	$entity = $vars['entity'];

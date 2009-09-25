@@ -1,6 +1,13 @@
 <?php
 
 	/**
+	 * Improved CSS
+	 *
+	 * @author KimKha
+	 * @package SNORG
+	 */
+
+	/**
 	 * Elgg v1.5 Default Theme
 	 * core CSS file
 	 * 
@@ -2557,7 +2564,7 @@ a.delete_report_button:hover {
 }
 
 
-/* CUSTOM */
+/* CUSTOM by SNORG */
 #elgg_taskbar {
 	position: fixed;
 	bottom: 0px;
@@ -2599,3 +2606,4 @@ a.delete_report_button:hover {
 	border-bottom: 2px solid #50D050;
 	cursor: help;
 }
+/* End CUSTOM by SNORG */
