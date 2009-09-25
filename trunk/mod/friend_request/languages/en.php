@@ -26,7 +26,7 @@ You can view your pending friend requests at (Make sure you are logged into the 
 	
 	
 	//wall post
-	'friendrequest:wallpost:title' => 'you and  <a href="%s">%s</a> are now friend',
+	'friendrequest:wallpost:title' => 'you and <a href="%s">%s</a> are now friend',
 	'approve:system:notification' => 'Has approved your friend request',
 	'invite:system:notification' => 'want to make friend with you, to view detail click',
 );
