@@ -1,4 +1,12 @@
 <?php
+
+	/**
+	 * Edit to make chat intelligently
+	 * 
+	 * @author KimKha
+	 * @package Snorg
+	 */
+	 
 	/**
 	* ElggChat - Pure Elgg-based chat/IM
 	* 

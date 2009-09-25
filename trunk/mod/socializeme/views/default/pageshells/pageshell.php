@@ -1,6 +1,13 @@
 <?php
 
 	/**
+	 * Add taskbar.
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
+
+	/**
 	 * Elgg pageshell 
 	 * The standard HTML page shell that everything else fits into
 	 * 
@@ -33,7 +40,11 @@
 
 <?php echo elgg_view('page_elements/header', $vars); ?>
 <?php echo elgg_view('page_elements/taskbar', $vars); ?>
-<?php echo elgg_view('page_elements/elgg_topbar', $vars); ?>
+<?php 
+	/* CUSTOM by SNORG */
+	echo elgg_view('page_elements/elgg_topbar', $vars); 
+	/* End CUSTOM by SNORG */
+?>
 <?php echo elgg_view('page_elements/header_contents', $vars); ?>
 
 <!-- main contents -->
