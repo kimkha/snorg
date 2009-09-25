@@ -12,7 +12,7 @@
 		$owner = page_owner_entity();
 		$user = get_loggedin_userid();
 		if ($user != $owner->guid) {
-			$msg = '@' . $owner->username . ' ';
+		//	$msg = '@' . $owner->username . ' ';
 			$doing = elgg_echo("thewire:frienddoing");
 		} else {
 			$msg = '';
@@ -33,7 +33,7 @@ function textCounter(field,cntfield) {
     }
 }
 function submitnoteForm(thisForm){
-	value = "<?php echo $msg; ?>" + $("#thewire_tiny-textarea").val();
+	value = "<?php //echo $msg; ?>" + $("#thewire_tiny-textarea").val();
 	$("#thewire_tiny-textarea").val(value);
 	
 	myForm = $(thisForm);
