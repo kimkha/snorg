@@ -1,13 +1,10 @@
 <?php
 
 	/**
-	 * Elgg thewire: add shout action on profile
+	 * Improve thewire plugin
 	 * 
-	 * @package Elggthewire
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider <info@elgg.com>
-	 * @copyright Curverider Ltd 2008-2009
-	 * @link http://elgg.org/
+	 * @author KimKha
+	 * @package SNORG
 	 */
 
 // Make sure we're logged in (send us to the front page if not)

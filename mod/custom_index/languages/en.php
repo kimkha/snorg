@@ -1,4 +1,10 @@
 <?php
+	/**
+	 * Rewrite to make it more intelligent
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
 
 	$english = array(
 	

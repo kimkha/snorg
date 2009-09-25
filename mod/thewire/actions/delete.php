@@ -1,6 +1,12 @@
 <?php
 
 	/**
+	 * Improve thewire plugin
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
+	/**
 	 * Elgg thewire: delete note action
 	 * 
 	 * @package ElggTheWire

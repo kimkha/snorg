@@ -1,13 +1,10 @@
 <?php
-
-/**
-	 * Elgg invite page
+	/**
+	 * Advance search
+	 * Search users through them information
 	 * 
-	 * @package ElggFile
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2009
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @link http://elgg.org/
+	 * @author KimKha
+	 * @package SNORG
 	 */
 
 	require_once(dirname(dirname(dirname(__FILE__))) . '/engine/start.php');

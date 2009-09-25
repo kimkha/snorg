@@ -1,4 +1,10 @@
 <?php
+	/**
+	 * thewire tab on profile
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
 
 	set_page_owner(get_input('owner'));
 	$page_owner = page_owner_entity();

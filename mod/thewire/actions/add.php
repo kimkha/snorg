@@ -1,4 +1,10 @@
 <?php
+	/**
+	 * Improve thewire plugin
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
 
 	/**
 	 * Elgg thewire: add shout action

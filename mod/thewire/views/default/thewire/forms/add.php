@@ -1,6 +1,13 @@
 <?php
 
 	/**
+	 * Improve thewire plugin
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
+	 
+	/**
 	 * Elgg thewire edit/add page
 	 * 
 	 * @package ElggTheWire
