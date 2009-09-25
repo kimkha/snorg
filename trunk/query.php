@@ -21,7 +21,7 @@
 	        $friends_info = array();
 
 	        foreach ($friends as $friend){
-				$friends_info[] = array($friend->username,$friend->getURL(),$friend->getIcon('tiny'));
+				$friends_info[] = array($friend->name,$friend->getURL(),$friend->getIcon('tiny'));
 	        }
 	        
 	        echo json_encode($friends_info);
@@ -123,7 +123,7 @@
 			{
 				foreach ($list as $people)
 					{
-						$people_json = array($people->username, $people->getURL(),$people->getIcon("small"));
+						$people_json = array($people->name, $people->getURL(),$people->getIcon("small"));
 						$list_json[$count++]=$people_json;				
 					}
 				
@@ -171,7 +171,7 @@
 			
 			foreach ($mutural as $mfriend)
 			{
-				$mutual_array[] = array($mfriend->username, $mfriend->getURL(), $mfriend->getIcon("small"));
+				$mutual_array[] = array($mfriend->name, $mfriend->getURL(), $mfriend->getIcon("small"));
 			}
 
 	   		echo json_encode($mutual_array);
