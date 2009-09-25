@@ -263,7 +263,7 @@
 		$title = $entity->title;
 		$img = elgg_view('profile/icon', array('entity' => $user, 'size' => 'topbar', 'align' => 'left'));
 		
-		$content = "<div class='short-wall-singlepage' id='wall-singlepage-{$entity->guid}'><div class='short-wall-post'>".$img.$title."</div></div>";
+		$content = "<div class='short-wall-singlepage' id='wall-singlepage-{$entity->guid}'><div class='short-wall-post'>".$title."</div></div>";
 		
 		return $content;
 	}
