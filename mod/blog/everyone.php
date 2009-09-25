@@ -23,7 +23,7 @@
 		
 		$select_options = array(
 			'time' => 'Created time',
-			'ratetotal' => 'Rate point',
+			'ratecount' => 'Total rates',
 			'rateaverage' => 'Average rate point',
 		);
 		
