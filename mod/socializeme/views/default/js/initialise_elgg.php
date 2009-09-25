@@ -1,3 +1,9 @@
+	/**
+	 * Add translation tool
+	 * @author KimKha
+	 * @package snorg
+	 */
+/* CUSTOM by SNORG */
 if(jQuery) (function(){
 	
 	$.extend($.fn, {
@@ -25,6 +31,7 @@ if(jQuery) (function(){
 	});
 	
 })(jQuery);	
+/* End CUSTOM by SNORG */
 
 $(document).ready(function () {
 
@@ -107,7 +114,7 @@ $(document).ready(function () {
 		hoverClass: 'droppable-hover'
 	});
 	
-	/* CUSTOM */
+	/* CUSTOM by SNORG */
 	checkTranslator();
 /*	$("span.p_t").rightClick(function (e) {
 		a = $(this).html();
@@ -134,9 +141,10 @@ $(document).ready(function () {
 		$("span.p_t[title='"+$(this).attr('title')+"']").removeClass('p_t');
 		return false;
 	});*/
-	
+	/* End CUSTOM by SNORG */
 }); /* end document ready function */
 
+/* CUSTOM by SNORG */
 var trans_default;
 var trans_input;
 var trans_key;
@@ -182,7 +190,7 @@ function translate_step3(d){
 	$("span.p_t[title='"+trans_key+"']").addClass('f_t');
 	$("span.p_t[title='"+trans_key+"']").removeClass('p_t');
 }
-
+/* End CUSTOM by SNORG */
 
 // List active widgets for each page column
 function outputWidgetList(forElement) {
