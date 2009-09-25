@@ -10,9 +10,10 @@
 
     //the page owner
 	$owner = page_owner_entity();
+	$visitor = get_loggedin_userid();
 
     //the number of files to display
-		$num = 8;
+		$num = 6;
 		
 	//get the correct size
     	$size_value = "small";
@@ -39,13 +40,13 @@
 		echo "<div id='muturalfriends-leftbar' class='collapsable_box'>";
 		echo "<div class='collapsable_box_header'>";
 		echo '<a class="toggle_box_contents" href="javascript:void(0);">-</a>';
-		echo '<h1>'.elgg_echo("muturalfriends").'</h1>';
-		echo "</div>";
+		echo " <div class='leftbar_show_all' href='javascript:viewFriendsBox(\"GetMutualFriends\", {$owner->guid});' > " . elgg_echo('friends:widget:showall')."</div>";
+		echo '<h1>'.elgg_echo("friends:mutural").'</h1>';
+		echo "<div class='clearfloat'></div></div>";
 		
 		echo '<div class="collapsable_box_content">';
 		
 		
-		echo " <a id='btn_mf_show_all' href='javascript:viewFriendsBox(\"GetMutualFriends\", {$owner->guid});' > " . elgg_echo('friends:widget:showall')."</a>";
 		echo "<div id=\"list\">";
 
 		foreach($mutural as $friend) {

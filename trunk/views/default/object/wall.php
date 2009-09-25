@@ -65,7 +65,7 @@
 	    
 		
 		<?php
-		    echo "<b><a class='username' href='".$vars['url']."pg/profile/{$username}'>".splitname($user->name)."</a> </b>";
+		    echo "<b><a class='username' href='".$vars['url']."pg/profile/{$username}'>".splitname($user->name, 20)."</a> </b>";
 		    
 			echo parse_urls($title);
 		?>
