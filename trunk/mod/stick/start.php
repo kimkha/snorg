@@ -18,7 +18,6 @@
 		// Register homepage
 		extend_view("css", "stick/css", 600);
 		extend_view("index/block", "stick/commend", 400);
-		extend_view("js/initialise_elgg", "stick/js");
 		
 		if (is_plugin_enabled("blog")) 
 			extend_view("index/main", "stick/homepage", 450);
@@ -44,6 +43,8 @@
 		
 		// Insert menu to blogspot
 		if (get_context() == "blog" && isadminloggedin()) {
+			extend_view("metatags", "stick/js");
+			
 			$post = (int) get_input('blogpost');
 			if ($blogpost = get_entity($post)) {
 				

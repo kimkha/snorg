@@ -26,12 +26,12 @@
 	$save = "<input type='submit' value='".elgg_echo("stick")."' />";
 	
 	$form = "<form action='#' name='form_stick'>";
-	$form .= "Choose category: ".$options."<br />".$save;
+	$form .= elgg_echo('stick:category').": ".$options."<br />".$save;
 	$form .= "</form>";
 	
 	$content = $form;
 ?>
-
+<script type="text/javascript">
 function stick_choose_category(link) {
 	var l = $(link);
 	var url = l.attr("href");
@@ -46,4 +46,4 @@ function stick_choose_category(link) {
 	
 	return false;
 }
-
+</script>

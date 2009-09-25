@@ -21,6 +21,8 @@
 		'stick:upostit' => 'Honour user',
 		'stick:uremoveit' => 'Unhonour with this post',
 		
+		'stick:category' => 'Choose category',
+		
 		'stick:successful' => 'This post is sticked successful',
 		'stick:error' => 'There is an error when stick this post',
 		'stick:removesuccessful' => 'This post is unsticked successful',
@@ -39,6 +41,7 @@
 		'stick:uremovesuccessful' => 'This user is unhonoured successful',
 		'stick:uremoveerror' => 'There is an error when unhonoured this user',
 		
+		'stick:user:month' => 'Honoured in this month',
 		'stick:user:wall' => 'Congratulations! You are honoured!',
 		'stick:user:wallstatus' => 'This user is honoured ',
 		'stick:user:cv' => 'Be honoured by %s, with %s.',
