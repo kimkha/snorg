@@ -3,11 +3,7 @@
 	 * Elgg Stick
 	 * 
 	 * @author KimKha
-	 * @package ElggStick
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2009
-	 * @link http://elgg.com/
+	 * @package SNORG
 	 */
 	
 	$english = array(
@@ -34,6 +30,8 @@
 		'stick:noimage' => 'No images have been added yet. Please <a href="%s">browse to insert</a>.',
 		'stick:isuccessful' => 'This image is sticked successful',
 		'stick:ierror' => 'There is an error when stick this image',
+		'stick:iremovesuccessful' => 'This image is unsticked successful',
+		'stick:iremoveerror' => 'There is an error when unstick this image',
 		'stick:inotpublic' => 'This image can not be sticked because it is not public',
 		
 		'stick:usuccessful' => 'This user is honoured',
