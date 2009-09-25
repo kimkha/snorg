@@ -1,9 +1,13 @@
 <?php
-	/*
-	 * languages for improved profile
+	/**
+	 * Improved Profile plugin
+	 * uses an ElggObject based configure way
+	 * added pulldown type to fields
+	 * added datepulldown input
 	 *
-	 * @package ImprovedProfile
-	 */
+	 * @author KimKha
+	 * @package SNORG
+	 */	
 	/*
 	 * @author Snow.Hellsing <snow@g7life.com>
 	 * @copyright FireBloom Studio

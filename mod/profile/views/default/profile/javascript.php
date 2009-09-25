@@ -1,6 +1,15 @@
 <?php
 
 	/**
+	 * Improved Profile plugin
+	 * uses an ElggObject based configure way
+	 * added pulldown type to fields
+	 * added datepulldown input
+	 *
+	 * @author KimKha
+	 * @package SNORG
+	 */
+	/**
 	 * Elgg profile image Javascript
 	 * 
 	 * @package ElggProfile

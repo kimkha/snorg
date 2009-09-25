@@ -1,5 +1,12 @@
 <?php
 
+	/**
+	 * Add static page
+	 * 
+	 * @author KimKha
+	 * @package Snorg
+	 */
+
 	global $CONFIG;
 	$guid = (int) get_input("guid", 0);
 	

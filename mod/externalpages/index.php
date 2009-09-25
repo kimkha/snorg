@@ -1,5 +1,12 @@
 <?php
 	/**
+	 * Add static page
+	 * 
+	 * @author KimKha
+	 * @package Snorg
+	 */
+
+	/**
 	 * Elgg External pages
 	 * 
 	 * @package ElggExpages

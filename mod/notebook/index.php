@@ -1,17 +1,13 @@
 <?php
 	/**
-	* ElggChat - Pure Elgg-based chat/IM
+	* Notebook
 	* 
-	* Admin page to list all the chat sessions for debugging
+	* All the Notebook CSS can be found here
 	* 
-	* @todo remove this page
-	* 
-	* @package elggchat
-	* @author ColdTrick IT Solutions
-	* @copyright Coldtrick IT Solutions 2009
-	* @link http://www.coldtrick.com/
-	* @version 0.4
+	* @package SNORG
+	* @author KimKha
 	*/
+	
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
 	admin_gatekeeper();

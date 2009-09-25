@@ -1,10 +1,10 @@
 <?php
 
 	/**
-	 * Demo tabs for profile
-	 * 
+	 * Info tab on profile
+	 *
 	 * @author KimKha
-	 * 
+	 * @package SNORG
 	 */
 
 ?>

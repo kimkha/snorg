@@ -6,7 +6,7 @@
 	 * added datepulldown input
 	 *
 	 * @author KimKha
-	 * 
+	 * @package SNORG
 	 */
 	/**
 	 * @author Snow.Hellsing <snow@g7life.com>

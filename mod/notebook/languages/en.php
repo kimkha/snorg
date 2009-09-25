@@ -1,15 +1,13 @@
 <?php
 	/**
-	* ElggChat - Pure Elgg-based chat/IM
+	* Notebook
 	* 
-	* English language file
+	* All the Notebook CSS can be found here
 	* 
-	* @package elggchat
-	* @author ColdTrick IT Solutions
-	* @copyright Coldtrick IT Solutions 2009
-	* @link http://www.coldtrick.com/
-	* @version 0.4
+	* @package SNORG
+	* @author KimKha
 	*/
+	
 
 	$english = array(
 		'notebook' => "Notebook",

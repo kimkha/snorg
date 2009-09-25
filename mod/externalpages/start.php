@@ -1,4 +1,12 @@
 <?php
+
+	/**
+	 * Add static page
+	 * 
+	 * @author KimKha
+	 * @package Snorg
+	 */
+
 	/**
 	 * Elgg Simple editing of external pages frontpage/about/term/contact and privacy
 	 * 
