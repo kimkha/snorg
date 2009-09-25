@@ -29,7 +29,7 @@
 		echo "<div id='friends-leftbar' class='collapsable_box'>";
 		echo "<div class='collapsable_box_header'>";
 		echo '<a class="toggle_box_contents" href="javascript:void(0);">-</a>';
-		echo "<div class='leftbar_show_all' onclick='viewFriendsBox(\"GetFriends\", {$owner->guid});' >" . elgg_echo('friends:widget:showall')."</div>";
+		echo "<div class='leftbar_show_all' onclick='viewFriendsBox(\"GetFriends\", {$owner->guid}, \"Friends\");' >" . elgg_echo('friends:widget:showall')."</div>";
 		echo '<h1>'.elgg_echo("friends").'</h1>';
 		echo "<div class='clearfloat'></div></div>";
 		

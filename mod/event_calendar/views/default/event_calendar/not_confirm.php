@@ -15,7 +15,7 @@
 		
 		echo "<b>Confirm Guest:</b>";
 		
-		echo "<a href='javascript:viewFriendsBox(\"calendar&relationship=eventrequest\", {$event_guid});' >" . elgg_echo('friends:widget:showall')."</a>";
+		echo "<a href='javascript:viewFriendsBox(\"calendar&relationship=eventrequest\", {$event_guid}, \"Not confirm\");' >" . elgg_echo('friends:widget:showall')."</a>";
 		
 		
 		echo "<div id=\"widget_friends_list\">";
