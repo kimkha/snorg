@@ -88,7 +88,7 @@
 							
 					}
 					
-					
+					// snorg - bkit06 - send notify to person who is tagged in photo
 					foreach ($otherUser as $uid) {
 											
 						notify_user($uid, $lastUser->getGUID(), "also comment on topic",$entity->title."-".$entity->getURL());
