@@ -16,7 +16,6 @@ $user = $vars["chatuser"];
 if(!empty($user) && $user instanceof ElggUser){
 	$link = $vars["link"];
 	$icon = $vars["icon"];
-	$iconSize = $vars["iconSize"];
 	$onlineStatus = $vars["onlineStatus"];
 	
 	if($link !== false || $link !== true){
@@ -31,9 +30,7 @@ if(!empty($user) && $user instanceof ElggUser){
 		$onlineStatus = true;
 	}
 	
-	if(empty($iconSize) || !in_array($iconSize, array("tiny", "small", "medium", "large", "profile"))){
-		$iconSize = "tiny";
-	}
+	$iconSize = "tiny";
 	
 	$result = "";
 	

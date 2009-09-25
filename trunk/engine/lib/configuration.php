@@ -156,7 +156,7 @@
 				$CONFIG->sitename = "New SNORG site";
 				
 			if (empty($CONFIG->language))
-				$CONFIG->language = "en";
+				$CONFIG->language = "vi";
 
 		}
 		
