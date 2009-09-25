@@ -45,9 +45,8 @@ $vietnamese = array(
 	'event_calendar:invite' => 'Mời thêm bạn',
 	'event_calendar:add_to_my_calendar' => 'Thêm vào lịch của tôi',
 	'event_calendar:enable_event_calendar' => 'Kích hoạt lịch - sự kiện cho nhóm',
-	'event_calendar:river:created' => '<a href=\"http://bkitclub.net/release/pg/profile/facebook_1336879630\">Tran Vu</a> thêm',
+	'event_calendar:river:created' => '%s đã tạo',
 	'event_calendar:river:create' => 'một sự kiện mới là',
-	'event_calendar:river:created' => '<a href=\"http://bkitclub.net/release/pg/profile/facebook_1336879630\">Tran Vu</a> đã thêm',
 	// END NEW STRING
 
 );
