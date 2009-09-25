@@ -1,13 +1,23 @@
 <?php
+
 	/**
 	 * Elgg Stick
 	 * 
 	 * @author KimKha
-	 * @package ElggStick
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2009
-	 * @link http://elgg.com/
+	 * @package SNORG
 	 */
+
+	admin_gatekeeper();
+	
+	$id = (int) get_input("id");
+	
+	if (delete_relationship($id)){
+		system_message(elgg_echo("stick:iremovesuccessful"));
+	}
+	else {
+		register_error(elgg_echo("stick:iremoveerror"));
+	}
+	
+	forward($_SERVER['HTTP_REFERER']);
 	
 ?>
