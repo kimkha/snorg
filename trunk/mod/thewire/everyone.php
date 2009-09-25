@@ -1,4 +1,10 @@
 <?php
+	/**
+	 * Improve thewire plugin
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
 
 	/**
 	 * Elgg view all thewire posts from all users page

@@ -1,6 +1,12 @@
 <?php
 
 	/**
+	 * Improve thewire plugin
+	 * 
+	 * @author KimKha
+	 * @package SNORG
+	 */
+	/**
 	 * New wire post view for the activity stream
 	 */
 	 

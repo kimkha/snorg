@@ -5,7 +5,6 @@
 	 * 
 	 * @package SNORG
 	 * @author KimKha
-	 * @link http://bkitclub.net/snorg
 	 */
 
 /**
