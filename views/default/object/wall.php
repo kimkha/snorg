@@ -31,10 +31,10 @@
 		$user = $entity->getOwnerEntity();
 		$username = $user->username;
 		
-		if ($entity->container_guid != $entity->owner_guid) {
+/*		if ($entity->container_guid != $entity->owner_guid) {
 			$owner = get_entity($entity->container_guid);
 			$title = "&raquo; <b><a href='". $owner->getURL() ."'>". splitname($owner->name, 20) ."</a></b> ".$title;
-		}
+		}*/
 			
 		
 ?>
