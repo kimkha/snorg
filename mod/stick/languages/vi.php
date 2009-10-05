@@ -18,6 +18,10 @@ $vietnamese = array(
 		'stick:ipostit' => 'Đưa vào album của tổ chức',
 		'stick:iremoveit' => 'Bỏ khỏi album của tổ chức',
 		'stick:category' => 'Chọn thể loại',
+		'stick:user:month' => 'Được tuyên dương trong tháng',
+		'stick:user:wall' => 'Xin chúc mừng! Bạn đã được tuyên dương!',
+		'stick:user:cv' => 'Được tuyên dương bởi %s, %s.',
+		'stick:user:view' => 'Xem bài viết tuyên dương',
 
 	'stick:user:add' => 'Tuyên dương %s',
 	// END NEW STRING
