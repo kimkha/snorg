@@ -130,7 +130,7 @@ jQuery.fn.rating = function(url, options) {
 			settings.disable = false;
 			return true;
 		} else {
-			$kalert('<?php echo elgg_echo('blograting:hasrate') ?>')
+			$kalert("<?php echo elgg_echo('blograting:hasrate') ?>")
 		}				
 	  });
   
