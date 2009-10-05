@@ -31,7 +31,7 @@
 	
 	if ($file->canEdit()) {
 	
-		$file->access_id = $access_id;
+		$file->access_id = ACCESS_PUBLIC;
 		$file->title = $title;
 		$file->description = $description;
 	
