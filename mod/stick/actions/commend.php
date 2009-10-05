@@ -9,7 +9,7 @@
 	$userId = (int) get_input('userid');
 	$user = get_entity($userId);
 	
-	$title = "Commend ".$user->name;
+	$title = sprintf(elgg_echo('stick:user:add'), $user->name);
 	$header = elgg_view_title($title);
 	
 	$block = elgg_view_entity($user);

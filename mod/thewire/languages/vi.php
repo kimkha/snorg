@@ -12,6 +12,7 @@ $vietnamese = array(
 	'thewire:charleft' => 'Kí tự còn lại',
 	'thewire:newpost' => 'Viết bài mới',
 	'thewire:read' => 'Trạng thái',
+	'thewire:wired' => 'Viết lên tường',
 	// END NEW STRING
 
 );

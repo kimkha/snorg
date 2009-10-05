@@ -33,7 +33,7 @@
 		
 		if ($entity->container_guid != $entity->owner_guid) {
 			$owner = get_entity($entity->container_guid);
-			$title = "&laquo; <b><a href='". $owner->getURL() ."'>". $owner->name ."</a></b> ".$title;
+			$title = "&raquo; <b><a href='". $owner->getURL() ."'>". splitname($owner->name, 20) ."</a></b> ".$title;
 		}
 			
 		

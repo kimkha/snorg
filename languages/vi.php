@@ -314,6 +314,7 @@ $vietnamese = array(
 	'home' => 'Trang chủ',
 	'contact' => 'Liên hệ',
 	'polls:nonefound' => 'Không có khảo sát nào từ cộng đồng',
+	'admin:configuration:success' => 'Thiết lập của bạn đã được lưu.',
 	// END NEW STRING
 
 );

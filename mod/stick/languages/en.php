@@ -43,6 +43,7 @@
 		'stick:user:wall' => 'Congratulations! You are honoured!',
 		'stick:user:wallstatus' => 'This user is honoured ',
 		'stick:user:cv' => 'Be honoured by %s, with %s.',
+		'stick:user:add' => 'Honour %s',
 		'stick:user:edit' => 'Edit honour post',
 		'stick:user:all' => 'All honour of this user',
 		'stick:user:view' => 'View recently honour post',
