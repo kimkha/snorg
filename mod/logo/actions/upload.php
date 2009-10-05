@@ -16,7 +16,6 @@
 	$title = get_input("title");
 	$desc = get_input("description");
 	$tags = get_input("tags");
-	$access_id = (int) get_input("access_id");
 	$container_guid = (int) get_input('container_guid', 0);
 	if (!$container_guid)
 		$container_guid == $_SESSION['user']->getGUID();
@@ -32,7 +31,7 @@
 	
 	$file->subtype="logo";
 	
-	$file->access_id = $access_id;
+	$file->access_id = ACCESS_PUBLIC;
 	
 	$file->open("write");
 	$file->write(get_uploaded_file('upload'));
