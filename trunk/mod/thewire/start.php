@@ -235,7 +235,7 @@
 			
 			$viewtype = $vars['viewtype'];
 			
-			$title = preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/thewire/$1">$1</a>',$vars['entity']->description);
+			$title = preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/profile/$1">$1</a>',$vars['entity']->description);
 			
 			$content = '';
 			

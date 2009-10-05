@@ -28,8 +28,14 @@
 			$status = "<img src='" . $entity->getIcon('tiny') . "' alt='{$subtype}\'s icon' /> ". $subtype . " " . friendly_time($entity->time_created);
 		}
 		
-		$user = $vars['entity']->getOwnerEntity();
+		$user = $entity->getOwnerEntity();
 		$username = $user->username;
+		
+		if ($entity->container_guid != $entity->owner_guid) {
+			$owner = get_entity($entity->container_guid);
+			$title = "&laquo; <b><a href='". $owner->getURL() ."'>". $owner->name ."</a></b> ".$title;
+		}
+			
 		
 ?>
 <div class="wall-singlepage" id="wall-singlepage-<?php echo $entity->getGUID(); ?>">
