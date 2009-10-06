@@ -52,7 +52,7 @@
         	&& ($page_owner_entity->getSubtype() == "facebook")
         	&& ($page_owner_entity->facebook_controlled_profile != 'no')
         ) {
-        	extend_view('metatags','fbconnect/hide_profile_embed');
+        	//extend_view('metatags','fbconnect/hide_profile_embed');
         }
         
         extend_elgg_settings_page('fbconnect/settings/usersettings', 'usersettings/user');

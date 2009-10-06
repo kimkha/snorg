@@ -13,6 +13,10 @@ $vietnamese = array(
 	'profile:editdetails' => 'Chỉnh sửa chi tiết',
 	'profile:user' => "Hồ sơ của %s",
 	'profile:river:update' => "%s đã cập nhật hồ sơ",
+	'profile:category:contact' => 'Thông Tin Liên Lạc',
+	'profile:hometown' => 'Địa chỉ nhà',
+	'profile:gender' => 'Giới tính',
+	'profile:relationship_status' => 'Tình trạng quan hệ',
 	// END NEW STRING
 
 );

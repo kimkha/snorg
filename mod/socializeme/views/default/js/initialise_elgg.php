@@ -150,7 +150,7 @@ var trans_input;
 var trans_key;
 var alreadyCheckTranslator = false;
 function checkTranslator() {
-	var admin = '<?php if (isadminloggedin()) echo '1'; else echo '0' ?>';
+	var admin = '<?php if (isadminloggedin()) echo '1'; else echo '0'; ?>';
 	if (admin == '' || parseInt(admin) <= 0) {
 		return;
 	}
