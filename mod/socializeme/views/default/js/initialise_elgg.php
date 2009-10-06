@@ -27,7 +27,7 @@ if(jQuery) (function(){
 				}
 			});
 			return $(this);
-		},		
+		}
 	});
 	
 })(jQuery);	
@@ -155,7 +155,9 @@ function checkTranslator() {
 		return;
 	}
 	$("span.p_t").rightClick(function(e){
+		$(this).bind("contextmenu", function() { return false; });
 		enableTranslator($(this), e);
+		return false;
 	});
 	if (!alreadyCheckTranslator) {
 		alreadyCheckTranslator = true;

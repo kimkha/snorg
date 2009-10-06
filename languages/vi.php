@@ -315,6 +315,11 @@ $vietnamese = array(
 	'contact' => 'Liên hệ',
 	'polls:nonefound' => 'Không có khảo sát nào từ cộng đồng',
 	'admin:configuration:success' => 'Thiết lập của bạn đã được lưu.',
+	'sitemessages:posted' => 'Đã viết',
+	'messageboard:river:added' => '%s đã viết trên',
+	'sitemessages:announcements' => 'Thông báo trên site',
+	'sitemessages:announcements' => 'Thông báo trên toàn site',
+	'friendrequest:successful' => 'Bạn và %s giờ đã là bạn bè.',
 	// END NEW STRING
 
 );
