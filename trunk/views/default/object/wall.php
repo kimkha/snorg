@@ -63,7 +63,7 @@
 	    ?>
 	    <div class="clearfloat"></div>
    		<?php
-			if ($vars['entity']->canEdit()) {
+			if ($entity->canEdit() || $entity->container_guid == get_loggedin_userid()) {
 				echo "<div class='delete_note'>" . $dellink . "</div>";
 			}
 		?>

@@ -190,7 +190,8 @@
 	        $thewire->method = $method; //method, e.g. via site, sms etc
 	        $thewire->parent = $parent; //used if the note is a reply
 	        
-	        if (is_array($tag)) $thewire->tags = $tag;
+	        //if (is_array($tag)) $thewire->tags = $tag;
+	        
 	        //save
 			$save = $thewire->save();
 			

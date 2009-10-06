@@ -18,7 +18,7 @@
 	
 ?>
 <div id="commend-box">
-<div class="commend-header">Commended in this month</div>
+<div class="commend-header"><?php echo elgg_echo('stick:user:month'); ?></div>
 <div class="commend-img">
 	<?php echo elgg_view("profile/icon", array( "entity"=>$user, "size"=>"medium", "align"=>"center" )); ?>
 </div>
