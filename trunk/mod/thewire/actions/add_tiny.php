@@ -13,7 +13,7 @@
 // Get input data
 	$body = get_input('note');
 	$tags = get_input('thewiretags');
-	$access_id = get_default_access();
+//	$access_id = get_default_access();
 	$location = get_input('location');
 	$method = get_input('method');
 	$owner = get_user(get_input('owner'));
@@ -25,7 +25,7 @@
 	
 // Make sure the title / description aren't blank
 	if (!empty($body)) {
-		if (thewire_save_post($body, $access_id, $parent, $method, $tagarray, $owner->guid)) {
+		if (thewire_save_post($body, ACCESS_PUBLIC, $parent, $method, $tagarray, $owner->guid)) {
 			$latest_wire = get_entities("object", "thewire", null, "", 1, 0, false, 0, $owner->guid);
 			
 			

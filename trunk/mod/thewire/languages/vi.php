@@ -13,6 +13,7 @@ $vietnamese = array(
 	'thewire:newpost' => 'Viết bài mới',
 	'thewire:read' => 'Trạng thái',
 	'thewire:wired' => 'Viết lên tường',
+	'thewire:river:create' => 'lên tường.',
 	// END NEW STRING
 
 );
