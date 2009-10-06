@@ -92,7 +92,7 @@
 	//insert a view that can be extended
 	echo elgg_view("profile/status", array("entity" => $vars['entity']));
 	
-	if (isloggedin())
+	if (isloggedin() && ($vars['entity']->isFriendOf(get_loggedin_userid()) || $vars['entity']->guid == get_loggedin_userid()))
 		echo elgg_view("thewire/forms/add_tiny", $vars);
 	
 /*	if ($vars['full'] == true) {
