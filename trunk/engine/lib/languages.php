@@ -114,8 +114,8 @@
 			if (isset($CONFIG->translations[$language][$message_key])) {
 				return $CONFIG->translations[$language][$message_key];
 			} else if (isset($CONFIG->translations["en"][$message_key])) {
-//				return "<span class='p_t' title='{$message_key}' oncontextmenu='return false;'>".$CONFIG->translations["en"][$message_key]."</span>";
-				return $CONFIG->translations["en"][$message_key];
+				return "<span class='p_t' title='{$message_key}' oncontextmenu='return false;'>".$CONFIG->translations["en"][$message_key]."</span>";
+//				return $CONFIG->translations["en"][$message_key];
 			}
 				
 			return $message_key;
