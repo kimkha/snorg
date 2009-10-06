@@ -17,6 +17,7 @@ $vietnamese = array(
 	'profile:hometown' => 'Địa chỉ nhà',
 	'profile:gender' => 'Giới tính',
 	'profile:relationship_status' => 'Tình trạng quan hệ',
+	'profile:interests' => 'Sở thích',
 	// END NEW STRING
 
 );
