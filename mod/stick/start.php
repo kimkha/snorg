@@ -32,11 +32,6 @@
 	
 	function stick_pagesetup() {
 		global $CONFIG;
-		
-		if (get_context() == "index") {
-			set_input("index_limit", 4);
-		}
-		
 		// Insert menu to blogspot
 		if (get_context() == "blog" && isadminloggedin()) {
 			extend_view("metatags", "stick/js");
